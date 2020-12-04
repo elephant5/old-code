@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.bigan.mapper.PrjGroupGoodsMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.PrjGroupGoods">
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+  </sql>
+
+    <select id="findListByProjectIdAndGroupId" resultType="com.colourfulchina.bigan.api.entity.PrjGroupGoods">
+        SELECT
+            a.group_id,
+            a.goods_id,
+            a.weight,
+            a.project_id,
+            a.online,
+            sort
+        FROM
+            prj_group_goods a
+        WHERE
+            a.project_id = #{projectId}
+            AND a.group_id = #{groupId}
+        ORDER BY sort ASC
+    </select>
+</mapper>

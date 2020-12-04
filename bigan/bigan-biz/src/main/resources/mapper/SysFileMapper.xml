@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.bigan.mapper.SysFileMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.SysFile">
+  </resultMap>
+
+    <select id="selectShopPic" parameterType="java.lang.Long" resultType="com.colourfulchina.bigan.api.entity.SysFile">
+        SELECT
+            a.id,
+            a.guid,
+            a.path,
+            a.code,
+            a.ext,
+            a.name,
+            a.size,
+            a.creator_id,
+            a.date
+        FROM
+            sys_file a
+            LEFT JOIN sys_file_quote b ON a.id = b.file_id
+        <where>
+            AND b.type = 'shop.pic'
+            AND b.obj_id = #{shopId}
+        </where>
+    </select>
+    <select id="listSysFileDto" parameterType="com.colourfulchina.bigan.api.dto.ListSysFileReq" resultType="com.colourfulchina.bigan.api.dto.SysFileDto">
+      select sf.id,sf.guid,sf.path,sf.code,sf.ext,sf.name,sf.size,sfq.type,sfq.sort,sfq.obj_id objId
+      from sys_file sf
+      inner join sys_file_quote sfq
+      on sf.id=sfq.file_id
+      where 1=1
+      <if test="type != null">
+          and sf.type = #{type}
+      </if>
+      <if test="objId != null">
+          and sfq.obj_id = #{objId}
+      </if>
+    </select>
+</mapper>

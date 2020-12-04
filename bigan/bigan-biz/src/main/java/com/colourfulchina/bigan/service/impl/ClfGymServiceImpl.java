@@ -1,0 +1,31 @@
+package com.colourfulchina.bigan.service.impl;
+
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.colourfulchina.bigan.api.entity.ClfGym;
+import com.colourfulchina.inf.base.vo.PageVo;
+import com.colourfulchina.bigan.mapper.ClfGymMapper;
+import com.colourfulchina.bigan.service.ClfGymService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * User: Ryan
+ * Date: 2018/8/5
+ *
+ */
+@Slf4j
+@Service
+public class ClfGymServiceImpl  extends ServiceImpl<ClfGymMapper,ClfGym> implements ClfGymService {
+    @Autowired
+    private ClfGymMapper clfGymMapper;
+    @Override
+    public PageVo selectListPage(PageVo page) {
+        return page.setRecords(clfGymMapper.selectListPage(page,page.getCondition()));
+    }
+
+    @Override
+    public int logicDelById(Integer id) {
+        return clfGymMapper.logicDelById(id);
+    }
+}

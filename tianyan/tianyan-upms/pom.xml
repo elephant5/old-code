@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.colourfulchina</groupId>
+		<artifactId>tianyan</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>tianyan-upms</artifactId>
+	<name>tianyan-upms</name>
+	<description>tianyan 通用用户权限管理聚合模块</description>
+	<packaging>pom</packaging>
+	<properties>
+		<swagger.version>2.9.2</swagger.version>
+	</properties>
+	<modules>
+		<module>tianyan-upms-api</module>
+		<module>tianyan-upms-biz</module>
+	</modules>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>

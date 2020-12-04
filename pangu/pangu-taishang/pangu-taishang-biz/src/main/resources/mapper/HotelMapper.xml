@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.HotelMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.pangu.taishang.api.entity.Hotel">
+  </resultMap>
+
+  <!-- 查询酒店列表 -->
+  <select id="findPageList" parameterType="map" resultType="com.colourfulchina.pangu.taishang.api.vo.res.HotelPageListRes">
+    select
+      a.id,
+      a.name_ch AS "nameCh",
+      a.name_en AS "nameEn",
+      b.name_ch AS "cityNameCh"
+    from hotel a
+    LEFT JOIN sys_city b ON a.city_id = b.id
+    <where>
+      AND a.del_flag = 0
+      AND b.del_flag = 0
+      <if test="hotelName != null and hotelName != ''">
+        AND a.name_ch LIKE CONCAT('%',#{hotelName},'%')
+      </if>
+      <!--<if test="cityName != null and cityName != ''">-->
+        <!--AND b.name_ch LIKE CONCAT('%',#{cityName},'%')-->
+      <!--</if>-->
+        <if test="cityName != null and cityName.size() != 0">
+            AND b.name_ch in
+            <foreach collection="cityName" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+
+        </if>
+    </where>
+      order by a.id desc
+  </select>
+
+  <!-- 酒店是否存在检查（根据酒店中文名） -->
+  <select id="checkHotelIsExist" parameterType="java.lang.String" resultType="com.colourfulchina.pangu.taishang.api.entity.Hotel">
+    SELECT
+        *
+    FROM
+        hotel a
+    WHERE
+        a.name_ch = #{hotelChName}
+  </select>
+
+    <!-- 根据酒店中文名查询酒店信息 -->
+    <select id="selectByHotelName" parameterType="java.lang.String" resultType="com.colourfulchina.pangu.taishang.api.entity.Hotel">
+        SELECT
+            *
+        FROM
+            hotel a
+        WHERE
+            a.name_ch = #{hotelName}
+    </select>
+
+  <!-- 检车是否存在相同的中文名酒店 -->
+  <select id="checkHotelByNameCh" resultType="com.colourfulchina.pangu.taishang.api.entity.Hotel">
+    select
+        *
+    from
+        hotel a
+    where
+        a.name_ch = #{nameCh}
+        and a.id != #{id}
+  </select>
+
+  <!-- 检车是否存在相同的英文名酒店 -->
+  <select id="checkHotelByNameEn" resultType="com.colourfulchina.pangu.taishang.api.entity.Hotel">
+    select
+        *
+    from
+        hotel a
+    where
+        a.name_en = #{nameEn}
+        and a.id != #{id}
+  </select>
+</mapper>

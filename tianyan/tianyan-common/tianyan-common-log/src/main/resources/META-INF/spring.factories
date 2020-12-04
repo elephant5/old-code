@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.colourfulchina.tianyan.common.log.LogAutoConfiguration

@@ -1,0 +1,62 @@
+version: '2'
+services:
+  tianyan-redis:
+    image: redis:4.0.10
+    ports:
+      - 6379:6379
+    restart: always
+
+  tianyan-eureka:
+    build:
+      context: ./
+      dockerfile: ./tianyan-eureka/Dockerfile
+    restart: always
+    ports:
+      - 1025:1025
+
+  tianyan-config:
+    links:
+      - tianyan-eureka
+    build:
+      context: ./
+      dockerfile: ./tianyan-config/Dockerfile
+    restart: always
+
+  tianyan-gateway:
+    links:
+      - tianyan-eureka
+    build:
+      context: ./
+      dockerfile: ./tianyan-gateway/Dockerfile
+    restart: always
+    ports:
+      - 9999:9999
+
+  tianyan-auth:
+    links:
+      - tianyan-eureka
+      - tianyan-redis
+    build:
+      context: ./
+      dockerfile: ./tianyan-auth/Dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+
+  tianyan-upms:
+    links:
+      - tianyan-eureka
+      - tianyan-redis
+      - tianyan-gateway
+    build:
+      context: ./
+      dockerfile: ./tianyan-upms/tianyan-upms-biz/Dockerfile
+    restart: always
+
+  tianyan-monitor:
+    links:
+      - tianyan-eureka
+    build:
+      context: ./
+      dockerfile: ./tianyan-monitor/Dockerfile
+    restart: always

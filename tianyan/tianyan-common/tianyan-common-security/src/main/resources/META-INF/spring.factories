@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.colourfulchina.tianyan.common.security.compoent.PermissionService,\
+  com.colourfulchina.tianyan.common.security.compoent.TianyanAccessDeniedHandler,\
+  com.colourfulchina.tianyan.common.security.compoent.ResourceAuthExceptionEntryPoint,\
+  com.colourfulchina.tianyan.common.security.interceptor.TianyanFeignClientIntercept

@@ -1,0 +1,60 @@
+# redis 相关
+spring:
+  redis:
+    host: clf-redis.colourfulchina.com
+#    password:
+#    cluster:
+#      nodes: 10.15.116.26:7001,10.15.116.26:7002,10.15.116.27:7001,10.15.116.27:7002,10.15.116.28:7001,10.15.116.28:7002
+#      max-redirects: 3
+  zipkin:
+    base-url: http://127.0.0.1:5002
+  sleuth:
+    sampler:
+      probability: 1.0
+
+# 暴露监控端点
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# feign 配置
+feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+  client:
+    config:
+      feignName:
+        connectTimeout: 60000
+        readTimeout: 60000
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+# hystrix If you need to use ThreadLocal bound variables in your RequestInterceptor`s
+# you will need to either set the thread isolation strategy for Hystrix to `SEMAPHORE or disable Hystrix in Feign.
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 60000
+  shareSecurityContext: true
+
+#请求处理的超时时间
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
+

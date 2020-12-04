@@ -1,0 +1,25 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script: mvn clean deploy
+  artifacts:
+    paths:
+      - tianyan-config/target/tianyan-config-1.0.0.jar
+      - tianyan-auth/target/tianyan-auth-1.0.0.jar
+      - tianyan-gateway/target/tianyan-gateway-1.0.0.jar
+      - tianyan-upms/tianyan-upms-biztarget/tianyan-upms-biz-1.0.0.jar
+      - tianyan-monitor/target/tianyan-monitor-1.0.0.jar
+
+production:
+  stage: deploy
+  script:
+  - cp tianyan-config/target/tianyan-config-1.0.0.jar /app/tianyan/config
+  - cp tianyan-auth/target/tianyan-auth-1.0.0.jar /app/tianyan/auth
+  - cp tianyan-gateway/target/tianyan-gateway-1.0.0.jar /app/tianyan/gateway
+  - cp tianyan-upms/tianyan-upms-biz/target/tianyan-upms-biz-1.0.0.jar /app/tianyan/upms
+  - cp tianyan-monitor/target/tianyan-monitor-1.0.0.jar /app/tianyan/monitor
+  only:
+  - master

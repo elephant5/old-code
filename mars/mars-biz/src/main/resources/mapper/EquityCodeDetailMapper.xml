@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.mars.mapper.EquityCodeDetailMapper">
+
+    <!--根据giftCodeId查询权益使用次数-->
+    <select id="selectEquityCodeDetail" parameterType="java.lang.Integer" resultType="com.colourfulchina.mars.api.entity.EquityCodeDetail">
+        select * from equity_code_detail
+        where gift_code_id = #{giftCodeId}
+    </select>
+
+    <select id="selectGiftTimesVoList" resultType="com.colourfulchina.mars.api.entity.EquityCodeDetail">
+        SELECT * FROM equity_code_detail
+         WHERE product_group_id=#{groupId}
+           AND gift_code_id=#{giftCodeId}
+    </select>
+
+    <select id="getSurplusTimes" resultType="com.colourfulchina.mars.api.vo.GiftSurplusTimesVo">
+        SELECT
+            PRODUCT_GROUP_ID as productGroupId,
+            SUM( TOTAL_COUNT - USE_COUNT ) as surplusTimes
+        FROM
+            EQUITY_CODE_DETAIL  d left join gift_code c on d.gift_code_id=c.id
+        <where>
+            d.MEMBER_ID = #{memberId}  and c.act_code_status in (2,3)
+            <if test="productGroupId !=null and productGroupId!=''">
+                AND PRODUCT_GROUP_ID = #{productGroupId}
+            </if>
+        </where>
+        GROUP BY
+            PRODUCT_GROUP_ID
+    </select>
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.colourfulchina</groupId>
+		<artifactId>tianyan-common</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>tianyan-common-core</artifactId>
+	<version>${tianyan.version}</version>
+	<packaging>jar</packaging>
+	<name>tianyan-common-core</name>
+	<description>tianyan 公共工具类核心包</description>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.colourfulchina</groupId>
+			<artifactId>inf-base</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<!--hutool-->
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>${hutool.version}</version>
+		</dependency>
+		<!--fastjson-->
+		<!--<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>-->
+		<!--redis-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<!--server-api-->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>

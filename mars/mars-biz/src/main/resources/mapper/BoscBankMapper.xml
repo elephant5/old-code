@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.mars.mapper.BoscBankMapper">
+
+	<select id="getBoscBankTxtList" parameterType="com.colourfulchina.mars.api.entity.BoscBankTxtEntity" 
+		resultType="java.lang.String">
+		SELECT DISTINCT card_no 
+		  FROM bosc_bank_txt t
+		 WHERE t.card_no IN 
+		<foreach collection="banklist" item="bank" index="index" separator="," open="(" close=")">
+			#{bank.cardNo}
+		</foreach>
+  	</select>
+
+    <insert id="batchInsert" parameterType="com.colourfulchina.mars.api.entity.BoscBankTxtEntity">
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO bosc_bank_txt (batch, card_no, card_progroup_no, card_type, last_four_no, ecif, name, mobile, main_card_no, remark, create_time, update_time,unified_product_param_code,card_set)
+        VALUES
+        <foreach collection="banklist" item="bank" index="index" separator=",">
+			(#{bank.batch}, #{bank.cardNo}, #{bank.cardProgroupNo}, #{bank.cardType}, #{bank.lastFourNo}, #{bank.ecif}, #{bank.name}, #{bank.mobile}, #{bank.mainCardNo}, #{bank.remark}, now(), now(),
+			#{bank.unifiedProductParamCode},#{bank.cardSet})
+        </foreach>
+    </insert>
+
+	<!--根据客编号获取用户所有卡信息-->
+	<select id="selectCardList" parameterType="java.lang.String" resultType="com.colourfulchina.mars.api.entity.BoscBank">
+		SELECT card_no,card_progroup_no,card_type,last_four_no,ecif,name,mobile,main_card_no
+		FROM  bosc_bank
+		where ecif = #{ecifNo} and del_flag=0
+		order by card_type
+	</select>
+	
+	<select id="getBoscLinklist" parameterType="java.lang.String" resultType="com.colourfulchina.mars.api.vo.res.BoscBankCustInfoRes">
+		SELECT name, mobile , case when main_card_no is null then "1" ELSE "0" end as self FROM bosc_bank_txt WHERE ecif = #{ecifNo}
+		UNION ALL
+		SELECT name, mobile , case when main_card_no is null then "1" ELSE "0" end as self FROM bosc_bank_txt WHERE main_card_no in (SELECT card_no FROM bosc_bank_txt WHERE ecif = #{ecifNo})
+	</select>
+
+
+
+
+
+	<select id="selectBoscBankList"  resultType="com.colourfulchina.mars.api.entity.BoscBank">
+		SELECT
+		id,batch,card_no,card_progroup_no,unified_product_param_code,card_type,card_set,last_four_no,ecif,name,mobile,main_card_no,remark,del_flag
+		from bosc_bank
+	</select>
+
+
+	<insert id="batchInsertBoscBank" parameterType="List" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO bosc_bank (batch, card_no, card_progroup_no, card_type, last_four_no, ecif, name, mobile, main_card_no, remark, create_time, update_time,unified_product_param_code,card_set)
+		VALUES
+		<foreach collection="list" item="bank" index="index" separator=",">
+			(#{bank.batch}, #{bank.cardNo}, #{bank.cardProgroupNo}, #{bank.cardType}, #{bank.lastFourNo}, #{bank.ecif}, #{bank.name}, #{bank.mobile}, #{bank.mainCardNo}, #{bank.remark}, now(), now(),
+			#{bank.unifiedProductParamCode},#{bank.cardSet})
+		</foreach>
+	</insert>
+
+
+	<select id="selectBoscBankListByCondition" parameterType="java.util.List"  resultType="java.lang.String">
+		SELECT DISTINCT ecif FROM bosc_bank WHERE  ecif IN
+		<foreach collection="banklist" item="bank" index="index" separator="," open="(" close=")">
+			#{bank.ecif}
+		</foreach>
+	</select>
+
+	<select id="selectOnceExistBoscBankList" parameterType="java.util.List"  resultType="com.colourfulchina.mars.api.entity.BoscBank">
+		SELECT
+		id,batch,card_no,card_progroup_no,unified_product_param_code,card_type,card_set,last_four_no,ecif,name,mobile,main_card_no,remark,del_flag
+		FROM bosc_bank WHERE  del_flag = 0 and ecif not IN
+		<foreach collection="banklist" item="bank" index="index" separator="," open="(" close=")">
+			#{bank.ecif}
+		</foreach>
+	</select>
+
+	<update id="updateBatchBoscBanks" parameterType="java.util.List">
+		<foreach collection="banklist" item="item" index="index" open="" close="" separator=";">
+			update bosc_bank
+			  <set>
+				  <if test="cardNo != null">
+					  card_no = #{item.cardNo},
+				  </if>
+				  <if test="cardProgroupNo != null">
+					  card_progroup_no = #{item.cardProgroupNo},
+				  </if>
+				  <if test="unifiedProductParamCode != null">
+					  unified_product_param_code = #{item.unifiedProductParamCode},
+				  </if>
+				  <if test="cardType != null">
+					  card_type = #{item.cardType},
+				  </if>
+				  <if test="cardSet != null">
+					  card_set = #{item.cardSet},
+				  </if>
+				  <if test="lastFourNo != null">
+					  last_four_no = #{item.lastFourNo},
+				  </if>
+				  <if test="name != null">
+					  name = #{item.name},
+				  </if>
+				  <if test="mobile != null">
+					  mobile = #{item.mobile},
+				  </if>
+				  <if test="mainCardNo != null">
+					  main_card_no = #{item.mainCardNo},
+				  </if>
+				  <if test="remark != null">
+					  remark = #{item.remark},
+				  </if>
+				  <if test="delFlag != null">
+					  del_flag = #{item.delFlag},
+				  </if>
+				  <if test="updateTime != null">
+					  update_time = #{item.updateTime},
+				  </if>
+				  <if test="updateUser != null">
+					  updateUser = #{item.updateUser},
+				  </if>
+			  </set>
+			where ecif = ${item.ecif} and card_progroup_no = #{item.cardProgroupNo}
+		</foreach>
+	</update>
+
+	<update id="freezeBatchBoscBanks" >
+		update bosc_bank set del_flag = #{delFlag},update_time = now()
+		WHERE (ecif,card_progroup_no) IN
+		<foreach collection="banklist" item="bank" index="index" separator="," open="(" close=")">
+			(#{bank.ecif},#{bank.cardProgroupNo})
+		</foreach>
+	</update>
+
+	<select id="selectBeforeFreezeBoscBankList" parameterType="java.util.List"  resultType="com.colourfulchina.mars.api.entity.BoscBank">
+		SELECT
+		id,batch,card_no,card_progroup_no,unified_product_param_code,card_type,card_set,last_four_no,ecif,name,mobile,main_card_no,remark,del_flag
+		FROM bosc_bank WHERE del_flag = 1 and ecif  IN
+		<foreach collection="banklist" item="bank" index="index" separator="," open="(" close=")">
+			#{bank.ecif}
+		</foreach>
+	</select>
+
+	<select id="selectBeforeFreezeAndSameCardProgroupNoBoscBankList" parameterType="java.util.List"  resultType="com.colourfulchina.mars.api.entity.BoscBank">
+		SELECT
+		id,batch,card_no,card_progroup_no,unified_product_param_code,card_type,card_set,last_four_no,ecif,name,mobile,main_card_no,remark,del_flag
+		FROM bosc_bank WHERE del_flag = 1 and (ecif,card_progroup_no)  IN
+		<foreach collection="banklist" item="bank" index="index" separator="," open="(" close=")">
+			(#{bank.ecif},#{bank.cardProgroupNo})
+		</foreach>
+	</select>
+
+	<!--匹配到相同的ECIF客户号的数据-->
+	<select id="selectSameEcifBoscBankList" parameterType="java.util.List"  resultType="com.colourfulchina.mars.api.entity.BoscBank">
+		SELECT
+		id,batch,card_no,card_progroup_no,unified_product_param_code,card_type,card_set,last_four_no,ecif,name,mobile,main_card_no,remark,del_flag
+		FROM bosc_bank WHERE  ecif  IN
+		<foreach collection="banklist" item="bank" index="index" separator="," open="(" close=")">
+			#{bank.ecif}
+		</foreach>
+	</select>
+
+	<!--匹配到相同的ECIF客户号，且卡产品组代码也相同的数据(排除冻结的)-->
+	<select id="selectSameEcifAndCardProgroupNoBoscBankList" parameterType="java.util.List"  resultType="com.colourfulchina.mars.api.entity.BoscBank">
+		SELECT
+		id,batch,card_no,card_progroup_no,unified_product_param_code,card_type,card_set,last_four_no,ecif,name,mobile,main_card_no,remark,del_flag
+		FROM bosc_bank WHERE del_flag = 0 and (ecif,card_progroup_no)  IN
+		<foreach collection="banklist" item="bank" index="index" separator="," open="(" close=")">
+			(#{bank.ecif},#{bank.cardProgroupNo})
+		</foreach>
+	</select>
+
+	<!--匹配到相同的ECIF客户号,但是统数据中的卡产品组代码在当天有效数据中不存在-->
+	<select id="selectSameEcifNoCardProgroupNoBoscBankList" parameterType="java.util.List"  resultType="com.colourfulchina.mars.api.entity.BoscBank">
+		SELECT
+		id,batch,card_no,card_progroup_no,unified_product_param_code,card_type,card_set,last_four_no,ecif,name,mobile,main_card_no,remark,del_flag
+		FROM bosc_bank WHERE del_flag = 0 and (ecif,card_progroup_no) not IN
+		<foreach collection="banklist" item="bank" index="index" separator="," open="(" close=")">
+			(#{bank.ecif},#{bank.cardProgroupNo})
+		</foreach>
+	</select>
+
+	<!--获取原套卡产品下的第一个产品代码的数据-->
+	<select id="selectFirstCardSetBoscBankList" parameterType="java.util.List"  resultType="com.colourfulchina.mars.api.entity.BoscBank">
+		SELECT
+		id,batch,card_no,card_progroup_no,unified_product_param_code,card_type,card_set,last_four_no,ecif,name,mobile,main_card_no,remark,del_flag
+		FROM bosc_bank WHERE card_set =1 and  ecif  IN
+		<foreach collection="banklist" item="bank" index="index" separator="," open="(" close=")">
+			#{bank.ecif}
+		</foreach>
+	</select>
+
+	<!--查询客编号和卡产品组编号都相同,但是姓名或手机号修改过的数据-->
+	<select id="selectDiffBoscBankList">
+		SELECT
+		id,batch,card_no,card_progroup_no,unified_product_param_code,card_type,card_set,last_four_no,ecif,name,mobile,main_card_no,remark,del_flag
+		FROM bosc_bank WHERE  (ecif,card_progroup_no)  IN
+		<foreach collection="banklist" item="bank" index="index" separator="," open="(" close=")">
+			(#{bank.ecif},#{bank.cardProgroupNo})
+		</foreach>
+	</select>
+
+	<select id="selectDiffBoscBank" parameterType="com.colourfulchina.mars.api.entity.BoscBankTxtEntity" resultType="com.colourfulchina.mars.api.entity.BoscBank">
+		SELECT id ,ecif
+		FROM bosc_bank WHERE
+		ecif = #{ecif} and card_progroup_no = #{cardProgroupNo}  and  (name != #{name} or mobile != #{mobile})
+		and card_type = #{cardType}
+	</select>
+</mapper>

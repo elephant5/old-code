@@ -1,0 +1,1577 @@
+$color_fff:#fff;
+$color_f3:#f3f3f3;
+$color_f4:#f4f4f4;
+$color_f8:#f8f8f8;
+$color_fe:#fefefe;
+$color_ddd:#ddd;
+$color_eee:#eee;
+$color_999:#999;
+$color_666:#666;
+$color_333:#333;
+$color_f60:#f60;
+
+
+
+/**home **/
+.home{
+    .BusinessHome{position: relative; background: $color_fff; margin: .2rem .3rem .4rem .3rem; border-radius: .2rem; box-shadow: 0 0.04rem 0.3rem $color_ddd; overflow: hidden;
+        .businessImgBox{position: relative;
+            .business_logo{ padding:.2rem .3rem; border-top:solid .1rem $color_f60;
+                img{
+                    /*width: 3rem;*/ vertical-align: middle; height: .6rem;
+                }
+            }
+            .bannerImgBox{height: 2.8rem; overflow: hidden; background: $color_eee; margin: 0 .3rem; border-radius: .2rem; position: relative;
+                img{width: 100%; display: block;}
+            }
+            .pictip{
+                position:absolute; top: 0; right: 0; background: rgba(0,0,0,.5); padding: .03rem .1rem; color: rgba(255, 255, 255, .6); font-size: .24rem; display: none;
+            }
+        }
+        .businessMsgBox{ padding: .2rem .3rem; position: relative;
+            .business_title{font-weight: bold; color:$color_333; font-size: .29rem;}
+            .business_rulue{display:flex; width: 100%; justify-content:space-between; padding-top: .2rem; padding-bottom:.2rem;
+                p:first-child{
+                    color:$color_999;
+                }
+                p:last-child{
+                    color: $color_f60;
+                    img{width: .2rem; vertical-align: middle;}
+                }
+                .showrulueDailog{
+                    span{display: inline-block; width: .32rem; height: .3rem; background: url(../images/right.png) center no-repeat; background-size: 100%; vertical-align: middle;}
+                }
+            }
+            .businessProBox{
+                border-top: solid .02rem #e6e6ee; padding-top: .2rem;
+                .businessProlist{
+                    display: flex; justify-content:space-between; align-items: center; justify-items: center; margin-bottom: .3rem;
+                    .businesspro_Name{
+                        display: flex; justify-content: flex-start;
+                        .businesspro_Icon{display: inline-block; width: .4rem; height: .4rem;margin-right: .1rem;}
+                        .businesspro_Icon_buffet{ background: url(../images/gift/buffet.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_accom{ background: url(../images/gift/accom.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_gym{ background: url(../images/gift/gym.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_spa{ background: url(../images/gift/spa.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_tea{ background: url(../images/gift/tea.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_drink{ background: url(../images/gift/single-cup.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_setmenu{ background: url(../images/gift/set-mea.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_gift{ background: url(../images/gift/coupon.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_airportshuttle{ background: url(../images/gift/airportshuttle.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_viphall{ background: url(../images/gift/viphall.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_medical{ background: url(../images/gift/medical.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Title{
+                            span{
+                                display: block; color: $color_666; font-size: .22rem;
+                            }
+                        }
+                    }
+                    .btn_yuding{
+                        display:inline-block; border-radius: .4rem; background: $color_f60; color: $color_fff; padding: .06rem .15rem;
+                    }
+                    .btn_yuding_y{
+                        display:inline-block; border-radius: .4rem; background: $color_f3; color: $color_ddd; padding: .06rem .15rem;
+                    }
+                }
+                .businessProlist:last-child{
+                    margin-bottom: .2rem; 
+                }
+            }
+        }
+        
+    }
+        .ruluedailog{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 5;
+            .dailogMsgBox{width: 80%; position: fixed; left: 10%; top: 50%; transform: translateY(-50%); background: $color_fff; border-radius: .1rem; position: relative; padding-bottom: .3rem;
+                .rulurTitle{text-align: center; padding: .5rem 0 .3rem 0; font-weight: bold; color: $color_333;}
+                .closeDailog{text-align:right; padding: .2rem .2rem; position: absolute; top: .1rem; right:.1rem;
+                    span{display: inline-block; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+                }
+                .dailogMsgshow{padding: 0rem .2rem .2rem .2rem; max-height: 6.2rem; min-height: 1rem; overflow-y: scroll; color: $color_999; line-height: .4rem;}
+            }
+        }
+        .selectTypeDailog{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 5;
+            .dailogMsgBox{width: 80%; position: fixed; left: 10%; top: 50%; transform: translateY(-50%); background: $color_fff; border-radius: .1rem; position: relative; padding-bottom: .3rem;
+                .rulurTitle{text-align: center; padding: .5rem 0 .3rem 0; font-weight: bold; color: $color_333; font-size: .3rem;}
+                .closeDailog{text-align:right; padding: .2rem .2rem; position: absolute; top: .1rem; right:.1rem;
+                    span{display: inline-block; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+                }
+                .dailogMsgshow{padding: .4rem .2rem .2rem .2rem; max-height: 6.2rem; min-height: 1rem; overflow-y: scroll; color: $color_999; line-height: .4rem;
+                    div{text-align: center; height: 1rem; line-height: 1rem; width: 80%; margin: .3rem auto; background:$color_f3; border-radius: 1rem; color: $color_333; font-size: .3rem; font-weight: bold;}
+                    div:first-child{margin-top: 0}
+                    div.curron{background: $color_f60; color: $color_fff;}
+                }
+    
+            }
+        }
+        .used,.cancelled,.expired,.invalid,.refunded,.booking_n{opacity: .5; position: relative;}
+        .used:after{content:''; width:1.3rem; height: 1.3rem; position: absolute; right:.2rem; top: 3.7rem; background: url(../images/used.png) center no-repeat; background-size: 100%;}
+        .cancelled:after{content:'';width:1.3rem; height: 1.3rem;; position: absolute; right:.2rem; top: 3.7rem; background: url(../images/cancelled.png) center no-repeat; background-size: 100%;}
+        .expired:after{content:''; width:1.3rem; height: 1.3rem; position: absolute; right:.2rem; top: 3.7rem; background: url(../images/expired.png) center no-repeat; background-size: 100%;}
+        .invalid:after{content:''; width:1.3rem; height: 1.3rem; position: absolute; right:.2rem; top: 3.7rem; background: url(../images/invalid.png) center no-repeat; background-size: 100%;}
+        .refunded:after{content:''; width:1.3rem; height: 1.3rem; position: absolute; right:.2rem; top: 3.7rem; background: url(../images/refunded.png) center no-repeat; background-size: 100%;}
+        .booking_n:after{content:''; width:1.3rem; height: 1.3rem; position: absolute; right:.2rem; top: 3.7rem; background: url(../images/booking_n.png) center no-repeat; background-size: 100%;}
+    }
+
+
+/*推荐**/
+.recommendBox{background: $color_fff; padding: .2rem .3rem; margin-top: .2rem; margin: .2rem .3rem; border-radius: .2rem; box-shadow: 0 0.04rem 0.3rem $color_ddd;
+    .recommendTitle{ text-align: center; font-size: .28rem; font-weight: bold; margin: .2rem 0 .3rem 0;
+        span{display: inline-block; margin: 0 .1rem; width: .4rem; height: .25rem;}
+        span:first-child{background: url(../images/more_left.png) center no-repeat; background-size: 100%;}
+        span:last-child{background: url(../images/more_right.png) center no-repeat; background-size: 100%;}
+    }
+    .recommendProBox{display: flex; justify-content: space-between; flex-direction: row; flex-wrap: wrap; 
+        .recommendProMsg{width:48%;padding-bottom:.3rem;
+            .recommendProImg{border-radius: .1rem;  overflow: hidden;
+                 span{display: inline-block; border-radius: .1rem;  overflow: hidden; width:1.86rem; height: 1.86rem; position: relative; background: url(../images/pic.jpg) center no-repeat; background-size: 100%;}
+            }
+            .recommendProName{
+                height: .9rem; font-size: .26rem;
+            }
+            .recommendProPrice{ font-size: .26rem;
+                span{color: $color_f60; font-size: .32rem; margin-right: .1rem;
+                    i{
+                        font-size: .26rem;
+                    }
+                }
+                em{text-decoration: line-through; color: $color_666}
+            }
+        }
+
+        
+    }
+}
+
+
+/*****首页底部****/
+
+.bottombar{display: flex; position:fixed; justify-content: space-between; align-content: center; align-items: center; width:100%; bottom:0; left: 0; height: 1rem; background: $color_fff;
+    div{flex: 1; text-align: center; font-size: .28rem; color: $color_999;
+        span{display: inline-block; width: .35rem; height: .35rem;  vertical-align: middle; margin-right: .15rem;}
+        span.index{background: url(../images/center/home_n.png) center no-repeat; background-size: 100%;}
+        span.myhome{background: url(../images/center/my_n.png) center no-repeat; background-size: 100%;}
+    }
+    div.curron{color: $color_333; font-weight: bold;
+        span.index{background: url(../images/center/home.png) center no-repeat; background-size: 100%;}
+        span.myhome{background: url(../images/center/my.png) center no-repeat; background-size: 100%;}
+    }
+}
+
+/****产品搜索首页***/
+.body{background: $color_fff;}
+/**住宿**/
+.accom_homeBox{
+    .bannerBox_room{position: relative; width: 100%; padding-top:2.8rem;
+        img{position:absolute; left: 0; top: 0; width: 100%;}
+        .searchBox{position: relative;  background: $color_fff; margin: 0 .28rem; border-radius: .1rem;  box-shadow: 0 .04rem 0.4rem #ddd; padding: .3rem; box-sizing:content-box;
+            .searchcity{border-bottom:solid .02rem $color_f3; display: flex; justify-content: space-between; padding-bottom: .3rem;
+                .vistcity a{background: $color_fff; background-image: url(../images/searchhotel.png); background-position:left center; background-repeat: no-repeat; background-size: .32rem .32rem; height: .45rem; line-height: .45rem; padding-left: .45rem; font-size: .3rem; color: $color_333; font-weight: bold}
+                .mycity{ background: $color_fff; background-image: url(../images/location.png); background-position:left center; background-repeat: no-repeat; background-size: .35rem .35rem; height: .45rem; padding-left: .4rem; font-size: .29rem; color: $color_666;}
+            }
+            .searchDate{ padding-top: .3rem;
+                .datebox{ flex:1; display: flex; justify-content: space-between; align-items: center; align-content: center; 
+                    div:nth-of-type(1){width: 40%}
+                    div:nth-of-type(2){width: 20%; color:$color_333; text-align: left;}
+                    div:nth-of-type(3){width: 40%}
+                    .dateNum{display: inline-block; white-space:nowrap;}
+                }
+                .perNumbox{ width: 26%; border-left: solid .02rem $color_f3; padding-left: .3rem}
+                .searchtype{color: $color_999; font-size: .25rem; display: inline-block; margin-right: .1rem;}
+                .personSearchMsg{color: $color_333; font-size: .32rem; padding-top: .1rem; width: 100%; background: transparent;}
+            }
+            .searchhotelName{ padding-top: .1rem; padding-bottom: .1rem;
+                .inputhotelName{color: $color_333; font-size: .34rem; width: 100%; height: .8rem; line-height: .8rem;}
+            }
+            .searchBtn{display: block; height: .75rem; line-height: .75rem; width: 90%; margin:.3rem auto 0 auto; background: $color_f60; color: $color_fff; border-radius: .6rem; font-size: .3rem;}
+        }
+
+    }
+    .personNumbox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 1;
+        .page-picker-wrapper{background: $color_fff; position: fixed;width: 100%; left: 0; bottom: 0; }
+        .selectbtn{width: 80%; background: $color_f60; text-align: center; margin: .2rem auto; height: .8rem; line-height: .8rem; color: $color_fff; border-radius: .5rem;}
+    }
+    .calendarBox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 100;
+        .calendarmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height: 8rem;}
+        .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+            span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+        }
+        .calendar-dialog{position: fixed; width: 100%; bottom: 0; left: 0; padding-bottom: .2rem;  background: $color_fff;}
+    }
+
+    .calendar td.disabled span{
+        background-color: transparent !important;
+        color: #ccc !important;
+    }
+}
+    
+/**公共**/
+.base_homeBox{
+    .bannerBox_base{position: relative; width: 100%; padding-top:2.8rem;
+        img{position:absolute; left: 0; top: 0; width: 100%;}
+        .searchBox{position: relative;  background: $color_fff; margin: 0 .28rem; border-radius: .1rem;  box-shadow: 0 .04rem 0.4rem $color_ddd; padding: .3rem; box-sizing:content-box;
+            .searchcity{border-bottom:solid .02rem $color_f3; display: flex; justify-content: space-between; padding-bottom: .3rem;
+                .vistcity a{background: $color_fff; background-image: url(../images/searchhotel.png); background-position:left center; background-repeat: no-repeat; background-size: .32rem .32rem; height: .45rem; line-height: .45rem; padding-left: .45rem; font-size: .3rem; color: $color_333; font-weight: bold}
+                .mycity{ background: $color_fff; background-image: url(../images/location.png); background-position:left center; background-repeat: no-repeat; background-size: .35rem .35rem; height: .45rem; padding-left: .4rem; font-size: .29rem; color: $color_666;}
+            }
+            .searchDate{ padding-top: .3rem;
+                div:first-child{ width: 60%}
+                div:last-child{flex:1;}
+                .searchtype{color: $color_999; font-size: .25rem; display: inline-block; margin-right: .1rem;}
+                .personSearchMsg{color: $color_333; font-size: .32rem; padding-top: .1rem; width: 100%;background:transparent;}
+            }
+            .searchhotelName{ padding-top: .1rem; padding-bottom: .1rem;
+                .inputhotelName{color: $color_333; font-size: .34rem; width: 100%; height: .8rem; line-height: .8rem;}
+            }
+            .searchBtn{display: block; height: .75rem; line-height: .75rem; width: 90%; margin:.3rem auto 0 auto; background: $color_f60; color: $color_fff; border-radius: .6rem; font-size: .3rem;}
+        }
+
+    }
+    .personNumbox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 1;
+        .page-picker-wrapper{background: $color_fff; position: fixed;width: 100%; left: 0; bottom: 0; }
+        .selectbtn{width: 80%; background: $color_f60; text-align: center; margin: .2rem auto; height: .8rem; line-height: .8rem; color: $color_fff; border-radius: .5rem;}
+    }
+    .calendarBox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 100;
+        .calendarmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height:8rem;}
+        .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+            span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+        }
+        .calendar-dropdown{position: fixed; width: 100%; bottom: 0; left: 0; padding-bottom: .2rem;  background: $color_fff;}
+    }
+}
+
+
+/***优惠券**/
+.coupon_homeBox{
+    .couponsearchBox{padding:.1rem .3rem;
+        .searchinput{
+            border:none; background: $color_f8 url(../images/search.png); height: .64rem; line-height: .64rem; width: 93%; border-radius: .06rem; background-position: .15rem .15rem; background-repeat:no-repeat; background-size: .3rem; padding-left: .55rem; font-size: .28rem; color: $color_666;
+        }
+    }
+    .proCouponlist{padding: .2rem 0; display: flex; justify-content: flex-start; border-bottom: solid .02rem $color_f3; margin: 0 .3rem;
+        .proCouponImg{
+            span{display: block; width: 2.2rem; height: 1.8rem; margin-right: .2rem; overflow: hidden; border-radius: .06rem;
+                img{width: 100%
+                }
+            }
+        }
+        .proCouponName{flex-grow:1;
+            .proNameTitle{font-size: .28rem; font-weight: bold;}
+            .proNameTip{color: $color_666}
+        }
+        .recommendProPrice{display: flex; justify-content: space-between; padding-top: .6rem;
+            div:first-child{
+                span{color: $color_f60; font-size: .32rem; margin-right: .2rem;
+                        i{
+                            font-size: .26rem;
+                        }
+                    }
+                    em{text-decoration: line-through; color: $color_666}
+            }
+            div:last-child{
+                span{display: inline-block; background: $color_f60; color:$color_fff; padding: .02rem .1rem; border-radius: .05rem;}
+            }
+        }
+    }
+    }
+
+
+/********* 单杯**********/
+
+.drink_homeBox{
+    .drinksearchContent{
+        .searchMsg{display: flex; justify-content: flex-start; align-items: center; align-content: center; background: $color_f8; padding: .15rem .15rem; border-radius: .05rem;
+            .search_city{padding-right: .3rem; max-width: 30%;
+                    a{color:$color_666;}
+            }
+            .search_date{display: flex; justify-content: flex-start; align-items: center; align-content: center; border-left: solid .03rem $color_eee; border-right: solid .03rem $color_eee; padding:0 .3rem; margin-right: .3rem; font-size: .24rem;
+                i{color: $color_999; margin-right: .1rem;}
+            }
+            .search_hotel{flex: 1;
+                .searchinput{background: none; height: .6rem; line-height: .6rem; width: 80%;font-size: .28rem; color: $color_666;}
+                .searchicon{display: inline-block;  width: .22rem; height: .22rem; background: url(../images/search.png) center no-repeat; background-size: 100%; margin-right: .1rem;}
+            }
+            .pulldown{display: inline-block; width: .18rem; height: .18rem; background: url(../images/pulldown.png) center no-repeat; background-size: 90%; margin-left: .1rem;}
+        }
+    }
+    .productlist{background: $color_fff; padding: .2rem 0;
+        .productlistBox{
+            .productlistMsg{display: flex; justify-content:flex-start; border-bottom:solid .02rem $color_f8; padding:.3rem .3rem;
+                .recommendProImg{border-radius: .1rem;  overflow: hidden; width: 1.86rem; height:1.86rem; padding-right: .2rem; position: relative;
+                    .baseproImgbg{display: inline-block; border-radius: .1rem;  overflow: hidden; width:1.86rem; height: 1.86rem; position: relative; background-image: url(../images/pic1.jpg); background-size:cover;
+                        span{display: inline-block; border-radius: .1rem;  overflow: hidden; width:1.86rem; height: 1.86rem; position: relative;}
+                    }
+                }
+                .recommendProName{font-size: .26rem; flex: 1; overflow: hidden;
+                    .hotel_name{font-size: .28rem; font-weight: bold; color: $color_333;}
+                    .hotel_istance{color: $color_666; padding: .1rem 0; text-align: right;display: flex; justify-content:space-between;}
+                    .hotel_tips span{border: solid .02rem $color_f60; color: $color_f60; padding: .02rem .08rem; font-size: .22rem; border-radius: .05rem;}
+                    .hotel_add{color: $color_666; padding: .1rem 0; line-height: .42rem; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;
+                        span{display: inline-block; width: .3rem; height: .3rem;margin-right: .1rem; vertical-align: middle;background: url(../images/vist.png) center no-repeat; background-size: 90%; }
+                    }
+                    .hotel_type{background: $color_f8; padding: .05rem .1rem; color: $color_666;
+                        .businesspro_Icon{display: inline-block; width: .4rem; height: .4rem;margin-right: .1rem; vertical-align: middle;}
+                        .businesspro_Icon_buffet{ background: url(../images/gift/buffet.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_accom{ background: url(../images/gift/accom.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_gym{ background: url(../images/gift/gym.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_spa{ background: url(../images/gift/spa.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_tea{ background: url(../images/gift/tea.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_setmenu{ background: url(../images/gift/set-mea.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_drink{ background: url(../images/gift/single-cup.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_gift{ background: url(../images/gift/coupon.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_airportshuttle{ background: url(../images/gift/airportshuttle.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_viphall{ background: url(../images/gift/viphall.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_medical{ background: url(../images/gift/medical.png) center no-repeat; background-size: 90%; }
+                    }
+                }
+            }
+            .productlistMsg:last-child{border-bottom: none; padding-bottom:0}
+            .overStyle{opacity: .5; position: relative;}
+            .overStyle:after{content:''; width:1rem; height: 1rem; position: absolute; right:.2rem; top: .2rem; background: url(../images/booking_n.png) center no-repeat; background-size: 100%;}
+        }
+    }
+}
+
+
+/**********热门***********/
+.hotrecommendContent{
+    .hotrecommendBox{background: $color_fff; padding: .2rem 0; margin-top: .2rem;
+        .recommendTitle{ text-align: center; font-size: .28rem; font-weight: bold; margin: .2rem 0 .3rem 0;
+            span{display: inline-block; margin: 0 .1rem; width: .4rem; height: .25rem;}
+            span:first-child{background: url(../images/more_left.png) center no-repeat; background-size: 100%;}
+            span:last-child{background: url(../images/more_right.png) center no-repeat; background-size: 100%;}
+        }
+        .recommendProBox{
+            .recommendProMsg{display: flex; justify-content:flex-start; border-bottom:solid .02rem $color_f8; padding:.3rem .3rem;
+                .recommendProImg{border-radius: .1rem;  overflow: hidden; width: 1.86rem; height:1.86rem; padding-right: .2rem; position: relative;
+                    .baseproImgbg{display: inline-block; border-radius: .1rem;  overflow: hidden; width:1.86rem; height: 1.86rem; position: relative; background: url(../images/pic1.jpg) center no-repeat; background-size:cover;
+                        span{display: inline-block; border-radius: .1rem;  overflow: hidden; width:1.86rem; height: 1.86rem; position: relative;}
+                    }
+                }
+                .recommendProName{font-size: .26rem; flex: 1;
+                    .hotel_name{font-size: .28rem; font-weight: bold; color: $color_333;}
+                    .hotel_istance{color: $color_666; padding: .1rem 0; text-align: right;display: flex; justify-content:space-between;}
+                    .hotel_tips span{border: solid .02rem $color_f60; color: $color_f60; padding: .02rem .08rem; font-size: .22rem; border-radius: .05rem;}
+                    .hotel_add{color: $color_666; padding: .1rem 0;}
+                    .hotel_type{background: $color_f8; padding: .05rem .1rem; color: $color_666;
+                        .businesspro_Icon{display: inline-block; width: .4rem; height: .4rem;margin-right: .1rem; vertical-align: middle;}
+                        .businesspro_Icon_buffet{ background: url(../images/gift/buffet.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_accom{ background: url(../images/gift/accom.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_gym{ background: url(../images/gift/gym.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_spa{ background: url(../images/gift/spa.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_tea{ background: url(../images/gift/tea.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_drink{ background: url(../images/gift/single-cup.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_setmenu{ background: url(../images/gift/set-mea.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_gift{ background: url(../images/gift/coupon.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_airportshuttle{ background: url(../images/gift/airportshuttle.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_viphall{ background: url(../images/gift/viphall.png) center no-repeat; background-size: 90%; }
+                    }
+                }
+            }
+            .recommendProMsg:last-child{border-bottom: none; padding-bottom:0;}
+            .overStyle{opacity: .5; position: relative;}
+            .overStyle:after{content:''; width:1rem; height: 1rem; position: absolute; right:.2rem; top: .2rem; background: url(../images/booking_n.png) center no-repeat; background-size: 100%;}
+        }
+        
+    }
+}
+
+
+/******产品列表********/
+
+.productlistBox{
+    .roomsearchContent{
+        .roomsearch{padding: 0 .3rem; border-bottom:solid .02rem $color_f3; background: $color_fff; padding: .1rem .3rem .2rem .3rem;
+            .searchMsg{display: flex; justify-content: flex-start; align-items: center; align-content: center; background: $color_f8; padding: .15rem .15rem; border-radius: .05rem;
+                .search_city{padding-right: .3rem; max-width: 30%;
+                    a{color:$color_666;}
+                }
+                .search_date{display: flex; justify-content: flex-start; align-items: center; align-content: center; border-left: solid .03rem $color_eee; border-right: solid .03rem $color_eee; padding:0 .3rem; margin-right: .3rem; font-size: .24rem;
+                    i{color: $color_999; margin-right: .1rem;}
+                }
+                .search_hotel{flex: 1;
+                    .searchinput{background: none; height: .6rem; line-height: .6rem; width: 80%; font-size: .28rem; color: $color_666;}
+                    .searchicon{display: inline-block;  width: .22rem; height: .22rem; background: url(../images/search.png) center no-repeat; background-size: 100%; margin-right: .1rem;}
+                }
+                .pulldown{display: inline-block; width: .18rem; height: .18rem; background: url(../images/pulldown.png) center no-repeat; background-size: 90%; margin-left: .1rem;}
+            }
+        }
+        .calendarBox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 100;
+            .calendarmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height: 8rem;}
+            .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+                span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+            }
+            .calendar-dialog{position: fixed; width: 100%; bottom: 0; left: 0; padding-bottom: .2rem;  background: $color_fff;}
+        }
+    }
+
+    .basesearchContent{
+        .basesearch{padding: 0 .3rem; border-bottom:solid .02rem $color_f3; background: $color_fff; padding: .1rem .3rem .2rem .3rem;
+            .searchTypelist{display: flex; justify-content: flex-start; align-items: center; align-content: center; position: relative; margin-bottom: .05rem;
+                div{flex:1; text-align: center; padding: .2rem 0; color: $color_666; position: relative;}
+                div.curron{color: $color_333; font-weight: bold;}
+                div.curron:after{content: "";position: absolute;width:.5rem;height: .04rem;background: $color_f60;left: 50%;margin-left: -.25rem;bottom: 0;}
+            }
+            .searchMsg{display: flex; justify-content: flex-start; align-items: center; align-content: center; background: $color_f8; padding: .15rem .15rem; border-radius: .05rem;
+                .search_city{padding-right: .3rem; max-width: 30%;
+                    a{color:$color_666;}
+                }
+                .search_date{display: flex; justify-content: flex-start; align-items: center; align-content: center; border-left: solid .03rem $color_eee; border-right: solid .03rem $color_eee; padding:0 .3rem; margin-right: .3rem; font-size: .24rem;
+                    i{color: $color_999; margin-right: .1rem;}
+                }
+                .search_hotel{flex: 1;
+                    .searchinput{background: none; height: .6rem; line-height: .6rem; width: 80%;font-size: .28rem; color: $color_666;}
+                    .searchicon{display: inline-block;  width: .22rem; height: .22rem; background: url(../images/search.png) center no-repeat; background-size: 100%; margin-right: .1rem;}
+                }
+                .pulldown{display: inline-block; width: .18rem; height: .18rem; background: url(../images/pulldown.png) center no-repeat; background-size: 90%; margin-left: .1rem;}
+            }
+        }
+        .calendarBox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 100;
+            .calendarmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height: 8rem;}
+            .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+                span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+            }
+            .calendar-dropdown{position: fixed; width: 100%; bottom: 0; left: 0; padding-bottom: .2rem;  background: $color_fff;}
+        }
+    }
+    .productlist{background: $color_fff; padding: .2rem 0;
+        .productlistBox{
+            .productlistMsg{display: flex; justify-content:flex-start; border-bottom:solid .02rem $color_f8; padding:.3rem .3rem;
+                .recommendProImg{border-radius: .1rem;  overflow: hidden; width: 1.86rem; height:1.86rem; padding-right: .2rem; position: relative;
+                    .baseproImgbg{display: inline-block; border-radius: .1rem;  overflow: hidden; width:1.86rem; height: 1.86rem; position: relative; background: url(../images/pic1.jpg) center no-repeat; background-size:cover;
+                        span{display: inline-block; border-radius: .1rem;  overflow: hidden; width:1.86rem; height: 1.86rem; position: relative;}
+                    }
+                }
+                .recommendProName{font-size: .26rem; flex: 1; overflow: hidden;
+                    .hotel_name{font-size: .28rem; font-weight: bold; color: $color_333;}
+                    .hotel_istance{color: $color_666; padding: .1rem 0; text-align: right;display: flex; justify-content:space-between;}
+                    .hotel_tips span{border: solid .02rem $color_f60; color:$color_f60; padding: .02rem .08rem; font-size: .22rem; border-radius: .05rem;}
+                    .hotel_add{color: $color_666; padding: .1rem 0; line-height: .42rem; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;
+                        span{display: inline-block; width: .3rem; height: .3rem;margin-right: .1rem; vertical-align: middle;background: url(../images/vist.png) center no-repeat; background-size: 90%; }
+                    }
+                    .hotel_type{background: $color_f8; padding: .05rem .1rem; color: $color_666;
+                        .businesspro_Icon{display: inline-block; width: .4rem; height: .4rem;margin-right: .1rem; vertical-align: middle;}
+                        .businesspro_Icon_buffet{ background: url(../images/gift/buffet.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_accom{ background: url(../images/gift/accom.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_gym{ background: url(../images/gift/gym.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_spa{ background: url(../images/gift/spa.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_tea{ background: url(../images/gift/tea.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_drink{ background: url(../images/gift/single-cup.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_setmenu{ background: url(../images/gift/set-mea.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_gift{ background: url(../images/gift/coupon.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_airportshuttle{ background: url(../images/gift/airportshuttle.png) center no-repeat; background-size: 90%; }
+                        .businesspro_Icon_viphall{ background: url(../images/gift/viphall.png) center no-repeat; background-size: 90%; }
+                    }
+                }
+            }
+            .productlistMsg:last-child{border-bottom: none; padding-bottom:0}
+            .overStyle{opacity: .5; position: relative;}
+            .overStyle:after{content:''; width:1rem; height: 1rem; position: absolute; right:.2rem; top: .2rem; background: url(../images/booking_n.png) center no-repeat; background-size: 100%;}
+        }
+    }
+}
+
+
+
+/***热门城市**********/
+.citylist{
+    .fix-top {position: fixed; top: 0;  width: 100%;  height: 3.1rem; background: $color_fff;}
+    .vistCity{display: flex; justify-content: space-between; align-content: center; align-items: center; padding: .05rem .2rem .15rem .1rem; padding: .3rem .2rem .1rem .1rem; border-bottom: solid .02rem $color_ddd; margin-bottom: .1rem;
+      .vistcityName{font-weight: bold; margin: 0 .2rem; font-size: .32rem; color: $color_333; font-weight: bold;background: url(../images/pin.png) left center no-repeat; background-size: .3rem; display: inline-block; padding-left: .5rem;}
+      .vistcityTip{color:$color_999;}
+      .allcity{color: $color_666;
+        span{display: inline-block; border-radius: .3rem; border: solid .02rem $color_ddd; padding: .05rem .2rem;}
+      }
+    }
+    .selectCitytitle{background: $color_fff; padding: .1rem 0 .1rem .2rem; color: $color_999;}
+    .hotCityContent{ display: flex; justify-content: space-between; padding: .05rem .1rem;}
+    .hotCityContent span{flex: 1; text-align: center; border: solid .02rem $color_fff; box-sizing: border-box; margin: .05rem; border-radius: .05rem;}
+    .list {position: fixed;  width: 100%;  height: 20rem;  margin-top: 3.1rem;  overflow: scroll;  border-top: 0.02 solid $color_f3;  z-index: 9;}
+    .list-letter {line-height: 0.5rem;  padding: 0 0.2rem;}
+    .list-city {line-height: 0.9rem;  padding: 0 0.2rem;  background: $color_fff;
+       li {font-size: 0.28rem;  border-bottom: .02rem solid $color_ddd;}
+    }
+    /* 搜索结果 */
+    .search-list { position: fixed;  width: 100%;  height: 90vh;  padding-bottom: 5vh;  margin-top: 1.8rem;  background: $color_fff;  z-index: 10;  overflow: scroll;  font-size:0.26rem;
+     div {line-height: 0.9rem; padding: 0 0.2rem; border-top: .02rem solid $color_eee; border-bottom: .02rem solid $color_eee;}
+    }
+    .letter-nav { position: fixed; right: 0.1rem; bottom: .5rem; z-index: 9;color: $color_f60; font-weight: bold;
+       div {width: 0.5rem; height: 0.35rem; text-align: center; line-height: 0.35rem;}
+    }
+  }
+
+
+/*******产口展示**********/
+.productlistshowBox{
+    .proMsgshowBox{background: $color_fff; margin-bottom: .2rem;
+        .bannerBox{width:100%; overflow: hidden;
+            .mint-swipe {height:4.2rem; color: $color_fff;  text-align: center;}
+            .mint-swipe-item {line-height: 4.2rem; }
+            .slide1 {background:url(../images/pic1.jpg) center no-repeat; background-size: cover;
+                img{position: absolute;left: 0; top: 50%; transform: translateY(-50%);}
+            }
+        }
+        .proMsgshow{padding: .2rem .3rem;
+            .proMsgName{display: flex; justify-content: space-between; align-content: center; align-items: center;
+                .hotelName{font-size: .32rem; color: $color_333; font-weight: bold; }
+                .hotelNameTip{font-size: .3rem; color: $color_333; padding: .1rem 0;}
+                .hoteCity{color: $color_f60;}
+            }
+            .recommendProPrice{display: flex; justify-content: space-between; padding-top: .1rem;
+                div:first-child{
+                    span{color: $color_f60; font-size: .32rem; margin-right: .2rem;
+                            i{
+                                font-size: .26rem;
+                            }
+                        }
+                        em{text-decoration: line-through; color: $color_666}
+                }
+                div:last-child{
+                    span{display: inline-block; background: $color_f60; color:$color_fff; padding: .02rem .1rem; border-radius: .05rem;}
+                }
+            }
+            .hotel_add{padding-top: .05rem; color: $color_999; font-size: .28rem;
+                span{display: inline-block; width: .3rem; height: .3rem;margin-right: .1rem; vertical-align: middle;background: url(../images/vist.png) center no-repeat; background-size: 90%; }
+            }
+        }
+    }
+    .proMsgWord{background: $color_fff; margin-bottom: .2rem; padding: .2rem .3rem;
+        .proMsgType{font-size: .28rem; color: $color_333; font-weight: bold; margin-bottom: .1rem; }
+        .product_roomBox{display: flex; justify-content: space-between;  align-content: center; /*align-items: center;*/ padding: .2rem 0; border-bottom: solid .02rem $color_f3;
+            .product_roomMsg{display: flex; justify-content: flex-start;  flex: 1; align-content: center; align-items: center;
+                .product_roomMsgPic{width: 1.6rem; height: 1.6rem; padding-right: .2rem;
+                    span{display: inline-block; background: $color_f3; width: 1.6rem; height: 1.6rem; overflow: hidden; border-radius: .04rem;}
+                }
+                .product_roomMsgName{
+                    p:nth-of-type(1){font-size: .29rem; color: $color_333; font-weight: bold;}
+                    p:nth-of-type(2){font-size: .24rem; color: $color_999; padding: .2rem 0;}
+                    p:nth-of-type(3){font-size: .24rem; color: $color_999;}
+                    p:nth-of-type(4){font-size: .24rem; color: $color_999;}
+                    p:nth-of-type(5){font-size: .24rem; color: $color_999;}
+                    p:nth-of-type(6){font-size: .24rem; color: $color_999;}
+                    p:nth-of-type(7){font-size: .24rem; color: $color_999;}
+                    p:nth-of-type(8){font-size: .24rem; color: $color_999;}
+                    p:nth-of-type(9){font-size: .24rem; color: $color_999;}
+                    p:nth-of-type(10){font-size: .24rem; color: $color_999;}
+                }
+            }
+            .product_roomMsgPrice{width: 20%; text-align: right; position: relative;
+                .priceTips{position: relative;}
+                .priceTips span{display: inline-block; border:solid .02rem $color_f60; padding: .02rem .1rem; color: $color_f60; font-size: .24rem; border-radius: .05rem; position: absolute; right: 0; white-space: nowrap;}
+                .priceRad span{display: inline-block; border:solid .02rem $color_f60; background: $color_f60; color: $color_fff; margin: .3rem 0 .2rem 0; padding: 0rem .05rem; font-size: .22rem; border-radius: .05rem;}
+                .pricerMoney span{margin-right: .2rem; color: $color_999; font-size: .24rem;}
+                .pricerMoney em{font-size: .32rem; color: $color_f60;}
+            }
+        }
+        .productbaseMsg{color: $color_666; font-size: .28rem; padding: 0 0; line-height: .4rem;
+            p{padding: .1rem 0;}
+            .productsTipsBox{display: flex; justify-content:flex-start; align-content: center; padding: .1rem 0;
+                div:nth-of-type(1){width: 1.6rem; color: $color_999;}
+                div:nth-of-type(2){flex: 1}
+            }
+            img{width: 100%;}
+            .lastline{border-top: solid .02rem $color_f3; margin-top: .2rem; padding-top: .2rem}
+        }
+        .product_roomBox:last-child{border-bottom: none;}
+        .menuDiv{white-space: nowrap; overflow-x: scroll; height: 1.8rem;
+            span{display: inline-block; width: 2.56rem; height: 1.68rem; margin-right: .2rem; border-radius: .04rem; overflow: hidden;}
+        }
+    }
+    .proMsgWord:last-child{margin-bottom: 2rem;}
+    .searchBar{background:$color_fff;
+    .isFixed{position:fixed; top:0; z-index:12;background:$color_fff;}
+        ul{width:100%; height: .8rem;line-height: .8rem;  display: flex; justify-content:flex-start; border-bottom: .02rem solid $color_ddd; overflow-x: scroll;
+            li {font-size: 0.28rem; text-align: center; white-space: nowrap; padding: .1rem .3rem; color: $color_666; position: relative;}
+            li.active {color: $color_333; font-weight: bold;}
+            li.active:before {content: "";  position: absolute; width:.5rem; height: .04rem; background: $color_f60;  left: 50%;  margin-left: -.25rem;  bottom: 0;}
+        }
+    }
+}
+
+
+/****预下单**/
+.buttonBox{position:fixed; bottom:0; left:0; width:100%; text-align: center; background: $color_fff; padding: .3rem 0; border-top: solid .02rem $color_f3; box-shadow: .2rem .2rem .2rem $color_f60;
+    .button_buy{ height: .75rem; line-height: .75rem; width: 90%; margin: 0 auto; background: $color_f60; color: $color_fff; border-radius: .6rem;}
+    .disable_buy{ height: .75rem; line-height: .75rem; width: 90%; margin: 0 auto; background: $color_f8; color: $color_999; border-radius: .6rem;}
+}
+
+
+/***住宿详情页搜索***/
+
+.roomdetailsearchBox{
+    .searchBox{position: relative;  background: $color_fff;border-radius: .1rem; padding: .3rem .3rem 0 .3rem; box-sizing:content-box; 
+       .searchcity{ display: flex; justify-content: space-between;background: $color_eee; border:solid .02rem $color_eee; border-radius: .5rem; padding: 0 .3rem;
+           .vistcity{background: $color_fff; background-image: url(../images/searchhotel.png); background-position:left center; background-repeat: no-repeat; background-size: .35rem .35rem; height: .45rem; padding-left: .45rem; font-size: .3rem; color: $color_333; font-weight: bold}
+           .mycity{ background: $color_fff; background-image: url(../images/location.png); background-position:left center; background-repeat: no-repeat; background-size: .35rem .35rem; height: .45rem; padding-left: .4rem; font-size: .29rem; color: $color_666;}
+       }
+       .searchDate{ padding-top: .2rem;padding-bottom: .2rem; 
+           .datebox{ width: 100%; display: flex; justify-content: space-between; align-items: center; align-content: center; 
+               div:nth-of-type(1){width: 40%}
+               div:nth-of-type(2){color:$color_333; padding-right: .3rem;}
+               div:nth-of-type(3){width: 40%;background-image: url(../images/center_arrow.png); background-repeat: no-repeat; background-position: right center; background-size: .2rem;}
+               .dateNum{display: inline-block; white-space:nowrap; padding-right:.3rem; }
+           }
+           .perNumbox{ width: 26%; border-left: solid .02rem $color_f3; padding-left: .3rem;  }
+           .searchtype{color: $color_999; font-size: .27rem; display: inline-block;}
+           .personSearchMsg{color: $color_333; font-size: .32rem; padding-top: .1rem; width: 100%; background: transparent; }
+       }
+       .searchhotelName{ padding-top: .3rem;
+           .inputhotelName{color: $color_333; font-size: .30rem; width: 100%}
+       }
+       .searchBtn{display: block; height: .75rem; line-height: .75rem; width: 90%; margin:.3rem auto 0 auto; background: $color_f60; color: $color_fff; border-radius: .6rem; font-size: .3rem;}
+    }
+   
+   .calendarBox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 100;
+       .calendarmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height: 8rem;}
+       .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+           span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+       }
+       .calendar-dialog{position: fixed; width: 100%; bottom: 0; left: 0; padding-bottom: .2rem;  background: $color_fff;}
+   }
+}
+
+
+
+/********预约下单*******/
+.shoppingBox{
+    .shoppingBox {background: $color_fff; padding: 0.2rem 0.3rem 0.1rem 0.3rem; position: relative; margin-bottom: 0.3rem; 
+      .inputlist { display: flex; width: 100%; justify-content: flex-start; color: $color_999;  align-content: center;  align-items: center;  border-bottom: solid 0.02rem $color_f3;  padding: 0.1rem 0;  margin: 0.1rem 0;
+        div:first-child { margin-right: 0.1rem;}
+        div:last-child { flex-grow: 1;
+          .text_input { height: 0.52rem; line-height: 0.52rem; width: 100%; } 
+          .num_input {width: 0.8rem; height: 0.52rem; line-height: 0.52rem;  background: $color_f3; text-align: center; }
+          .cut,.add { display: inline-block; width: 0.6rem; height: 0.52rem; vertical-align: middle;  }
+          .cut { background: url(../images/cut.png) center no-repeat; margin-right: 0.1rem; background-size: 0.6rem;}
+          .add {background: url(../images/add.png) center no-repeat;  margin-left: 0.1rem;    background-size: 0.6rem; }
+        }
+      }
+      .inputlist:last-child { border-bottom: none;}
+      .couponTitle {font-size:.28rem;color: $color_333;}
+      .couponlist {display: flex;  width: 100%;  justify-content: space-between;  color: $color_666; align-content: center;  align-items: center;  border-bottom: solid 0.02rem $color_f3;   padding: 0.1rem 0;  margin: 0.1rem 0; 
+            span{ background:url(../images/center_arrow.png) right center no-repeat; display: inline-block; padding-right: .2rem; background-size: .14rem}
+        }
+      .couponlist:last-child { border-bottom: none; }
+    }
+    .shoppingnode {background: $color_fff;position: relative;
+        .shoppingnodeBox{ padding: 0.2rem 0.3rem 0.1rem 0.3rem; position: relative;margin-bottom: 0.3rem; padding-bottom: 0.5rem; display: flex; justify-content: flex-start; align-content: center; align-items: center;
+            .titleDiv {font-size: .28rem; color: $color_999; width: 1.4rem;}
+            .textareaBox {position: relative;
+                span{display: inline-block; color: $color_666; padding: .05rem .2rem; border: solid .02rem $color_ddd;margin: 0 .1rem; height: .4rem; line-height: .4rem; border-radius: .3rem;}
+                span.curron{border: solid .02rem $color_f60;}
+            }
+            
+        }
+        p{position: absolute; bottom:-.3rem; left: 0; background: #fff0b7; color: $color_f60; width: 96%; text-align: left; padding: .05rem 0 .05rem .3rem; overflow: hidden;}
+      .textarea { width: 90%;  height: 1rem;   padding: 0.2rem;   margin-bottom: 0.3rem;   display: block; font-size: .28rem;}
+    }
+    .inputlist { display: flex;  width: 100%;position: relative; justify-content: space-between; color:  $color_999;  align-content: center;  align-items: center;
+        .rulurserverbox{display: inline-block; width: .8rem; height: .4rem; background: $color_f60; border-radius: .2rem; position: relative;
+            span{display: inline-block; width: 50%; height: .38rem; border-radius: .2rem; position: absolute; left: .02rem; top:.01rem; background: $color_fff;}
+        }
+        .disableshow{display: inline-block; width: .8rem; height: .4rem; background: $color_eee; border-radius: .2rem; position: relative;
+            span{display: inline-block; width: 50%; height: .38rem; border-radius: .2rem; position: absolute; right: .02rem; top:.01rem; background: $color_fff;}
+        }
+    }
+  }
+  .disable{display: none}
+
+
+  /***住宿下单**/
+  .shoppingFrombox_accom{
+    .shoppingTop_accom { background: url(../images/rectangle.svg) left top no-repeat;  background-size: 100%;  position: relative;  margin-bottom: 0.3rem;  padding-top: 0.3rem;
+      .shoppingMsgBox {width: 92%;  margin: 0 auto; background: $color_fff; border-radius: 0.1rem;
+        .shoppingMsg_Name { padding: 0.3rem 0.3rem 0.2rem 0.3rem;   font-size: 0.3rem;  color: $color_333;  font-weight: bold; }
+        .shoppingdateBox { padding: 0.05rem 0.3rem 0.1rem 0.3rem;  color: $color_999;
+        .dateshow {color: $color_333; font-size: 0.32rem; }
+          .dataNumshow { display: inline-block;    padding: 0.02rem 0.2rem;   border-radius: 0.3rem;  border: solid 0.02rem $color_f3; margin: 0 0.2rem;  }
+        }
+        .shopoingroomType { padding: 0.05rem 0.3rem 0.1rem 0.3rem;  color: $color_333;}
+        .shoppingMsg_tips { padding: 0 0.3rem 0.3rem 0.3rem;  color: $color_f60;   line-height: 0.42rem;
+          .shoppingTip { display: inline-block; width: 0.3rem;   height: 0.3rem;  background: url(../images/tips.png) center no-repeat;  background-size: 100%; vertical-align: middle; margin-right: 0.05rem;}
+        }
+      }
+    }
+    .shoppingBox_accom {background: $color_fff ;padding: 0.2rem 0.3rem 0.1rem 0.3rem;position: relative; margin-bottom: 0.3rem;
+      .inputlist { display: flex;  width: 100%;position: relative; justify-content: flex-start; color:  $color_999;  align-content: center;  align-items: center; border-bottom: solid 0.02rem  $color_f3;  padding: 0.15rem 0;  margin: 0.15rem 0;
+        div:first-child {margin-right: 0.1rem; width: 1.4rem; position: relative;
+        .moreRoomtip { position: absolute;   left: 5%;   top: -0.35rem; font-size: 0.24rem; color:  $color_f60; }
+        }
+        div:last-child {flex: 1;
+          .text_input {height: 0.52rem; line-height: 0.52rem;  width: 100%; }
+          .num_input {width: 0.8rem;height: 0.52rem; line-height: 0.52rem; background:  $color_f3;  text-align: center;}
+          .roomNum {color: $color_333; margin-right: 0.1rem;  font-size: 0.33rem; }
+          .zjzType {color: $color_333; margin-right: 0.1rem; font-size: 0.28rem;}
+          .nodetypeshow {position: relative;
+            span{display: inline-block; color: $color_666; padding: .05rem .2rem; border: solid .02rem $color_ddd;margin: 0 .1rem; height: .4rem; line-height: .4rem; border-radius: .3rem;}
+            span.curron{border: solid .02rem $color_f60;}
+          }
+        }
+        .moreDivTip { background: url(../images/center_arrow.png) right center no-repeat; background-size: 0.15rem;}
+        .surebaseMsg span{display: inline-block; border-radius: .2rem; padding: .02rem .25rem; color: $color_999; border:solid .02rem $color_ddd; margin-right: .2rem;}
+        .surebaseMsg span.curron{background: rgba(255, 180, 68, 0.1); color: $color_f60; border:solid .02rem rgba(255, 180, 68, 0.1);}
+        .bookIdNum,.text_input{font-size: .31rem;}
+      }
+      .inputlist:last-child {border-bottom: none;}
+      .couponTitle { font-size:.28rem; color: $color_333;}
+      .couponlist { display: flex;  width: 100%;  justify-content: space-between;  color: $color_666;  align-content: center;  align-items: center;  border-bottom: solid 0.02rem $color_f3;  padding: 0.1rem 0;  margin: 0.1rem 0; }
+      .couponlist:last-child { border-bottom: none;}
+  
+      .personZjbox { background: rgba(0, 0, 0, 0.6);  position: fixed;  width: 100%;  left: 0;  top: 0;  height: 100%;  z-index: 1;
+      .page-picker-wrapper { background: $color_fff;   position: fixed;   width: 100%;  left: 0;  bottom: 0; }
+        .selectbtn { width: 80%;  background: $color_f60; text-align: center; margin: 0.2rem auto;   height: 0.8rem;  line-height: 0.8rem; color: $color_fff; border-radius: 0.5rem;}
+      }
+    }
+    .personNumbox {background: rgba(0, 0, 0, 0.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%;  z-index: 1;
+      .personNumboxmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height: 4.5rem;}
+        .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+            span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+        }
+      .page-picker-wrapper { background: $color_fff;  position: fixed;  width: 100%;  left: 0;  bottom: 0;}
+      .selectbtn { width: 80%;  background: $color_f60;  text-align: center;  margin: 0.2rem auto;  height: 0.8rem;  line-height: 0.8rem;  color: $color_fff;  border-radius: 0.5rem;}
+    }
+    .personZjzbox {background: rgba(0, 0, 0, 0.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 1;
+      .Zjzboxmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height: 4.5rem;}
+        .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+            span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+        }
+      .page-picker-wrapper {background: $color_fff;  position: fixed;  width: 100%;  left: 0;  bottom: 0;}
+      .selectbtn { width: 80%; background: $color_f60; text-align: center;  margin: 0.2rem auto;  height: 0.8rem;  line-height: 0.8rem;  color: $color_fff;   border-radius: 0.5rem; }
+    }
+  }
+
+
+  /*****健身下单****/
+  .shoppingFrombox_gym{
+    .shoppingTop_gym{ background: url(../images/rectangle.svg) left top no-repeat; background-size: 100%; position: relative;margin-bottom: .3rem; padding-top: .3rem;
+        .shoppingMsgBox{width: 92%; margin: 0 auto; background: $color_fff; border-radius: .1rem;
+            .shoppingMsg_Name{padding: .3rem .3rem .1rem .3rem; font-size: .3rem; color: $color_333; font-weight: bold;}
+            .shoppingdateBox{padding: 0 .3rem .1rem .3rem; color: $color_999;
+                .dateshow{color:$color_333; font-size:.32rem;}
+                .dataNumshow{display: inline-block; padding:.02rem .2rem; border-radius: .3rem; border: solid .02rem $color_f3; margin: 0 .2rem;}
+            }
+            .shopoingroomType{padding: .0rem .3rem .1rem .3rem; color: $color_333; font-size: .3rem;}
+            .shoppingMsg_tips{ padding: 0 .3rem .3rem .3rem; color:$color_f60; line-height: .42rem;
+                .shoppingTip{display: inline-block; width: .3rem; height: .3rem; background: url(../images/tips.png) center no-repeat; background-size: 100%; vertical-align: middle; margin-right: .05rem;}
+            }
+            
+        }
+    }
+    .shoppingTop_medical{ background: url(../images/rectangle.svg) left top no-repeat; background-size: 100%; position: relative;margin-bottom: .3rem; padding-top: .3rem;
+        .shoppingMsgBox{width: 92%; margin: 0 auto; background: $color_fff; border-radius: .1rem;
+            .shoppingMsg_Name{padding: .3rem .3rem .1rem .3rem; font-size: .3rem; color: $color_333; font-weight: bold;}
+            .shoppingdateBox{padding: 0 .3rem .1rem .3rem; color: $color_999;
+                .dateshow{color:$color_333; font-size:.32rem;}
+                .dataNumshow{display: inline-block; padding:.02rem .2rem; border-radius: .3rem; border: solid .02rem $color_f3; margin: 0 .2rem;}
+            }
+            .shopoingroomType{padding: .1rem .3rem .3rem .3rem; color: $color_333; font-size: .3rem;}
+            .shoppingMsg_tips{ padding: 0 .3rem .3rem .3rem; color:$color_f60; line-height: .42rem;
+                .shoppingTip{display: inline-block; width: .3rem; height: .3rem; background: url(../images/tips.png) center no-repeat; background-size: 100%; vertical-align: middle; margin-right: .05rem;}
+            }
+            
+        }
+    }
+    .shoppingTop_trip{ background:#fff; position: relative;margin-bottom: .3rem; padding-top: .3rem;
+        .shoppingMsgBox{width: 92%; margin: 0 auto; background: $color_fff; border-radius: .1rem; 
+            .shoppingMsg_Name{padding: .1rem 0rem; font-size: .3rem; color: $color_333; font-weight: bold;}
+            .shoppingMsgBox{display: flex; width: 100%; position: relative; justify-content: flex-start; color: $color_666; align-content: center; align-items: center; border-bottom: solid .02rem $color_f3; padding-bottom:.25rem;
+                div{border: solid .02rem $color_f3; margin: .1rem .1rem; padding: 0.05rem .2rem; border-radius: .06rem;}
+                div.curron{background: $color_f60; color: $color_fff;}
+            }
+
+        }
+    }
+    .shoppingBox_gym{background: $color_fff; padding: .2rem .3rem .1rem .3rem; position: relative; margin-bottom: .3rem;
+        .inputlist{display: flex; width: 100%; position: relative; justify-content: flex-start; color: $color_666; align-content: center; align-items: center; border-bottom: solid .02rem $color_f3; padding:.15rem 0; margin: .15rem 0;
+            div:first-child{margin-right: .1rem; width: 1.4rem; position: relative;
+                .moreRoomtip{position:absolute; left:5%; top:-.35rem; font-size:.24rem; color:$color_f60;}
+            }
+            div:last-child{flex: 1;
+                .text_input{width: 100%; background: transparent; font-size: .31rem;}
+                .num_input{width: .8rem; height: .6rem; line-height: .6rem; background: $color_333; text-align: center;}
+                .cut,.add{display: inline-block; width: .6rem; height:.6rem;  vertical-align: middle;}
+                .cut{background:url(../images/cut.png) center no-repeat; margin-right: .1rem; background-size: .6rem;}
+                .add{background:url(../images/add.png) center no-repeat; margin-left: .1rem; background-size: .6rem;}
+                .roomNum{color: $color_333; margin-right: .1rem; font-size: .33rem;}
+                .zjzType{color: $color_333; margin-right: .1rem; font-size: .28rem;}
+                input:disabled{color: $color_333; margin-right: .1rem; font-size: .33rem;}
+            }
+            div.medicalType{
+                span{display: inline-block; background: $color_f3; border: solid .05rem $color_f3; margin-bottom: .10rem; padding: .05rem .15rem; border-radius: .06rem; font-size: .25rem;}
+                span.curron{display: inline-block; border: solid .05rem $color_f60; background: $color_f60; margin-bottom: .10rem; padding: .05rem .15rem; border-radius: .06rem; font-size: .25rem; color: $color_fff;}
+            }
+            div.medicalneeds{
+                span{display: inline-block; margin-right: .2rem;
+                    em{display: inline-block; width: .1rem; height: .1rem; border: solid .05rem $color_f3; border-radius: .1rem; margin-right: .1rem;}
+                }
+                span.curron{
+                    em{display: inline-block; width: .1rem; height: .1rem; border: solid .05rem $color_f60; border-radius: .1rem; margin-right: .1rem; background: $color_f60}
+                }
+            }
+            .moreDivTip{ background: url(../images/center_arrow.png) right center no-repeat;  background-size: .15rem;
+                input{background: transparent;}
+            }
+            
+        }
+        .inputlist:last-child{border-bottom:none;}
+        .couponTitle{font-size: .28rem; color: $color_fff}
+        .couponlist{display: flex; width: 100%; justify-content:space-between; color: $color_666; align-content: center; align-items: center; border-bottom: solid .02rem #f3f3f3; padding:.1rem 0; margin: .1rem 0;
+
+        }
+        .couponlist:last-child{border-bottom:none;}
+
+        .personZjbox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 1;
+            .page-picker-wrapper{background: $color_fff; position: fixed;width: 100%; left: 0; bottom: 0; }
+            .selectbtn{width: 80%; background: $color_f60; text-align: center; margin: .2rem auto; height: .8rem; line-height: .8rem; color: $color_fff; border-radius: .5rem;}
+        }
+
+    }
+    .personNumbox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 1;
+        .personNumboxmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height: 6rem;}
+            .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+                span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+            }
+        .page-picker-wrapper{background: $color_fff; position: fixed;width: 100%; left: 0; bottom: 0; }
+        .selectbtn{width: 80%; background: $color_f60; text-align: center; margin: .2rem auto; height: .8rem; line-height: .8rem; color: $color_fff; border-radius: .5rem;}
+    }
+    .personZjzbox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 1;
+        .page-picker-wrapper{background: $color_fff; position: fixed;width: 100%; left: 0; bottom: 0; 
+            .selecttimeboxmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height:6rem;}
+            .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+                span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+            }
+        }
+        .selectbtn{width: 80%; background: $color_f60; text-align: center; margin: .2rem auto; height: .8rem; line-height: .8rem; color: $color_fff; border-radius: .5rem;}
+    }
+    .calendarBox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 100;
+        .calendarmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height: 8rem;}
+        .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+            span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+        }
+        .calendar-dropdown{position: fixed; width: 100%; bottom: 0; left: 0; padding-bottom: .2rem;  background: $color_fff;}
+    }
+}
+
+/*******餐饮下单*******/
+.shoppingFrombox_buffet{
+    .shoppingTop_buffet{ background: url(../images/rectangle.svg) left top no-repeat; background-size: 100%; position: relative;margin-bottom: .3rem; padding-top: .3rem;
+        .shoppingMsgBox{width: 92%; margin: 0 auto; background: $color_fff; border-radius: .1rem;
+            .shoppingMsg_Name{padding: .3rem .3rem .1rem .3rem; font-size: .3rem; color: $color_333; font-weight: bold;}
+            .shopoingroomType{padding: .0rem .3rem .2rem .3rem; color: $color_333; font-size:.3rem;}
+            .shoppingMsg_tips{ padding: 0 .3rem .3rem .3rem; color:$color_f60; line-height: .42rem;
+                .shoppingTip{display: inline-block; width: .3rem; height: .3rem; background: url(../images/tips.png) center no-repeat; background-size: 100%; vertical-align: middle; margin-right: .05rem;}
+            }
+            
+        }
+    }
+    .shoppingBox_buffet{background: $color_fff; padding: .2rem .3rem .1rem .3rem; position: relative; margin-bottom: .3rem;
+        .inputlist{display: flex; width: 100%; position: relative; justify-content: flex-start; color: $color_666; align-content: center; align-items: center; border-bottom: solid .02rem #f3f3f3; padding:.15rem 0; margin: .15rem 0;
+            div:first-child{margin-right: .1rem; width: 1.4rem; position: relative;
+                .moreRoomtip{position:absolute; left:5%; top:-.35rem; font-size:.24rem; color:#f60;}
+            }
+            div:last-child{flex: 1;
+                .text_input{height: .52rem; line-height: .52rem; width: 100%; background: transparent;}
+                .num_input{width: .8rem; height: .52rem; line-height: .52rem; background: #f3f3f3; text-align: center;}
+                .cut,.add{display: inline-block; width: .6rem; height:.52rem;  vertical-align: middle;}
+                .cut{background:url(../images/cut.png) center no-repeat; margin-right: .1rem; background-size: .6rem;}
+                .add{background:url(../images/add.png) center no-repeat; margin-left: .1rem; background-size: .6rem;}
+                .roomNum{color: $color_333; margin-right: .1rem; font-size: .33rem;}
+                .giftPhone,.giftName{background: transparent; font-size: .31rem;}
+                .zjzType{color: $color_333; margin-right: .1rem; font-size: .28rem;}
+                input:disabled{color: $color_333; margin-right: .1rem; font-size: .33rem;}
+            }
+            .moreDivTip{ background: url(../images/center_arrow.png) right center no-repeat;  background-size: .15rem;}
+            
+        }
+        .inputlist:last-child{border-bottom:none;}
+        .couponTitle{font-size: .28rem; color: $color_fff}
+        .couponlist{display: flex; width: 100%; justify-content:space-between; color: $color_666; align-content: center; align-items: center; border-bottom: solid .02rem #f3f3f3; padding:.1rem 0; margin: .1rem 0;
+
+        }
+        .couponlist:last-child{border-bottom:none;}
+
+        .personZjbox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 1;
+            .page-picker-wrapper{background: $color_fff; position: fixed;width: 100%; left: 0; bottom: 0; }
+            .selectbtn{width: 80%; background: $color_f60; text-align: center; margin: .2rem auto; height: .8rem; line-height: .8rem; color: $color_fff; border-radius: .5rem;}
+        }
+
+    }
+    .personNumbox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 1;
+        .personNumboxmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height: 4.5rem;}
+        .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+            span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+        }
+        .page-picker-wrapper{background: $color_fff; position: fixed;width: 100%; left: 0; bottom: 0; }
+        .selectbtn{width: 80%; background: $color_f60; text-align: center; margin: .2rem auto; height: .8rem; line-height: .8rem; color: $color_fff; border-radius: .5rem;}
+    }
+    .personZjzbox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 1;
+        .page-picker-wrapper{background: $color_fff; position: fixed;width: 100%; left: 0; bottom: 0; 
+            .selecttimeboxmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height:6rem;}
+            .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+                span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+            }
+        }
+        .selectbtn{width: 80%; background: $color_f60; text-align: center; margin: .2rem auto; height: .8rem; line-height: .8rem; color: $color_fff; border-radius: .5rem;}
+    }
+    .calendarBox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 100;
+        .calendarmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height: 8rem;}
+        .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+            span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+        }
+        .calendar-dropdown{position: fixed; width: 100%; bottom: 0; left: 0; padding-bottom: .2rem;  background: $color_fff;}
+    }
+}
+
+
+/******优惠券下单*******/
+.shoppingFrombox_coupon{
+    .shoppingTop_coupon{ background: url(../images/rectangle.svg) left top no-repeat; background-size: 100%; position: relative;margin-bottom: .3rem; padding-top: .3rem;
+        .shoppingMsgBox{width: 92%; margin: 0 auto; background: $color_fff; border-radius: .1rem;
+            .shoppingMsg_Name{padding: .3rem .3rem .2rem .3rem; font-size: .3rem; color: $color_333; font-weight: bold;}
+            .shoppingMsg_tips{ padding: 0 .3rem .3rem .3rem; color:$color_f60; line-height: .42rem;
+                .shoppingTip{display: inline-block; width: .3rem; height: .3rem; background: url(../images/tips.png) center no-repeat; background-size: 100%; vertical-align: middle; margin-right: .05rem;}
+            }
+            
+        }
+    }
+    .shoppingBox_coupon{background: $color_fff; padding: .2rem .3rem .1rem .3rem; position: relative; margin-bottom: .3rem;
+        .inputlist{display: flex; width: 100%; justify-content: flex-start; color: $color_666; align-content: center; align-items: center; border-bottom: solid .02rem $color_f3; padding:.2rem 0; margin: .1rem 0;
+            div:first-child{margin-right: .1rem;}
+            div:last-child{flex-grow: 1;
+                .text_input{height: .52rem; line-height: .52rem; width: 100%;}
+                .num_input{width: .8rem; height: .52rem; line-height: .52rem; background: $color_f3; text-align: center;}
+                .cut,.add{display: inline-block; width: .6rem; height:.52rem;  vertical-align: middle;}
+                .cut{background:url(../images/cut.png) center no-repeat; margin-right: .1rem; background-size: .6rem;}
+                .add{background:url(../images/add.png) center no-repeat; margin-left: .1rem; background-size: .6rem;}
+            }
+        }
+        .inputlist:last-child{border-bottom:none;}
+        .couponTitle{font-size: .28rem; color: $color_fff}
+        .couponlist{display: flex; width: 100%; justify-content:space-between; color: $color_666; align-content: center; align-items: center; border-bottom: solid .02rem $color_f3; padding:.1rem 0; margin: .1rem 0;
+        }
+        .couponlist:last-child{border-bottom:none;}
+    }
+}
+
+
+/***支付***/
+.shoppingPayBox{position:fixed; bottom:0; left:0; width:100%; text-align: center; background: $color_fff; padding: .3rem 0; border-top: solid .02rem $color_f3; box-shadow: .2rem .2rem .2rem $color_f60; display: flex; justify-content: space-between;
+    .priceNumbox{display: flex; justify-content: flex-start; align-content: center; align-items:center; padding-left: .2rem;
+        .payTips{}
+        .payMoney{margin-left: .1rem;
+            p{color: $color_f60; font-weight: bold; font-size: .46rem;
+                i{font-size: .28rem; margin-right: .05rem; font-weight: normal;}
+            }
+            span{
+                background: $color_f60; color: $color_fff; font-size: .24rem; padding: .05rem .15rem; border-radius: .04rem;
+            }
+        }
+    }
+    .button_pay{margin-right: .18rem; display: flex; justify-content: flex-end; align-content: center; align-items:center;
+        .paymoneylist{color: $color_666; margin-right: .2rem; background: url(../images/unfold.png) right center no-repeat; background-size: .22rem; padding-right: .25rem;}
+        .paymoneylist_up{background: url(../images/unfold_up.png) right center no-repeat;background-size: .22rem;}
+        .buttonWord{height: .75rem; line-height: .75rem; background: $color_f60; color: $color_fff; border-radius: .5rem; text-align: center; width: 2rem;}
+        .mask{position: fixed; width: 100%; height: 100%; background: rgba(0, 0, 0, .6); left: 0; bottom:1.38rem; z-index: 20;
+            .pricelistBox{position: absolute; width: 100%;/*height: 3.2rem;*/ background: $color_fff; bottom: 0; left:0; box-shadow:0 0 .05 $color_eee; padding: .2rem 0; text-align: left; border-top-left-radius: .2rem; border-top-right-radius: .2rem; z-index: 20;
+                p{padding-left: .2rem; color: $color_333; font-weight: bold;}
+                    .pricelistMsg{padding: .08rem .3rem;display: flex; justify-content:space-between; align-content: center; align-items:center; font-size: .26rem; color: $color_999;
+                        span:last-child{color: $color_f60;}
+                    }
+                    .pricelistTip{color: $color_f60; text-align: right; padding-right: .3rem; padding-top:.15rem}
+            }
+        }
+    }
+    
+}
+.disablePayBox{position:fixed; bottom:0; left:0; width:100%; text-align: center; background: $color_fff; padding: .3rem 0; border-top: solid .02rem $color_f3; box-shadow: .2rem .2rem .2rem $color_f60; display: flex; justify-content: space-between;
+    .priceNumbox{display: flex; justify-content: flex-start; align-content: center; align-items:center; padding-left: .2rem;
+        .payTips{}
+        .payMoney{margin-left: .1rem;
+            p{color: $color_999; font-weight: bold; font-size: .46rem;
+                i{font-size: .28rem; margin-right: .05rem; font-weight: normal;}
+            }
+            span{
+                background: $color_f60; color: $color_fff; font-size: .24rem; padding: .05rem .15rem; border-radius: .04rem;
+            }
+        }
+    }
+    .button_pay{margin-right: .18rem; display: flex; justify-content: flex-end; align-content: center; align-items:center;
+        .paymoneylist{color: $color_666; margin-right: .2rem; background: url(../images/unfold.png) right center no-repeat; background-size: .22rem; padding-right: .25rem;}
+        .paymoneylist_up{background: url(../images/unfold_up.png) right center no-repeat;background-size: .22rem;}
+        .buttonWord{height: .75rem; line-height: .75rem; background: $color_f8; color: $color_999; border-radius: .5rem; text-align: center; width: 2rem;}
+        .mask{position: fixed; width: 100%; height: 100%; background: rgba(0, 0, 0, .6); left: 0; bottom:1.38rem; z-index: 20;
+            .pricelistBox{position: absolute; width: 100%;/*height: 3.2rem;*/ background: $color_fff; bottom: 0; left:0; box-shadow:0 0 .05 $color_eee; padding: .2rem 0; text-align: left; border-top-left-radius: .2rem; border-top-right-radius: .2rem; z-index: 20;
+                p{padding-left: .2rem; color: $color_333; font-weight: bold;}
+                    .pricelistMsg{padding: .08rem .3rem;display: flex; justify-content:space-between; align-content: center; align-items:center; font-size: .26rem; color: $color_999;
+                        span:last-child{color: $color_f60;}
+                    }
+                    .pricelistTip{color: $color_f60; text-align: right; padding-right: .3rem; padding-top:.15rem}
+            }
+        }
+    }
+    
+
+    
+}
+.shoppingPaybuttonBox3{
+    position:fixed; bottom:0; left:0; width:100%; text-align: center; background: $color_fff; padding: .3rem 0; border-top: solid .02rem $color_f3; box-shadow: .2rem .2rem .2rem $color_f60; display: flex; justify-content: space-between;
+    .exchange{ height: .75rem; line-height: .75rem; width: 94%; margin: 0 auto; background: $color_f60; color: $color_fff; border-radius: .6rem; text-align: center;}
+}
+.disableBtn{
+    position:fixed; bottom:0; left:0; width:100%; text-align: center; background: $color_fff; padding: .3rem 0; border-top: solid .02rem $color_f3; box-shadow: .2rem .2rem .2rem $color_f60; display: flex; justify-content: space-between;
+    .exchange{ height: .75rem; line-height: .75rem; width: 94%; margin: 0 auto; background: $color_f8; color: $color_999; border-radius: .6rem; text-align: center;}
+}
+
+.onloadpapy{
+    .onloadMask{position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: #fff;
+        div{width: 100%; position: fixed; text-align: center; top: 50%; transform: translateY(-50%); color: $color_f60;
+            span{display: inline-block; width: .8rem; height: .8rem; background: url(../images/BankCard.png) center no-repeat; background-size: 100%;}
+            p{height: .4rem; line-height: .4rem;}
+            em{display: inline-block; font-weight: bold; width: .5rem; text-align: left; margin-left: .05rem; font-size: .4rem; letter-spacing: .05rem;  vertical-align: middle; height: .2rem; line-height: 0rem;}
+        }
+    }
+}
+
+/******预约下单状态*****/
+.shoppingStatuc{background: $color_fff;
+    .resBox{background: $color_fff; text-align: center; padding:1rem 0;
+        img{width: 1rem}
+        .suctip{color: $color_333; font-size: .3rem; font-weight: bold; padding: .2rem 0 .8rem 0}
+        .oterlinkBox{
+            div{display: inline-block; margin: 0 .3rem; border-radius: .05rem; border:solid .02rem $color_f60; padding: .05rem .2rem; color: $color_f60;}
+        }
+        span.sucspan{background: url(../images/suc.png) center no-repeat; background-size: 90%; display: inline-block; width: 1rem; height: 1rem;}
+        span.failspan{background: url(../images/fail.png) center no-repeat; background-size: 90%; display: inline-block; width: 1rem; height: 1rem;}
+    }
+    .othercoupon{padding-top: .3rem;
+        .recommendTitle{ text-align: center; font-size: .28rem; font-weight: bold; margin: .2rem 0 .3rem 0;
+            span{display: inline-block; margin: 0 .1rem; width: .4rem; height: .25rem;}
+            span:first-child{background: url(../images/more_left.png) center no-repeat; background-size: 100%;}
+            span:last-child{background: url(../images/more_right.png) center no-repeat; background-size: 100%;}
+        }
+        .couponlistDiv{
+            li {padding: .2rem .2rem; position: relative; background: $color_fff; margin: .33rem; border-radius: .1rem;  overflow: hidden;
+                .couponlistMsg{ display: flex; justify-content: space-between; position: relative; height: 1.35rem; align-content: center; align-items: center;
+                    .couponlistShow{ /*position: absolute; top:50%;  -webkit-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%);*/  padding-top: .3rem;}
+                    .couponlist_Name{ color: $color_666; font-size: .28rem; font-weight: bold;}
+                    .coupolist_Date{ color: $color_999;  padding-top: .25rem; font-size: .24rem; }
+                    .couponType{ text-align: center;
+                        div{color: $color_f60; font-size: .36rem;
+                            i{font-size: .56rem; font-weight: bold; margin-right: .05rem;}
+                        }
+                        span{display: block;color: $color_999; }
+                    }
+                }
+                .couponlistType{ border-top: dashed .02rem #ddd;  padding-top: .2rem; margin-top: .2rem; color: $color_666; font-size: .24rem;position: relative;display: flex; justify-content: space-between;}
+                .couponlistType:before{  content: '';position: absolute; left:-.32rem; top:-.15rem;  background: $color_f8; width:.3rem; height: .3rem; border-radius: .15rem; }
+                .couponlistType:after{ content: '';position: absolute; right:-.32rem; top:-.15rem;  background: $color_f8; width:.3rem; height: .3rem; border-radius: .15rem; }
+                .prolink{color:$color_f60; background: url(../images/right.png) right center no-repeat; background-size: .15rem; padding-right: .25rem;} 
+            } 
+            .couponlistDiv li:last-child{ margin-bottom: 0;}
+        }
+    }
+
+    .recommendBox{ padding: 0 .3rem .2rem .3rem;
+        .recommendTitle{ text-align: center; font-size: .28rem; font-weight: bold; margin: .2rem 0 .3rem 0;
+            span{display: inline-block; margin: 0 .1rem; width: .4rem; height: .25rem;}
+            span:first-child{background: url(../images/more_left.png) center no-repeat; background-size: 100%;}
+            span:last-child{background: url(../images/more_right.png) center no-repeat; background-size: 100%;}
+        }
+        .recommendProBox{display: flex; justify-content: space-between; flex-direction: row; flex-wrap: wrap; 
+            .recommendProMsg{width:48%;padding-bottom:.3rem;
+                .recommendProImg{border-radius: .1rem;  overflow: hidden;
+                    img{width:100%;}
+                }
+                .recommendProName{
+                    height: .9rem; font-size: .26rem;
+                }
+                .recommendProPrice{ font-size: .26rem;
+                    span{color: $color_f60; font-size: .32rem; margin-right: .1rem;
+                        i{
+                            font-size: .26rem;
+                        }
+                    }
+                    em{text-decoration: line-through; color: $color_666}
+                }
+            }
+            
+        }
+    }
+}
+
+
+
+/*******订单详情*******/
+.ordershowbox{
+    .orderBox {  background: $color_fff;  margin-bottom: 0.2rem;  padding: 0.3rem;}
+    .orderType {  color: $color_f60;  font-size: 0.4rem;  padding: 0.2rem 0;}
+    .orderTip {  color: $color_999;  padding-bottom: 0.1rem;}
+    .orderNumTip {  color: $color_f60;  text-align: center;  padding: 0.2rem 0 0.1rem 0;
+    }
+    .orderName { color: $color_333; font-size: .28rem;  font-weight: bold;}
+    .orderMsgBox { display: flex;  justify-content: space-between;  border-top: solid 0.02rem $color_f3;  margin-top: 0.2rem;  padding-top: 0.2rem;
+      .orderMsgshow {display: flex; justify-content: flex-start;  flex: 1;
+          .ordermsgshowPic {width: 2.1rem; margin-right: 0.2rem;
+          .defaultBg{background: url(../images/pic1.jpg) center no-repeat; background-size:cover; border-radius: .1rem; overflow: hidden;}
+          span {display: inline-block; width:100%; height: 1.4rem; border-radius: .1rem; background-size: cover; }
+        }
+        .ordermsgshowMore { color: $color_333; flex: 1; font-size: 0.3rem;
+          .ordermsgshowMore_type{overflow: hidden;text-overflow:ellipsis; white-space:nowrap; width: 90%;color: $color_999; padding: .05rem 0;}
+          .gitftstype span{display: inline-block; font-size: .22rem; border:solid .02rem $color_f60; color: $color_f60; padding:.02rem .1rem; border-radius: .04rem; margin-top: .05rem;}
+        }
+      }
+      .orderPrice {text-align: right;
+      p {  margin: 0.05rem 0;  color: $color_999;}
+        p:first-child {color: $color_333;    }
+      }
+    }
+    .couponexchangeNum { color: $color_333; font-size: .28rem; font-weight: bold;}
+    .couponexchangeBox { width: 100%;  background: $color_f8;  padding: 0.5rem 0;  text-align: center;  margin: 0.2rem 0 0 0;  font-size: 0.5rem;}
+    .orderperMsg {  display: flex;  justify-content: space-between;  padding: 0.12rem 0;
+      div:first-child {    color: $color_666;    width: 2.7rem;  }
+      div:last-child {   flex-flow: 1; position: relative; flex: 1; text-align: right;
+        .tipsshow{text-align:right; position:absolute; bottom:-.3rem; width:100%; font-size:.24rem; white-space: nowrap; color: $color_f60; }
+    }
+    }
+    .orderperMsg:last-child { padding-bottom: 0; position: relative; }
+    .readyPrice {  color: $color_f60;}
+    .cancelBtn{  border:solid .02rem $color_ddd;   display:block;  border-radius: .5rem;  height: .8rem; line-height: .8rem;  color: #666;  background: $color_fff;  margin:0.1rem;}
+    .paystatus_n{
+        .moneyNum{color: $color_666; padding-bottom: .1rem;
+             span{color: #f60; font-size: .34rem;}
+        }
+        .moneyNumTip{color: $color_999;}
+        .moneyPya{border-radius: .4rem; color: $color_f60; width: 80%; margin: 0.3rem auto .2rem auto; height: .8rem; line-height: .8rem; text-align: center; border: solid .02rem $color_f60;}
+    }
+    .thirdCodePassword{position:fixed; bottom:0; left:0; width:100%; text-align: center; background: $color_fff; padding: .3rem 0; height: .8rem; box-sizing: content-box; border-top: solid .02rem $color_f3; z-index: 14; box-shadow: .2rem .2rem .2rem $color_f60;
+        .gotocoupon{ height: .75rem; line-height: .75rem; width: 90%; margin: 0 auto; background: $color_f60; color: $color_fff; border-radius: .6rem;}
+    }
+    .couponStatueDiv{position: absolute; width: 100%; left: 0; bottom: 0; text-align: center; background: $color_fff; padding:.1rem 0; z-index: 13;
+        span{display: inline-block; width: 96%; background: $color_f60; color: $color_fff; height: .8rem; line-height: .8rem; border-radius: .4rem;}
+    }
+  }
+
+
+/*******个人中心 首页********/
+.myhomeBox_index{
+    .perindex{padding: .3rem 0;
+        .memberMsgBox{margin-top: .2rem; display: flex; justify-content:space-between; align-content: center; align-items: center;  background: $color_f8; border-radius: .2rem;
+            .memberDate{padding: .2rem 0 .2rem .5rem;
+                p{line-height: .52rem; color: $color_999;
+                    .memberDateshow{display: inline-block; width: .3rem; height: .3rem; vertical-align: middle; background: url(../images/center/date.png) center no-repeat; background-size: 100%; margin-right: .2rem;}
+                    .memberMoenyshow{display: inline-block; width: .3rem; height: .3rem; vertical-align: middle; background: url(../images/center/money.png) center no-repeat; background-size: 100%; margin-right: .2rem;}
+                }
+            }
+            .memberMoney{padding: .2rem .5rem .2rem 0; text-align: right;
+                span{display: inline-block; padding: .15rem .5rem; background: $color_f60; color: $color_fff; font-size: .32rem; border-radius: .5rem;}
+            }
+        }
+        .perMsgbox{background: $color_fff; border-radius: .1rem; padding: .2rem .3rem; margin-bottom: .2rem;
+            .mybaseMsg,.couponBox,.quanyiBox,.exchangeBox,.mygfit,.memberrulue,.membertel,.memberquestion,.memberloginout{display: flex; justify-content: flex-start; align-content: center; align-items: center; background: url(../images/center_arrow.png) right center no-repeat;  background-size: .15rem;} 
+            .mybaseMsg{
+                .myphoto{width: 1rem; height: 1rem; padding-right: .2rem;
+                    span{display: inline-block; width: 100%; height: 1rem; background: $color_f8; border-radius: .5rem; overflow: hidden;
+                        img{width: 100%;}
+                    }
+                }
+                .myname{
+                    .name{color: $color_333; padding-bottom: .1rem;}
+                    .tel{color: $color_999;}
+                }
+            }
+        }
+        .titleDiv{display: flex; justify-content:space-between; align-content: center; align-items: center;  background: url(../images/center_arrow.png) right center no-repeat;  background-size: .15rem;
+            .titleName{color: $color_333; font-weight: bold; font-size: .28rem;}
+            .more{padding-right: .3rem; color: $color_999}
+        }
+        .orderBox{padding:.3rem 0 .2rem 0;display: flex; justify-content:space-evenly; align-content: center; align-items: center;
+            p{ color: $color_999; font-size: .26rem; width: calc(calc(100% / 4) - .1rem); text-align: center;
+                span{display: block; width: .5rem; height: .5rem; margin: 0 auto; margin-bottom: .1rem;}
+                span.appointment{background: url(../images/center/appointment.png) center no-repeat; background-size: 100%;}
+                span.use{background: url(../images/center/use.png) center no-repeat; background-size: 100%;}
+                span.used{background: url(../images/center/used.png) center no-repeat; background-size: 100%;}
+                span.cancelled{background: url(../images/center/cancelled.png) center no-repeat; background-size: 100%;}
+            }
+        }
+        .waitingBox{background: $color_f8; padding-right: .06rem; margin-top: .2rem; padding: .2rem .3rem;
+            .orderstatus{padding-bottom: .1rem; color: $color_666;}
+            .orderMsg{display: flex; justify-content: flex-start; align-content: center; align-items: center;
+                .orderPic{width:1.6rem; padding-right: .2rem;
+                    span{display: inline-block; width: 100%; height: 1rem; background: $color_eee; border-radius: .1rem; }
+                }
+                .orderName{flex: 1;
+                    .name{color: $color_333}
+                    .date{color: $color_999}
+                }
+            }
+        }
+        .mygfit{
+            .modeName{color: $color_333; font-size: .3rem; padding: .1rem 0 .1rem .5rem; background: url(../images/center/icon-vip@3x.png) left center no-repeat; background-size: .4rem; }
+        }
+        .memberrulue{
+            .modeName{color: $color_333; font-size: .3rem; padding: .1rem 0 .1rem .5rem; background: url(../images/center/icon-file@3x.png) left center no-repeat; background-size: .4rem; }
+        }
+        .membertel{
+            .modeName{color: $color_333; font-size: .3rem; padding: .1rem 0 .1rem .5rem; background: url(../images/center/icon-service@3x.png) left center no-repeat; background-size: .4rem; }
+        }
+        .memberquestion{
+            .modeName{color: $color_333; font-size: .3rem; padding: .1rem 0 .1rem .5rem; background: url(../images/center/icon-info@3x.png) left center no-repeat; background-size: .4rem; }
+        }
+        .memberloginout{
+            .modeName{color: $color_333; font-size: .3rem; padding: .1rem 0 .1rem .5rem; background: url(../images/center/loginout.png) left center no-repeat; background-size: .4rem; }
+        }
+        .couponBox{
+            .modeName{color: $color_333; font-size: .3rem; padding: .1rem 0 .1rem .5rem; background: url(../images/center/Coupon.png) left center no-repeat; background-size: .4rem; }
+        }
+        .quanyiBox{
+            .modeName{color: $color_333; font-size: .3rem; padding: .1rem 0 .1rem .5rem; background: url(../images/center/activation.png) left center no-repeat; background-size: .4rem; }
+        }
+        .exchangeBox{
+            .modeName{color: $color_333; font-size: .3rem; padding: .1rem 0 .1rem .5rem; background: url(../images/center/Transfer.png) left center no-repeat; background-size: .4rem; }
+        }
+    }
+}
+
+/******个人中心  基本信息********/
+.myhomeBox_mybasemsg{background: $color_fff; position:absolute; width: 100%;  top: 0; height: 100%; 
+    .bodyBox{
+        .mybasemsg{display: flex; justify-content: space-between; align-content: center; align-items: center; border-bottom: solid .02rem $color_f3; margin-left: .3rem; padding:.2rem .3rem .2rem 0;
+            .typename{color: $color_999; width: 1.5rem;}
+            .myphoto,.sex,.credentials{ background: url(../images/center_arrow.png) right center no-repeat;  background-size: .15rem;}
+            .myphoto{width: 1rem; height: 1rem; padding-right: .5rem;
+                    span{display: inline-block; width: 100%; height: 1rem; background: $color_f8; border-radius: .5rem; margin-right: .8rem;overflow: hidden;
+                        img{width: 100%;}}
+                }
+            .sex,.credentials,.credentialsNum,.mobile{flex: 1; text-align: right; padding-right: .5rem;}
+            .credentialsNum {padding-right: .1rem;
+                input{text-align: right; height: .8rem; line-height: .8rem; font-size: .3rem;}
+            }
+            .mobile{padding-right: .1rem;
+                input{text-align: right; height: .8rem; line-height: .8rem; font-size: .3rem;}
+            }
+            .readyname{
+                input{text-align: right; height: .8rem; line-height: .8rem; font-size: .3rem; padding-right: .45rem;}
+            }
+            .sex{
+                span{text-align: right; height: .8rem; line-height: .8rem; font-size: .3rem;}
+            }
+            .credentials{
+                span{text-align: right; height: .8rem; line-height: .8rem; font-size: .3rem;}
+            }
+        }
+        .mybasemsg:last-child{border-bottom: none;}
+    }
+    .logoutBtn{width:90%; margin:1rem auto 0 auto; text-align: center;background: $color_f60; padding: .25rem 0; border-radius: .06rem;  font-size: .32rem; color: $color_fff;}
+    .personSexbox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 1;
+          .Zjzboxmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height: 4.5rem;}
+            .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+                span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+            }
+        .page-picker-wrapper{background: $color_fff; position: fixed;width: 100%; left: 0; bottom: 0; }
+        .selectbtn{width: 80%; background: $color_f60; text-align: center; margin: .2rem auto; height: .8rem; line-height: .8rem; color: $color_fff; border-radius: .5rem;}
+    }
+    .personZjzbox{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 1;
+        .Zjzboxmsgshow{background: $color_fff; position: fixed; left: 0; bottom: 0; width: 100%; height: 4.5rem;}
+        .closeDailogBox{text-align:center; padding: .2rem .2rem; border-bottom: solid .02rem $color_f3;
+            span{display: inline-block; position: absolute; top: .3rem; right:.3rem; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+        }
+        .page-picker-wrapper{background: $color_fff; position: fixed;width: 100%; left: 0; bottom: 0; }
+        .selectbtn{width: 80%; background: $color_f60; text-align: center; margin: .2rem auto; height: .8rem; line-height: .8rem; color: $color_fff; border-radius: .5rem;}
+    }
+}
+
+/******个人中心  激活权益*******/
+.myhomeBox_myactivity{background: $color_fff; position:absolute; width: 100%;  top: 0; height: 100%;
+    .mymember{ background: $color_fff; padding: .5rem .3rem 0 .3rem;
+        .active_tel,.active_name,.active_code{padding: .3rem 0 .3rem 0; display: flex; justify-content: flex-start; align-content: center; align-items: center; border-bottom: solid .02rem $color_f3; margin: .1rem 0;}
+        .active_tel span,.active_name span,.active_code span{width: .8rem; height: .8rem;}
+        .active_tel input,.active_name input,.active_code input{width:100%; height: .8rem; line-height: .8rem; font-size: .35rem; color: $color_333; background: transparent;}
+        .active_tel input{background: transparent; color: $color_666}
+        .active_tel span{background: url(../images/act_mobile.png) .15rem center no-repeat; background-size: 60%;}
+        .active_name span{background: url(../images/act_name.png) .15rem center no-repeat; background-size: 60%;}
+        .active_code span{background: url(../images/act_number.png) .15rem center no-repeat; background-size: 60%;}
+        .active_sure{padding: 1rem 0;
+        button{width: 100%; height: 1rem; text-align: center; background: $color_f60; color: $color_fff; font-size: .32rem; border-radius: .1rem;}
+        }
+        .disablestyle{background:$color_f8}
+    }
+}
+
+/******个人中心  优惠券*******/
+.myhomeBox_mycoupon{background: $color_f8; position:absolute; width: 100%;  top: 0; height: 100%;
+    .couponlistDiv{
+        li {padding: .2rem .2rem; position: relative;  background: $color_fff; margin: .33rem; border-radius: .1rem; overflow: hidden;
+            .couponlistMsg{ display: flex; justify-content: space-between; position: relative;
+                .couponlistShow{ position: absolute;  top:50%; -webkit-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%);}
+                .couponlist_Name{color: #666; font-size: .3rem; font-weight: bold;  }
+                .couponlist_Date{color: #999; padding-top: .25rem;  font-size: .24rem;  }
+                img{ width:1.2rem; }
+                .couponNum{color: #f60; font-size: .32rem; text-align: center; padding: .2rem 0;
+                    span{font-weight: bold; font-size: .46rem; margin-right: .05rem;}
+                    i{display: inline-block; padding: .03rem .1rem; color: #999; background: #f3f3f3; font-size: .26rem; font-style: normal; border-radius: .06rem;}
+                }
+            }
+            .couponlistType{ border-top: dashed .02rem #ddd;  padding-top: .2rem;  margin-top: .2rem; color: #676767;font-size: .24rem;  position: relative;display: flex;  justify-content: space-between;}
+            .couponlistType:before{content: '';  position: absolute; left:-.32rem; top:-.15rem;  background: #f8f8f8; width:.3rem; height: .3rem; border-radius: .15rem;}
+            .couponlistType:after{  content: '';position: absolute;  right:-.32rem;  top:-.15rem;  background: #f8f8f8; width:.3rem;  height: .3rem; border-radius: .15rem; }
+            .prolink{color: #956010;}
+        }
+        li:last-child{margin-bottom: 0;}
+    }
+}
+
+
+/******个人中心  我的订单列表*******/
+.myhomeBox_myorder{background: $color_f4; position:absolute; width: 100%;  top: 0; height: 100%;
+    .myorderlistDiv{
+        li {padding: .2rem .3rem; position: relative;  background: $color_fff; margin: .33rem 0; overflow: hidden; position: relative;
+        .orderMsg{display: flex; justify-content: space-between; align-content: center; align-items: center; border-bottom: solid .02rem $color_f3; padding-bottom: .2rem;
+                .productmsg{display: flex; justify-content:flex-start; align-content: center; align-items: center; flex: 1;
+                    .productImg{width: 30%; padding-right: .2rem; 
+                        .defaultBg{background: url(../images/pic1.jpg) center no-repeat; background-size:cover; border-radius: .1rem; overflow: hidden;}
+                        span{display: inline-block; width:100%; height: 1.4rem;  border-radius: .1rem;
+                            img{width: 100%;}
+                        }
+                    }
+                    .productName{flex: 1;
+                        p:nth-of-type(1){font-size: .3rem; color: $color_333;}
+                        p:nth-of-type(2){font-size: .28rem; color: $color_666; padding: .1rem 0; width: 73%; overflow: hidden; white-space:nowrap;text-overflow: ellipsis;}
+                        p:nth-of-type(3){
+                            span{display: inline-block; padding: .02rem .1rem; background: $color_f60; color: $color_fff; font-size: .26rem; border-radius: .05rem;}
+                        }
+                    }
+                }
+            
+                .prostatus{width: 18%; text-align: center; color:$color_f60; font-size: .26rem; position: absolute; right:.22rem}
+        }
+        .orderDate{display: flex; justify-content:flex-start; align-content: center; align-items: center; padding-top:.2rem;
+            div:nth-of-type(1){width: 35%; 
+                span{display: inline-block; background: $color_f3; color: $color_333; padding: .03rem .2rem; border-radius: .2rem;}
+            }
+            div:nth-of-type(2){flex: 1; color: $color_666;}
+        }
+        .paystatus{display: flex; justify-content:space-between; align-content: center; align-items: center; border-top: solid .02rem $color_f3; margin-top: .1rem; padding-top: .2rem;
+            .paymoneyNum{color: $color_999;
+                span{color: $color_f60;}
+            }
+            .payoneyBtn{
+                span{display: inline-block;
+                    i{display:inline-block; padding: .05rem .2rem; background: $color_f60; color: $color_fff; border-radius: .21rem; height: .42rem; line-height: .42rem;}
+                    .payOverBtn{background: $color_f3; color: $color_999}
+                }
+            }
+        }
+        }
+        li:last-child{margin-bottom: 0;}
+    }
+}
+
+/******个人中心  底部导航栏*******/
+.myhomeBox_bottombar{display: flex; position:fixed; justify-content: space-between; align-content: center; align-items: center; width:100%; bottom:0; left: 0; height: 1rem; background: $color_fff;
+    div{flex: 1; text-align: center; font-size: .28rem; color: $color_999;
+        span{display: inline-block; width: .35rem; height: .35rem;  vertical-align: middle; margin-right: .15rem;}
+        span.index{background: url(../images/center/home_n.png) center no-repeat; background-size: 100%;}
+        span.myhome{background: url(../images/center/my_n.png) center no-repeat; background-size: 100%;}
+    }
+    div.curron{color: $color_333; font-weight: bold;
+        span.index{background: url(../images/center/home.png) center no-repeat; background-size: 100%;}
+        span.myhome{background: url(../images/center/my.png) center no-repeat; background-size: 100%;}
+    }
+}
+
+
+
+
+
+/*************日历控件************/
+.booking_calendar {margin:auto;  width: 100%;  min-width:300px;background: $color_fff; font-family: "PingFang SC","Hiragino Sans GB","STHeiti","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;   user-select:none;
+    .calendar-tools{height:40px;font-size: 20px;line-height: 40px;color:#5e7a88;
+        span{cursor: pointer;}
+    }
+    .calendar-prev{ width: 14.28571429%;float:left; text-align: center;}
+    .calendar-info{padding-top: 3px; font-size:16px;line-height: 1.3;text-align: center;
+        div.month{margin:auto; height:20px;width:100px;text-align: center;color:#5e7a88;  overflow: hidden; position: relative;
+            .month-inner{ position: absolute;left:0;top:0;height:240px;transition:top .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+                span{display: block;font-size: 14px;height:20px;width:100px;overflow: hidden;text-align: center;}
+        }
+    }
+        div.year{font-size:10px;line-height: 1;color:#999;}
+    }
+    .calendar-next{width: 14.28571429%; float:right;text-align: center;}
+    table {clear: both; width: 100%;margin-bottom:10px; border-collapse: collapse; color: #444444;
+        td {margin:2px !important;padding:0px 0;width: 14.28571429%;height:44px;text-align: center;vertical-align: middle;font-size:14px;line-height: 125%;cursor: pointer;position: relative;vertical-align: top;}
+        td.week{ font-size:10px;  pointer-events:none !important;   cursor: default !important; }
+        td.disabled {color: #ccc;  pointer-events:none !important;  cursor: default !important;}
+        td.disabled div{color: #ccc;}
+        td span{display:block;    max-width:40px;    height:26px;    font-size: 16px;    line-height:26px;    margin:0px auto;    border-radius:20px;}
+        td:not(.selected) span:not(.red):hover{    background:#f3f8fa;    color:#444;}
+        td:not(.selected) span.red:hover{    background:#f9efef;}
+
+        td:not(.disabled) span.red{    color:#ea6151;}
+        td.selected span{background-color: #5e7a88;    color: $color_fff;}
+        td .text{position: absolute;    top:28px;    left:0;    right:0;    text-align: center;    padding:2px;    font-size:8px;    line-height: 1.2;    color:#444;}
+        td .isGregorianFestival,.calendar td .isLunarFestival{   color:#ea6151;}
+        td.selected span.red{background-color: #ea6151;    color: $color_fff;}
+        td.selected span.red:hover{background-color: #ea6151;    color: $color_fff;}
+        thead td {text-transform: uppercase;  height:30px;  vertical-align: middle;}
+    }
+    .calendar-button{text-align: center;
+        span{cursor: pointer;display: inline-block;min-height: 1em;min-width: 5em;vertical-align: baseline;background:#5e7a88;color:$color_fff;margin: 0 .25em 0 0;padding: .6em 2em; font-size: 1em; line-height: 1em; text-align: center; border-radius: .3em;}
+        span.cancel{background:#efefef;  color:#666;}
+    }
+    .calendar-years{ position: absolute; left:0px; top:60px; right:0px;  bottom:0px;  background:$color_fff;  display: flex;  justify-content: center;  align-items: center;  flex-wrap:wrap;  overflow: auto;   transition:all .5s cubic-bezier(0.075, 0.82, 0.165, 1);  opacity: 0;    pointer-events: none;    transform: translateY(-10px);}
+    .calendar-years.show{ opacity: 1;  pointer-events: auto;  transform: translateY(0px);
+        span{margin:1px 5px;  display: inline-block;  width:60px; line-height: 30px; border-radius: 20px; text-align:center; border:1px solid #fbfbfb; color:#999;}
+        span.active{ border:1px solid #5e7a88;  background-color: #5e7a88;  color:$color_fff;}
+    }
+}
+
+/***** tab 处理*****/
+.bookingTabCon{
+	.fund-info {padding: .6rem 0;background: $color_fff;}
+	.tab-header {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;	-ms-flex-align: center;	align-items: center;  box-shadow: 0.1rem 0.05rem 0.05rem #efefef;
+        li {-webkit-box-flex: 1;   -ms-flex: 1 1 auto;   flex: 1 1 auto;	height: 1rem;	line-height: 1rem;	background: $color_fff;	font-size: .3rem;color: #999;	text-align: center;	position: relative;
+            i{color: $color_f60;}
+        }
+		li.active {	color: $color_333; font-weight: bold;}
+		li.active:before {	content: "";position: absolute;	width:1rem;	height: .04rem;	background: $color_f60;	left: 50%;	margin-left: -.5rem;	bottom: 0;	}
+	}
+	.tab-body {	margin-top: .1rem;}
+}
+
+/****** 异常处理*****/
+.noDataContent{padding: 1rem 0; text-align: center; color: $color_999;}
+
+/******返回第三方******/
+.backthirdcon{position: relative;
+    .defaultBtnbg{display: inline-block; position: fixed; width: .9rem; height: .9rem; line-height: .9rem; border-radius: .9rem; text-align: center; background: $color_f60; color: $color_fff; font-size: .28rem; right: .2rem; bottom: 1.5rem;border: solid .02rem #fff;  box-shadow: 0 0.08rem 0 #c1c1c1; z-index: 15;}
+}
+.safarishowTipdailog{position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(255,255,255,.8) url(../images/openbrow.png) top right no-repeat; background-size:65%; z-index: 99;}
+
+/******头部处理 topBar*******/
+.header{height: .58rem; line-height: .58rem; background: #fff; text-align: center; position: relative; border-bottom: solid .02rem $color_f3; box-shadow: 0 0 .03rem $color_f3;}
+.header .icon_bank{position: absolute; left: .1rem; width: .5rem; height: .5rem; background: url(../images/left.png) center no-repeat; background-size: 40%;}
+
+/******使用优惠券*****/
+.couponDiv{position: fixed; left: 0; top:0; width:100%;  height:100%; background:rgba(0, 0, 0, .6); z-index: 99;
+    .couponMsgBox{position: absolute; width: 100%; max-height: 5rem; left:0; bottom:0; background:$color_fff; border-top-right-radius: .15rem; border-top-left-radius: .15rem; overflow-y: scroll;
+        .selectcouponbox{display: flex; justify-content: space-between; padding: .3rem .3rem .1rem .3rem;
+            .closecouponbtn{display: inline-block; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 100%;}
+        }
+        .couponTip{color: $color_999; font-size: .24rem; text-align: center; padding: .3rem 0}
+        .couponlistMsg li{display: flex; justify-content:flex-start; padding: .3rem .3rem .3rem .2rem; box-shadow: 0 .01rem .08rem #ddd; margin: 0 .3rem; align-items: center; align-content: center; border-radius: .1rem; margin-bottom: .3rem;
+            .couponlistType{flex: 1;  display: flex; justify-content: flex-start; align-content: center; align-items: center;
+                .couponprice{width: 28%; text-align: center; white-space: nowrap;color: $color_f60; font-size: .28rem;
+                    em{font-size: .4rem; margin-left: .05rem;text-align: center; }
+                    p{font-size: .22rem; color: $color_999; text-align: center;}
+                }
+                div:nth-of-type(2){flex: 1; border-left: solid .02rem $color_f3; padding-left: .2rem;
+                    .noteDiv{font-size: .3rem; color: $color_333; padding: .05rem 0}
+                    .noteDate{font-size: .24rem; color: $color_999; padding: .05rem 0}
+                }
+            }
+            .couponlistSelect{width: 10%;text-align: center;
+                span{display: inline-block; width: .4rem; height: .4rem; background: url(../images/Oval.svg) center no-repeat; background-size: 100%;}
+            }
+            
+        }
+        .couponlistMsg li.curron{
+             .couponlistSelect{width: 10%;text-align: center;
+                span{display: inline-block; width: .4rem; height: .4rem; background: url(../images/selected.svg) center no-repeat; background-size: 100%;}
+            }
+        }
+      .couponbtnDiv{width: 90%; margin: 0 auto; background: $color_f60; text-align: center; color: $color_fff; height: .8rem; line-height: .8rem; border-radius: .2rem;}
+    }
+  
+  }
+
+/***绑卡*****/
+.carlist{background: #fff; position: absolute; width: 100%; height: 100%; left: 0; top: 0;
+    .cardlistBox{margin: .1rem .22rem; padding:.15rem .12rem}
+    .cardlistMsg{background: url(../images/card/blackground-ceb@2x.png) left top no-repeat; height: 1.76rem; background-size: 100%; margin-bottom: .2rem; display: flex; justify-content: space-between; color: #fff;
+        .card_bankName{background: url(../images/card/logo-ceb@2x.png) .2rem .2rem no-repeat; background-size: .6rem .6rem; padding-left: 1rem; padding-top: .15rem;
+            p{padding: .05rem 0;}
+        }
+        .default{ padding: .2rem;
+            span{background: #fff; height: .4rem; line-height: .4rem; border-radius: .2rem; color: #666; padding: 0 .1rem;}
+        }
+    }
+    .addcardbtn{background: linear-gradient(#FF974C, #FF6B00); margin-top: .6rem; padding: .2rem 0; text-align: center; font-size: .28rem; color: #fff; border-radius: .1rem;}
+    .defaultaddCard{opacity: .6;}
+    .removebtn{background:#fefefe; border:solid .02rem #eee; margin-top: .6rem; padding: .2rem 0; text-align: center; font-size: .28rem; color: #999; border-radius: .1rem;}
+}
+.addCardBox{background: #fff; position: absolute; width: 100%; height: 100%; left: 0; top: 0;
+    .addCardTips{background-image: linear-gradient(90deg,rgba(255,151,76,.06),rgba(255,107,0,.06)); text-align: center; color: #666; font-size: .3rem; padding: .3rem 0}
+    .personType{display: flex; justify-content: flex-start; padding: .1rem .15rem .12rem .1rem; margin: .2rem .22rem; align-items: center; align-content: center; border-bottom: solid .02rem #eee; font-size: .3rem; color: #666;
+        .TypeboxName{width:1.5rem}
+        .TypeboxValue{flex: 1; position: relative;
+            input {height: .62rem; font-size:.36rem; width: 100%;}
+            em{position: absolute; right:0; top: 0; display: inline-block; background: #fff; padding: .05rem .2rem; color: #f60; border:solid .02rem #f60; border-radius: .5rem;}
+            em.default{background: #f3f3f3; border: solid .02rem #eee; color: #999;}
+        }
+    }
+    .addcardbtn{background: linear-gradient(#FF974C, #FF6B00); margin: .6rem .22rem .2rem .22rem;  padding: .2rem 0; text-align: center; font-size: .32rem; color: #fff; border-radius: .1rem;}
+    .agreetips{text-align: center; color: #999; line-height: .42rem;
+        span{color: #f60;}
+    }
+    .ruluedailog{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 5;
+        .dailogMsgBox{width: 80%; position: fixed; left: 10%; top: 50%; transform: translateY(-50%); background: $color_fff; border-radius: .1rem; position: relative; padding-bottom: .3rem;
+            .rulurTitle{text-align: center; padding: .5rem 0 .3rem 0; font-weight: bold; color: $color_333;}
+            .closeDailog{text-align:right; padding: .2rem .2rem; position: absolute; top: .1rem; right:.1rem;
+                span{display: inline-block; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+            }
+            .dailogMsgshow{padding: 0rem .2rem .2rem .2rem; max-height: 6.2rem; min-height: 1rem; overflow-y: scroll; color: $color_999; line-height: .4rem;}
+        }
+    }
+}
+
+
+/***医疗*****/
+.addmedicalBox{background: #fff; position: absolute; width: 100%; height: 100%; left: 0; top: 0;
+    .addCardTips{background-image: linear-gradient(90deg,rgba(255,151,76,.06),rgba(255,107,0,.06)); text-align: center; color: #666; font-size: .3rem; padding: .3rem .3rem; font-size: .26rem;}
+    .personType{display: flex; justify-content: flex-start; padding: .1rem .15rem .12rem .1rem; margin: .2rem .22rem; align-items: center; align-content: center; border-bottom: solid .02rem #eee; font-size: .3rem; color: #666;
+        .TypeboxName{width:1.6rem;
+            span{color: #f60; margin-right: .05rem;}
+        }
+        .TypeboxValue{flex: 1; position: relative;
+            input {height: .62rem; font-size:.36rem; width: 100%;}
+            em{position: absolute; right:0; top: 0; display: inline-block; background: #fff; padding: .05rem .2rem; color: #f60; border:solid .02rem #f60; border-radius: .5rem;}
+            em.default{background: #f3f3f3; border: solid .02rem #eee; color: #999;}
+        }
+    }
+    .addcardbtn{background: linear-gradient(#FF974C, #FF6B00); margin: .6rem .22rem .2rem .22rem;  padding: .2rem 0; text-align: center; font-size: .32rem; color: #fff; border-radius: .1rem;}
+    .agreetips{text-align: center; color: #999; line-height: .42rem;
+        span{color: #f60;}
+    }
+    .ruluedailog{background: rgba(0,0,0,.6); position: fixed; width: 100%; left: 0; top: 0; height: 100%; z-index: 5;
+        .dailogMsgBox{width: 80%; position: fixed; left: 10%; top: 50%; transform: translateY(-50%); background: $color_fff; border-radius: .1rem; position: relative; padding-bottom: .3rem;
+            .rulurTitle{text-align: center; padding: .5rem 0 .3rem 0; font-weight: bold; color: $color_333;}
+            .closeDailog{text-align:right; padding: .2rem .2rem; position: absolute; top: .1rem; right:.1rem;
+                span{display: inline-block; width: .32rem; height: .32rem; background: url(../images/close.png) center no-repeat; background-size: 80%;}
+            }
+            .dailogMsgshow{padding: 0rem .2rem .2rem .2rem; max-height: 6.2rem; min-height: 1rem; overflow-y: scroll; color: $color_999; line-height: .4rem;}
+        }
+    }
+}
+
+/***医院列表***/
+.hospitalCon{background: #fff; position: absolute; width: 100%; height: 100%; left: 0; top: 0;
+    .hospitalSeachBox{padding: 0 0 .2rem 0;
+        .searchMsg{display: flex; justify-content: flex-start; align-items: center; align-content: center; background: $color_f8; padding: .15rem .3rem; border-radius: .05rem;
+            .search_city{padding-right: .3rem; max-width: 30%;
+                a{color:$color_666;}
+            }
+            .search_date{display: flex; justify-content: flex-start; align-items: center; align-content: center; border-left: solid .03rem $color_eee; border-right: solid .03rem $color_eee; padding:0 .3rem; margin-right: .3rem; font-size: .24rem;
+                i{color: $color_999; margin-right: .1rem;}
+            }
+            .search_hotel{flex: 1;
+                .searchinput{background: none; height: .6rem; line-height: .6rem; width: 80%;font-size: .28rem; color: $color_666;}
+                .searchicon{display: inline-block;  width: .22rem; height: .22rem; background: url(../images/search.png) center no-repeat; background-size: 100%; margin-right: .1rem;}
+            }
+            .pulldown{display: inline-block;  width: .18rem;  height: .18rem;  background: url(../images/pulldown.png) center no-repeat; background-size: 90%; margin-left: .1rem;}
+        }
+    }
+    .hospitalMsgBox{border-bottom:solid .01rem #e6e6e6; padding: .25rem .3rem; background-image: url(../images/center_arrow.png);background-size: .2rem; background-repeat: no-repeat; background-position: 95% center;
+        .hospitalName{font-size: .28rem; font-weight: bold;}
+        .hospitalType{padding:.15rem .1rem ; font-size: .24rem; color: $color_f60}
+        .hospitalAddress{color: $color_999; font-size: .24rem; background: url(../images/vist.png) left center no-repeat; background-size: .3rem; padding-left: .35rem;}
+    }
+}

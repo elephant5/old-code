@@ -1,0 +1,4991 @@
+@charset "UTF-8";
+/**home **/
+.home .BusinessHome {
+  position: relative;
+  background: #fff;
+  margin: .2rem .3rem .4rem .3rem;
+  border-radius: .2rem;
+  box-shadow: 0 0.04rem 0.3rem #ddd;
+  overflow: hidden; }
+  .home .BusinessHome .businessImgBox {
+    position: relative; }
+    .home .BusinessHome .businessImgBox .business_logo {
+      padding: .2rem .3rem;
+      border-top: solid 0.1rem #f60; }
+      .home .BusinessHome .businessImgBox .business_logo img {
+        /*width: 3rem;*/
+        vertical-align: middle;
+        height: .6rem; }
+    .home .BusinessHome .businessImgBox .bannerImgBox {
+      height: 2.8rem;
+      overflow: hidden;
+      background: #eee;
+      margin: 0 .3rem;
+      border-radius: .2rem;
+      position: relative; }
+      .home .BusinessHome .businessImgBox .bannerImgBox img {
+        width: 100%;
+        display: block; }
+    .home .BusinessHome .businessImgBox .pictip {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.5);
+      padding: .03rem .1rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: .24rem;
+      display: none; }
+  .home .BusinessHome .businessMsgBox {
+    padding: .2rem .3rem;
+    position: relative; }
+    .home .BusinessHome .businessMsgBox .business_title {
+      font-weight: bold;
+      color: #333;
+      font-size: .29rem; }
+    .home .BusinessHome .businessMsgBox .business_rulue {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      padding-top: .2rem;
+      padding-bottom: .2rem; }
+      .home .BusinessHome .businessMsgBox .business_rulue p:first-child {
+        color: #999; }
+      .home .BusinessHome .businessMsgBox .business_rulue p:last-child {
+        color: #f60; }
+        .home .BusinessHome .businessMsgBox .business_rulue p:last-child img {
+          width: .2rem;
+          vertical-align: middle; }
+      .home .BusinessHome .businessMsgBox .business_rulue .showrulueDailog span {
+        display: inline-block;
+        width: .32rem;
+        height: .3rem;
+        background: url(../images/right.png) center no-repeat;
+        background-size: 100%;
+        vertical-align: middle; }
+    .home .BusinessHome .businessMsgBox .businessProBox {
+      border-top: solid .02rem #e6e6ee;
+      padding-top: .2rem; }
+      .home .BusinessHome .businessMsgBox .businessProBox .businessProlist {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        justify-items: center;
+        margin-bottom: .3rem; }
+        .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .businesspro_Name {
+          display: flex;
+          justify-content: flex-start; }
+          .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .businesspro_Name .businesspro_Icon {
+            display: inline-block;
+            width: .4rem;
+            height: .4rem;
+            margin-right: .1rem; }
+          .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .businesspro_Name .businesspro_Icon_buffet {
+            background: url(../images/gift/buffet.png) center no-repeat;
+            background-size: 90%; }
+          .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .businesspro_Name .businesspro_Icon_accom {
+            background: url(../images/gift/accom.png) center no-repeat;
+            background-size: 90%; }
+          .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .businesspro_Name .businesspro_Icon_gym {
+            background: url(../images/gift/gym.png) center no-repeat;
+            background-size: 90%; }
+          .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .businesspro_Name .businesspro_Icon_spa {
+            background: url(../images/gift/spa.png) center no-repeat;
+            background-size: 90%; }
+          .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .businesspro_Name .businesspro_Icon_tea {
+            background: url(../images/gift/tea.png) center no-repeat;
+            background-size: 90%; }
+          .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .businesspro_Name .businesspro_Icon_drink {
+            background: url(../images/gift/single-cup.png) center no-repeat;
+            background-size: 90%; }
+          .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .businesspro_Name .businesspro_Icon_setmenu {
+            background: url(../images/gift/set-mea.png) center no-repeat;
+            background-size: 90%; }
+          .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .businesspro_Name .businesspro_Icon_gift {
+            background: url(../images/gift/coupon.png) center no-repeat;
+            background-size: 90%; }
+          .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .businesspro_Name .businesspro_Icon_airportshuttle {
+            background: url(../images/gift/airportshuttle.png) center no-repeat;
+            background-size: 90%; }
+          .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .businesspro_Name .businesspro_Icon_viphall {
+            background: url(../images/gift/viphall.png) center no-repeat;
+            background-size: 90%; }
+          .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .businesspro_Name .businesspro_Icon_medical {
+            background: url(../images/gift/medical.png) center no-repeat;
+            background-size: 90%; }
+          .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .businesspro_Name .businesspro_Title span {
+            display: block;
+            color: #666;
+            font-size: .22rem; }
+        .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .btn_yuding {
+          display: inline-block;
+          border-radius: .4rem;
+          background: #f60;
+          color: #fff;
+          padding: .06rem .15rem; }
+        .home .BusinessHome .businessMsgBox .businessProBox .businessProlist .btn_yuding_y {
+          display: inline-block;
+          border-radius: .4rem;
+          background: #f3f3f3;
+          color: #ddd;
+          padding: .06rem .15rem; }
+      .home .BusinessHome .businessMsgBox .businessProBox .businessProlist:last-child {
+        margin-bottom: .2rem; }
+.home .ruluedailog {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 5; }
+  .home .ruluedailog .dailogMsgBox {
+    width: 80%;
+    position: fixed;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    border-radius: .1rem;
+    position: relative;
+    padding-bottom: .3rem; }
+    .home .ruluedailog .dailogMsgBox .rulurTitle {
+      text-align: center;
+      padding: .5rem 0 .3rem 0;
+      font-weight: bold;
+      color: #333; }
+    .home .ruluedailog .dailogMsgBox .closeDailog {
+      text-align: right;
+      padding: .2rem .2rem;
+      position: absolute;
+      top: .1rem;
+      right: .1rem; }
+      .home .ruluedailog .dailogMsgBox .closeDailog span {
+        display: inline-block;
+        width: .32rem;
+        height: .32rem;
+        background: url(../images/close.png) center no-repeat;
+        background-size: 80%; }
+    .home .ruluedailog .dailogMsgBox .dailogMsgshow {
+      padding: 0rem .2rem .2rem .2rem;
+      max-height: 6.2rem;
+      min-height: 1rem;
+      overflow-y: scroll;
+      color: #999;
+      line-height: .4rem; }
+.home .selectTypeDailog {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 5; }
+  .home .selectTypeDailog .dailogMsgBox {
+    width: 80%;
+    position: fixed;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    border-radius: .1rem;
+    position: relative;
+    padding-bottom: .3rem; }
+    .home .selectTypeDailog .dailogMsgBox .rulurTitle {
+      text-align: center;
+      padding: .5rem 0 .3rem 0;
+      font-weight: bold;
+      color: #333;
+      font-size: .3rem; }
+    .home .selectTypeDailog .dailogMsgBox .closeDailog {
+      text-align: right;
+      padding: .2rem .2rem;
+      position: absolute;
+      top: .1rem;
+      right: .1rem; }
+      .home .selectTypeDailog .dailogMsgBox .closeDailog span {
+        display: inline-block;
+        width: .32rem;
+        height: .32rem;
+        background: url(../images/close.png) center no-repeat;
+        background-size: 80%; }
+    .home .selectTypeDailog .dailogMsgBox .dailogMsgshow {
+      padding: .4rem .2rem .2rem .2rem;
+      max-height: 6.2rem;
+      min-height: 1rem;
+      overflow-y: scroll;
+      color: #999;
+      line-height: .4rem; }
+      .home .selectTypeDailog .dailogMsgBox .dailogMsgshow div {
+        text-align: center;
+        height: 1rem;
+        line-height: 1rem;
+        width: 80%;
+        margin: .3rem auto;
+        background: #f3f3f3;
+        border-radius: 1rem;
+        color: #333;
+        font-size: .3rem;
+        font-weight: bold; }
+      .home .selectTypeDailog .dailogMsgBox .dailogMsgshow div:first-child {
+        margin-top: 0; }
+      .home .selectTypeDailog .dailogMsgBox .dailogMsgshow div.curron {
+        background: #f60;
+        color: #fff; }
+.home .used, .home .cancelled, .home .expired, .home .invalid, .home .refunded, .home .booking_n {
+  opacity: .5;
+  position: relative; }
+.home .used:after {
+  content: '';
+  width: 1.3rem;
+  height: 1.3rem;
+  position: absolute;
+  right: .2rem;
+  top: 3.7rem;
+  background: url(../images/used.png) center no-repeat;
+  background-size: 100%; }
+.home .cancelled:after {
+  content: '';
+  width: 1.3rem;
+  height: 1.3rem;
+  position: absolute;
+  right: .2rem;
+  top: 3.7rem;
+  background: url(../images/cancelled.png) center no-repeat;
+  background-size: 100%; }
+.home .expired:after {
+  content: '';
+  width: 1.3rem;
+  height: 1.3rem;
+  position: absolute;
+  right: .2rem;
+  top: 3.7rem;
+  background: url(../images/expired.png) center no-repeat;
+  background-size: 100%; }
+.home .invalid:after {
+  content: '';
+  width: 1.3rem;
+  height: 1.3rem;
+  position: absolute;
+  right: .2rem;
+  top: 3.7rem;
+  background: url(../images/invalid.png) center no-repeat;
+  background-size: 100%; }
+.home .refunded:after {
+  content: '';
+  width: 1.3rem;
+  height: 1.3rem;
+  position: absolute;
+  right: .2rem;
+  top: 3.7rem;
+  background: url(../images/refunded.png) center no-repeat;
+  background-size: 100%; }
+.home .booking_n:after {
+  content: '';
+  width: 1.3rem;
+  height: 1.3rem;
+  position: absolute;
+  right: .2rem;
+  top: 3.7rem;
+  background: url(../images/booking_n.png) center no-repeat;
+  background-size: 100%; }
+
+/*推荐**/
+.recommendBox {
+  background: #fff;
+  padding: .2rem .3rem;
+  margin-top: .2rem;
+  margin: .2rem .3rem;
+  border-radius: .2rem;
+  box-shadow: 0 0.04rem 0.3rem #ddd; }
+  .recommendBox .recommendTitle {
+    text-align: center;
+    font-size: .28rem;
+    font-weight: bold;
+    margin: .2rem 0 .3rem 0; }
+    .recommendBox .recommendTitle span {
+      display: inline-block;
+      margin: 0 .1rem;
+      width: .4rem;
+      height: .25rem; }
+    .recommendBox .recommendTitle span:first-child {
+      background: url(../images/more_left.png) center no-repeat;
+      background-size: 100%; }
+    .recommendBox .recommendTitle span:last-child {
+      background: url(../images/more_right.png) center no-repeat;
+      background-size: 100%; }
+  .recommendBox .recommendProBox {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap; }
+    .recommendBox .recommendProBox .recommendProMsg {
+      width: 48%;
+      padding-bottom: .3rem; }
+      .recommendBox .recommendProBox .recommendProMsg .recommendProImg {
+        border-radius: .1rem;
+        overflow: hidden; }
+        .recommendBox .recommendProBox .recommendProMsg .recommendProImg span {
+          display: inline-block;
+          border-radius: .1rem;
+          overflow: hidden;
+          width: 1.86rem;
+          height: 1.86rem;
+          position: relative;
+          background: url(../images/pic.jpg) center no-repeat;
+          background-size: 100%; }
+      .recommendBox .recommendProBox .recommendProMsg .recommendProName {
+        height: .9rem;
+        font-size: .26rem; }
+      .recommendBox .recommendProBox .recommendProMsg .recommendProPrice {
+        font-size: .26rem; }
+        .recommendBox .recommendProBox .recommendProMsg .recommendProPrice span {
+          color: #f60;
+          font-size: .32rem;
+          margin-right: .1rem; }
+          .recommendBox .recommendProBox .recommendProMsg .recommendProPrice span i {
+            font-size: .26rem; }
+        .recommendBox .recommendProBox .recommendProMsg .recommendProPrice em {
+          text-decoration: line-through;
+          color: #666; }
+
+/*****首页底部****/
+.bottombar {
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 1rem;
+  background: #fff; }
+  .bottombar div {
+    flex: 1;
+    text-align: center;
+    font-size: .28rem;
+    color: #999; }
+    .bottombar div span {
+      display: inline-block;
+      width: .35rem;
+      height: .35rem;
+      vertical-align: middle;
+      margin-right: .15rem; }
+    .bottombar div span.index {
+      background: url(../images/center/home_n.png) center no-repeat;
+      background-size: 100%; }
+    .bottombar div span.myhome {
+      background: url(../images/center/my_n.png) center no-repeat;
+      background-size: 100%; }
+  .bottombar div.curron {
+    color: #333;
+    font-weight: bold; }
+    .bottombar div.curron span.index {
+      background: url(../images/center/home.png) center no-repeat;
+      background-size: 100%; }
+    .bottombar div.curron span.myhome {
+      background: url(../images/center/my.png) center no-repeat;
+      background-size: 100%; }
+
+/****产品搜索首页***/
+.body {
+  background: #fff; }
+
+/**住宿**/
+.accom_homeBox .bannerBox_room {
+  position: relative;
+  width: 100%;
+  padding-top: 2.8rem; }
+  .accom_homeBox .bannerBox_room img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%; }
+  .accom_homeBox .bannerBox_room .searchBox {
+    position: relative;
+    background: #fff;
+    margin: 0 .28rem;
+    border-radius: .1rem;
+    box-shadow: 0 .04rem 0.4rem #ddd;
+    padding: .3rem;
+    box-sizing: content-box; }
+    .accom_homeBox .bannerBox_room .searchBox .searchcity {
+      border-bottom: solid 0.02rem #f3f3f3;
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: .3rem; }
+      .accom_homeBox .bannerBox_room .searchBox .searchcity .vistcity a {
+        background: #fff;
+        background-image: url(../images/searchhotel.png);
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: .32rem .32rem;
+        height: .45rem;
+        line-height: .45rem;
+        padding-left: .45rem;
+        font-size: .3rem;
+        color: #333;
+        font-weight: bold; }
+      .accom_homeBox .bannerBox_room .searchBox .searchcity .mycity {
+        background: #fff;
+        background-image: url(../images/location.png);
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: .35rem .35rem;
+        height: .45rem;
+        padding-left: .4rem;
+        font-size: .29rem;
+        color: #666; }
+    .accom_homeBox .bannerBox_room .searchBox .searchDate {
+      padding-top: .3rem; }
+      .accom_homeBox .bannerBox_room .searchBox .searchDate .datebox {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center; }
+        .accom_homeBox .bannerBox_room .searchBox .searchDate .datebox div:nth-of-type(1) {
+          width: 40%; }
+        .accom_homeBox .bannerBox_room .searchBox .searchDate .datebox div:nth-of-type(2) {
+          width: 20%;
+          color: #333;
+          text-align: left; }
+        .accom_homeBox .bannerBox_room .searchBox .searchDate .datebox div:nth-of-type(3) {
+          width: 40%; }
+        .accom_homeBox .bannerBox_room .searchBox .searchDate .datebox .dateNum {
+          display: inline-block;
+          white-space: nowrap; }
+      .accom_homeBox .bannerBox_room .searchBox .searchDate .perNumbox {
+        width: 26%;
+        border-left: solid 0.02rem #f3f3f3;
+        padding-left: .3rem; }
+      .accom_homeBox .bannerBox_room .searchBox .searchDate .searchtype {
+        color: #999;
+        font-size: .25rem;
+        display: inline-block;
+        margin-right: .1rem; }
+      .accom_homeBox .bannerBox_room .searchBox .searchDate .personSearchMsg {
+        color: #333;
+        font-size: .32rem;
+        padding-top: .1rem;
+        width: 100%;
+        background: transparent; }
+    .accom_homeBox .bannerBox_room .searchBox .searchhotelName {
+      padding-top: .1rem;
+      padding-bottom: .1rem; }
+      .accom_homeBox .bannerBox_room .searchBox .searchhotelName .inputhotelName {
+        color: #333;
+        font-size: .34rem;
+        width: 100%;
+        height: .8rem;
+        line-height: .8rem; }
+    .accom_homeBox .bannerBox_room .searchBox .searchBtn {
+      display: block;
+      height: .75rem;
+      line-height: .75rem;
+      width: 90%;
+      margin: .3rem auto 0 auto;
+      background: #f60;
+      color: #fff;
+      border-radius: .6rem;
+      font-size: .3rem; }
+.accom_homeBox .personNumbox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1; }
+  .accom_homeBox .personNumbox .page-picker-wrapper {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0; }
+  .accom_homeBox .personNumbox .selectbtn {
+    width: 80%;
+    background: #f60;
+    text-align: center;
+    margin: .2rem auto;
+    height: .8rem;
+    line-height: .8rem;
+    color: #fff;
+    border-radius: .5rem; }
+.accom_homeBox .calendarBox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 100; }
+  .accom_homeBox .calendarBox .calendarmsgshow {
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8rem; }
+  .accom_homeBox .calendarBox .closeDailogBox {
+    text-align: center;
+    padding: .2rem .2rem;
+    border-bottom: solid 0.02rem #f3f3f3; }
+    .accom_homeBox .calendarBox .closeDailogBox span {
+      display: inline-block;
+      position: absolute;
+      top: .3rem;
+      right: .3rem;
+      width: .32rem;
+      height: .32rem;
+      background: url(../images/close.png) center no-repeat;
+      background-size: 80%; }
+  .accom_homeBox .calendarBox .calendar-dialog {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding-bottom: .2rem;
+    background: #fff; }
+.accom_homeBox .calendar td.disabled span {
+  background-color: transparent !important;
+  color: #ccc !important; }
+
+/**公共**/
+.base_homeBox .bannerBox_base {
+  position: relative;
+  width: 100%;
+  padding-top: 2.8rem; }
+  .base_homeBox .bannerBox_base img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%; }
+  .base_homeBox .bannerBox_base .searchBox {
+    position: relative;
+    background: #fff;
+    margin: 0 .28rem;
+    border-radius: .1rem;
+    box-shadow: 0 0.04rem 0.4rem #ddd;
+    padding: .3rem;
+    box-sizing: content-box; }
+    .base_homeBox .bannerBox_base .searchBox .searchcity {
+      border-bottom: solid 0.02rem #f3f3f3;
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: .3rem; }
+      .base_homeBox .bannerBox_base .searchBox .searchcity .vistcity a {
+        background: #fff;
+        background-image: url(../images/searchhotel.png);
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: .32rem .32rem;
+        height: .45rem;
+        line-height: .45rem;
+        padding-left: .45rem;
+        font-size: .3rem;
+        color: #333;
+        font-weight: bold; }
+      .base_homeBox .bannerBox_base .searchBox .searchcity .mycity {
+        background: #fff;
+        background-image: url(../images/location.png);
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: .35rem .35rem;
+        height: .45rem;
+        padding-left: .4rem;
+        font-size: .29rem;
+        color: #666; }
+    .base_homeBox .bannerBox_base .searchBox .searchDate {
+      padding-top: .3rem; }
+      .base_homeBox .bannerBox_base .searchBox .searchDate div:first-child {
+        width: 60%; }
+      .base_homeBox .bannerBox_base .searchBox .searchDate div:last-child {
+        flex: 1; }
+      .base_homeBox .bannerBox_base .searchBox .searchDate .searchtype {
+        color: #999;
+        font-size: .25rem;
+        display: inline-block;
+        margin-right: .1rem; }
+      .base_homeBox .bannerBox_base .searchBox .searchDate .personSearchMsg {
+        color: #333;
+        font-size: .32rem;
+        padding-top: .1rem;
+        width: 100%;
+        background: transparent; }
+    .base_homeBox .bannerBox_base .searchBox .searchhotelName {
+      padding-top: .1rem;
+      padding-bottom: .1rem; }
+      .base_homeBox .bannerBox_base .searchBox .searchhotelName .inputhotelName {
+        color: #333;
+        font-size: .34rem;
+        width: 100%;
+        height: .8rem;
+        line-height: .8rem; }
+    .base_homeBox .bannerBox_base .searchBox .searchBtn {
+      display: block;
+      height: .75rem;
+      line-height: .75rem;
+      width: 90%;
+      margin: .3rem auto 0 auto;
+      background: #f60;
+      color: #fff;
+      border-radius: .6rem;
+      font-size: .3rem; }
+.base_homeBox .personNumbox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1; }
+  .base_homeBox .personNumbox .page-picker-wrapper {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0; }
+  .base_homeBox .personNumbox .selectbtn {
+    width: 80%;
+    background: #f60;
+    text-align: center;
+    margin: .2rem auto;
+    height: .8rem;
+    line-height: .8rem;
+    color: #fff;
+    border-radius: .5rem; }
+.base_homeBox .calendarBox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 100; }
+  .base_homeBox .calendarBox .calendarmsgshow {
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8rem; }
+  .base_homeBox .calendarBox .closeDailogBox {
+    text-align: center;
+    padding: .2rem .2rem;
+    border-bottom: solid 0.02rem #f3f3f3; }
+    .base_homeBox .calendarBox .closeDailogBox span {
+      display: inline-block;
+      position: absolute;
+      top: .3rem;
+      right: .3rem;
+      width: .32rem;
+      height: .32rem;
+      background: url(../images/close.png) center no-repeat;
+      background-size: 80%; }
+  .base_homeBox .calendarBox .calendar-dropdown {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding-bottom: .2rem;
+    background: #fff; }
+
+/***优惠券**/
+.coupon_homeBox .couponsearchBox {
+  padding: .1rem .3rem; }
+  .coupon_homeBox .couponsearchBox .searchinput {
+    border: none;
+    background: #f8f8f8 url(../images/search.png);
+    height: .64rem;
+    line-height: .64rem;
+    width: 93%;
+    border-radius: .06rem;
+    background-position: .15rem .15rem;
+    background-repeat: no-repeat;
+    background-size: .3rem;
+    padding-left: .55rem;
+    font-size: .28rem;
+    color: #666; }
+.coupon_homeBox .proCouponlist {
+  padding: .2rem 0;
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: solid 0.02rem #f3f3f3;
+  margin: 0 .3rem; }
+  .coupon_homeBox .proCouponlist .proCouponImg span {
+    display: block;
+    width: 2.2rem;
+    height: 1.8rem;
+    margin-right: .2rem;
+    overflow: hidden;
+    border-radius: .06rem; }
+    .coupon_homeBox .proCouponlist .proCouponImg span img {
+      width: 100%; }
+  .coupon_homeBox .proCouponlist .proCouponName {
+    flex-grow: 1; }
+    .coupon_homeBox .proCouponlist .proCouponName .proNameTitle {
+      font-size: .28rem;
+      font-weight: bold; }
+    .coupon_homeBox .proCouponlist .proCouponName .proNameTip {
+      color: #666; }
+  .coupon_homeBox .proCouponlist .recommendProPrice {
+    display: flex;
+    justify-content: space-between;
+    padding-top: .6rem; }
+    .coupon_homeBox .proCouponlist .recommendProPrice div:first-child span {
+      color: #f60;
+      font-size: .32rem;
+      margin-right: .2rem; }
+      .coupon_homeBox .proCouponlist .recommendProPrice div:first-child span i {
+        font-size: .26rem; }
+    .coupon_homeBox .proCouponlist .recommendProPrice div:first-child em {
+      text-decoration: line-through;
+      color: #666; }
+    .coupon_homeBox .proCouponlist .recommendProPrice div:last-child span {
+      display: inline-block;
+      background: #f60;
+      color: #fff;
+      padding: .02rem .1rem;
+      border-radius: .05rem; }
+
+/********* 单杯**********/
+.drink_homeBox .drinksearchContent .searchMsg {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  background: #f8f8f8;
+  padding: .15rem .15rem;
+  border-radius: .05rem; }
+  .drink_homeBox .drinksearchContent .searchMsg .search_city {
+    padding-right: .3rem;
+    max-width: 30%; }
+    .drink_homeBox .drinksearchContent .searchMsg .search_city a {
+      color: #666; }
+  .drink_homeBox .drinksearchContent .searchMsg .search_date {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    border-left: solid 0.03rem #eee;
+    border-right: solid 0.03rem #eee;
+    padding: 0 .3rem;
+    margin-right: .3rem;
+    font-size: .24rem; }
+    .drink_homeBox .drinksearchContent .searchMsg .search_date i {
+      color: #999;
+      margin-right: .1rem; }
+  .drink_homeBox .drinksearchContent .searchMsg .search_hotel {
+    flex: 1; }
+    .drink_homeBox .drinksearchContent .searchMsg .search_hotel .searchinput {
+      background: none;
+      height: .6rem;
+      line-height: .6rem;
+      width: 80%;
+      font-size: .28rem;
+      color: #666; }
+    .drink_homeBox .drinksearchContent .searchMsg .search_hotel .searchicon {
+      display: inline-block;
+      width: .22rem;
+      height: .22rem;
+      background: url(../images/search.png) center no-repeat;
+      background-size: 100%;
+      margin-right: .1rem; }
+  .drink_homeBox .drinksearchContent .searchMsg .pulldown {
+    display: inline-block;
+    width: .18rem;
+    height: .18rem;
+    background: url(../images/pulldown.png) center no-repeat;
+    background-size: 90%;
+    margin-left: .1rem; }
+.drink_homeBox .productlist {
+  background: #fff;
+  padding: .2rem 0; }
+  .drink_homeBox .productlist .productlistBox .productlistMsg {
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: solid 0.02rem #f8f8f8;
+    padding: .3rem .3rem; }
+    .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProImg {
+      border-radius: .1rem;
+      overflow: hidden;
+      width: 1.86rem;
+      height: 1.86rem;
+      padding-right: .2rem;
+      position: relative; }
+      .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProImg .baseproImgbg {
+        display: inline-block;
+        border-radius: .1rem;
+        overflow: hidden;
+        width: 1.86rem;
+        height: 1.86rem;
+        position: relative;
+        background-image: url(../images/pic1.jpg);
+        background-size: cover; }
+        .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProImg .baseproImgbg span {
+          display: inline-block;
+          border-radius: .1rem;
+          overflow: hidden;
+          width: 1.86rem;
+          height: 1.86rem;
+          position: relative; }
+    .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName {
+      font-size: .26rem;
+      flex: 1;
+      overflow: hidden; }
+      .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_name {
+        font-size: .28rem;
+        font-weight: bold;
+        color: #333; }
+      .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_istance {
+        color: #666;
+        padding: .1rem 0;
+        text-align: right;
+        display: flex;
+        justify-content: space-between; }
+      .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_tips span {
+        border: solid 0.02rem #f60;
+        color: #f60;
+        padding: .02rem .08rem;
+        font-size: .22rem;
+        border-radius: .05rem; }
+      .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_add {
+        color: #666;
+        padding: .1rem 0;
+        line-height: .42rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+        .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_add span {
+          display: inline-block;
+          width: .3rem;
+          height: .3rem;
+          margin-right: .1rem;
+          vertical-align: middle;
+          background: url(../images/vist.png) center no-repeat;
+          background-size: 90%; }
+      .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type {
+        background: #f8f8f8;
+        padding: .05rem .1rem;
+        color: #666; }
+        .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon {
+          display: inline-block;
+          width: .4rem;
+          height: .4rem;
+          margin-right: .1rem;
+          vertical-align: middle; }
+        .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_buffet {
+          background: url(../images/gift/buffet.png) center no-repeat;
+          background-size: 90%; }
+        .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_accom {
+          background: url(../images/gift/accom.png) center no-repeat;
+          background-size: 90%; }
+        .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_gym {
+          background: url(../images/gift/gym.png) center no-repeat;
+          background-size: 90%; }
+        .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_spa {
+          background: url(../images/gift/spa.png) center no-repeat;
+          background-size: 90%; }
+        .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_tea {
+          background: url(../images/gift/tea.png) center no-repeat;
+          background-size: 90%; }
+        .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_setmenu {
+          background: url(../images/gift/set-mea.png) center no-repeat;
+          background-size: 90%; }
+        .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_drink {
+          background: url(../images/gift/single-cup.png) center no-repeat;
+          background-size: 90%; }
+        .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_gift {
+          background: url(../images/gift/coupon.png) center no-repeat;
+          background-size: 90%; }
+        .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_airportshuttle {
+          background: url(../images/gift/airportshuttle.png) center no-repeat;
+          background-size: 90%; }
+        .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_viphall {
+          background: url(../images/gift/viphall.png) center no-repeat;
+          background-size: 90%; }
+        .drink_homeBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_medical {
+          background: url(../images/gift/medical.png) center no-repeat;
+          background-size: 90%; }
+  .drink_homeBox .productlist .productlistBox .productlistMsg:last-child {
+    border-bottom: none;
+    padding-bottom: 0; }
+  .drink_homeBox .productlist .productlistBox .overStyle {
+    opacity: .5;
+    position: relative; }
+  .drink_homeBox .productlist .productlistBox .overStyle:after {
+    content: '';
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    right: .2rem;
+    top: .2rem;
+    background: url(../images/booking_n.png) center no-repeat;
+    background-size: 100%; }
+
+/**********热门***********/
+.hotrecommendContent .hotrecommendBox {
+  background: #fff;
+  padding: .2rem 0;
+  margin-top: .2rem; }
+  .hotrecommendContent .hotrecommendBox .recommendTitle {
+    text-align: center;
+    font-size: .28rem;
+    font-weight: bold;
+    margin: .2rem 0 .3rem 0; }
+    .hotrecommendContent .hotrecommendBox .recommendTitle span {
+      display: inline-block;
+      margin: 0 .1rem;
+      width: .4rem;
+      height: .25rem; }
+    .hotrecommendContent .hotrecommendBox .recommendTitle span:first-child {
+      background: url(../images/more_left.png) center no-repeat;
+      background-size: 100%; }
+    .hotrecommendContent .hotrecommendBox .recommendTitle span:last-child {
+      background: url(../images/more_right.png) center no-repeat;
+      background-size: 100%; }
+  .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg {
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: solid 0.02rem #f8f8f8;
+    padding: .3rem .3rem; }
+    .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProImg {
+      border-radius: .1rem;
+      overflow: hidden;
+      width: 1.86rem;
+      height: 1.86rem;
+      padding-right: .2rem;
+      position: relative; }
+      .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProImg .baseproImgbg {
+        display: inline-block;
+        border-radius: .1rem;
+        overflow: hidden;
+        width: 1.86rem;
+        height: 1.86rem;
+        position: relative;
+        background: url(../images/pic1.jpg) center no-repeat;
+        background-size: cover; }
+        .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProImg .baseproImgbg span {
+          display: inline-block;
+          border-radius: .1rem;
+          overflow: hidden;
+          width: 1.86rem;
+          height: 1.86rem;
+          position: relative; }
+    .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName {
+      font-size: .26rem;
+      flex: 1; }
+      .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_name {
+        font-size: .28rem;
+        font-weight: bold;
+        color: #333; }
+      .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_istance {
+        color: #666;
+        padding: .1rem 0;
+        text-align: right;
+        display: flex;
+        justify-content: space-between; }
+      .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_tips span {
+        border: solid 0.02rem #f60;
+        color: #f60;
+        padding: .02rem .08rem;
+        font-size: .22rem;
+        border-radius: .05rem; }
+      .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_add {
+        color: #666;
+        padding: .1rem 0; }
+      .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_type {
+        background: #f8f8f8;
+        padding: .05rem .1rem;
+        color: #666; }
+        .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_type .businesspro_Icon {
+          display: inline-block;
+          width: .4rem;
+          height: .4rem;
+          margin-right: .1rem;
+          vertical-align: middle; }
+        .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_type .businesspro_Icon_buffet {
+          background: url(../images/gift/buffet.png) center no-repeat;
+          background-size: 90%; }
+        .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_type .businesspro_Icon_accom {
+          background: url(../images/gift/accom.png) center no-repeat;
+          background-size: 90%; }
+        .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_type .businesspro_Icon_gym {
+          background: url(../images/gift/gym.png) center no-repeat;
+          background-size: 90%; }
+        .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_type .businesspro_Icon_spa {
+          background: url(../images/gift/spa.png) center no-repeat;
+          background-size: 90%; }
+        .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_type .businesspro_Icon_tea {
+          background: url(../images/gift/tea.png) center no-repeat;
+          background-size: 90%; }
+        .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_type .businesspro_Icon_drink {
+          background: url(../images/gift/single-cup.png) center no-repeat;
+          background-size: 90%; }
+        .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_type .businesspro_Icon_setmenu {
+          background: url(../images/gift/set-mea.png) center no-repeat;
+          background-size: 90%; }
+        .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_type .businesspro_Icon_gift {
+          background: url(../images/gift/coupon.png) center no-repeat;
+          background-size: 90%; }
+        .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_type .businesspro_Icon_airportshuttle {
+          background: url(../images/gift/airportshuttle.png) center no-repeat;
+          background-size: 90%; }
+        .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg .recommendProName .hotel_type .businesspro_Icon_viphall {
+          background: url(../images/gift/viphall.png) center no-repeat;
+          background-size: 90%; }
+  .hotrecommendContent .hotrecommendBox .recommendProBox .recommendProMsg:last-child {
+    border-bottom: none;
+    padding-bottom: 0; }
+  .hotrecommendContent .hotrecommendBox .recommendProBox .overStyle {
+    opacity: .5;
+    position: relative; }
+  .hotrecommendContent .hotrecommendBox .recommendProBox .overStyle:after {
+    content: '';
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    right: .2rem;
+    top: .2rem;
+    background: url(../images/booking_n.png) center no-repeat;
+    background-size: 100%; }
+
+/******产品列表********/
+.productlistBox .roomsearchContent .roomsearch {
+  padding: 0 .3rem;
+  border-bottom: solid 0.02rem #f3f3f3;
+  background: #fff;
+  padding: .1rem .3rem .2rem .3rem; }
+  .productlistBox .roomsearchContent .roomsearch .searchMsg {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    background: #f8f8f8;
+    padding: .15rem .15rem;
+    border-radius: .05rem; }
+    .productlistBox .roomsearchContent .roomsearch .searchMsg .search_city {
+      padding-right: .3rem;
+      max-width: 30%; }
+      .productlistBox .roomsearchContent .roomsearch .searchMsg .search_city a {
+        color: #666; }
+    .productlistBox .roomsearchContent .roomsearch .searchMsg .search_date {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      align-content: center;
+      border-left: solid 0.03rem #eee;
+      border-right: solid 0.03rem #eee;
+      padding: 0 .3rem;
+      margin-right: .3rem;
+      font-size: .24rem; }
+      .productlistBox .roomsearchContent .roomsearch .searchMsg .search_date i {
+        color: #999;
+        margin-right: .1rem; }
+    .productlistBox .roomsearchContent .roomsearch .searchMsg .search_hotel {
+      flex: 1; }
+      .productlistBox .roomsearchContent .roomsearch .searchMsg .search_hotel .searchinput {
+        background: none;
+        height: .6rem;
+        line-height: .6rem;
+        width: 80%;
+        font-size: .28rem;
+        color: #666; }
+      .productlistBox .roomsearchContent .roomsearch .searchMsg .search_hotel .searchicon {
+        display: inline-block;
+        width: .22rem;
+        height: .22rem;
+        background: url(../images/search.png) center no-repeat;
+        background-size: 100%;
+        margin-right: .1rem; }
+    .productlistBox .roomsearchContent .roomsearch .searchMsg .pulldown {
+      display: inline-block;
+      width: .18rem;
+      height: .18rem;
+      background: url(../images/pulldown.png) center no-repeat;
+      background-size: 90%;
+      margin-left: .1rem; }
+.productlistBox .roomsearchContent .calendarBox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 100; }
+  .productlistBox .roomsearchContent .calendarBox .calendarmsgshow {
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8rem; }
+  .productlistBox .roomsearchContent .calendarBox .closeDailogBox {
+    text-align: center;
+    padding: .2rem .2rem;
+    border-bottom: solid 0.02rem #f3f3f3; }
+    .productlistBox .roomsearchContent .calendarBox .closeDailogBox span {
+      display: inline-block;
+      position: absolute;
+      top: .3rem;
+      right: .3rem;
+      width: .32rem;
+      height: .32rem;
+      background: url(../images/close.png) center no-repeat;
+      background-size: 80%; }
+  .productlistBox .roomsearchContent .calendarBox .calendar-dialog {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding-bottom: .2rem;
+    background: #fff; }
+.productlistBox .basesearchContent .basesearch {
+  padding: 0 .3rem;
+  border-bottom: solid 0.02rem #f3f3f3;
+  background: #fff;
+  padding: .1rem .3rem .2rem .3rem; }
+  .productlistBox .basesearchContent .basesearch .searchTypelist {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    margin-bottom: .05rem; }
+    .productlistBox .basesearchContent .basesearch .searchTypelist div {
+      flex: 1;
+      text-align: center;
+      padding: .2rem 0;
+      color: #666;
+      position: relative; }
+    .productlistBox .basesearchContent .basesearch .searchTypelist div.curron {
+      color: #333;
+      font-weight: bold; }
+    .productlistBox .basesearchContent .basesearch .searchTypelist div.curron:after {
+      content: "";
+      position: absolute;
+      width: .5rem;
+      height: .04rem;
+      background: #f60;
+      left: 50%;
+      margin-left: -.25rem;
+      bottom: 0; }
+  .productlistBox .basesearchContent .basesearch .searchMsg {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    background: #f8f8f8;
+    padding: .15rem .15rem;
+    border-radius: .05rem; }
+    .productlistBox .basesearchContent .basesearch .searchMsg .search_city {
+      padding-right: .3rem;
+      max-width: 30%; }
+      .productlistBox .basesearchContent .basesearch .searchMsg .search_city a {
+        color: #666; }
+    .productlistBox .basesearchContent .basesearch .searchMsg .search_date {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      align-content: center;
+      border-left: solid 0.03rem #eee;
+      border-right: solid 0.03rem #eee;
+      padding: 0 .3rem;
+      margin-right: .3rem;
+      font-size: .24rem; }
+      .productlistBox .basesearchContent .basesearch .searchMsg .search_date i {
+        color: #999;
+        margin-right: .1rem; }
+    .productlistBox .basesearchContent .basesearch .searchMsg .search_hotel {
+      flex: 1; }
+      .productlistBox .basesearchContent .basesearch .searchMsg .search_hotel .searchinput {
+        background: none;
+        height: .6rem;
+        line-height: .6rem;
+        width: 80%;
+        font-size: .28rem;
+        color: #666; }
+      .productlistBox .basesearchContent .basesearch .searchMsg .search_hotel .searchicon {
+        display: inline-block;
+        width: .22rem;
+        height: .22rem;
+        background: url(../images/search.png) center no-repeat;
+        background-size: 100%;
+        margin-right: .1rem; }
+    .productlistBox .basesearchContent .basesearch .searchMsg .pulldown {
+      display: inline-block;
+      width: .18rem;
+      height: .18rem;
+      background: url(../images/pulldown.png) center no-repeat;
+      background-size: 90%;
+      margin-left: .1rem; }
+.productlistBox .basesearchContent .calendarBox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 100; }
+  .productlistBox .basesearchContent .calendarBox .calendarmsgshow {
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8rem; }
+  .productlistBox .basesearchContent .calendarBox .closeDailogBox {
+    text-align: center;
+    padding: .2rem .2rem;
+    border-bottom: solid 0.02rem #f3f3f3; }
+    .productlistBox .basesearchContent .calendarBox .closeDailogBox span {
+      display: inline-block;
+      position: absolute;
+      top: .3rem;
+      right: .3rem;
+      width: .32rem;
+      height: .32rem;
+      background: url(../images/close.png) center no-repeat;
+      background-size: 80%; }
+  .productlistBox .basesearchContent .calendarBox .calendar-dropdown {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding-bottom: .2rem;
+    background: #fff; }
+.productlistBox .productlist {
+  background: #fff;
+  padding: .2rem 0; }
+  .productlistBox .productlist .productlistBox .productlistMsg {
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: solid 0.02rem #f8f8f8;
+    padding: .3rem .3rem; }
+    .productlistBox .productlist .productlistBox .productlistMsg .recommendProImg {
+      border-radius: .1rem;
+      overflow: hidden;
+      width: 1.86rem;
+      height: 1.86rem;
+      padding-right: .2rem;
+      position: relative; }
+      .productlistBox .productlist .productlistBox .productlistMsg .recommendProImg .baseproImgbg {
+        display: inline-block;
+        border-radius: .1rem;
+        overflow: hidden;
+        width: 1.86rem;
+        height: 1.86rem;
+        position: relative;
+        background: url(../images/pic1.jpg) center no-repeat;
+        background-size: cover; }
+        .productlistBox .productlist .productlistBox .productlistMsg .recommendProImg .baseproImgbg span {
+          display: inline-block;
+          border-radius: .1rem;
+          overflow: hidden;
+          width: 1.86rem;
+          height: 1.86rem;
+          position: relative; }
+    .productlistBox .productlist .productlistBox .productlistMsg .recommendProName {
+      font-size: .26rem;
+      flex: 1;
+      overflow: hidden; }
+      .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_name {
+        font-size: .28rem;
+        font-weight: bold;
+        color: #333; }
+      .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_istance {
+        color: #666;
+        padding: .1rem 0;
+        text-align: right;
+        display: flex;
+        justify-content: space-between; }
+      .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_tips span {
+        border: solid 0.02rem #f60;
+        color: #f60;
+        padding: .02rem .08rem;
+        font-size: .22rem;
+        border-radius: .05rem; }
+      .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_add {
+        color: #666;
+        padding: .1rem 0;
+        line-height: .42rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+        .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_add span {
+          display: inline-block;
+          width: .3rem;
+          height: .3rem;
+          margin-right: .1rem;
+          vertical-align: middle;
+          background: url(../images/vist.png) center no-repeat;
+          background-size: 90%; }
+      .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type {
+        background: #f8f8f8;
+        padding: .05rem .1rem;
+        color: #666; }
+        .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon {
+          display: inline-block;
+          width: .4rem;
+          height: .4rem;
+          margin-right: .1rem;
+          vertical-align: middle; }
+        .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_buffet {
+          background: url(../images/gift/buffet.png) center no-repeat;
+          background-size: 90%; }
+        .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_accom {
+          background: url(../images/gift/accom.png) center no-repeat;
+          background-size: 90%; }
+        .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_gym {
+          background: url(../images/gift/gym.png) center no-repeat;
+          background-size: 90%; }
+        .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_spa {
+          background: url(../images/gift/spa.png) center no-repeat;
+          background-size: 90%; }
+        .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_tea {
+          background: url(../images/gift/tea.png) center no-repeat;
+          background-size: 90%; }
+        .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_drink {
+          background: url(../images/gift/single-cup.png) center no-repeat;
+          background-size: 90%; }
+        .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_setmenu {
+          background: url(../images/gift/set-mea.png) center no-repeat;
+          background-size: 90%; }
+        .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_gift {
+          background: url(../images/gift/coupon.png) center no-repeat;
+          background-size: 90%; }
+        .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_airportshuttle {
+          background: url(../images/gift/airportshuttle.png) center no-repeat;
+          background-size: 90%; }
+        .productlistBox .productlist .productlistBox .productlistMsg .recommendProName .hotel_type .businesspro_Icon_viphall {
+          background: url(../images/gift/viphall.png) center no-repeat;
+          background-size: 90%; }
+  .productlistBox .productlist .productlistBox .productlistMsg:last-child {
+    border-bottom: none;
+    padding-bottom: 0; }
+  .productlistBox .productlist .productlistBox .overStyle {
+    opacity: .5;
+    position: relative; }
+  .productlistBox .productlist .productlistBox .overStyle:after {
+    content: '';
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    right: .2rem;
+    top: .2rem;
+    background: url(../images/booking_n.png) center no-repeat;
+    background-size: 100%; }
+
+/***热门城市**********/
+.citylist {
+  /* 搜索结果 */ }
+  .citylist .fix-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 3.1rem;
+    background: #fff; }
+  .citylist .vistCity {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    padding: .05rem .2rem .15rem .1rem;
+    padding: .3rem .2rem .1rem .1rem;
+    border-bottom: solid 0.02rem #ddd;
+    margin-bottom: .1rem; }
+    .citylist .vistCity .vistcityName {
+      font-weight: bold;
+      margin: 0 .2rem;
+      font-size: .32rem;
+      color: #333;
+      font-weight: bold;
+      background: url(../images/pin.png) left center no-repeat;
+      background-size: .3rem;
+      display: inline-block;
+      padding-left: .5rem; }
+    .citylist .vistCity .vistcityTip {
+      color: #999; }
+    .citylist .vistCity .allcity {
+      color: #666; }
+      .citylist .vistCity .allcity span {
+        display: inline-block;
+        border-radius: .3rem;
+        border: solid 0.02rem #ddd;
+        padding: .05rem .2rem; }
+  .citylist .selectCitytitle {
+    background: #fff;
+    padding: .1rem 0 .1rem .2rem;
+    color: #999; }
+  .citylist .hotCityContent {
+    display: flex;
+    justify-content: space-between;
+    padding: .05rem .1rem; }
+  .citylist .hotCityContent span {
+    flex: 1;
+    text-align: center;
+    border: solid 0.02rem #fff;
+    box-sizing: border-box;
+    margin: .05rem;
+    border-radius: .05rem; }
+  .citylist .list {
+    position: fixed;
+    width: 100%;
+    height: 20rem;
+    margin-top: 3.1rem;
+    overflow: scroll;
+    border-top: 0.02 solid #f3f3f3;
+    z-index: 9; }
+  .citylist .list-letter {
+    line-height: 0.5rem;
+    padding: 0 0.2rem; }
+  .citylist .list-city {
+    line-height: 0.9rem;
+    padding: 0 0.2rem;
+    background: #fff; }
+    .citylist .list-city li {
+      font-size: 0.28rem;
+      border-bottom: 0.02rem solid #ddd; }
+  .citylist .search-list {
+    position: fixed;
+    width: 100%;
+    height: 90vh;
+    padding-bottom: 5vh;
+    margin-top: 1.8rem;
+    background: #fff;
+    z-index: 10;
+    overflow: scroll;
+    font-size: 0.26rem; }
+    .citylist .search-list div {
+      line-height: 0.9rem;
+      padding: 0 0.2rem;
+      border-top: 0.02rem solid #eee;
+      border-bottom: 0.02rem solid #eee; }
+  .citylist .letter-nav {
+    position: fixed;
+    right: 0.1rem;
+    bottom: .5rem;
+    z-index: 9;
+    color: #f60;
+    font-weight: bold; }
+    .citylist .letter-nav div {
+      width: 0.5rem;
+      height: 0.35rem;
+      text-align: center;
+      line-height: 0.35rem; }
+
+/*******产口展示**********/
+.productlistshowBox .proMsgshowBox {
+  background: #fff;
+  margin-bottom: .2rem; }
+  .productlistshowBox .proMsgshowBox .bannerBox {
+    width: 100%;
+    overflow: hidden; }
+    .productlistshowBox .proMsgshowBox .bannerBox .mint-swipe {
+      height: 4.2rem;
+      color: #fff;
+      text-align: center; }
+    .productlistshowBox .proMsgshowBox .bannerBox .mint-swipe-item {
+      line-height: 4.2rem; }
+    .productlistshowBox .proMsgshowBox .bannerBox .slide1 {
+      background: url(../images/pic1.jpg) center no-repeat;
+      background-size: cover; }
+      .productlistshowBox .proMsgshowBox .bannerBox .slide1 img {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%); }
+  .productlistshowBox .proMsgshowBox .proMsgshow {
+    padding: .2rem .3rem; }
+    .productlistshowBox .proMsgshowBox .proMsgshow .proMsgName {
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      align-items: center; }
+      .productlistshowBox .proMsgshowBox .proMsgshow .proMsgName .hotelName {
+        font-size: .32rem;
+        color: #333;
+        font-weight: bold; }
+      .productlistshowBox .proMsgshowBox .proMsgshow .proMsgName .hotelNameTip {
+        font-size: .3rem;
+        color: #333;
+        padding: .1rem 0; }
+      .productlistshowBox .proMsgshowBox .proMsgshow .proMsgName .hoteCity {
+        color: #f60; }
+    .productlistshowBox .proMsgshowBox .proMsgshow .recommendProPrice {
+      display: flex;
+      justify-content: space-between;
+      padding-top: .1rem; }
+      .productlistshowBox .proMsgshowBox .proMsgshow .recommendProPrice div:first-child span {
+        color: #f60;
+        font-size: .32rem;
+        margin-right: .2rem; }
+        .productlistshowBox .proMsgshowBox .proMsgshow .recommendProPrice div:first-child span i {
+          font-size: .26rem; }
+      .productlistshowBox .proMsgshowBox .proMsgshow .recommendProPrice div:first-child em {
+        text-decoration: line-through;
+        color: #666; }
+      .productlistshowBox .proMsgshowBox .proMsgshow .recommendProPrice div:last-child span {
+        display: inline-block;
+        background: #f60;
+        color: #fff;
+        padding: .02rem .1rem;
+        border-radius: .05rem; }
+    .productlistshowBox .proMsgshowBox .proMsgshow .hotel_add {
+      padding-top: .05rem;
+      color: #999;
+      font-size: .28rem; }
+      .productlistshowBox .proMsgshowBox .proMsgshow .hotel_add span {
+        display: inline-block;
+        width: .3rem;
+        height: .3rem;
+        margin-right: .1rem;
+        vertical-align: middle;
+        background: url(../images/vist.png) center no-repeat;
+        background-size: 90%; }
+.productlistshowBox .proMsgWord {
+  background: #fff;
+  margin-bottom: .2rem;
+  padding: .2rem .3rem; }
+  .productlistshowBox .proMsgWord .proMsgType {
+    font-size: .28rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: .1rem; }
+  .productlistshowBox .proMsgWord .product_roomBox {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    /*align-items: center;*/
+    padding: .2rem 0;
+    border-bottom: solid 0.02rem #f3f3f3; }
+    .productlistshowBox .proMsgWord .product_roomBox .product_roomMsg {
+      display: flex;
+      justify-content: flex-start;
+      flex: 1;
+      align-content: center;
+      align-items: center; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsg .product_roomMsgPic {
+        width: 1.6rem;
+        height: 1.6rem;
+        padding-right: .2rem; }
+        .productlistshowBox .proMsgWord .product_roomBox .product_roomMsg .product_roomMsgPic span {
+          display: inline-block;
+          background: #f3f3f3;
+          width: 1.6rem;
+          height: 1.6rem;
+          overflow: hidden;
+          border-radius: .04rem; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsg .product_roomMsgName p:nth-of-type(1) {
+        font-size: .29rem;
+        color: #333;
+        font-weight: bold; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsg .product_roomMsgName p:nth-of-type(2) {
+        font-size: .24rem;
+        color: #999;
+        padding: .2rem 0; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsg .product_roomMsgName p:nth-of-type(3) {
+        font-size: .24rem;
+        color: #999; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsg .product_roomMsgName p:nth-of-type(4) {
+        font-size: .24rem;
+        color: #999; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsg .product_roomMsgName p:nth-of-type(5) {
+        font-size: .24rem;
+        color: #999; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsg .product_roomMsgName p:nth-of-type(6) {
+        font-size: .24rem;
+        color: #999; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsg .product_roomMsgName p:nth-of-type(7) {
+        font-size: .24rem;
+        color: #999; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsg .product_roomMsgName p:nth-of-type(8) {
+        font-size: .24rem;
+        color: #999; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsg .product_roomMsgName p:nth-of-type(9) {
+        font-size: .24rem;
+        color: #999; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsg .product_roomMsgName p:nth-of-type(10) {
+        font-size: .24rem;
+        color: #999; }
+    .productlistshowBox .proMsgWord .product_roomBox .product_roomMsgPrice {
+      width: 20%;
+      text-align: right;
+      position: relative; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsgPrice .priceTips {
+        position: relative; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsgPrice .priceTips span {
+        display: inline-block;
+        border: solid 0.02rem #f60;
+        padding: .02rem .1rem;
+        color: #f60;
+        font-size: .24rem;
+        border-radius: .05rem;
+        position: absolute;
+        right: 0;
+        white-space: nowrap; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsgPrice .priceRad span {
+        display: inline-block;
+        border: solid 0.02rem #f60;
+        background: #f60;
+        color: #fff;
+        margin: .3rem 0 .2rem 0;
+        padding: 0rem .05rem;
+        font-size: .22rem;
+        border-radius: .05rem; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsgPrice .pricerMoney span {
+        margin-right: .2rem;
+        color: #999;
+        font-size: .24rem; }
+      .productlistshowBox .proMsgWord .product_roomBox .product_roomMsgPrice .pricerMoney em {
+        font-size: .32rem;
+        color: #f60; }
+  .productlistshowBox .proMsgWord .productbaseMsg {
+    color: #666;
+    font-size: .28rem;
+    padding: 0 0;
+    line-height: .4rem; }
+    .productlistshowBox .proMsgWord .productbaseMsg p {
+      padding: .1rem 0; }
+    .productlistshowBox .proMsgWord .productbaseMsg .productsTipsBox {
+      display: flex;
+      justify-content: flex-start;
+      align-content: center;
+      padding: .1rem 0; }
+      .productlistshowBox .proMsgWord .productbaseMsg .productsTipsBox div:nth-of-type(1) {
+        width: 1.6rem;
+        color: #999; }
+      .productlistshowBox .proMsgWord .productbaseMsg .productsTipsBox div:nth-of-type(2) {
+        flex: 1; }
+    .productlistshowBox .proMsgWord .productbaseMsg img {
+      width: 100%; }
+    .productlistshowBox .proMsgWord .productbaseMsg .lastline {
+      border-top: solid 0.02rem #f3f3f3;
+      margin-top: .2rem;
+      padding-top: .2rem; }
+  .productlistshowBox .proMsgWord .product_roomBox:last-child {
+    border-bottom: none; }
+  .productlistshowBox .proMsgWord .menuDiv {
+    white-space: nowrap;
+    overflow-x: scroll;
+    height: 1.8rem; }
+    .productlistshowBox .proMsgWord .menuDiv span {
+      display: inline-block;
+      width: 2.56rem;
+      height: 1.68rem;
+      margin-right: .2rem;
+      border-radius: .04rem;
+      overflow: hidden; }
+.productlistshowBox .proMsgWord:last-child {
+  margin-bottom: 2rem; }
+.productlistshowBox .searchBar {
+  background: #fff; }
+  .productlistshowBox .searchBar .isFixed {
+    position: fixed;
+    top: 0;
+    z-index: 12;
+    background: #fff; }
+  .productlistshowBox .searchBar ul {
+    width: 100%;
+    height: .8rem;
+    line-height: .8rem;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 0.02rem solid #ddd;
+    overflow-x: scroll; }
+    .productlistshowBox .searchBar ul li {
+      font-size: 0.28rem;
+      text-align: center;
+      white-space: nowrap;
+      padding: .1rem .3rem;
+      color: #666;
+      position: relative; }
+    .productlistshowBox .searchBar ul li.active {
+      color: #333;
+      font-weight: bold; }
+    .productlistshowBox .searchBar ul li.active:before {
+      content: "";
+      position: absolute;
+      width: .5rem;
+      height: .04rem;
+      background: #f60;
+      left: 50%;
+      margin-left: -.25rem;
+      bottom: 0; }
+
+/****预下单**/
+.buttonBox {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  padding: .3rem 0;
+  border-top: solid 0.02rem #f3f3f3;
+  box-shadow: 0.2rem 0.2rem 0.2rem #f60; }
+  .buttonBox .button_buy {
+    height: .75rem;
+    line-height: .75rem;
+    width: 90%;
+    margin: 0 auto;
+    background: #f60;
+    color: #fff;
+    border-radius: .6rem; }
+  .buttonBox .disable_buy {
+    height: .75rem;
+    line-height: .75rem;
+    width: 90%;
+    margin: 0 auto;
+    background: #f8f8f8;
+    color: #999;
+    border-radius: .6rem; }
+
+/***住宿详情页搜索***/
+.roomdetailsearchBox .searchBox {
+  position: relative;
+  background: #fff;
+  border-radius: .1rem;
+  padding: .3rem .3rem 0 .3rem;
+  box-sizing: content-box; }
+  .roomdetailsearchBox .searchBox .searchcity {
+    display: flex;
+    justify-content: space-between;
+    background: #eee;
+    border: solid 0.02rem #eee;
+    border-radius: .5rem;
+    padding: 0 .3rem; }
+    .roomdetailsearchBox .searchBox .searchcity .vistcity {
+      background: #fff;
+      background-image: url(../images/searchhotel.png);
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: .35rem .35rem;
+      height: .45rem;
+      padding-left: .45rem;
+      font-size: .3rem;
+      color: #333;
+      font-weight: bold; }
+    .roomdetailsearchBox .searchBox .searchcity .mycity {
+      background: #fff;
+      background-image: url(../images/location.png);
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: .35rem .35rem;
+      height: .45rem;
+      padding-left: .4rem;
+      font-size: .29rem;
+      color: #666; }
+  .roomdetailsearchBox .searchBox .searchDate {
+    padding-top: .2rem;
+    padding-bottom: .2rem; }
+    .roomdetailsearchBox .searchBox .searchDate .datebox {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      align-content: center; }
+      .roomdetailsearchBox .searchBox .searchDate .datebox div:nth-of-type(1) {
+        width: 40%; }
+      .roomdetailsearchBox .searchBox .searchDate .datebox div:nth-of-type(2) {
+        color: #333;
+        padding-right: .3rem; }
+      .roomdetailsearchBox .searchBox .searchDate .datebox div:nth-of-type(3) {
+        width: 40%;
+        background-image: url(../images/center_arrow.png);
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: .2rem; }
+      .roomdetailsearchBox .searchBox .searchDate .datebox .dateNum {
+        display: inline-block;
+        white-space: nowrap;
+        padding-right: .3rem; }
+    .roomdetailsearchBox .searchBox .searchDate .perNumbox {
+      width: 26%;
+      border-left: solid 0.02rem #f3f3f3;
+      padding-left: .3rem; }
+    .roomdetailsearchBox .searchBox .searchDate .searchtype {
+      color: #999;
+      font-size: .27rem;
+      display: inline-block; }
+    .roomdetailsearchBox .searchBox .searchDate .personSearchMsg {
+      color: #333;
+      font-size: .32rem;
+      padding-top: .1rem;
+      width: 100%;
+      background: transparent; }
+  .roomdetailsearchBox .searchBox .searchhotelName {
+    padding-top: .3rem; }
+    .roomdetailsearchBox .searchBox .searchhotelName .inputhotelName {
+      color: #333;
+      font-size: .30rem;
+      width: 100%; }
+  .roomdetailsearchBox .searchBox .searchBtn {
+    display: block;
+    height: .75rem;
+    line-height: .75rem;
+    width: 90%;
+    margin: .3rem auto 0 auto;
+    background: #f60;
+    color: #fff;
+    border-radius: .6rem;
+    font-size: .3rem; }
+.roomdetailsearchBox .calendarBox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 100; }
+  .roomdetailsearchBox .calendarBox .calendarmsgshow {
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8rem; }
+  .roomdetailsearchBox .calendarBox .closeDailogBox {
+    text-align: center;
+    padding: .2rem .2rem;
+    border-bottom: solid 0.02rem #f3f3f3; }
+    .roomdetailsearchBox .calendarBox .closeDailogBox span {
+      display: inline-block;
+      position: absolute;
+      top: .3rem;
+      right: .3rem;
+      width: .32rem;
+      height: .32rem;
+      background: url(../images/close.png) center no-repeat;
+      background-size: 80%; }
+  .roomdetailsearchBox .calendarBox .calendar-dialog {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding-bottom: .2rem;
+    background: #fff; }
+
+/********预约下单*******/
+.shoppingBox .shoppingBox {
+  background: #fff;
+  padding: 0.2rem 0.3rem 0.1rem 0.3rem;
+  position: relative;
+  margin-bottom: 0.3rem; }
+  .shoppingBox .shoppingBox .inputlist {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    color: #999;
+    align-content: center;
+    align-items: center;
+    border-bottom: solid 0.02rem #f3f3f3;
+    padding: 0.1rem 0;
+    margin: 0.1rem 0; }
+    .shoppingBox .shoppingBox .inputlist div:first-child {
+      margin-right: 0.1rem; }
+    .shoppingBox .shoppingBox .inputlist div:last-child {
+      flex-grow: 1; }
+      .shoppingBox .shoppingBox .inputlist div:last-child .text_input {
+        height: 0.52rem;
+        line-height: 0.52rem;
+        width: 100%; }
+      .shoppingBox .shoppingBox .inputlist div:last-child .num_input {
+        width: 0.8rem;
+        height: 0.52rem;
+        line-height: 0.52rem;
+        background: #f3f3f3;
+        text-align: center; }
+      .shoppingBox .shoppingBox .inputlist div:last-child .cut, .shoppingBox .shoppingBox .inputlist div:last-child .add {
+        display: inline-block;
+        width: 0.6rem;
+        height: 0.52rem;
+        vertical-align: middle; }
+      .shoppingBox .shoppingBox .inputlist div:last-child .cut {
+        background: url(../images/cut.png) center no-repeat;
+        margin-right: 0.1rem;
+        background-size: 0.6rem; }
+      .shoppingBox .shoppingBox .inputlist div:last-child .add {
+        background: url(../images/add.png) center no-repeat;
+        margin-left: 0.1rem;
+        background-size: 0.6rem; }
+  .shoppingBox .shoppingBox .inputlist:last-child {
+    border-bottom: none; }
+  .shoppingBox .shoppingBox .couponTitle {
+    font-size: .28rem;
+    color: #333; }
+  .shoppingBox .shoppingBox .couponlist {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: #666;
+    align-content: center;
+    align-items: center;
+    border-bottom: solid 0.02rem #f3f3f3;
+    padding: 0.1rem 0;
+    margin: 0.1rem 0; }
+    .shoppingBox .shoppingBox .couponlist span {
+      background: url(../images/center_arrow.png) right center no-repeat;
+      display: inline-block;
+      padding-right: .2rem;
+      background-size: .14rem; }
+  .shoppingBox .shoppingBox .couponlist:last-child {
+    border-bottom: none; }
+.shoppingBox .shoppingnode {
+  background: #fff;
+  position: relative; }
+  .shoppingBox .shoppingnode .shoppingnodeBox {
+    padding: 0.2rem 0.3rem 0.1rem 0.3rem;
+    position: relative;
+    margin-bottom: 0.3rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center; }
+    .shoppingBox .shoppingnode .shoppingnodeBox .titleDiv {
+      font-size: .28rem;
+      color: #999;
+      width: 1.4rem; }
+    .shoppingBox .shoppingnode .shoppingnodeBox .textareaBox {
+      position: relative; }
+      .shoppingBox .shoppingnode .shoppingnodeBox .textareaBox span {
+        display: inline-block;
+        color: #666;
+        padding: .05rem .2rem;
+        border: solid 0.02rem #ddd;
+        margin: 0 .1rem;
+        height: .4rem;
+        line-height: .4rem;
+        border-radius: .3rem; }
+      .shoppingBox .shoppingnode .shoppingnodeBox .textareaBox span.curron {
+        border: solid 0.02rem #f60; }
+  .shoppingBox .shoppingnode p {
+    position: absolute;
+    bottom: -.3rem;
+    left: 0;
+    background: #fff0b7;
+    color: #f60;
+    width: 96%;
+    text-align: left;
+    padding: .05rem 0 .05rem .3rem;
+    overflow: hidden; }
+  .shoppingBox .shoppingnode .textarea {
+    width: 90%;
+    height: 1rem;
+    padding: 0.2rem;
+    margin-bottom: 0.3rem;
+    display: block;
+    font-size: .28rem; }
+.shoppingBox .inputlist {
+  display: flex;
+  width: 100%;
+  position: relative;
+  justify-content: space-between;
+  color: #999;
+  align-content: center;
+  align-items: center; }
+  .shoppingBox .inputlist .rulurserverbox {
+    display: inline-block;
+    width: .8rem;
+    height: .4rem;
+    background: #f60;
+    border-radius: .2rem;
+    position: relative; }
+    .shoppingBox .inputlist .rulurserverbox span {
+      display: inline-block;
+      width: 50%;
+      height: .38rem;
+      border-radius: .2rem;
+      position: absolute;
+      left: .02rem;
+      top: .01rem;
+      background: #fff; }
+  .shoppingBox .inputlist .disableshow {
+    display: inline-block;
+    width: .8rem;
+    height: .4rem;
+    background: #eee;
+    border-radius: .2rem;
+    position: relative; }
+    .shoppingBox .inputlist .disableshow span {
+      display: inline-block;
+      width: 50%;
+      height: .38rem;
+      border-radius: .2rem;
+      position: absolute;
+      right: .02rem;
+      top: .01rem;
+      background: #fff; }
+
+.disable {
+  display: none; }
+
+/***住宿下单**/
+.shoppingFrombox_accom .shoppingTop_accom {
+  background: url(../images/rectangle.svg) left top no-repeat;
+  background-size: 100%;
+  position: relative;
+  margin-bottom: 0.3rem;
+  padding-top: 0.3rem; }
+  .shoppingFrombox_accom .shoppingTop_accom .shoppingMsgBox {
+    width: 92%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 0.1rem; }
+    .shoppingFrombox_accom .shoppingTop_accom .shoppingMsgBox .shoppingMsg_Name {
+      padding: 0.3rem 0.3rem 0.2rem 0.3rem;
+      font-size: 0.3rem;
+      color: #333;
+      font-weight: bold; }
+    .shoppingFrombox_accom .shoppingTop_accom .shoppingMsgBox .shoppingdateBox {
+      padding: 0.05rem 0.3rem 0.1rem 0.3rem;
+      color: #999; }
+      .shoppingFrombox_accom .shoppingTop_accom .shoppingMsgBox .shoppingdateBox .dateshow {
+        color: #333;
+        font-size: 0.32rem; }
+      .shoppingFrombox_accom .shoppingTop_accom .shoppingMsgBox .shoppingdateBox .dataNumshow {
+        display: inline-block;
+        padding: 0.02rem 0.2rem;
+        border-radius: 0.3rem;
+        border: solid 0.02rem #f3f3f3;
+        margin: 0 0.2rem; }
+    .shoppingFrombox_accom .shoppingTop_accom .shoppingMsgBox .shopoingroomType {
+      padding: 0.05rem 0.3rem 0.1rem 0.3rem;
+      color: #333; }
+    .shoppingFrombox_accom .shoppingTop_accom .shoppingMsgBox .shoppingMsg_tips {
+      padding: 0 0.3rem 0.3rem 0.3rem;
+      color: #f60;
+      line-height: 0.42rem; }
+      .shoppingFrombox_accom .shoppingTop_accom .shoppingMsgBox .shoppingMsg_tips .shoppingTip {
+        display: inline-block;
+        width: 0.3rem;
+        height: 0.3rem;
+        background: url(../images/tips.png) center no-repeat;
+        background-size: 100%;
+        vertical-align: middle;
+        margin-right: 0.05rem; }
+.shoppingFrombox_accom .shoppingBox_accom {
+  background: #fff;
+  padding: 0.2rem 0.3rem 0.1rem 0.3rem;
+  position: relative;
+  margin-bottom: 0.3rem; }
+  .shoppingFrombox_accom .shoppingBox_accom .inputlist {
+    display: flex;
+    width: 100%;
+    position: relative;
+    justify-content: flex-start;
+    color: #999;
+    align-content: center;
+    align-items: center;
+    border-bottom: solid 0.02rem #f3f3f3;
+    padding: 0.15rem 0;
+    margin: 0.15rem 0; }
+    .shoppingFrombox_accom .shoppingBox_accom .inputlist div:first-child {
+      margin-right: 0.1rem;
+      width: 1.4rem;
+      position: relative; }
+      .shoppingFrombox_accom .shoppingBox_accom .inputlist div:first-child .moreRoomtip {
+        position: absolute;
+        left: 5%;
+        top: -0.35rem;
+        font-size: 0.24rem;
+        color: #f60; }
+    .shoppingFrombox_accom .shoppingBox_accom .inputlist div:last-child {
+      flex: 1; }
+      .shoppingFrombox_accom .shoppingBox_accom .inputlist div:last-child .text_input {
+        height: 0.52rem;
+        line-height: 0.52rem;
+        width: 100%; }
+      .shoppingFrombox_accom .shoppingBox_accom .inputlist div:last-child .num_input {
+        width: 0.8rem;
+        height: 0.52rem;
+        line-height: 0.52rem;
+        background: #f3f3f3;
+        text-align: center; }
+      .shoppingFrombox_accom .shoppingBox_accom .inputlist div:last-child .roomNum {
+        color: #333;
+        margin-right: 0.1rem;
+        font-size: 0.33rem; }
+      .shoppingFrombox_accom .shoppingBox_accom .inputlist div:last-child .zjzType {
+        color: #333;
+        margin-right: 0.1rem;
+        font-size: 0.28rem; }
+      .shoppingFrombox_accom .shoppingBox_accom .inputlist div:last-child .nodetypeshow {
+        position: relative; }
+        .shoppingFrombox_accom .shoppingBox_accom .inputlist div:last-child .nodetypeshow span {
+          display: inline-block;
+          color: #666;
+          padding: .05rem .2rem;
+          border: solid 0.02rem #ddd;
+          margin: 0 .1rem;
+          height: .4rem;
+          line-height: .4rem;
+          border-radius: .3rem; }
+        .shoppingFrombox_accom .shoppingBox_accom .inputlist div:last-child .nodetypeshow span.curron {
+          border: solid 0.02rem #f60; }
+    .shoppingFrombox_accom .shoppingBox_accom .inputlist .moreDivTip {
+      background: url(../images/center_arrow.png) right center no-repeat;
+      background-size: 0.15rem; }
+    .shoppingFrombox_accom .shoppingBox_accom .inputlist .surebaseMsg span {
+      display: inline-block;
+      border-radius: .2rem;
+      padding: .02rem .25rem;
+      color: #999;
+      border: solid 0.02rem #ddd;
+      margin-right: .2rem; }
+    .shoppingFrombox_accom .shoppingBox_accom .inputlist .surebaseMsg span.curron {
+      background: rgba(255, 180, 68, 0.1);
+      color: #f60;
+      border: solid 0.02rem rgba(255, 180, 68, 0.1); }
+    .shoppingFrombox_accom .shoppingBox_accom .inputlist .bookIdNum, .shoppingFrombox_accom .shoppingBox_accom .inputlist .text_input {
+      font-size: .31rem; }
+  .shoppingFrombox_accom .shoppingBox_accom .inputlist:last-child {
+    border-bottom: none; }
+  .shoppingFrombox_accom .shoppingBox_accom .couponTitle {
+    font-size: .28rem;
+    color: #333; }
+  .shoppingFrombox_accom .shoppingBox_accom .couponlist {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: #666;
+    align-content: center;
+    align-items: center;
+    border-bottom: solid 0.02rem #f3f3f3;
+    padding: 0.1rem 0;
+    margin: 0.1rem 0; }
+  .shoppingFrombox_accom .shoppingBox_accom .couponlist:last-child {
+    border-bottom: none; }
+  .shoppingFrombox_accom .shoppingBox_accom .personZjbox {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1; }
+    .shoppingFrombox_accom .shoppingBox_accom .personZjbox .page-picker-wrapper {
+      background: #fff;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      bottom: 0; }
+    .shoppingFrombox_accom .shoppingBox_accom .personZjbox .selectbtn {
+      width: 80%;
+      background: #f60;
+      text-align: center;
+      margin: 0.2rem auto;
+      height: 0.8rem;
+      line-height: 0.8rem;
+      color: #fff;
+      border-radius: 0.5rem; }
+.shoppingFrombox_accom .personNumbox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1; }
+  .shoppingFrombox_accom .personNumbox .personNumboxmsgshow {
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4.5rem; }
+  .shoppingFrombox_accom .personNumbox .closeDailogBox {
+    text-align: center;
+    padding: .2rem .2rem;
+    border-bottom: solid 0.02rem #f3f3f3; }
+    .shoppingFrombox_accom .personNumbox .closeDailogBox span {
+      display: inline-block;
+      position: absolute;
+      top: .3rem;
+      right: .3rem;
+      width: .32rem;
+      height: .32rem;
+      background: url(../images/close.png) center no-repeat;
+      background-size: 80%; }
+  .shoppingFrombox_accom .personNumbox .page-picker-wrapper {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0; }
+  .shoppingFrombox_accom .personNumbox .selectbtn {
+    width: 80%;
+    background: #f60;
+    text-align: center;
+    margin: 0.2rem auto;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    color: #fff;
+    border-radius: 0.5rem; }
+.shoppingFrombox_accom .personZjzbox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1; }
+  .shoppingFrombox_accom .personZjzbox .Zjzboxmsgshow {
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4.5rem; }
+  .shoppingFrombox_accom .personZjzbox .closeDailogBox {
+    text-align: center;
+    padding: .2rem .2rem;
+    border-bottom: solid 0.02rem #f3f3f3; }
+    .shoppingFrombox_accom .personZjzbox .closeDailogBox span {
+      display: inline-block;
+      position: absolute;
+      top: .3rem;
+      right: .3rem;
+      width: .32rem;
+      height: .32rem;
+      background: url(../images/close.png) center no-repeat;
+      background-size: 80%; }
+  .shoppingFrombox_accom .personZjzbox .page-picker-wrapper {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0; }
+  .shoppingFrombox_accom .personZjzbox .selectbtn {
+    width: 80%;
+    background: #f60;
+    text-align: center;
+    margin: 0.2rem auto;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    color: #fff;
+    border-radius: 0.5rem; }
+
+/*****健身下单****/
+.shoppingFrombox_gym .shoppingTop_gym {
+  background: url(../images/rectangle.svg) left top no-repeat;
+  background-size: 100%;
+  position: relative;
+  margin-bottom: .3rem;
+  padding-top: .3rem; }
+  .shoppingFrombox_gym .shoppingTop_gym .shoppingMsgBox {
+    width: 92%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: .1rem; }
+    .shoppingFrombox_gym .shoppingTop_gym .shoppingMsgBox .shoppingMsg_Name {
+      padding: .3rem .3rem .1rem .3rem;
+      font-size: .3rem;
+      color: #333;
+      font-weight: bold; }
+    .shoppingFrombox_gym .shoppingTop_gym .shoppingMsgBox .shoppingdateBox {
+      padding: 0 .3rem .1rem .3rem;
+      color: #999; }
+      .shoppingFrombox_gym .shoppingTop_gym .shoppingMsgBox .shoppingdateBox .dateshow {
+        color: #333;
+        font-size: .32rem; }
+      .shoppingFrombox_gym .shoppingTop_gym .shoppingMsgBox .shoppingdateBox .dataNumshow {
+        display: inline-block;
+        padding: .02rem .2rem;
+        border-radius: .3rem;
+        border: solid 0.02rem #f3f3f3;
+        margin: 0 .2rem; }
+    .shoppingFrombox_gym .shoppingTop_gym .shoppingMsgBox .shopoingroomType {
+      padding: .0rem .3rem .1rem .3rem;
+      color: #333;
+      font-size: .3rem; }
+    .shoppingFrombox_gym .shoppingTop_gym .shoppingMsgBox .shoppingMsg_tips {
+      padding: 0 .3rem .3rem .3rem;
+      color: #f60;
+      line-height: .42rem; }
+      .shoppingFrombox_gym .shoppingTop_gym .shoppingMsgBox .shoppingMsg_tips .shoppingTip {
+        display: inline-block;
+        width: .3rem;
+        height: .3rem;
+        background: url(../images/tips.png) center no-repeat;
+        background-size: 100%;
+        vertical-align: middle;
+        margin-right: .05rem; }
+.shoppingFrombox_gym .shoppingTop_medical {
+  background: url(../images/rectangle.svg) left top no-repeat;
+  background-size: 100%;
+  position: relative;
+  margin-bottom: .3rem;
+  padding-top: .3rem; }
+  .shoppingFrombox_gym .shoppingTop_medical .shoppingMsgBox {
+    width: 92%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: .1rem; }
+    .shoppingFrombox_gym .shoppingTop_medical .shoppingMsgBox .shoppingMsg_Name {
+      padding: .3rem .3rem .1rem .3rem;
+      font-size: .3rem;
+      color: #333;
+      font-weight: bold; }
+    .shoppingFrombox_gym .shoppingTop_medical .shoppingMsgBox .shoppingdateBox {
+      padding: 0 .3rem .1rem .3rem;
+      color: #999; }
+      .shoppingFrombox_gym .shoppingTop_medical .shoppingMsgBox .shoppingdateBox .dateshow {
+        color: #333;
+        font-size: .32rem; }
+      .shoppingFrombox_gym .shoppingTop_medical .shoppingMsgBox .shoppingdateBox .dataNumshow {
+        display: inline-block;
+        padding: .02rem .2rem;
+        border-radius: .3rem;
+        border: solid 0.02rem #f3f3f3;
+        margin: 0 .2rem; }
+    .shoppingFrombox_gym .shoppingTop_medical .shoppingMsgBox .shopoingroomType {
+      padding: .1rem .3rem .3rem .3rem;
+      color: #333;
+      font-size: .3rem; }
+    .shoppingFrombox_gym .shoppingTop_medical .shoppingMsgBox .shoppingMsg_tips {
+      padding: 0 .3rem .3rem .3rem;
+      color: #f60;
+      line-height: .42rem; }
+      .shoppingFrombox_gym .shoppingTop_medical .shoppingMsgBox .shoppingMsg_tips .shoppingTip {
+        display: inline-block;
+        width: .3rem;
+        height: .3rem;
+        background: url(../images/tips.png) center no-repeat;
+        background-size: 100%;
+        vertical-align: middle;
+        margin-right: .05rem; }
+.shoppingFrombox_gym .shoppingTop_trip {
+  background: #fff;
+  position: relative;
+  margin-bottom: .3rem;
+  padding-top: .3rem; }
+  .shoppingFrombox_gym .shoppingTop_trip .shoppingMsgBox {
+    width: 92%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: .1rem; }
+    .shoppingFrombox_gym .shoppingTop_trip .shoppingMsgBox .shoppingMsg_Name {
+      padding: .1rem 0rem;
+      font-size: .3rem;
+      color: #333;
+      font-weight: bold; }
+    .shoppingFrombox_gym .shoppingTop_trip .shoppingMsgBox .shoppingMsgBox {
+      display: flex;
+      width: 100%;
+      position: relative;
+      justify-content: flex-start;
+      color: #666;
+      align-content: center;
+      align-items: center;
+      border-bottom: solid 0.02rem #f3f3f3;
+      padding-bottom: .25rem; }
+      .shoppingFrombox_gym .shoppingTop_trip .shoppingMsgBox .shoppingMsgBox div {
+        border: solid 0.02rem #f3f3f3;
+        margin: .1rem .1rem;
+        padding: 0.05rem .2rem;
+        border-radius: .06rem; }
+      .shoppingFrombox_gym .shoppingTop_trip .shoppingMsgBox .shoppingMsgBox div.curron {
+        background: #f60;
+        color: #fff; }
+.shoppingFrombox_gym .shoppingBox_gym {
+  background: #fff;
+  padding: .2rem .3rem .1rem .3rem;
+  position: relative;
+  margin-bottom: .3rem; }
+  .shoppingFrombox_gym .shoppingBox_gym .inputlist {
+    display: flex;
+    width: 100%;
+    position: relative;
+    justify-content: flex-start;
+    color: #666;
+    align-content: center;
+    align-items: center;
+    border-bottom: solid 0.02rem #f3f3f3;
+    padding: .15rem 0;
+    margin: .15rem 0; }
+    .shoppingFrombox_gym .shoppingBox_gym .inputlist div:first-child {
+      margin-right: .1rem;
+      width: 1.4rem;
+      position: relative; }
+      .shoppingFrombox_gym .shoppingBox_gym .inputlist div:first-child .moreRoomtip {
+        position: absolute;
+        left: 5%;
+        top: -.35rem;
+        font-size: .24rem;
+        color: #f60; }
+    .shoppingFrombox_gym .shoppingBox_gym .inputlist div:last-child {
+      flex: 1; }
+      .shoppingFrombox_gym .shoppingBox_gym .inputlist div:last-child .text_input {
+        width: 100%;
+        background: transparent;
+        font-size: .31rem; }
+      .shoppingFrombox_gym .shoppingBox_gym .inputlist div:last-child .num_input {
+        width: .8rem;
+        height: .6rem;
+        line-height: .6rem;
+        background: #333;
+        text-align: center; }
+      .shoppingFrombox_gym .shoppingBox_gym .inputlist div:last-child .cut, .shoppingFrombox_gym .shoppingBox_gym .inputlist div:last-child .add {
+        display: inline-block;
+        width: .6rem;
+        height: .6rem;
+        vertical-align: middle; }
+      .shoppingFrombox_gym .shoppingBox_gym .inputlist div:last-child .cut {
+        background: url(../images/cut.png) center no-repeat;
+        margin-right: .1rem;
+        background-size: .6rem; }
+      .shoppingFrombox_gym .shoppingBox_gym .inputlist div:last-child .add {
+        background: url(../images/add.png) center no-repeat;
+        margin-left: .1rem;
+        background-size: .6rem; }
+      .shoppingFrombox_gym .shoppingBox_gym .inputlist div:last-child .roomNum {
+        color: #333;
+        margin-right: .1rem;
+        font-size: .33rem; }
+      .shoppingFrombox_gym .shoppingBox_gym .inputlist div:last-child .zjzType {
+        color: #333;
+        margin-right: .1rem;
+        font-size: .28rem; }
+      .shoppingFrombox_gym .shoppingBox_gym .inputlist div:last-child input:disabled {
+        color: #333;
+        margin-right: .1rem;
+        font-size: .33rem; }
+    .shoppingFrombox_gym .shoppingBox_gym .inputlist div.medicalType span {
+      display: inline-block;
+      background: #f3f3f3;
+      border: solid 0.05rem #f3f3f3;
+      margin-bottom: .10rem;
+      padding: .05rem .15rem;
+      border-radius: .06rem;
+      font-size: .25rem; }
+    .shoppingFrombox_gym .shoppingBox_gym .inputlist div.medicalType span.curron {
+      display: inline-block;
+      border: solid 0.05rem #f60;
+      background: #f60;
+      margin-bottom: .10rem;
+      padding: .05rem .15rem;
+      border-radius: .06rem;
+      font-size: .25rem;
+      color: #fff; }
+    .shoppingFrombox_gym .shoppingBox_gym .inputlist div.medicalneeds span {
+      display: inline-block;
+      margin-right: .2rem; }
+      .shoppingFrombox_gym .shoppingBox_gym .inputlist div.medicalneeds span em {
+        display: inline-block;
+        width: .1rem;
+        height: .1rem;
+        border: solid 0.05rem #f3f3f3;
+        border-radius: .1rem;
+        margin-right: .1rem; }
+    .shoppingFrombox_gym .shoppingBox_gym .inputlist div.medicalneeds span.curron em {
+      display: inline-block;
+      width: .1rem;
+      height: .1rem;
+      border: solid 0.05rem #f60;
+      border-radius: .1rem;
+      margin-right: .1rem;
+      background: #f60; }
+    .shoppingFrombox_gym .shoppingBox_gym .inputlist .moreDivTip {
+      background: url(../images/center_arrow.png) right center no-repeat;
+      background-size: .15rem; }
+      .shoppingFrombox_gym .shoppingBox_gym .inputlist .moreDivTip input {
+        background: transparent; }
+  .shoppingFrombox_gym .shoppingBox_gym .inputlist:last-child {
+    border-bottom: none; }
+  .shoppingFrombox_gym .shoppingBox_gym .couponTitle {
+    font-size: .28rem;
+    color: #fff; }
+  .shoppingFrombox_gym .shoppingBox_gym .couponlist {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: #666;
+    align-content: center;
+    align-items: center;
+    border-bottom: solid .02rem #f3f3f3;
+    padding: .1rem 0;
+    margin: .1rem 0; }
+  .shoppingFrombox_gym .shoppingBox_gym .couponlist:last-child {
+    border-bottom: none; }
+  .shoppingFrombox_gym .shoppingBox_gym .personZjbox {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1; }
+    .shoppingFrombox_gym .shoppingBox_gym .personZjbox .page-picker-wrapper {
+      background: #fff;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      bottom: 0; }
+    .shoppingFrombox_gym .shoppingBox_gym .personZjbox .selectbtn {
+      width: 80%;
+      background: #f60;
+      text-align: center;
+      margin: .2rem auto;
+      height: .8rem;
+      line-height: .8rem;
+      color: #fff;
+      border-radius: .5rem; }
+.shoppingFrombox_gym .personNumbox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1; }
+  .shoppingFrombox_gym .personNumbox .personNumboxmsgshow {
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 6rem; }
+  .shoppingFrombox_gym .personNumbox .closeDailogBox {
+    text-align: center;
+    padding: .2rem .2rem;
+    border-bottom: solid 0.02rem #f3f3f3; }
+    .shoppingFrombox_gym .personNumbox .closeDailogBox span {
+      display: inline-block;
+      position: absolute;
+      top: .3rem;
+      right: .3rem;
+      width: .32rem;
+      height: .32rem;
+      background: url(../images/close.png) center no-repeat;
+      background-size: 80%; }
+  .shoppingFrombox_gym .personNumbox .page-picker-wrapper {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0; }
+  .shoppingFrombox_gym .personNumbox .selectbtn {
+    width: 80%;
+    background: #f60;
+    text-align: center;
+    margin: .2rem auto;
+    height: .8rem;
+    line-height: .8rem;
+    color: #fff;
+    border-radius: .5rem; }
+.shoppingFrombox_gym .personZjzbox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1; }
+  .shoppingFrombox_gym .personZjzbox .page-picker-wrapper {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0; }
+    .shoppingFrombox_gym .personZjzbox .page-picker-wrapper .selecttimeboxmsgshow {
+      background: #fff;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 6rem; }
+    .shoppingFrombox_gym .personZjzbox .page-picker-wrapper .closeDailogBox {
+      text-align: center;
+      padding: .2rem .2rem;
+      border-bottom: solid 0.02rem #f3f3f3; }
+      .shoppingFrombox_gym .personZjzbox .page-picker-wrapper .closeDailogBox span {
+        display: inline-block;
+        position: absolute;
+        top: .3rem;
+        right: .3rem;
+        width: .32rem;
+        height: .32rem;
+        background: url(../images/close.png) center no-repeat;
+        background-size: 80%; }
+  .shoppingFrombox_gym .personZjzbox .selectbtn {
+    width: 80%;
+    background: #f60;
+    text-align: center;
+    margin: .2rem auto;
+    height: .8rem;
+    line-height: .8rem;
+    color: #fff;
+    border-radius: .5rem; }
+.shoppingFrombox_gym .calendarBox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 100; }
+  .shoppingFrombox_gym .calendarBox .calendarmsgshow {
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8rem; }
+  .shoppingFrombox_gym .calendarBox .closeDailogBox {
+    text-align: center;
+    padding: .2rem .2rem;
+    border-bottom: solid 0.02rem #f3f3f3; }
+    .shoppingFrombox_gym .calendarBox .closeDailogBox span {
+      display: inline-block;
+      position: absolute;
+      top: .3rem;
+      right: .3rem;
+      width: .32rem;
+      height: .32rem;
+      background: url(../images/close.png) center no-repeat;
+      background-size: 80%; }
+  .shoppingFrombox_gym .calendarBox .calendar-dropdown {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding-bottom: .2rem;
+    background: #fff; }
+
+/*******餐饮下单*******/
+.shoppingFrombox_buffet .shoppingTop_buffet {
+  background: url(../images/rectangle.svg) left top no-repeat;
+  background-size: 100%;
+  position: relative;
+  margin-bottom: .3rem;
+  padding-top: .3rem; }
+  .shoppingFrombox_buffet .shoppingTop_buffet .shoppingMsgBox {
+    width: 92%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: .1rem; }
+    .shoppingFrombox_buffet .shoppingTop_buffet .shoppingMsgBox .shoppingMsg_Name {
+      padding: .3rem .3rem .1rem .3rem;
+      font-size: .3rem;
+      color: #333;
+      font-weight: bold; }
+    .shoppingFrombox_buffet .shoppingTop_buffet .shoppingMsgBox .shopoingroomType {
+      padding: .0rem .3rem .2rem .3rem;
+      color: #333;
+      font-size: .3rem; }
+    .shoppingFrombox_buffet .shoppingTop_buffet .shoppingMsgBox .shoppingMsg_tips {
+      padding: 0 .3rem .3rem .3rem;
+      color: #f60;
+      line-height: .42rem; }
+      .shoppingFrombox_buffet .shoppingTop_buffet .shoppingMsgBox .shoppingMsg_tips .shoppingTip {
+        display: inline-block;
+        width: .3rem;
+        height: .3rem;
+        background: url(../images/tips.png) center no-repeat;
+        background-size: 100%;
+        vertical-align: middle;
+        margin-right: .05rem; }
+.shoppingFrombox_buffet .shoppingBox_buffet {
+  background: #fff;
+  padding: .2rem .3rem .1rem .3rem;
+  position: relative;
+  margin-bottom: .3rem; }
+  .shoppingFrombox_buffet .shoppingBox_buffet .inputlist {
+    display: flex;
+    width: 100%;
+    position: relative;
+    justify-content: flex-start;
+    color: #666;
+    align-content: center;
+    align-items: center;
+    border-bottom: solid .02rem #f3f3f3;
+    padding: .15rem 0;
+    margin: .15rem 0; }
+    .shoppingFrombox_buffet .shoppingBox_buffet .inputlist div:first-child {
+      margin-right: .1rem;
+      width: 1.4rem;
+      position: relative; }
+      .shoppingFrombox_buffet .shoppingBox_buffet .inputlist div:first-child .moreRoomtip {
+        position: absolute;
+        left: 5%;
+        top: -.35rem;
+        font-size: .24rem;
+        color: #f60; }
+    .shoppingFrombox_buffet .shoppingBox_buffet .inputlist div:last-child {
+      flex: 1; }
+      .shoppingFrombox_buffet .shoppingBox_buffet .inputlist div:last-child .text_input {
+        height: .52rem;
+        line-height: .52rem;
+        width: 100%;
+        background: transparent; }
+      .shoppingFrombox_buffet .shoppingBox_buffet .inputlist div:last-child .num_input {
+        width: .8rem;
+        height: .52rem;
+        line-height: .52rem;
+        background: #f3f3f3;
+        text-align: center; }
+      .shoppingFrombox_buffet .shoppingBox_buffet .inputlist div:last-child .cut, .shoppingFrombox_buffet .shoppingBox_buffet .inputlist div:last-child .add {
+        display: inline-block;
+        width: .6rem;
+        height: .52rem;
+        vertical-align: middle; }
+      .shoppingFrombox_buffet .shoppingBox_buffet .inputlist div:last-child .cut {
+        background: url(../images/cut.png) center no-repeat;
+        margin-right: .1rem;
+        background-size: .6rem; }
+      .shoppingFrombox_buffet .shoppingBox_buffet .inputlist div:last-child .add {
+        background: url(../images/add.png) center no-repeat;
+        margin-left: .1rem;
+        background-size: .6rem; }
+      .shoppingFrombox_buffet .shoppingBox_buffet .inputlist div:last-child .roomNum {
+        color: #333;
+        margin-right: .1rem;
+        font-size: .33rem; }
+      .shoppingFrombox_buffet .shoppingBox_buffet .inputlist div:last-child .giftPhone, .shoppingFrombox_buffet .shoppingBox_buffet .inputlist div:last-child .giftName {
+        background: transparent;
+        font-size: .31rem; }
+      .shoppingFrombox_buffet .shoppingBox_buffet .inputlist div:last-child .zjzType {
+        color: #333;
+        margin-right: .1rem;
+        font-size: .28rem; }
+      .shoppingFrombox_buffet .shoppingBox_buffet .inputlist div:last-child input:disabled {
+        color: #333;
+        margin-right: .1rem;
+        font-size: .33rem; }
+    .shoppingFrombox_buffet .shoppingBox_buffet .inputlist .moreDivTip {
+      background: url(../images/center_arrow.png) right center no-repeat;
+      background-size: .15rem; }
+  .shoppingFrombox_buffet .shoppingBox_buffet .inputlist:last-child {
+    border-bottom: none; }
+  .shoppingFrombox_buffet .shoppingBox_buffet .couponTitle {
+    font-size: .28rem;
+    color: #fff; }
+  .shoppingFrombox_buffet .shoppingBox_buffet .couponlist {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: #666;
+    align-content: center;
+    align-items: center;
+    border-bottom: solid .02rem #f3f3f3;
+    padding: .1rem 0;
+    margin: .1rem 0; }
+  .shoppingFrombox_buffet .shoppingBox_buffet .couponlist:last-child {
+    border-bottom: none; }
+  .shoppingFrombox_buffet .shoppingBox_buffet .personZjbox {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1; }
+    .shoppingFrombox_buffet .shoppingBox_buffet .personZjbox .page-picker-wrapper {
+      background: #fff;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      bottom: 0; }
+    .shoppingFrombox_buffet .shoppingBox_buffet .personZjbox .selectbtn {
+      width: 80%;
+      background: #f60;
+      text-align: center;
+      margin: .2rem auto;
+      height: .8rem;
+      line-height: .8rem;
+      color: #fff;
+      border-radius: .5rem; }
+.shoppingFrombox_buffet .personNumbox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1; }
+  .shoppingFrombox_buffet .personNumbox .personNumboxmsgshow {
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4.5rem; }
+  .shoppingFrombox_buffet .personNumbox .closeDailogBox {
+    text-align: center;
+    padding: .2rem .2rem;
+    border-bottom: solid 0.02rem #f3f3f3; }
+    .shoppingFrombox_buffet .personNumbox .closeDailogBox span {
+      display: inline-block;
+      position: absolute;
+      top: .3rem;
+      right: .3rem;
+      width: .32rem;
+      height: .32rem;
+      background: url(../images/close.png) center no-repeat;
+      background-size: 80%; }
+  .shoppingFrombox_buffet .personNumbox .page-picker-wrapper {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0; }
+  .shoppingFrombox_buffet .personNumbox .selectbtn {
+    width: 80%;
+    background: #f60;
+    text-align: center;
+    margin: .2rem auto;
+    height: .8rem;
+    line-height: .8rem;
+    color: #fff;
+    border-radius: .5rem; }
+.shoppingFrombox_buffet .personZjzbox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1; }
+  .shoppingFrombox_buffet .personZjzbox .page-picker-wrapper {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0; }
+    .shoppingFrombox_buffet .personZjzbox .page-picker-wrapper .selecttimeboxmsgshow {
+      background: #fff;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 6rem; }
+    .shoppingFrombox_buffet .personZjzbox .page-picker-wrapper .closeDailogBox {
+      text-align: center;
+      padding: .2rem .2rem;
+      border-bottom: solid 0.02rem #f3f3f3; }
+      .shoppingFrombox_buffet .personZjzbox .page-picker-wrapper .closeDailogBox span {
+        display: inline-block;
+        position: absolute;
+        top: .3rem;
+        right: .3rem;
+        width: .32rem;
+        height: .32rem;
+        background: url(../images/close.png) center no-repeat;
+        background-size: 80%; }
+  .shoppingFrombox_buffet .personZjzbox .selectbtn {
+    width: 80%;
+    background: #f60;
+    text-align: center;
+    margin: .2rem auto;
+    height: .8rem;
+    line-height: .8rem;
+    color: #fff;
+    border-radius: .5rem; }
+.shoppingFrombox_buffet .calendarBox {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 100; }
+  .shoppingFrombox_buffet .calendarBox .calendarmsgshow {
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8rem; }
+  .shoppingFrombox_buffet .calendarBox .closeDailogBox {
+    text-align: center;
+    padding: .2rem .2rem;
+    border-bottom: solid 0.02rem #f3f3f3; }
+    .shoppingFrombox_buffet .calendarBox .closeDailogBox span {
+      display: inline-block;
+      position: absolute;
+      top: .3rem;
+      right: .3rem;
+      width: .32rem;
+      height: .32rem;
+      background: url(../images/close.png) center no-repeat;
+      background-size: 80%; }
+  .shoppingFrombox_buffet .calendarBox .calendar-dropdown {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding-bottom: .2rem;
+    background: #fff; }
+
+/******优惠券下单*******/
+.shoppingFrombox_coupon .shoppingTop_coupon {
+  background: url(../images/rectangle.svg) left top no-repeat;
+  background-size: 100%;
+  position: relative;
+  margin-bottom: .3rem;
+  padding-top: .3rem; }
+  .shoppingFrombox_coupon .shoppingTop_coupon .shoppingMsgBox {
+    width: 92%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: .1rem; }
+    .shoppingFrombox_coupon .shoppingTop_coupon .shoppingMsgBox .shoppingMsg_Name {
+      padding: .3rem .3rem .2rem .3rem;
+      font-size: .3rem;
+      color: #333;
+      font-weight: bold; }
+    .shoppingFrombox_coupon .shoppingTop_coupon .shoppingMsgBox .shoppingMsg_tips {
+      padding: 0 .3rem .3rem .3rem;
+      color: #f60;
+      line-height: .42rem; }
+      .shoppingFrombox_coupon .shoppingTop_coupon .shoppingMsgBox .shoppingMsg_tips .shoppingTip {
+        display: inline-block;
+        width: .3rem;
+        height: .3rem;
+        background: url(../images/tips.png) center no-repeat;
+        background-size: 100%;
+        vertical-align: middle;
+        margin-right: .05rem; }
+.shoppingFrombox_coupon .shoppingBox_coupon {
+  background: #fff;
+  padding: .2rem .3rem .1rem .3rem;
+  position: relative;
+  margin-bottom: .3rem; }
+  .shoppingFrombox_coupon .shoppingBox_coupon .inputlist {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    color: #666;
+    align-content: center;
+    align-items: center;
+    border-bottom: solid 0.02rem #f3f3f3;
+    padding: .2rem 0;
+    margin: .1rem 0; }
+    .shoppingFrombox_coupon .shoppingBox_coupon .inputlist div:first-child {
+      margin-right: .1rem; }
+    .shoppingFrombox_coupon .shoppingBox_coupon .inputlist div:last-child {
+      flex-grow: 1; }
+      .shoppingFrombox_coupon .shoppingBox_coupon .inputlist div:last-child .text_input {
+        height: .52rem;
+        line-height: .52rem;
+        width: 100%; }
+      .shoppingFrombox_coupon .shoppingBox_coupon .inputlist div:last-child .num_input {
+        width: .8rem;
+        height: .52rem;
+        line-height: .52rem;
+        background: #f3f3f3;
+        text-align: center; }
+      .shoppingFrombox_coupon .shoppingBox_coupon .inputlist div:last-child .cut, .shoppingFrombox_coupon .shoppingBox_coupon .inputlist div:last-child .add {
+        display: inline-block;
+        width: .6rem;
+        height: .52rem;
+        vertical-align: middle; }
+      .shoppingFrombox_coupon .shoppingBox_coupon .inputlist div:last-child .cut {
+        background: url(../images/cut.png) center no-repeat;
+        margin-right: .1rem;
+        background-size: .6rem; }
+      .shoppingFrombox_coupon .shoppingBox_coupon .inputlist div:last-child .add {
+        background: url(../images/add.png) center no-repeat;
+        margin-left: .1rem;
+        background-size: .6rem; }
+  .shoppingFrombox_coupon .shoppingBox_coupon .inputlist:last-child {
+    border-bottom: none; }
+  .shoppingFrombox_coupon .shoppingBox_coupon .couponTitle {
+    font-size: .28rem;
+    color: #fff; }
+  .shoppingFrombox_coupon .shoppingBox_coupon .couponlist {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: #666;
+    align-content: center;
+    align-items: center;
+    border-bottom: solid 0.02rem #f3f3f3;
+    padding: .1rem 0;
+    margin: .1rem 0; }
+  .shoppingFrombox_coupon .shoppingBox_coupon .couponlist:last-child {
+    border-bottom: none; }
+
+/***支付***/
+.shoppingPayBox {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  padding: .3rem 0;
+  border-top: solid 0.02rem #f3f3f3;
+  box-shadow: 0.2rem 0.2rem 0.2rem #f60;
+  display: flex;
+  justify-content: space-between; }
+  .shoppingPayBox .priceNumbox {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    padding-left: .2rem; }
+    .shoppingPayBox .priceNumbox .payMoney {
+      margin-left: .1rem; }
+      .shoppingPayBox .priceNumbox .payMoney p {
+        color: #f60;
+        font-weight: bold;
+        font-size: .46rem; }
+        .shoppingPayBox .priceNumbox .payMoney p i {
+          font-size: .28rem;
+          margin-right: .05rem;
+          font-weight: normal; }
+      .shoppingPayBox .priceNumbox .payMoney span {
+        background: #f60;
+        color: #fff;
+        font-size: .24rem;
+        padding: .05rem .15rem;
+        border-radius: .04rem; }
+  .shoppingPayBox .button_pay {
+    margin-right: .18rem;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center; }
+    .shoppingPayBox .button_pay .paymoneylist {
+      color: #666;
+      margin-right: .2rem;
+      background: url(../images/unfold.png) right center no-repeat;
+      background-size: .22rem;
+      padding-right: .25rem; }
+    .shoppingPayBox .button_pay .paymoneylist_up {
+      background: url(../images/unfold_up.png) right center no-repeat;
+      background-size: .22rem; }
+    .shoppingPayBox .button_pay .buttonWord {
+      height: .75rem;
+      line-height: .75rem;
+      background: #f60;
+      color: #fff;
+      border-radius: .5rem;
+      text-align: center;
+      width: 2rem; }
+    .shoppingPayBox .button_pay .mask {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      left: 0;
+      bottom: 1.38rem;
+      z-index: 20; }
+      .shoppingPayBox .button_pay .mask .pricelistBox {
+        position: absolute;
+        width: 100%;
+        /*height: 3.2rem;*/
+        background: #fff;
+        bottom: 0;
+        left: 0;
+        box-shadow: 0 0 0.05 #eee;
+        padding: .2rem 0;
+        text-align: left;
+        border-top-left-radius: .2rem;
+        border-top-right-radius: .2rem;
+        z-index: 20; }
+        .shoppingPayBox .button_pay .mask .pricelistBox p {
+          padding-left: .2rem;
+          color: #333;
+          font-weight: bold; }
+        .shoppingPayBox .button_pay .mask .pricelistBox .pricelistMsg {
+          padding: .08rem .3rem;
+          display: flex;
+          justify-content: space-between;
+          align-content: center;
+          align-items: center;
+          font-size: .26rem;
+          color: #999; }
+          .shoppingPayBox .button_pay .mask .pricelistBox .pricelistMsg span:last-child {
+            color: #f60; }
+        .shoppingPayBox .button_pay .mask .pricelistBox .pricelistTip {
+          color: #f60;
+          text-align: right;
+          padding-right: .3rem;
+          padding-top: .15rem; }
+
+.disablePayBox {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  padding: .3rem 0;
+  border-top: solid 0.02rem #f3f3f3;
+  box-shadow: 0.2rem 0.2rem 0.2rem #f60;
+  display: flex;
+  justify-content: space-between; }
+  .disablePayBox .priceNumbox {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    padding-left: .2rem; }
+    .disablePayBox .priceNumbox .payMoney {
+      margin-left: .1rem; }
+      .disablePayBox .priceNumbox .payMoney p {
+        color: #999;
+        font-weight: bold;
+        font-size: .46rem; }
+        .disablePayBox .priceNumbox .payMoney p i {
+          font-size: .28rem;
+          margin-right: .05rem;
+          font-weight: normal; }
+      .disablePayBox .priceNumbox .payMoney span {
+        background: #f60;
+        color: #fff;
+        font-size: .24rem;
+        padding: .05rem .15rem;
+        border-radius: .04rem; }
+  .disablePayBox .button_pay {
+    margin-right: .18rem;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center; }
+    .disablePayBox .button_pay .paymoneylist {
+      color: #666;
+      margin-right: .2rem;
+      background: url(../images/unfold.png) right center no-repeat;
+      background-size: .22rem;
+      padding-right: .25rem; }
+    .disablePayBox .button_pay .paymoneylist_up {
+      background: url(../images/unfold_up.png) right center no-repeat;
+      background-size: .22rem; }
+    .disablePayBox .button_pay .buttonWord {
+      height: .75rem;
+      line-height: .75rem;
+      background: #f8f8f8;
+      color: #999;
+      border-radius: .5rem;
+      text-align: center;
+      width: 2rem; }
+    .disablePayBox .button_pay .mask {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      left: 0;
+      bottom: 1.38rem;
+      z-index: 20; }
+      .disablePayBox .button_pay .mask .pricelistBox {
+        position: absolute;
+        width: 100%;
+        /*height: 3.2rem;*/
+        background: #fff;
+        bottom: 0;
+        left: 0;
+        box-shadow: 0 0 0.05 #eee;
+        padding: .2rem 0;
+        text-align: left;
+        border-top-left-radius: .2rem;
+        border-top-right-radius: .2rem;
+        z-index: 20; }
+        .disablePayBox .button_pay .mask .pricelistBox p {
+          padding-left: .2rem;
+          color: #333;
+          font-weight: bold; }
+        .disablePayBox .button_pay .mask .pricelistBox .pricelistMsg {
+          padding: .08rem .3rem;
+          display: flex;
+          justify-content: space-between;
+          align-content: center;
+          align-items: center;
+          font-size: .26rem;
+          color: #999; }
+          .disablePayBox .button_pay .mask .pricelistBox .pricelistMsg span:last-child {
+            color: #f60; }
+        .disablePayBox .button_pay .mask .pricelistBox .pricelistTip {
+          color: #f60;
+          text-align: right;
+          padding-right: .3rem;
+          padding-top: .15rem; }
+
+.shoppingPaybuttonBox3 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  padding: .3rem 0;
+  border-top: solid 0.02rem #f3f3f3;
+  box-shadow: 0.2rem 0.2rem 0.2rem #f60;
+  display: flex;
+  justify-content: space-between; }
+  .shoppingPaybuttonBox3 .exchange {
+    height: .75rem;
+    line-height: .75rem;
+    width: 94%;
+    margin: 0 auto;
+    background: #f60;
+    color: #fff;
+    border-radius: .6rem;
+    text-align: center; }
+
+.disableBtn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  padding: .3rem 0;
+  border-top: solid 0.02rem #f3f3f3;
+  box-shadow: 0.2rem 0.2rem 0.2rem #f60;
+  display: flex;
+  justify-content: space-between; }
+  .disableBtn .exchange {
+    height: .75rem;
+    line-height: .75rem;
+    width: 94%;
+    margin: 0 auto;
+    background: #f8f8f8;
+    color: #999;
+    border-radius: .6rem;
+    text-align: center; }
+
+.onloadpapy .onloadMask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff; }
+  .onloadpapy .onloadMask div {
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #f60; }
+    .onloadpapy .onloadMask div span {
+      display: inline-block;
+      width: .8rem;
+      height: .8rem;
+      background: url(../images/BankCard.png) center no-repeat;
+      background-size: 100%; }
+    .onloadpapy .onloadMask div p {
+      height: .4rem;
+      line-height: .4rem; }
+    .onloadpapy .onloadMask div em {
+      display: inline-block;
+      font-weight: bold;
+      width: .5rem;
+      text-align: left;
+      margin-left: .05rem;
+      font-size: .4rem;
+      letter-spacing: .05rem;
+      vertical-align: middle;
+      height: .2rem;
+      line-height: 0rem; }
+
+/******预约下单状态*****/
+.shoppingStatuc {
+  background: #fff; }
+  .shoppingStatuc .resBox {
+    background: #fff;
+    text-align: center;
+    padding: 1rem 0; }
+    .shoppingStatuc .resBox img {
+      width: 1rem; }
+    .shoppingStatuc .resBox .suctip {
+      color: #333;
+      font-size: .3rem;
+      font-weight: bold;
+      padding: .2rem 0 .8rem 0; }
+    .shoppingStatuc .resBox .oterlinkBox div {
+      display: inline-block;
+      margin: 0 .3rem;
+      border-radius: .05rem;
+      border: solid 0.02rem #f60;
+      padding: .05rem .2rem;
+      color: #f60; }
+    .shoppingStatuc .resBox span.sucspan {
+      background: url(../images/suc.png) center no-repeat;
+      background-size: 90%;
+      display: inline-block;
+      width: 1rem;
+      height: 1rem; }
+    .shoppingStatuc .resBox span.failspan {
+      background: url(../images/fail.png) center no-repeat;
+      background-size: 90%;
+      display: inline-block;
+      width: 1rem;
+      height: 1rem; }
+  .shoppingStatuc .othercoupon {
+    padding-top: .3rem; }
+    .shoppingStatuc .othercoupon .recommendTitle {
+      text-align: center;
+      font-size: .28rem;
+      font-weight: bold;
+      margin: .2rem 0 .3rem 0; }
+      .shoppingStatuc .othercoupon .recommendTitle span {
+        display: inline-block;
+        margin: 0 .1rem;
+        width: .4rem;
+        height: .25rem; }
+      .shoppingStatuc .othercoupon .recommendTitle span:first-child {
+        background: url(../images/more_left.png) center no-repeat;
+        background-size: 100%; }
+      .shoppingStatuc .othercoupon .recommendTitle span:last-child {
+        background: url(../images/more_right.png) center no-repeat;
+        background-size: 100%; }
+    .shoppingStatuc .othercoupon .couponlistDiv li {
+      padding: .2rem .2rem;
+      position: relative;
+      background: #fff;
+      margin: .33rem;
+      border-radius: .1rem;
+      overflow: hidden; }
+      .shoppingStatuc .othercoupon .couponlistDiv li .couponlistMsg {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        height: 1.35rem;
+        align-content: center;
+        align-items: center; }
+        .shoppingStatuc .othercoupon .couponlistDiv li .couponlistMsg .couponlistShow {
+          /*position: absolute; top:50%;  -webkit-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%);*/
+          padding-top: .3rem; }
+        .shoppingStatuc .othercoupon .couponlistDiv li .couponlistMsg .couponlist_Name {
+          color: #666;
+          font-size: .28rem;
+          font-weight: bold; }
+        .shoppingStatuc .othercoupon .couponlistDiv li .couponlistMsg .coupolist_Date {
+          color: #999;
+          padding-top: .25rem;
+          font-size: .24rem; }
+        .shoppingStatuc .othercoupon .couponlistDiv li .couponlistMsg .couponType {
+          text-align: center; }
+          .shoppingStatuc .othercoupon .couponlistDiv li .couponlistMsg .couponType div {
+            color: #f60;
+            font-size: .36rem; }
+            .shoppingStatuc .othercoupon .couponlistDiv li .couponlistMsg .couponType div i {
+              font-size: .56rem;
+              font-weight: bold;
+              margin-right: .05rem; }
+          .shoppingStatuc .othercoupon .couponlistDiv li .couponlistMsg .couponType span {
+            display: block;
+            color: #999; }
+      .shoppingStatuc .othercoupon .couponlistDiv li .couponlistType {
+        border-top: dashed .02rem #ddd;
+        padding-top: .2rem;
+        margin-top: .2rem;
+        color: #666;
+        font-size: .24rem;
+        position: relative;
+        display: flex;
+        justify-content: space-between; }
+      .shoppingStatuc .othercoupon .couponlistDiv li .couponlistType:before {
+        content: '';
+        position: absolute;
+        left: -.32rem;
+        top: -.15rem;
+        background: #f8f8f8;
+        width: .3rem;
+        height: .3rem;
+        border-radius: .15rem; }
+      .shoppingStatuc .othercoupon .couponlistDiv li .couponlistType:after {
+        content: '';
+        position: absolute;
+        right: -.32rem;
+        top: -.15rem;
+        background: #f8f8f8;
+        width: .3rem;
+        height: .3rem;
+        border-radius: .15rem; }
+      .shoppingStatuc .othercoupon .couponlistDiv li .prolink {
+        color: #f60;
+        background: url(../images/right.png) right center no-repeat;
+        background-size: .15rem;
+        padding-right: .25rem; }
+    .shoppingStatuc .othercoupon .couponlistDiv .couponlistDiv li:last-child {
+      margin-bottom: 0; }
+  .shoppingStatuc .recommendBox {
+    padding: 0 .3rem .2rem .3rem; }
+    .shoppingStatuc .recommendBox .recommendTitle {
+      text-align: center;
+      font-size: .28rem;
+      font-weight: bold;
+      margin: .2rem 0 .3rem 0; }
+      .shoppingStatuc .recommendBox .recommendTitle span {
+        display: inline-block;
+        margin: 0 .1rem;
+        width: .4rem;
+        height: .25rem; }
+      .shoppingStatuc .recommendBox .recommendTitle span:first-child {
+        background: url(../images/more_left.png) center no-repeat;
+        background-size: 100%; }
+      .shoppingStatuc .recommendBox .recommendTitle span:last-child {
+        background: url(../images/more_right.png) center no-repeat;
+        background-size: 100%; }
+    .shoppingStatuc .recommendBox .recommendProBox {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      flex-wrap: wrap; }
+      .shoppingStatuc .recommendBox .recommendProBox .recommendProMsg {
+        width: 48%;
+        padding-bottom: .3rem; }
+        .shoppingStatuc .recommendBox .recommendProBox .recommendProMsg .recommendProImg {
+          border-radius: .1rem;
+          overflow: hidden; }
+          .shoppingStatuc .recommendBox .recommendProBox .recommendProMsg .recommendProImg img {
+            width: 100%; }
+        .shoppingStatuc .recommendBox .recommendProBox .recommendProMsg .recommendProName {
+          height: .9rem;
+          font-size: .26rem; }
+        .shoppingStatuc .recommendBox .recommendProBox .recommendProMsg .recommendProPrice {
+          font-size: .26rem; }
+          .shoppingStatuc .recommendBox .recommendProBox .recommendProMsg .recommendProPrice span {
+            color: #f60;
+            font-size: .32rem;
+            margin-right: .1rem; }
+            .shoppingStatuc .recommendBox .recommendProBox .recommendProMsg .recommendProPrice span i {
+              font-size: .26rem; }
+          .shoppingStatuc .recommendBox .recommendProBox .recommendProMsg .recommendProPrice em {
+            text-decoration: line-through;
+            color: #666; }
+
+/*******订单详情*******/
+.ordershowbox .orderBox {
+  background: #fff;
+  margin-bottom: 0.2rem;
+  padding: 0.3rem; }
+.ordershowbox .orderType {
+  color: #f60;
+  font-size: 0.4rem;
+  padding: 0.2rem 0; }
+.ordershowbox .orderTip {
+  color: #999;
+  padding-bottom: 0.1rem; }
+.ordershowbox .orderNumTip {
+  color: #f60;
+  text-align: center;
+  padding: 0.2rem 0 0.1rem 0; }
+.ordershowbox .orderName {
+  color: #333;
+  font-size: .28rem;
+  font-weight: bold; }
+.ordershowbox .orderMsgBox {
+  display: flex;
+  justify-content: space-between;
+  border-top: solid 0.02rem #f3f3f3;
+  margin-top: 0.2rem;
+  padding-top: 0.2rem; }
+  .ordershowbox .orderMsgBox .orderMsgshow {
+    display: flex;
+    justify-content: flex-start;
+    flex: 1; }
+    .ordershowbox .orderMsgBox .orderMsgshow .ordermsgshowPic {
+      width: 2.1rem;
+      margin-right: 0.2rem; }
+      .ordershowbox .orderMsgBox .orderMsgshow .ordermsgshowPic .defaultBg {
+        background: url(../images/pic1.jpg) center no-repeat;
+        background-size: cover;
+        border-radius: .1rem;
+        overflow: hidden; }
+      .ordershowbox .orderMsgBox .orderMsgshow .ordermsgshowPic span {
+        display: inline-block;
+        width: 100%;
+        height: 1.4rem;
+        border-radius: .1rem;
+        background-size: cover; }
+    .ordershowbox .orderMsgBox .orderMsgshow .ordermsgshowMore {
+      color: #333;
+      flex: 1;
+      font-size: 0.3rem; }
+      .ordershowbox .orderMsgBox .orderMsgshow .ordermsgshowMore .ordermsgshowMore_type {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 90%;
+        color: #999;
+        padding: .05rem 0; }
+      .ordershowbox .orderMsgBox .orderMsgshow .ordermsgshowMore .gitftstype span {
+        display: inline-block;
+        font-size: .22rem;
+        border: solid 0.02rem #f60;
+        color: #f60;
+        padding: .02rem .1rem;
+        border-radius: .04rem;
+        margin-top: .05rem; }
+  .ordershowbox .orderMsgBox .orderPrice {
+    text-align: right; }
+    .ordershowbox .orderMsgBox .orderPrice p {
+      margin: 0.05rem 0;
+      color: #999; }
+    .ordershowbox .orderMsgBox .orderPrice p:first-child {
+      color: #333; }
+.ordershowbox .couponexchangeNum {
+  color: #333;
+  font-size: .28rem;
+  font-weight: bold; }
+.ordershowbox .couponexchangeBox {
+  width: 100%;
+  background: #f8f8f8;
+  padding: 0.5rem 0;
+  text-align: center;
+  margin: 0.2rem 0 0 0;
+  font-size: 0.5rem; }
+.ordershowbox .orderperMsg {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.12rem 0; }
+  .ordershowbox .orderperMsg div:first-child {
+    color: #666;
+    width: 2.7rem; }
+  .ordershowbox .orderperMsg div:last-child {
+    flex-flow: 1;
+    position: relative;
+    flex: 1;
+    text-align: right; }
+    .ordershowbox .orderperMsg div:last-child .tipsshow {
+      text-align: right;
+      position: absolute;
+      bottom: -.3rem;
+      width: 100%;
+      font-size: .24rem;
+      white-space: nowrap;
+      color: #f60; }
+.ordershowbox .orderperMsg:last-child {
+  padding-bottom: 0;
+  position: relative; }
+.ordershowbox .readyPrice {
+  color: #f60; }
+.ordershowbox .cancelBtn {
+  border: solid 0.02rem #ddd;
+  display: block;
+  border-radius: .5rem;
+  height: .8rem;
+  line-height: .8rem;
+  color: #666;
+  background: #fff;
+  margin: 0.1rem; }
+.ordershowbox .paystatus_n .moneyNum {
+  color: #666;
+  padding-bottom: .1rem; }
+  .ordershowbox .paystatus_n .moneyNum span {
+    color: #f60;
+    font-size: .34rem; }
+.ordershowbox .paystatus_n .moneyNumTip {
+  color: #999; }
+.ordershowbox .paystatus_n .moneyPya {
+  border-radius: .4rem;
+  color: #f60;
+  width: 80%;
+  margin: 0.3rem auto .2rem auto;
+  height: .8rem;
+  line-height: .8rem;
+  text-align: center;
+  border: solid 0.02rem #f60; }
+.ordershowbox .thirdCodePassword {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  padding: .3rem 0;
+  height: .8rem;
+  box-sizing: content-box;
+  border-top: solid 0.02rem #f3f3f3;
+  z-index: 14;
+  box-shadow: 0.2rem 0.2rem 0.2rem #f60; }
+  .ordershowbox .thirdCodePassword .gotocoupon {
+    height: .75rem;
+    line-height: .75rem;
+    width: 90%;
+    margin: 0 auto;
+    background: #f60;
+    color: #fff;
+    border-radius: .6rem; }
+.ordershowbox .couponStatueDiv {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  background: #fff;
+  padding: .1rem 0;
+  z-index: 13; }
+  .ordershowbox .couponStatueDiv span {
+    display: inline-block;
+    width: 96%;
+    background: #f60;
+    color: #fff;
+    height: .8rem;
+    line-height: .8rem;
+    border-radius: .4rem; }
+
+/*******个人中心 首页********/
+.myhomeBox_index .perindex {
+  padding: .3rem 0; }
+  .myhomeBox_index .perindex .memberMsgBox {
+    margin-top: .2rem;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    background: #f8f8f8;
+    border-radius: .2rem; }
+    .myhomeBox_index .perindex .memberMsgBox .memberDate {
+      padding: .2rem 0 .2rem .5rem; }
+      .myhomeBox_index .perindex .memberMsgBox .memberDate p {
+        line-height: .52rem;
+        color: #999; }
+        .myhomeBox_index .perindex .memberMsgBox .memberDate p .memberDateshow {
+          display: inline-block;
+          width: .3rem;
+          height: .3rem;
+          vertical-align: middle;
+          background: url(../images/center/date.png) center no-repeat;
+          background-size: 100%;
+          margin-right: .2rem; }
+        .myhomeBox_index .perindex .memberMsgBox .memberDate p .memberMoenyshow {
+          display: inline-block;
+          width: .3rem;
+          height: .3rem;
+          vertical-align: middle;
+          background: url(../images/center/money.png) center no-repeat;
+          background-size: 100%;
+          margin-right: .2rem; }
+    .myhomeBox_index .perindex .memberMsgBox .memberMoney {
+      padding: .2rem .5rem .2rem 0;
+      text-align: right; }
+      .myhomeBox_index .perindex .memberMsgBox .memberMoney span {
+        display: inline-block;
+        padding: .15rem .5rem;
+        background: #f60;
+        color: #fff;
+        font-size: .32rem;
+        border-radius: .5rem; }
+  .myhomeBox_index .perindex .perMsgbox {
+    background: #fff;
+    border-radius: .1rem;
+    padding: .2rem .3rem;
+    margin-bottom: .2rem; }
+    .myhomeBox_index .perindex .perMsgbox .mybaseMsg, .myhomeBox_index .perindex .perMsgbox .couponBox, .myhomeBox_index .perindex .perMsgbox .quanyiBox, .myhomeBox_index .perindex .perMsgbox .exchangeBox, .myhomeBox_index .perindex .perMsgbox .mygfit, .myhomeBox_index .perindex .perMsgbox .memberrulue, .myhomeBox_index .perindex .perMsgbox .membertel, .myhomeBox_index .perindex .perMsgbox .memberquestion, .myhomeBox_index .perindex .perMsgbox .memberloginout {
+      display: flex;
+      justify-content: flex-start;
+      align-content: center;
+      align-items: center;
+      background: url(../images/center_arrow.png) right center no-repeat;
+      background-size: .15rem; }
+    .myhomeBox_index .perindex .perMsgbox .mybaseMsg .myphoto {
+      width: 1rem;
+      height: 1rem;
+      padding-right: .2rem; }
+      .myhomeBox_index .perindex .perMsgbox .mybaseMsg .myphoto span {
+        display: inline-block;
+        width: 100%;
+        height: 1rem;
+        background: #f8f8f8;
+        border-radius: .5rem;
+        overflow: hidden; }
+        .myhomeBox_index .perindex .perMsgbox .mybaseMsg .myphoto span img {
+          width: 100%; }
+    .myhomeBox_index .perindex .perMsgbox .mybaseMsg .myname .name {
+      color: #333;
+      padding-bottom: .1rem; }
+    .myhomeBox_index .perindex .perMsgbox .mybaseMsg .myname .tel {
+      color: #999; }
+  .myhomeBox_index .perindex .titleDiv {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    background: url(../images/center_arrow.png) right center no-repeat;
+    background-size: .15rem; }
+    .myhomeBox_index .perindex .titleDiv .titleName {
+      color: #333;
+      font-weight: bold;
+      font-size: .28rem; }
+    .myhomeBox_index .perindex .titleDiv .more {
+      padding-right: .3rem;
+      color: #999; }
+  .myhomeBox_index .perindex .orderBox {
+    padding: .3rem 0 .2rem 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center; }
+    .myhomeBox_index .perindex .orderBox p {
+      color: #999;
+      font-size: .26rem;
+      width: calc(calc(100% / 4) - .1rem);
+      text-align: center; }
+      .myhomeBox_index .perindex .orderBox p span {
+        display: block;
+        width: .5rem;
+        height: .5rem;
+        margin: 0 auto;
+        margin-bottom: .1rem; }
+      .myhomeBox_index .perindex .orderBox p span.appointment {
+        background: url(../images/center/appointment.png) center no-repeat;
+        background-size: 100%; }
+      .myhomeBox_index .perindex .orderBox p span.use {
+        background: url(../images/center/use.png) center no-repeat;
+        background-size: 100%; }
+      .myhomeBox_index .perindex .orderBox p span.used {
+        background: url(../images/center/used.png) center no-repeat;
+        background-size: 100%; }
+      .myhomeBox_index .perindex .orderBox p span.cancelled {
+        background: url(../images/center/cancelled.png) center no-repeat;
+        background-size: 100%; }
+  .myhomeBox_index .perindex .waitingBox {
+    background: #f8f8f8;
+    padding-right: .06rem;
+    margin-top: .2rem;
+    padding: .2rem .3rem; }
+    .myhomeBox_index .perindex .waitingBox .orderstatus {
+      padding-bottom: .1rem;
+      color: #666; }
+    .myhomeBox_index .perindex .waitingBox .orderMsg {
+      display: flex;
+      justify-content: flex-start;
+      align-content: center;
+      align-items: center; }
+      .myhomeBox_index .perindex .waitingBox .orderMsg .orderPic {
+        width: 1.6rem;
+        padding-right: .2rem; }
+        .myhomeBox_index .perindex .waitingBox .orderMsg .orderPic span {
+          display: inline-block;
+          width: 100%;
+          height: 1rem;
+          background: #eee;
+          border-radius: .1rem; }
+      .myhomeBox_index .perindex .waitingBox .orderMsg .orderName {
+        flex: 1; }
+        .myhomeBox_index .perindex .waitingBox .orderMsg .orderName .name {
+          color: #333; }
+        .myhomeBox_index .perindex .waitingBox .orderMsg .orderName .date {
+          color: #999; }
+  .myhomeBox_index .perindex .mygfit .modeName {
+    color: #333;
+    font-size: .3rem;
+    padding: .1rem 0 .1rem .5rem;
+    background: url(../images/center/icon-vip@3x.png) left center no-repeat;
+    background-size: .4rem; }
+  .myhomeBox_index .perindex .memberrulue .modeName {
+    color: #333;
+    font-size: .3rem;
+    padding: .1rem 0 .1rem .5rem;
+    background: url(../images/center/icon-file@3x.png) left center no-repeat;
+    background-size: .4rem; }
+  .myhomeBox_index .perindex .membertel .modeName {
+    color: #333;
+    font-size: .3rem;
+    padding: .1rem 0 .1rem .5rem;
+    background: url(../images/center/icon-service@3x.png) left center no-repeat;
+    background-size: .4rem; }
+  .myhomeBox_index .perindex .memberquestion .modeName {
+    color: #333;
+    font-size: .3rem;
+    padding: .1rem 0 .1rem .5rem;
+    background: url(../images/center/icon-info@3x.png) left center no-repeat;
+    background-size: .4rem; }
+  .myhomeBox_index .perindex .memberloginout .modeName {
+    color: #333;
+    font-size: .3rem;
+    padding: .1rem 0 .1rem .5rem;
+    background: url(../images/center/loginout.png) left center no-repeat;
+    background-size: .4rem; }
+  .myhomeBox_index .perindex .couponBox .modeName {
+    color: #333;
+    font-size: .3rem;
+    padding: .1rem 0 .1rem .5rem;
+    background: url(../images/center/Coupon.png) left center no-repeat;
+    background-size: .4rem; }
+  .myhomeBox_index .perindex .quanyiBox .modeName {
+    color: #333;
+    font-size: .3rem;
+    padding: .1rem 0 .1rem .5rem;
+    background: url(../images/center/activation.png) left center no-repeat;
+    background-size: .4rem; }
+  .myhomeBox_index .perindex .exchangeBox .modeName {
+    color: #333;
+    font-size: .3rem;
+    padding: .1rem 0 .1rem .5rem;
+    background: url(../images/center/Transfer.png) left center no-repeat;
+    background-size: .4rem; }
+
+/******个人中心  基本信息********/
+.myhomeBox_mybasemsg {
+  background: #fff;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 100%; }
+  .myhomeBox_mybasemsg .bodyBox .mybasemsg {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    border-bottom: solid 0.02rem #f3f3f3;
+    margin-left: .3rem;
+    padding: .2rem .3rem .2rem 0; }
+    .myhomeBox_mybasemsg .bodyBox .mybasemsg .typename {
+      color: #999;
+      width: 1.5rem; }
+    .myhomeBox_mybasemsg .bodyBox .mybasemsg .myphoto, .myhomeBox_mybasemsg .bodyBox .mybasemsg .sex, .myhomeBox_mybasemsg .bodyBox .mybasemsg .credentials {
+      background: url(../images/center_arrow.png) right center no-repeat;
+      background-size: .15rem; }
+    .myhomeBox_mybasemsg .bodyBox .mybasemsg .myphoto {
+      width: 1rem;
+      height: 1rem;
+      padding-right: .5rem; }
+      .myhomeBox_mybasemsg .bodyBox .mybasemsg .myphoto span {
+        display: inline-block;
+        width: 100%;
+        height: 1rem;
+        background: #f8f8f8;
+        border-radius: .5rem;
+        margin-right: .8rem;
+        overflow: hidden; }
+        .myhomeBox_mybasemsg .bodyBox .mybasemsg .myphoto span img {
+          width: 100%; }
+    .myhomeBox_mybasemsg .bodyBox .mybasemsg .sex, .myhomeBox_mybasemsg .bodyBox .mybasemsg .credentials, .myhomeBox_mybasemsg .bodyBox .mybasemsg .credentialsNum, .myhomeBox_mybasemsg .bodyBox .mybasemsg .mobile {
+      flex: 1;
+      text-align: right;
+      padding-right: .5rem; }
+    .myhomeBox_mybasemsg .bodyBox .mybasemsg .credentialsNum {
+      padding-right: .1rem; }
+      .myhomeBox_mybasemsg .bodyBox .mybasemsg .credentialsNum input {
+        text-align: right;
+        height: .8rem;
+        line-height: .8rem;
+        font-size: .3rem; }
+    .myhomeBox_mybasemsg .bodyBox .mybasemsg .mobile {
+      padding-right: .1rem; }
+      .myhomeBox_mybasemsg .bodyBox .mybasemsg .mobile input {
+        text-align: right;
+        height: .8rem;
+        line-height: .8rem;
+        font-size: .3rem; }
+    .myhomeBox_mybasemsg .bodyBox .mybasemsg .readyname input {
+      text-align: right;
+      height: .8rem;
+      line-height: .8rem;
+      font-size: .3rem;
+      padding-right: .45rem; }
+    .myhomeBox_mybasemsg .bodyBox .mybasemsg .sex span {
+      text-align: right;
+      height: .8rem;
+      line-height: .8rem;
+      font-size: .3rem; }
+    .myhomeBox_mybasemsg .bodyBox .mybasemsg .credentials span {
+      text-align: right;
+      height: .8rem;
+      line-height: .8rem;
+      font-size: .3rem; }
+  .myhomeBox_mybasemsg .bodyBox .mybasemsg:last-child {
+    border-bottom: none; }
+  .myhomeBox_mybasemsg .logoutBtn {
+    width: 90%;
+    margin: 1rem auto 0 auto;
+    text-align: center;
+    background: #f60;
+    padding: .25rem 0;
+    border-radius: .06rem;
+    font-size: .32rem;
+    color: #fff; }
+  .myhomeBox_mybasemsg .personSexbox {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1; }
+    .myhomeBox_mybasemsg .personSexbox .Zjzboxmsgshow {
+      background: #fff;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4.5rem; }
+    .myhomeBox_mybasemsg .personSexbox .closeDailogBox {
+      text-align: center;
+      padding: .2rem .2rem;
+      border-bottom: solid 0.02rem #f3f3f3; }
+      .myhomeBox_mybasemsg .personSexbox .closeDailogBox span {
+        display: inline-block;
+        position: absolute;
+        top: .3rem;
+        right: .3rem;
+        width: .32rem;
+        height: .32rem;
+        background: url(../images/close.png) center no-repeat;
+        background-size: 80%; }
+    .myhomeBox_mybasemsg .personSexbox .page-picker-wrapper {
+      background: #fff;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      bottom: 0; }
+    .myhomeBox_mybasemsg .personSexbox .selectbtn {
+      width: 80%;
+      background: #f60;
+      text-align: center;
+      margin: .2rem auto;
+      height: .8rem;
+      line-height: .8rem;
+      color: #fff;
+      border-radius: .5rem; }
+  .myhomeBox_mybasemsg .personZjzbox {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1; }
+    .myhomeBox_mybasemsg .personZjzbox .Zjzboxmsgshow {
+      background: #fff;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4.5rem; }
+    .myhomeBox_mybasemsg .personZjzbox .closeDailogBox {
+      text-align: center;
+      padding: .2rem .2rem;
+      border-bottom: solid 0.02rem #f3f3f3; }
+      .myhomeBox_mybasemsg .personZjzbox .closeDailogBox span {
+        display: inline-block;
+        position: absolute;
+        top: .3rem;
+        right: .3rem;
+        width: .32rem;
+        height: .32rem;
+        background: url(../images/close.png) center no-repeat;
+        background-size: 80%; }
+    .myhomeBox_mybasemsg .personZjzbox .page-picker-wrapper {
+      background: #fff;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      bottom: 0; }
+    .myhomeBox_mybasemsg .personZjzbox .selectbtn {
+      width: 80%;
+      background: #f60;
+      text-align: center;
+      margin: .2rem auto;
+      height: .8rem;
+      line-height: .8rem;
+      color: #fff;
+      border-radius: .5rem; }
+
+/******个人中心  激活权益*******/
+.myhomeBox_myactivity {
+  background: #fff;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 100%; }
+  .myhomeBox_myactivity .mymember {
+    background: #fff;
+    padding: .5rem .3rem 0 .3rem; }
+    .myhomeBox_myactivity .mymember .active_tel, .myhomeBox_myactivity .mymember .active_name, .myhomeBox_myactivity .mymember .active_code {
+      padding: .3rem 0 .3rem 0;
+      display: flex;
+      justify-content: flex-start;
+      align-content: center;
+      align-items: center;
+      border-bottom: solid 0.02rem #f3f3f3;
+      margin: .1rem 0; }
+    .myhomeBox_myactivity .mymember .active_tel span, .myhomeBox_myactivity .mymember .active_name span, .myhomeBox_myactivity .mymember .active_code span {
+      width: .8rem;
+      height: .8rem; }
+    .myhomeBox_myactivity .mymember .active_tel input, .myhomeBox_myactivity .mymember .active_name input, .myhomeBox_myactivity .mymember .active_code input {
+      width: 100%;
+      height: .8rem;
+      line-height: .8rem;
+      font-size: .35rem;
+      color: #333;
+      background: transparent; }
+    .myhomeBox_myactivity .mymember .active_tel input {
+      background: transparent;
+      color: #666; }
+    .myhomeBox_myactivity .mymember .active_tel span {
+      background: url(../images/act_mobile.png) 0.15rem center no-repeat;
+      background-size: 60%; }
+    .myhomeBox_myactivity .mymember .active_name span {
+      background: url(../images/act_name.png) 0.15rem center no-repeat;
+      background-size: 60%; }
+    .myhomeBox_myactivity .mymember .active_code span {
+      background: url(../images/act_number.png) 0.15rem center no-repeat;
+      background-size: 60%; }
+    .myhomeBox_myactivity .mymember .active_sure {
+      padding: 1rem 0; }
+      .myhomeBox_myactivity .mymember .active_sure button {
+        width: 100%;
+        height: 1rem;
+        text-align: center;
+        background: #f60;
+        color: #fff;
+        font-size: .32rem;
+        border-radius: .1rem; }
+    .myhomeBox_myactivity .mymember .disablestyle {
+      background: #f8f8f8; }
+
+/******个人中心  优惠券*******/
+.myhomeBox_mycoupon {
+  background: #f8f8f8;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 100%; }
+  .myhomeBox_mycoupon .couponlistDiv li {
+    padding: .2rem .2rem;
+    position: relative;
+    background: #fff;
+    margin: .33rem;
+    border-radius: .1rem;
+    overflow: hidden; }
+    .myhomeBox_mycoupon .couponlistDiv li .couponlistMsg {
+      display: flex;
+      justify-content: space-between;
+      position: relative; }
+      .myhomeBox_mycoupon .couponlistDiv li .couponlistMsg .couponlistShow {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%); }
+      .myhomeBox_mycoupon .couponlistDiv li .couponlistMsg .couponlist_Name {
+        color: #666;
+        font-size: .3rem;
+        font-weight: bold; }
+      .myhomeBox_mycoupon .couponlistDiv li .couponlistMsg .couponlist_Date {
+        color: #999;
+        padding-top: .25rem;
+        font-size: .24rem; }
+      .myhomeBox_mycoupon .couponlistDiv li .couponlistMsg img {
+        width: 1.2rem; }
+      .myhomeBox_mycoupon .couponlistDiv li .couponlistMsg .couponNum {
+        color: #f60;
+        font-size: .32rem;
+        text-align: center;
+        padding: .2rem 0; }
+        .myhomeBox_mycoupon .couponlistDiv li .couponlistMsg .couponNum span {
+          font-weight: bold;
+          font-size: .46rem;
+          margin-right: .05rem; }
+        .myhomeBox_mycoupon .couponlistDiv li .couponlistMsg .couponNum i {
+          display: inline-block;
+          padding: .03rem .1rem;
+          color: #999;
+          background: #f3f3f3;
+          font-size: .26rem;
+          font-style: normal;
+          border-radius: .06rem; }
+    .myhomeBox_mycoupon .couponlistDiv li .couponlistType {
+      border-top: dashed .02rem #ddd;
+      padding-top: .2rem;
+      margin-top: .2rem;
+      color: #676767;
+      font-size: .24rem;
+      position: relative;
+      display: flex;
+      justify-content: space-between; }
+    .myhomeBox_mycoupon .couponlistDiv li .couponlistType:before {
+      content: '';
+      position: absolute;
+      left: -.32rem;
+      top: -.15rem;
+      background: #f8f8f8;
+      width: .3rem;
+      height: .3rem;
+      border-radius: .15rem; }
+    .myhomeBox_mycoupon .couponlistDiv li .couponlistType:after {
+      content: '';
+      position: absolute;
+      right: -.32rem;
+      top: -.15rem;
+      background: #f8f8f8;
+      width: .3rem;
+      height: .3rem;
+      border-radius: .15rem; }
+    .myhomeBox_mycoupon .couponlistDiv li .prolink {
+      color: #956010; }
+  .myhomeBox_mycoupon .couponlistDiv li:last-child {
+    margin-bottom: 0; }
+
+/******个人中心  我的订单列表*******/
+.myhomeBox_myorder {
+  background: #f4f4f4;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 100%; }
+  .myhomeBox_myorder .myorderlistDiv li {
+    padding: .2rem .3rem;
+    position: relative;
+    background: #fff;
+    margin: .33rem 0;
+    overflow: hidden;
+    position: relative; }
+    .myhomeBox_myorder .myorderlistDiv li .orderMsg {
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      align-items: center;
+      border-bottom: solid 0.02rem #f3f3f3;
+      padding-bottom: .2rem; }
+      .myhomeBox_myorder .myorderlistDiv li .orderMsg .productmsg {
+        display: flex;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center;
+        flex: 1; }
+        .myhomeBox_myorder .myorderlistDiv li .orderMsg .productmsg .productImg {
+          width: 30%;
+          padding-right: .2rem; }
+          .myhomeBox_myorder .myorderlistDiv li .orderMsg .productmsg .productImg .defaultBg {
+            background: url(../images/pic1.jpg) center no-repeat;
+            background-size: cover;
+            border-radius: .1rem;
+            overflow: hidden; }
+          .myhomeBox_myorder .myorderlistDiv li .orderMsg .productmsg .productImg span {
+            display: inline-block;
+            width: 100%;
+            height: 1.4rem;
+            border-radius: .1rem; }
+            .myhomeBox_myorder .myorderlistDiv li .orderMsg .productmsg .productImg span img {
+              width: 100%; }
+        .myhomeBox_myorder .myorderlistDiv li .orderMsg .productmsg .productName {
+          flex: 1; }
+          .myhomeBox_myorder .myorderlistDiv li .orderMsg .productmsg .productName p:nth-of-type(1) {
+            font-size: .3rem;
+            color: #333; }
+          .myhomeBox_myorder .myorderlistDiv li .orderMsg .productmsg .productName p:nth-of-type(2) {
+            font-size: .28rem;
+            color: #666;
+            padding: .1rem 0;
+            width: 73%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; }
+          .myhomeBox_myorder .myorderlistDiv li .orderMsg .productmsg .productName p:nth-of-type(3) span {
+            display: inline-block;
+            padding: .02rem .1rem;
+            background: #f60;
+            color: #fff;
+            font-size: .26rem;
+            border-radius: .05rem; }
+      .myhomeBox_myorder .myorderlistDiv li .orderMsg .prostatus {
+        width: 18%;
+        text-align: center;
+        color: #f60;
+        font-size: .26rem;
+        position: absolute;
+        right: .22rem; }
+    .myhomeBox_myorder .myorderlistDiv li .orderDate {
+      display: flex;
+      justify-content: flex-start;
+      align-content: center;
+      align-items: center;
+      padding-top: .2rem; }
+      .myhomeBox_myorder .myorderlistDiv li .orderDate div:nth-of-type(1) {
+        width: 35%; }
+        .myhomeBox_myorder .myorderlistDiv li .orderDate div:nth-of-type(1) span {
+          display: inline-block;
+          background: #f3f3f3;
+          color: #333;
+          padding: .03rem .2rem;
+          border-radius: .2rem; }
+      .myhomeBox_myorder .myorderlistDiv li .orderDate div:nth-of-type(2) {
+        flex: 1;
+        color: #666; }
+    .myhomeBox_myorder .myorderlistDiv li .paystatus {
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      align-items: center;
+      border-top: solid 0.02rem #f3f3f3;
+      margin-top: .1rem;
+      padding-top: .2rem; }
+      .myhomeBox_myorder .myorderlistDiv li .paystatus .paymoneyNum {
+        color: #999; }
+        .myhomeBox_myorder .myorderlistDiv li .paystatus .paymoneyNum span {
+          color: #f60; }
+      .myhomeBox_myorder .myorderlistDiv li .paystatus .payoneyBtn span {
+        display: inline-block; }
+        .myhomeBox_myorder .myorderlistDiv li .paystatus .payoneyBtn span i {
+          display: inline-block;
+          padding: .05rem .2rem;
+          background: #f60;
+          color: #fff;
+          border-radius: .21rem;
+          height: .42rem;
+          line-height: .42rem; }
+        .myhomeBox_myorder .myorderlistDiv li .paystatus .payoneyBtn span .payOverBtn {
+          background: #f3f3f3;
+          color: #999; }
+  .myhomeBox_myorder .myorderlistDiv li:last-child {
+    margin-bottom: 0; }
+
+/******个人中心  底部导航栏*******/
+.myhomeBox_bottombar {
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 1rem;
+  background: #fff; }
+  .myhomeBox_bottombar div {
+    flex: 1;
+    text-align: center;
+    font-size: .28rem;
+    color: #999; }
+    .myhomeBox_bottombar div span {
+      display: inline-block;
+      width: .35rem;
+      height: .35rem;
+      vertical-align: middle;
+      margin-right: .15rem; }
+    .myhomeBox_bottombar div span.index {
+      background: url(../images/center/home_n.png) center no-repeat;
+      background-size: 100%; }
+    .myhomeBox_bottombar div span.myhome {
+      background: url(../images/center/my_n.png) center no-repeat;
+      background-size: 100%; }
+  .myhomeBox_bottombar div.curron {
+    color: #333;
+    font-weight: bold; }
+    .myhomeBox_bottombar div.curron span.index {
+      background: url(../images/center/home.png) center no-repeat;
+      background-size: 100%; }
+    .myhomeBox_bottombar div.curron span.myhome {
+      background: url(../images/center/my.png) center no-repeat;
+      background-size: 100%; }
+
+/*************日历控件************/
+.booking_calendar {
+  margin: auto;
+  width: 100%;
+  min-width: 300px;
+  background: #fff;
+  font-family: "PingFang SC","Hiragino Sans GB","STHeiti","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+  user-select: none; }
+  .booking_calendar .calendar-tools {
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    color: #5e7a88; }
+    .booking_calendar .calendar-tools span {
+      cursor: pointer; }
+  .booking_calendar .calendar-prev {
+    width: 14.28571429%;
+    float: left;
+    text-align: center; }
+  .booking_calendar .calendar-info {
+    padding-top: 3px;
+    font-size: 16px;
+    line-height: 1.3;
+    text-align: center; }
+    .booking_calendar .calendar-info div.month {
+      margin: auto;
+      height: 20px;
+      width: 100px;
+      text-align: center;
+      color: #5e7a88;
+      overflow: hidden;
+      position: relative; }
+      .booking_calendar .calendar-info div.month .month-inner {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 240px;
+        transition: top 0.5s cubic-bezier(0.075, 0.82, 0.165, 1); }
+        .booking_calendar .calendar-info div.month .month-inner span {
+          display: block;
+          font-size: 14px;
+          height: 20px;
+          width: 100px;
+          overflow: hidden;
+          text-align: center; }
+    .booking_calendar .calendar-info div.year {
+      font-size: 10px;
+      line-height: 1;
+      color: #999; }
+  .booking_calendar .calendar-next {
+    width: 14.28571429%;
+    float: right;
+    text-align: center; }
+  .booking_calendar table {
+    clear: both;
+    width: 100%;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    color: #444444; }
+    .booking_calendar table td {
+      margin: 2px !important;
+      padding: 0px 0;
+      width: 14.28571429%;
+      height: 44px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 14px;
+      line-height: 125%;
+      cursor: pointer;
+      position: relative;
+      vertical-align: top; }
+    .booking_calendar table td.week {
+      font-size: 10px;
+      pointer-events: none !important;
+      cursor: default !important; }
+    .booking_calendar table td.disabled {
+      color: #ccc;
+      pointer-events: none !important;
+      cursor: default !important; }
+    .booking_calendar table td.disabled div {
+      color: #ccc; }
+    .booking_calendar table td span {
+      display: block;
+      max-width: 40px;
+      height: 26px;
+      font-size: 16px;
+      line-height: 26px;
+      margin: 0px auto;
+      border-radius: 20px; }
+    .booking_calendar table td:not(.selected) span:not(.red):hover {
+      background: #f3f8fa;
+      color: #444; }
+    .booking_calendar table td:not(.selected) span.red:hover {
+      background: #f9efef; }
+    .booking_calendar table td:not(.disabled) span.red {
+      color: #ea6151; }
+    .booking_calendar table td.selected span {
+      background-color: #5e7a88;
+      color: #fff; }
+    .booking_calendar table td .text {
+      position: absolute;
+      top: 28px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      padding: 2px;
+      font-size: 8px;
+      line-height: 1.2;
+      color: #444; }
+    .booking_calendar table td .isGregorianFestival, .booking_calendar table .calendar td .isLunarFestival {
+      color: #ea6151; }
+    .booking_calendar table td.selected span.red {
+      background-color: #ea6151;
+      color: #fff; }
+    .booking_calendar table td.selected span.red:hover {
+      background-color: #ea6151;
+      color: #fff; }
+    .booking_calendar table thead td {
+      text-transform: uppercase;
+      height: 30px;
+      vertical-align: middle; }
+  .booking_calendar .calendar-button {
+    text-align: center; }
+    .booking_calendar .calendar-button span {
+      cursor: pointer;
+      display: inline-block;
+      min-height: 1em;
+      min-width: 5em;
+      vertical-align: baseline;
+      background: #5e7a88;
+      color: #fff;
+      margin: 0 .25em 0 0;
+      padding: .6em 2em;
+      font-size: 1em;
+      line-height: 1em;
+      text-align: center;
+      border-radius: .3em; }
+    .booking_calendar .calendar-button span.cancel {
+      background: #efefef;
+      color: #666; }
+  .booking_calendar .calendar-years {
+    position: absolute;
+    left: 0px;
+    top: 60px;
+    right: 0px;
+    bottom: 0px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: auto;
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px); }
+  .booking_calendar .calendar-years.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0px); }
+    .booking_calendar .calendar-years.show span {
+      margin: 1px 5px;
+      display: inline-block;
+      width: 60px;
+      line-height: 30px;
+      border-radius: 20px;
+      text-align: center;
+      border: 1px solid #fbfbfb;
+      color: #999; }
+    .booking_calendar .calendar-years.show span.active {
+      border: 1px solid #5e7a88;
+      background-color: #5e7a88;
+      color: #fff; }
+
+/***** tab 处理*****/
+.bookingTabCon .fund-info {
+  padding: .6rem 0;
+  background: #fff; }
+.bookingTabCon .tab-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-shadow: 0.1rem 0.05rem 0.05rem #efefef; }
+  .bookingTabCon .tab-header li {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    height: 1rem;
+    line-height: 1rem;
+    background: #fff;
+    font-size: .3rem;
+    color: #999;
+    text-align: center;
+    position: relative; }
+    .bookingTabCon .tab-header li i {
+      color: #f60; }
+  .bookingTabCon .tab-header li.active {
+    color: #333;
+    font-weight: bold; }
+  .bookingTabCon .tab-header li.active:before {
+    content: "";
+    position: absolute;
+    width: 1rem;
+    height: .04rem;
+    background: #f60;
+    left: 50%;
+    margin-left: -.5rem;
+    bottom: 0; }
+.bookingTabCon .tab-body {
+  margin-top: .1rem; }
+
+/****** 异常处理*****/
+.noDataContent {
+  padding: 1rem 0;
+  text-align: center;
+  color: #999; }
+
+/******返回第三方******/
+.backthirdcon {
+  position: relative; }
+  .backthirdcon .defaultBtnbg {
+    display: inline-block;
+    position: fixed;
+    width: .9rem;
+    height: .9rem;
+    line-height: .9rem;
+    border-radius: .9rem;
+    text-align: center;
+    background: #f60;
+    color: #fff;
+    font-size: .28rem;
+    right: .2rem;
+    bottom: 1.5rem;
+    border: solid .02rem #fff;
+    box-shadow: 0 0.08rem 0 #c1c1c1;
+    z-index: 15; }
+
+.safarishowTipdailog {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8) url(../images/openbrow.png) top right no-repeat;
+  background-size: 65%;
+  z-index: 99; }
+
+/******头部处理 topBar*******/
+.header {
+  height: .58rem;
+  line-height: .58rem;
+  background: #fff;
+  text-align: center;
+  position: relative;
+  border-bottom: solid 0.02rem #f3f3f3;
+  box-shadow: 0 0 0.03rem #f3f3f3; }
+
+.header .icon_bank {
+  position: absolute;
+  left: .1rem;
+  width: .5rem;
+  height: .5rem;
+  background: url(../images/left.png) center no-repeat;
+  background-size: 40%; }
+
+/******使用优惠券*****/
+.couponDiv {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 99; }
+  .couponDiv .couponMsgBox {
+    position: absolute;
+    width: 100%;
+    max-height: 5rem;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+    border-top-right-radius: .15rem;
+    border-top-left-radius: .15rem;
+    overflow-y: scroll; }
+    .couponDiv .couponMsgBox .selectcouponbox {
+      display: flex;
+      justify-content: space-between;
+      padding: .3rem .3rem .1rem .3rem; }
+      .couponDiv .couponMsgBox .selectcouponbox .closecouponbtn {
+        display: inline-block;
+        width: .32rem;
+        height: .32rem;
+        background: url(../images/close.png) center no-repeat;
+        background-size: 100%; }
+    .couponDiv .couponMsgBox .couponTip {
+      color: #999;
+      font-size: .24rem;
+      text-align: center;
+      padding: .3rem 0; }
+    .couponDiv .couponMsgBox .couponlistMsg li {
+      display: flex;
+      justify-content: flex-start;
+      padding: .3rem .3rem .3rem .2rem;
+      box-shadow: 0 .01rem .08rem #ddd;
+      margin: 0 .3rem;
+      align-items: center;
+      align-content: center;
+      border-radius: .1rem;
+      margin-bottom: .3rem; }
+      .couponDiv .couponMsgBox .couponlistMsg li .couponlistType {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center; }
+        .couponDiv .couponMsgBox .couponlistMsg li .couponlistType .couponprice {
+          width: 28%;
+          text-align: center;
+          white-space: nowrap;
+          color: #f60;
+          font-size: .28rem; }
+          .couponDiv .couponMsgBox .couponlistMsg li .couponlistType .couponprice em {
+            font-size: .4rem;
+            margin-left: .05rem;
+            text-align: center; }
+          .couponDiv .couponMsgBox .couponlistMsg li .couponlistType .couponprice p {
+            font-size: .22rem;
+            color: #999;
+            text-align: center; }
+        .couponDiv .couponMsgBox .couponlistMsg li .couponlistType div:nth-of-type(2) {
+          flex: 1;
+          border-left: solid 0.02rem #f3f3f3;
+          padding-left: .2rem; }
+          .couponDiv .couponMsgBox .couponlistMsg li .couponlistType div:nth-of-type(2) .noteDiv {
+            font-size: .3rem;
+            color: #333;
+            padding: .05rem 0; }
+          .couponDiv .couponMsgBox .couponlistMsg li .couponlistType div:nth-of-type(2) .noteDate {
+            font-size: .24rem;
+            color: #999;
+            padding: .05rem 0; }
+      .couponDiv .couponMsgBox .couponlistMsg li .couponlistSelect {
+        width: 10%;
+        text-align: center; }
+        .couponDiv .couponMsgBox .couponlistMsg li .couponlistSelect span {
+          display: inline-block;
+          width: .4rem;
+          height: .4rem;
+          background: url(../images/Oval.svg) center no-repeat;
+          background-size: 100%; }
+    .couponDiv .couponMsgBox .couponlistMsg li.curron .couponlistSelect {
+      width: 10%;
+      text-align: center; }
+      .couponDiv .couponMsgBox .couponlistMsg li.curron .couponlistSelect span {
+        display: inline-block;
+        width: .4rem;
+        height: .4rem;
+        background: url(../images/selected.svg) center no-repeat;
+        background-size: 100%; }
+    .couponDiv .couponMsgBox .couponbtnDiv {
+      width: 90%;
+      margin: 0 auto;
+      background: #f60;
+      text-align: center;
+      color: #fff;
+      height: .8rem;
+      line-height: .8rem;
+      border-radius: .2rem; }
+
+/***绑卡*****/
+.carlist {
+  background: #fff;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0; }
+  .carlist .cardlistBox {
+    margin: .1rem .22rem;
+    padding: .15rem .12rem; }
+  .carlist .cardlistMsg {
+    background: url(../images/card/blackground-ceb@2x.png) left top no-repeat;
+    height: 1.76rem;
+    background-size: 100%;
+    margin-bottom: .2rem;
+    display: flex;
+    justify-content: space-between;
+    color: #fff; }
+    .carlist .cardlistMsg .card_bankName {
+      background: url(../images/card/logo-ceb@2x.png) 0.2rem 0.2rem no-repeat;
+      background-size: .6rem .6rem;
+      padding-left: 1rem;
+      padding-top: .15rem; }
+      .carlist .cardlistMsg .card_bankName p {
+        padding: .05rem 0; }
+    .carlist .cardlistMsg .default {
+      padding: .2rem; }
+      .carlist .cardlistMsg .default span {
+        background: #fff;
+        height: .4rem;
+        line-height: .4rem;
+        border-radius: .2rem;
+        color: #666;
+        padding: 0 .1rem; }
+  .carlist .addcardbtn {
+    background: linear-gradient(#FF974C, #FF6B00);
+    margin-top: .6rem;
+    padding: .2rem 0;
+    text-align: center;
+    font-size: .28rem;
+    color: #fff;
+    border-radius: .1rem; }
+  .carlist .defaultaddCard {
+    opacity: .6; }
+  .carlist .removebtn {
+    background: #fefefe;
+    border: solid .02rem #eee;
+    margin-top: .6rem;
+    padding: .2rem 0;
+    text-align: center;
+    font-size: .28rem;
+    color: #999;
+    border-radius: .1rem; }
+
+.addCardBox {
+  background: #fff;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0; }
+  .addCardBox .addCardTips {
+    background-image: linear-gradient(90deg, rgba(255, 151, 76, 0.06), rgba(255, 107, 0, 0.06));
+    text-align: center;
+    color: #666;
+    font-size: .3rem;
+    padding: .3rem 0; }
+  .addCardBox .personType {
+    display: flex;
+    justify-content: flex-start;
+    padding: .1rem .15rem .12rem .1rem;
+    margin: .2rem .22rem;
+    align-items: center;
+    align-content: center;
+    border-bottom: solid .02rem #eee;
+    font-size: .3rem;
+    color: #666; }
+    .addCardBox .personType .TypeboxName {
+      width: 1.5rem; }
+    .addCardBox .personType .TypeboxValue {
+      flex: 1;
+      position: relative; }
+      .addCardBox .personType .TypeboxValue input {
+        height: .62rem;
+        font-size: .36rem;
+        width: 100%; }
+      .addCardBox .personType .TypeboxValue em {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: inline-block;
+        background: #fff;
+        padding: .05rem .2rem;
+        color: #f60;
+        border: solid .02rem #f60;
+        border-radius: .5rem; }
+      .addCardBox .personType .TypeboxValue em.default {
+        background: #f3f3f3;
+        border: solid .02rem #eee;
+        color: #999; }
+  .addCardBox .addcardbtn {
+    background: linear-gradient(#FF974C, #FF6B00);
+    margin: .6rem .22rem .2rem .22rem;
+    padding: .2rem 0;
+    text-align: center;
+    font-size: .32rem;
+    color: #fff;
+    border-radius: .1rem; }
+  .addCardBox .agreetips {
+    text-align: center;
+    color: #999;
+    line-height: .42rem; }
+    .addCardBox .agreetips span {
+      color: #f60; }
+  .addCardBox .ruluedailog {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 5; }
+    .addCardBox .ruluedailog .dailogMsgBox {
+      width: 80%;
+      position: fixed;
+      left: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border-radius: .1rem;
+      position: relative;
+      padding-bottom: .3rem; }
+      .addCardBox .ruluedailog .dailogMsgBox .rulurTitle {
+        text-align: center;
+        padding: .5rem 0 .3rem 0;
+        font-weight: bold;
+        color: #333; }
+      .addCardBox .ruluedailog .dailogMsgBox .closeDailog {
+        text-align: right;
+        padding: .2rem .2rem;
+        position: absolute;
+        top: .1rem;
+        right: .1rem; }
+        .addCardBox .ruluedailog .dailogMsgBox .closeDailog span {
+          display: inline-block;
+          width: .32rem;
+          height: .32rem;
+          background: url(../images/close.png) center no-repeat;
+          background-size: 80%; }
+      .addCardBox .ruluedailog .dailogMsgBox .dailogMsgshow {
+        padding: 0rem .2rem .2rem .2rem;
+        max-height: 6.2rem;
+        min-height: 1rem;
+        overflow-y: scroll;
+        color: #999;
+        line-height: .4rem; }
+
+/***医疗*****/
+.addmedicalBox {
+  background: #fff;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0; }
+  .addmedicalBox .addCardTips {
+    background-image: linear-gradient(90deg, rgba(255, 151, 76, 0.06), rgba(255, 107, 0, 0.06));
+    text-align: center;
+    color: #666;
+    font-size: .3rem;
+    padding: .3rem .3rem;
+    font-size: .26rem; }
+  .addmedicalBox .personType {
+    display: flex;
+    justify-content: flex-start;
+    padding: .1rem .15rem .12rem .1rem;
+    margin: .2rem .22rem;
+    align-items: center;
+    align-content: center;
+    border-bottom: solid .02rem #eee;
+    font-size: .3rem;
+    color: #666; }
+    .addmedicalBox .personType .TypeboxName {
+      width: 1.6rem; }
+      .addmedicalBox .personType .TypeboxName span {
+        color: #f60;
+        margin-right: .05rem; }
+    .addmedicalBox .personType .TypeboxValue {
+      flex: 1;
+      position: relative; }
+      .addmedicalBox .personType .TypeboxValue input {
+        height: .62rem;
+        font-size: .36rem;
+        width: 100%; }
+      .addmedicalBox .personType .TypeboxValue em {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: inline-block;
+        background: #fff;
+        padding: .05rem .2rem;
+        color: #f60;
+        border: solid .02rem #f60;
+        border-radius: .5rem; }
+      .addmedicalBox .personType .TypeboxValue em.default {
+        background: #f3f3f3;
+        border: solid .02rem #eee;
+        color: #999; }
+  .addmedicalBox .addcardbtn {
+    background: linear-gradient(#FF974C, #FF6B00);
+    margin: .6rem .22rem .2rem .22rem;
+    padding: .2rem 0;
+    text-align: center;
+    font-size: .32rem;
+    color: #fff;
+    border-radius: .1rem; }
+  .addmedicalBox .agreetips {
+    text-align: center;
+    color: #999;
+    line-height: .42rem; }
+    .addmedicalBox .agreetips span {
+      color: #f60; }
+  .addmedicalBox .ruluedailog {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 5; }
+    .addmedicalBox .ruluedailog .dailogMsgBox {
+      width: 80%;
+      position: fixed;
+      left: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border-radius: .1rem;
+      position: relative;
+      padding-bottom: .3rem; }
+      .addmedicalBox .ruluedailog .dailogMsgBox .rulurTitle {
+        text-align: center;
+        padding: .5rem 0 .3rem 0;
+        font-weight: bold;
+        color: #333; }
+      .addmedicalBox .ruluedailog .dailogMsgBox .closeDailog {
+        text-align: right;
+        padding: .2rem .2rem;
+        position: absolute;
+        top: .1rem;
+        right: .1rem; }
+        .addmedicalBox .ruluedailog .dailogMsgBox .closeDailog span {
+          display: inline-block;
+          width: .32rem;
+          height: .32rem;
+          background: url(../images/close.png) center no-repeat;
+          background-size: 80%; }
+      .addmedicalBox .ruluedailog .dailogMsgBox .dailogMsgshow {
+        padding: 0rem .2rem .2rem .2rem;
+        max-height: 6.2rem;
+        min-height: 1rem;
+        overflow-y: scroll;
+        color: #999;
+        line-height: .4rem; }
+
+/***医院列表***/
+.hospitalCon {
+  background: #fff;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0; }
+  .hospitalCon .hospitalSeachBox {
+    padding: 0 0 .2rem 0; }
+    .hospitalCon .hospitalSeachBox .searchMsg {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      align-content: center;
+      background: #f8f8f8;
+      padding: .15rem .3rem;
+      border-radius: .05rem; }
+      .hospitalCon .hospitalSeachBox .searchMsg .search_city {
+        padding-right: .3rem;
+        max-width: 30%; }
+        .hospitalCon .hospitalSeachBox .searchMsg .search_city a {
+          color: #666; }
+      .hospitalCon .hospitalSeachBox .searchMsg .search_date {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+        border-left: solid 0.03rem #eee;
+        border-right: solid 0.03rem #eee;
+        padding: 0 .3rem;
+        margin-right: .3rem;
+        font-size: .24rem; }
+        .hospitalCon .hospitalSeachBox .searchMsg .search_date i {
+          color: #999;
+          margin-right: .1rem; }
+      .hospitalCon .hospitalSeachBox .searchMsg .search_hotel {
+        flex: 1; }
+        .hospitalCon .hospitalSeachBox .searchMsg .search_hotel .searchinput {
+          background: none;
+          height: .6rem;
+          line-height: .6rem;
+          width: 80%;
+          font-size: .28rem;
+          color: #666; }
+        .hospitalCon .hospitalSeachBox .searchMsg .search_hotel .searchicon {
+          display: inline-block;
+          width: .22rem;
+          height: .22rem;
+          background: url(../images/search.png) center no-repeat;
+          background-size: 100%;
+          margin-right: .1rem; }
+      .hospitalCon .hospitalSeachBox .searchMsg .pulldown {
+        display: inline-block;
+        width: .18rem;
+        height: .18rem;
+        background: url(../images/pulldown.png) center no-repeat;
+        background-size: 90%;
+        margin-left: .1rem; }
+  .hospitalCon .hospitalMsgBox {
+    border-bottom: solid .01rem #e6e6e6;
+    padding: .25rem .3rem;
+    background-image: url(../images/center_arrow.png);
+    background-size: .2rem;
+    background-repeat: no-repeat;
+    background-position: 95% center; }
+    .hospitalCon .hospitalMsgBox .hospitalName {
+      font-size: .28rem;
+      font-weight: bold; }
+    .hospitalCon .hospitalMsgBox .hospitalType {
+      padding: 0.15rem 0.1rem;
+      font-size: .24rem;
+      color: #f60; }
+    .hospitalCon .hospitalMsgBox .hospitalAddress {
+      color: #999;
+      font-size: .24rem;
+      background: url(../images/vist.png) left center no-repeat;
+      background-size: .3rem;
+      padding-left: .35rem; }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colourfulchina.bigan.mapper.ClfBuffetMapper">
+    <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.ClfBuffet">
+
+    </resultMap>
+    <select id="selectClfBuffetPage" resultType="com.colourfulchina.bigan.api.entity.ClfBuffet">
+        select * from Clf_Buffet as bu
+        where 1=1 and del_flag=0
+        <if test="city != null and city != ''">
+            and bu.city = #{city}
+        </if>
+        <if test="hotelCh != null  and hotelCh != ''">
+            and bu.hotel_ch = #{hotelCh}
+        </if>
+        <if test="hotelEn != null  and hotelEn != ''">
+            and bu.hotel_en = #{hotelEn}
+        </if>
+    </select>
+    <update id="logicDelById">
+        update Clf_Buffet set del_flag=1,update_time=GETDATE() where id=#{id}
+    </update>
+</mapper>

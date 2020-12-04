@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.bigan.mapper.ProjectMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.Project">
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+  </sql>
+    <!-- 查询项目详细信息 -->
+  <select id="selectProjectList" resultType="com.colourfulchina.bigan.api.vo.ProjectCdnVo">
+      SELECT
+            a.id,
+            a.name,
+            a.short shortName,
+            a.auth_type authType,
+            a.limit_type limitType,
+            a.multi_pack multiPack,
+            a.multi_group multiGroup,
+            a.enable_bank_order enableBankOrder,
+            a.dynamic,
+            a.package_id packageId,
+            a.bank_id bankId,
+            a.register,
+            a.code,
+            a.theme,
+            a.title,
+            a.notes,
+            a.expiry_date expiryDate,
+            a.create_time createTime,
+            a.update_time updateTime,
+            a.unit_expiry unitExpiry,
+            a.start_date startDate,
+            a.end_date endDate,
+            a.enable_portal enablePortal,
+            a.portal,
+            b.name as "packageName",
+            json_value(a.more,'$.limit.max_night') as maxNight,
+            json_value(a.more,'$.limit.book_after_leave') as bookAfterLeave
+        FROM
+            project a left join prj_package b on a.id = b.project_id
+      <where>
+          <if test="array.length != 0">
+              AND a.id IN
+              <foreach collection="array" index="index" item="item" open="(" separator="," close=")">
+                  #{item}
+              </foreach>
+          </if>
+      </where>
+  </select>
+    <!-- 查询项目列表简略信息 -->
+  <select id="selectProjectBriefList" resultType="com.colourfulchina.bigan.api.vo.ProjectCdnVo">
+      SELECT
+            a.id,
+            a.name,
+            b.name as "packageName",
+            a.expiry_date expiryDate,
+            a.unit_expiry unitExpiry
+        FROM
+            project a left join prj_package b on a.id = b.project_id
+      <where>
+          <if test="array.length != 0">
+              AND a.id IN
+              <foreach collection="array" index="index" item="item" open="(" separator="," close=")">
+                  #{item}
+              </foreach>
+          </if>
+      </where>
+  </select>
+
+  <select id="getProjectInfo" parameterType="com.colourfulchina.bigan.api.vo.ProjectReqVo" 
+  	resultType="com.colourfulchina.bigan.api.vo.ProjectInfoResVo">
+		select pr.id as projectId,
+			   pr.name as projectName,
+	           pr.short as shortName,
+			   pr.auth_type as authType,
+	           pr.multi_group as multiGroup,
+	           pp.id as packageId
+		  from project pr 
+	 left join prj_package pp on pr.id = pp.project_id
+		 where pr.id = #{projectId}
+		   and pp.id = #{packageId}
+  </select>
+
+    <select id="getProjectInfoByOrderSys"
+            resultType="com.colourfulchina.bigan.api.vo.ProjectInfoResVo">
+		select pr.id as projectId,
+			   pr.name as projectName,
+	           pr.short as shortName,
+			   pr.auth_type as authType,
+                pp.id as bankId,
+                pp.name as bankName
+		  from project pr
+	 left join sales_bank pp on pr.bank_id = pp.id
+		 where pr.id in (#{ids})
+
+  </select>
+</mapper>

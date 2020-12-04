@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.bigan.mapper.ShopSectionMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.ShopSection">
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    shop_id, title, content
+  </sql>
+
+</mapper>

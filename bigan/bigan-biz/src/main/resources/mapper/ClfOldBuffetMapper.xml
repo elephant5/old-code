@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colourfulchina.bigan.mapper.ClfOldBuffetMapper">
+    <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.ClfOldBuffet">
+
+    </resultMap>
+
+    <!-- 遨乐网与客乐芙_总住宿(旧)分页查询 -->
+    <select id="selectListPage" parameterType="map" resultType="com.colourfulchina.bigan.api.entity.ClfOldBuffet">
+        select * from Clf_Old_Accom a
+        <where>
+            and del_flag=0
+            <if test="country != null and country != ''">
+                and a.country like '%'+#{country}+'%'
+            </if>
+            <if test="city != null and city != ''">
+                and a.city like '%'+#{city}+'%'
+            </if>
+            <if test="hotelCh != null and hotelCh != ''">
+                and a.hotel_ch like '%'+#{hotelCh}+'%'
+            </if>
+            <if test="hotelEn != null and hotelEn != ''">
+                and a.hotel_en like '%'+#{hotelEn}+'%'
+            </if>
+            <if test="hotelPhone != null and hotelPhone != ''">
+                and a.hotel_phone like '%'+#{hotelPhone}+'%'
+            </if>
+            <if test="signContractUser != null and signContractUser != ''">
+                and a.sign_contract_user like '%'+#{signContractUser}+'%'
+            </if>
+            <if test="shopUser != null and shopUser != ''">
+                and a.shop_user like '%'+#{shopUser}+'%'
+            </if>
+            <if test="roomType != null and roomType != ''">
+                and a.room_type like '%'+#{roomType}+'%'
+            </if>
+            <if test="keepRoom != null and keepRoom != ''">
+                and a.keep_room like '%'+#{keepRoom}+'%'
+            </if>
+            <if test="month != null and month != ''">
+                and a.month like '%'+#{month}+'%'
+            </if>
+            <if test="unit != null and unit != ''">
+                and a.unit like '%'+#{unit}+'%'
+            </if>
+            <if test="proPrice != null and proPrice != ''">
+                and a.pro_price like '%'+#{proPrice}+'%'
+            </if>
+            <if test="proPriceRmb != null and proPriceRmb != ''">
+                and a.pro_price_rmb like '%'+#{proPriceRmb}+'%'
+            </if>
+            <if test="hadBreakfast != null and hadBreakfast != ''">
+                and a.had_breakfast like '%'+#{hadBreakfast}+'%'
+            </if>
+            <if test="xiechengDownPrice != null and xiechengDownPrice != ''">
+                and a.xiecheng_down_price like '%'+#{xiechengDownPrice}+'%'
+            </if>
+            <if test="xiechengAvgPrice != null and xiechengAvgPrice != ''">
+                and a.xiecheng_avg_price like '%'+#{xiechengAvgPrice}+'%'
+            </if>
+            <if test="xiechengBestPrice != null and xiechengBestPrice != ''">
+                and a.xiecheng_best_price like '%'+#{xiechengBestPrice}+'%'
+            </if>
+            <if test="bank != null and bank != ''">
+                and a.bank like '%'+#{bank}+'%'
+            </if>
+            <if test="constractDay != null and constractDay != ''">
+                and a.constract_day like '%'+#{constractDay}+'%'
+            </if>
+            <if test="contractStart != null and contractStart != ''">
+                and a.contract_start like '%'+#{contractStart}+'%'
+            </if>
+            <if test="contractEnd != null and contractEnd != ''">
+                and a.contract_end like '%'+#{contractEnd}+'%'
+            </if>
+            <if test="prepDays != null and prepDays != ''">
+                and a.prep_days = #{prepDays}
+            </if>
+            <if test="cancelDays != null and cancelDays != ''">
+                and a.cancel_days = #{cancelDays}
+            </if>
+            <if test="prepMethod != null and prepMethod != ''">
+                and a.prep_method like '%'+#{prepMethod}+'%'
+            </if>
+            <if test="hotelAddress != null and hotelAddress != ''">
+                and a.hotel_address like '%'+#{hotelAddress}+'%'
+            </if>
+            <if test="payMethod != null and payMethod != ''">
+                and a.pay_method like '%'+#{payMethod}+'%'
+            </if>
+            <if test="payTime != null and payTime != ''">
+                and a.pay_time like '%'+#{payTime}+'%'
+            </if>
+        </where>
+    </select>
+
+    <update id="logicDelById">
+        update Clf_Old_Accom set del_flag=1,update_time=GETDATE() where id=#{id}
+    </update>
+
+</mapper>

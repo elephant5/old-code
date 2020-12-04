@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.ShopProtocolMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.pangu.taishang.api.entity.ShopProtocol">
+  </resultMap>
+
+  <select id="selectProtocolMsg" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.vo.ShopProtocolMsgVo">
+    SELECT
+        b.id AS "shopId",
+        a.id AS "protocolId",
+        a.channel_id AS "shopChannelId",
+        c.id AS "shopAccountId",
+        b.shop_type AS "shopType",
+        a.principal AS "principal",
+        a.imprest AS "imprest",
+        a.deposit AS "deposit",
+        a.contract_start AS "contractStart",
+        a.contract_expiry AS "contractExpiry",
+        c.username AS "shopAccount",
+        c.`password` AS "shopPassword",
+        a.settle_method AS "settleMethod",
+        a.currency AS "currency",
+        a.`decimal` AS "decimal",
+        a.roundup as "roundup",
+        a.account_name AS "accountName",
+        a.opening_bank AS "openingBank",
+        a.bank_account AS "bankAccount",
+        a.block_rule AS "blockRule",
+        a.parking AS "parking",
+        a.children AS "children",
+        a.notice AS "notice",
+        d.internal as internal
+    FROM
+        shop_protocol a
+        LEFT JOIN shop b ON a.id = b.id
+        LEFT JOIN shop_account c ON a.id = c.shop_id and c.account_type = 0
+         LEFT JOIN shop_channel d ON a.channel_id = d.id
+    where
+        a.id = #{shopId}
+  </select>
+
+    <!-- 查询商户的渠道信息-->
+    <select id="selectShopChannel" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.entity.ShopChannel">
+        SELECT
+            *
+        FROM
+            shop_channel a
+        WHERE
+            a.id = ( SELECT t.channel_id FROM shop_protocol t WHERE t.id = #{shopId} )
+    </select>
+
+
+    <!-- 查询商户的渠道信息-->
+    <select id="selectShopProtocol" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.vo.res.shopProtocol.ShopProtocolRes">
+        SELECT
+          *
+        FROM
+          shop_protocol
+        WHERE
+            id = #{shopId}
+    </select>
+
+</mapper>

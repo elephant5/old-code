@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.HotelPortalImgMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.pangu.taishang.api.entity.HotelPortalImg">
+  </resultMap>
+
+  <!-- 根据酒店章节id查询酒店章节图片列表 -->
+  <select id="selectListByPortalId" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.entity.HotelPortalImg">
+    SELECT
+        *
+    FROM
+        hotel_portal_img a
+    WHERE
+        a.hotel_portal_id = #{portalId}
+        AND del_flag = 0
+  </select>
+</mapper>

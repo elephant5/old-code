@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.ActivityMapper">
+
+    <select id="getActivityActList" resultType="com.colourfulchina.pangu.taishang.api.entity.Activity">
+        select * from activity
+         where grant_mode = #{grantMode}
+           and sales_channel = #{channel}
+           and act_status = 4
+        <if test="actIdList != null and actIdList.size() != 0">
+            and ((goods_tag = 0 and id in
+            <foreach collection="actIdList" index="index" item="actId" open="(" separator="," close=")">
+                #{actId}
+            </foreach>)
+            or goods_tag = 1)
+        </if>
+        <if test="actIdList == null || actIdList.size() == 0">
+            and goods_tag = 1
+        </if>
+    </select>
+
+    <select id="findActivityPageList" resultType="com.colourfulchina.pangu.taishang.api.vo.ActivityPageVo" parameterType="map">
+        select id,
+               act_name as actName,
+               grant_mode as grantMode,
+               sales_channel as salesChannel,
+               goods_tag as goodsTag,
+               CASE WHEN forever_tag = 1 THEN '永久有效' else CONCAT(start_date,'_',end_date)  END  AS actExpire,
+               act_status as actStatus
+          from activity
+          <where>
+            <if test="actName != null and actName != ''">
+                and act_name like CONCAT('%',#{actName},'%')
+            </if>
+            <if test="grantMode != null and grantMode != ''">
+                and grant_mode = #{grantMode}
+            </if>
+            <if test="salesChannel != null and salesChannel != ''">
+                and sales_channel = #{salesChannel}
+            </if>
+          </where>
+          order by id desc
+
+    </select>
+
+</mapper>

@@ -1,0 +1,107 @@
+## spring security 配置
+#security:
+#  oauth2:
+#    client:
+#      client-id: yandi
+#      client-secret: yandi
+#      scope: server
+#    resource:
+#      token-info-uri: http://yandi.colourfulchina.com/auth/oauth/check_token
+spring:
+  datasource:
+    druid:
+      ziya:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: 1qaz@WSX
+        url: jdbc:mysql://clf-mysql.colourfulchina.com:3306/ziya?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+      pangu:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: 1qaz@WSX
+        url: jdbc:mysql://clf-mysql.colourfulchina.com:3306/pangu?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+      charlie:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        username: colorful
+        password: WhatTheFuckR2
+        url: jdbc:sqlserver://clf-mssql.colourfulchina.com;database=Ares
+  rabbitmq:
+    host: clf-rabbitmq.colourfulchina.com
+    port: 5672
+    username: admin
+    password: 1qaz@WSX
+  cloud:
+    bus:
+      refresh:
+        enabled: true
+      trace:
+        enabled: true
+  mail:
+    host: smtphm.qiye.163.com
+    username: 'it_support@colourfulchina.com'
+    password: 'Colourful1901'
+    properties:
+     mail:
+       smtp:
+         auth: true
+         starttls:
+           enable: true
+           required: true
+         socketFactory:
+           port: 465
+           class: javax.net.ssl.SSLSocketFactory
+           fallback: false
+
+
+#邮件配置
+icbc:
+  sendEmailAddress: it_support@colourfulchina.com
+  receiveEmailAddress:  1181416053@qq.com
+  #每天凌晨三点执行
+  cardCron: 0 0 3 1 1 ?
+  packCron: 0 0 3 1 1 ?
+  #一分钟一次
+#    cardCron: 0 0/1 1 1 1 ?
+#    packCron: 0 0/1 1 1 1 ?
+  projectId: 383
+
+
+
+sales:
+  order:
+    ## 激活码标签 test VIP 或者支付宝？
+    activateCodeTag: test
+    ORDER_DELAY_QUEUE: alipay.order.delay.queue
+    ORDER_DELAY_EXCHANGE: alipay.order.delay.exchange
+    ORDER_DELAY_ROUTING_KEY: alipay.order_delay
+    ORDER_EXCHANGE_NAME: alipay.order.exchange
+    ORDER_ROUTING_KEY: alipay.order
+    time: 10
+    
+scheduled:
+  salesOrder:
+    bookOrderUpdateStatus: 0 0/5 1 1 1 ?
+    insertBookOrder: 0 0/5 1 1 1 ?
+    deleteSalesOrder: 0 0 1 1 1 ?
+  codeMonitor:
+    projectId: 428
+    packageId: 1230
+    qty: 1000
+    time: 0 0/5 1 1 1 ?    
+  unionpay:
+    startTime: 2000-01-01
+    endTime: 2020-01-01
+    minute: -3
+    channelId: 186
+    getUrl: https://openapi.unionpay.com/upapi/uprs/token
+    postUrl: https://openapi.unionpay.com/upapi/uprs/notifyOrderState
+    partnerId: 33
+    appId: up_1j742q45xilr_ug35
+    appSecret: 71225f53cc32e5705427c6f603d14884
+    signSecret: pro
+    crontime: 0 */3 1 1 1 ?
+  bookOrderPrice:
+    syncTime: 0 0 0 * * ?

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.mars.mapper.GiftListMapper">
+
+    <select id="selectmemberId" parameterType="com.colourfulchina.mars.api.entity.GiftCode"
+            resultType="com.colourfulchina.mars.api.entity.GiftCode">
+        SELECT * from  gift_code where member_id = #{memberId}
+    </select>
+
+</mapper>

@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.ProductMapper">
+
+    <!-- 根据产品组id查询产品列表 -->
+    <select id="selectByGroupId" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.vo.GroupProductVo">
+        SELECT
+            a.id,
+            a.product_id AS "productId",
+            a.block_rule AS "blockRule",
+            a.min_cost AS "minCost",
+            a.max_cost AS "maxCost",
+            a.point AS "pointOrTimes",
+            a.`status`,
+            a.recommend AS "recommend",
+            a.sort,
+            CASE WHEN c.city_id IS NULL THEN g.name_ch ELSE f.name_ch END AS "cityName",
+            d.name_ch AS "hotelName",
+            c.`name` AS "shopName",
+            h.`name` AS "service",
+            h.`code` AS "serviceCode",
+            e.`name` AS "productName",
+            e.needs,
+            e.addon,
+            b.shop_id AS "shopId",
+            b.shop_item_id AS "shopItemId",
+            i.short_name AS "gift"
+        FROM
+            product_group_product a
+            LEFT JOIN product b ON a.product_id = b.id
+            LEFT JOIN shop c ON b.shop_id = c.id
+            LEFT JOIN hotel d ON c.hotel_id = d.id
+            LEFT JOIN shop_item e ON b.shop_item_id = e.id
+            LEFT JOIN sys_city f ON c.city_id = f.id
+            LEFT JOIN sys_city g ON d.city_id = g.id
+            LEFT JOIN sys_service h ON e.service_type = h.`code`
+            LEFT JOIN sys_gift i ON a.gift = i.`code`
+        WHERE
+            a.del_flag = 0
+            AND a.product_group_id = #{groupId}
+        ORDER BY
+            a.recommend,
+            a.sort
+    </select>
+
+    <!-- 产品分页查询列表 -->
+    <select id="selectPageList" parameterType="map" resultType="com.colourfulchina.pangu.taishang.api.vo.res.ProductPageRes">
+        SELECT
+            a.id ,
+            CASE WHEN c.city_id IS NULL THEN f.name_ch ELSE e.name_ch END AS "cityName",
+            d.name_ch AS "hotelName",
+            c.`name` AS "shopName",
+            g.`name` AS "service",
+            h.short_name AS "gift",
+            b.service_type AS "serviceCode",
+            b.`name` AS "productName",
+            b.needs,
+            b.addon,
+            a.min_cost AS "minCost",
+            a.max_cost AS "maxCost",
+            a.`status` AS "status",
+            ( CASE WHEN j.internal = 1 THEN '公司资源' WHEN j.internal = 0 THEN '渠道资源' END ) AS "channelType",
+            i.block_rule AS "shopBlock",
+            b.block_rule AS "shopItemBlock",
+            i.children AS "childrenStr",
+            a.shop_item_id as "shopItemId"
+        FROM
+            product a
+            LEFT JOIN shop_item b ON a.shop_item_id = b.id
+            LEFT JOIN shop c ON a.shop_id = c.id
+            LEFT JOIN hotel d ON c.hotel_id = d.id
+            LEFT JOIN ( SELECT t1.*, t2.name_ch AS "countryName" FROM sys_city t1 LEFT JOIN sys_country t2 ON t1.country_id = t2.id ) e ON c.city_id = e.id
+            LEFT JOIN ( SELECT t1.*, t2.name_ch AS "countryName" FROM sys_city t1 LEFT JOIN sys_country t2 ON t1.country_id = t2.id ) f ON d.city_id = f.id
+            LEFT JOIN sys_service g ON b.service_type = g.`code`
+            LEFT JOIN sys_gift h ON a.gift = h.`code`
+            LEFT JOIN shop_protocol i ON a.shop_id = i.id
+            LEFT JOIN shop_channel j ON i.channel_id = j.id
+        <where>
+            AND a.del_flag = 0 and b.del_flag = 0
+            <if test="statusType != null">
+                AND a.status = #{statusType}
+            </if>
+            <if test="hotelOrShopName != null and hotelOrShopName != ''">
+                AND ( d.name_ch LIKE CONCAT('%',#{hotelOrShopName},'%') OR c.`name` LIKE CONCAT('%',#{hotelOrShopName},'%') )
+            </if>
+            <if test="ids != null and ids.size() != 0">
+                AND a.id not IN
+                <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="(singServices != null and singServices.size() != 0) and (giftServices == null or giftServices.size() == 0)">
+                AND g.`name` IN
+                <foreach collection="singServices" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="(singServices == null or singServices.size() == 0) and (giftServices != null and giftServices.size() != 0)">
+                AND g.`name` IN
+                <foreach collection="giftServices" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                <if test="giftList != null and giftList.size() != 0">
+                    AND h.short_name IN
+                    <foreach collection="giftList" index="index" item="item" open="(" separator="," close=")">
+                        #{item}
+                    </foreach>
+                </if>
+            </if>
+            <if test="(singServices != null and singServices.size() != 0) and (giftServices != null and giftServices.size() != 0)">
+                AND (
+                (
+                g.`name` IN
+                <foreach collection="giftServices" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                <if test="giftList != null and giftList.size() != 0">
+                    AND h.short_name IN
+                    <foreach collection="giftList" index="index" item="item" open="(" separator="," close=")">
+                        #{item}
+                    </foreach>
+                </if>
+                )
+                OR (
+                g.`name` IN
+                <foreach collection="singServices" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                )
+                )
+            </if>
+            <if test="service != null and service.size() != 0">
+                AND g.`name` IN
+                <foreach collection="service" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="gift != null and gift.size() != 0">
+                AND h.short_name IN
+                <foreach collection="gift" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="city != null and city.size() != 0">
+                AND ( e.name_ch in
+                <foreach collection="city" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                OR f.name_ch  in
+                <foreach collection="city" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                )
+            </if>
+            <if test="channelType != null and channelType != ''">
+                AND j.internal = #{channelType}
+            </if>
+            <if test="startCost != null and endCost != null">
+                AND ( a.min_cost BETWEEN #{startCost} AND #{endCost} OR a.max_cost BETWEEN #{startCost} AND #{endCost})
+            </if>
+        </where>
+        order by a.shop_id,a.min_cost
+    </select>
+
+    <!-- 产品导出 -->
+    <select id="selectExportList" resultType="com.colourfulchina.pangu.taishang.api.vo.res.GroupProductExportVo">
+        SELECT
+            CASE WHEN c.city_id IS NULL THEN f.name_ch ELSE e.name_ch END AS "cityName",
+            CASE WHEN c.city_id IS NULL THEN f.countryName ELSE e.countryName END AS "countryName",
+            d.name_ch AS "hotelChName",
+            d.name_en AS "hotelEnName",
+            c.`name` AS "shopChName",
+            c.name_en AS "shopEnName",
+            g.`name` AS "serviceName",
+            g.`code` AS "serviceCode",
+            a.gift AS "giftCode",
+            h.short_name AS "giftShortName",
+            h.`name` AS "giftName",
+            b.id AS "shopItemId",
+            b.`name` AS "shopItemName",
+            b.open_time AS "openTime",
+            b.close_time AS "closeTime",
+            b.addon AS "addon",
+            b.needs AS "needs",
+            b.block_rule AS "shopItemBlock",
+            i.block_rule AS "shopBlock",
+            c.address,
+            c.phone,
+            i.parking,
+            i.children,
+            c.notes AS "remark",
+            a.id AS "productId",
+            k.apply_time AS "applyTime",
+            k.start_date AS "startDate",
+            k.end_date AS "endDate",
+            k.monday,
+            k.tuesday,
+            k.wednesday,
+            k.thursday,
+            k.friday,
+            k.saturday,
+            k.sunday,
+            k.cost
+        FROM
+            product a
+            LEFT JOIN shop_item b ON a.shop_item_id = b.id
+            LEFT JOIN shop c ON a.shop_id = c.id
+            LEFT JOIN hotel d ON c.hotel_id = d.id
+            LEFT JOIN (SELECT t1.*,t2.name_ch AS "countryName" FROM sys_city t1 LEFT JOIN sys_country t2 ON t1.country_id = t2.id) e ON c.city_id = e.id
+            LEFT JOIN (SELECT t1.*,t2.name_ch AS "countryName" FROM sys_city t1 LEFT JOIN sys_country t2 ON t1.country_id = t2.id) f ON d.city_id = f.id
+            LEFT JOIN sys_service g ON b.service_type = g.`code`
+            LEFT JOIN sys_gift h ON a.gift = h.`code`
+            LEFT JOIN shop_protocol i ON a.shop_id = i.id
+            LEFT JOIN shop_channel j ON i.channel_id = j.id
+            LEFT JOIN product_item k ON a.id = k.product_id
+        <where>
+            AND a.del_flag = 0 and b.del_flag = 0
+            <if test="statusType != null">
+                AND a.status = #{statusType}
+            </if>
+            <if test="statusTypes != null and statusTypes.size() != 0">
+                AND a.status IN
+                <foreach collection="statusTypes" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="hotelOrShopName != null and hotelOrShopName != ''">
+                AND ( d.name_ch LIKE CONCAT('%',#{hotelOrShopName},'%') OR c.`name` LIKE CONCAT('%',#{hotelOrShopName},'%') )
+            </if>
+            <if test="ids != null and ids.size() != 0">
+                AND a.id not IN
+                <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="(singServices != null and singServices.size() != 0) and (giftServices == null or giftServices.size() == 0)">
+                AND g.`name` IN
+                <foreach collection="singServices" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="(singServices == null or singServices.size() == 0) and (giftServices != null and giftServices.size() != 0)">
+                AND g.`name` IN
+                <foreach collection="giftServices" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                <if test="giftList != null and giftList.size() != 0">
+                    AND h.short_name IN
+                    <foreach collection="giftList" index="index" item="item" open="(" separator="," close=")">
+                        #{item}
+                    </foreach>
+                </if>
+            </if>
+            <if test="(singServices != null and singServices.size() != 0) and (giftServices != null and giftServices.size() != 0)">
+                AND (
+                (
+                g.`name` IN
+                <foreach collection="giftServices" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                <if test="giftList != null and giftList.size() != 0">
+                    AND h.short_name IN
+                    <foreach collection="giftList" index="index" item="item" open="(" separator="," close=")">
+                        #{item}
+                    </foreach>
+                </if>
+                )
+                OR (
+                g.`name` IN
+                <foreach collection="singServices" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                )
+                )
+            </if>
+            <if test="service != null and service.size() != 0">
+                AND g.`name` IN
+                <foreach collection="service" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="gift != null and gift.size() != 0">
+                AND h.short_name IN
+                <foreach collection="gift" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="city != null and city.size() != 0">
+                AND ( e.name_ch in
+                <foreach collection="city" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                OR f.name_ch  in
+                <foreach collection="city" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                )
+            </if>
+            <if test="channelType != null and channelType != ''">
+                AND j.internal = #{channelType}
+            </if>
+            <if test="channelTypes != null and channelTypes.size() != 0">
+                AND j.internal IN
+                <foreach collection="channelTypes" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <!--<if test="startCost != null and endCost != null">-->
+            <!--AND ( a.min_cost BETWEEN #{startCost} AND #{endCost} OR a.max_cost BETWEEN #{startCost} AND #{endCost})-->
+            <!--</if>-->
+            <if test="startCost != null and endCost != null">
+                AND ( k.cost BETWEEN #{startCost} AND #{endCost} )
+            </if>
+            <if test="monday != null">
+                AND k.monday = #{monday}
+            </if>
+            <if test="tuesday != null">
+                AND k.tuesday = #{tuesday}
+            </if>
+            <if test="wednesday != null">
+                AND k.wednesday = #{wednesday}
+            </if>
+            <if test="thursday != null">
+                AND k.thursday = #{thursday}
+            </if>
+            <if test="friday != null">
+                AND k.friday = #{friday}
+            </if>
+            <if test="saturday != null">
+                AND k.saturday = #{saturday}
+            </if>
+            <if test="sunday != null">
+                AND k.sunday = #{sunday}
+            </if>
+            <if test="isExpiry == null or (isExpiry != null and isExpiry == false)">
+                AND (DATE(k.end_date) > DATE(NOW()) OR k.end_date IS NULL)
+            </if>
+            <if test="productItemIds != null and productItemIds.size() != 0">
+                AND k.id IN
+                <foreach collection="productItemIds" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        order by a.shop_id,a.id,a.min_cost
+    </select>
+
+    <!-- 住宿只有固定贴现结算规则时产品子项 及成本显示问题 -->
+    <select id="discountProduct" resultType="java.lang.Integer">
+        SELECT DISTINCT
+        ( a.shop_item_id )
+        FROM
+        shop_item_settle_express a
+        LEFT JOIN shop_item b ON a.shop_item_id = b.id
+        WHERE
+        a.net_price_per = 0
+        AND a.tax_net_price_per = 0
+        AND a.service_fee_per = 0
+        AND a.tax_service_fee_per = 0
+        AND a.tax_fee_per = 0
+        AND a.custom_tax_fee_per = 0
+        AND a.adjust = 0
+        AND a.discount != 0
+        AND a.del_flag = 0
+        AND a.shop_item_id NOT IN ( SELECT t.shop_item_id FROM shop_item_net_price_rule t WHERE t.del_flag = 0 )
+    </select>
+
+    <!-- 产品子项分页查询 -->
+    <select id="selectItemPageList" parameterType="map" resultType="com.colourfulchina.pangu.taishang.api.vo.res.ProductPackPageRes">
+        SELECT
+            a.id,
+            ( CASE WHEN c.city_id IS NULL THEN f.name_ch ELSE e.name_ch END ) AS "cityName",
+            ( CASE WHEN c.city_id IS NULL THEN f.countryName ELSE e.countryName END ) AS "countryName",
+            d.name_ch AS "hotelName",
+            c.`name` AS "shopName",
+            c.address AS "address",
+            c.phone,
+            i.parking,
+            c.notes AS "remark",
+            g.`name` AS "service",
+            h.short_name AS "gift",
+            b.service_type AS "serviceCode",
+            b.`name` AS "productName",
+            b.needs,
+            b.addon,
+            b.open_time AS "openTime",
+            b.close_time AS "closeTime",
+            a.min_cost AS "minCost",
+            a.max_cost AS "maxCost",
+            a.`status` AS "status",
+            a.gift AS "giftCode",
+            ( CASE WHEN j.internal = 1 THEN '公司资源' WHEN j.internal = 0 THEN '渠道资源' END ) AS "channelType",
+            i.block_rule AS "shopBlock",
+            b.block_rule AS "shopItemBlock",
+            i.children AS "childrenStr",
+            a.shop_item_id AS "shopItemId",
+            k.id AS "productItemId",
+            k.apply_time AS "applyTime",
+            k.start_date AS "startDate",
+            k.end_date AS "endDate",
+            k.monday,
+            k.tuesday,
+            k.wednesday,
+            k.thursday,
+            k.friday,
+            k.saturday,
+            k.sunday,
+            k.cost
+        FROM
+            product a
+            LEFT JOIN shop_item b ON a.shop_item_id = b.id
+            LEFT JOIN shop c ON a.shop_id = c.id
+            LEFT JOIN hotel d ON c.hotel_id = d.id
+            LEFT JOIN ( SELECT t1.*, t2.name_ch AS "countryName" FROM sys_city t1 LEFT JOIN sys_country t2 ON t1.country_id = t2.id ) e ON c.city_id = e.id
+            LEFT JOIN ( SELECT t1.*, t2.name_ch AS "countryName" FROM sys_city t1 LEFT JOIN sys_country t2 ON t1.country_id = t2.id ) f ON d.city_id = f.id
+            LEFT JOIN sys_service g ON b.service_type = g.`code`
+            LEFT JOIN sys_gift h ON a.gift = h.`code`
+            LEFT JOIN shop_protocol i ON a.shop_id = i.id
+            LEFT JOIN shop_channel j ON i.channel_id = j.id
+            LEFT JOIN product_item k ON a.id = k.product_id
+        <where>
+            AND a.del_flag = 0 and b.del_flag = 0
+            <if test="statusType != null">
+                AND a.status = #{statusType}
+            </if>
+            <if test="statusTypes != null and statusTypes.size() != 0">
+                AND a.status IN
+                <foreach collection="statusTypes" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="hotelOrShopName != null and hotelOrShopName != ''">
+                AND ( d.name_ch LIKE CONCAT('%',#{hotelOrShopName},'%') OR c.`name` LIKE CONCAT('%',#{hotelOrShopName},'%') )
+            </if>
+            <if test="ids != null and ids.size() != 0">
+                AND a.id not IN
+                <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="(singServices != null and singServices.size() != 0) and (giftServices == null or giftServices.size() == 0)">
+                AND g.`name` IN
+                <foreach collection="singServices" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="(singServices == null or singServices.size() == 0) and (giftServices != null and giftServices.size() != 0)">
+                AND g.`name` IN
+                <foreach collection="giftServices" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                <if test="giftList != null and giftList.size() != 0">
+                    AND h.short_name IN
+                    <foreach collection="giftList" index="index" item="item" open="(" separator="," close=")">
+                        #{item}
+                    </foreach>
+                </if>
+            </if>
+            <if test="(singServices != null and singServices.size() != 0) and (giftServices != null and giftServices.size() != 0)">
+                AND (
+                (
+                g.`name` IN
+                <foreach collection="giftServices" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                <if test="giftList != null and giftList.size() != 0">
+                    AND h.short_name IN
+                    <foreach collection="giftList" index="index" item="item" open="(" separator="," close=")">
+                        #{item}
+                    </foreach>
+                </if>
+                )
+                OR (
+                g.`name` IN
+                <foreach collection="singServices" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                )
+                )
+            </if>
+            <if test="service != null and service.size() != 0">
+                AND g.`name` IN
+                <foreach collection="service" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="gift != null and gift.size() != 0">
+                AND h.short_name IN
+                <foreach collection="gift" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="city != null and city.size() != 0">
+                AND ( e.name_ch in
+                <foreach collection="city" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                OR f.name_ch  in
+                <foreach collection="city" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                )
+            </if>
+            <if test="channelType != null and channelType != ''">
+                AND j.internal = #{channelType}
+            </if>
+            <if test="channelTypes != null and channelTypes.size() != 0">
+                AND j.internal IN
+                <foreach collection="channelTypes" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <!--<if test="startCost != null and endCost != null">-->
+                <!--AND ( a.min_cost BETWEEN #{startCost} AND #{endCost} OR a.max_cost BETWEEN #{startCost} AND #{endCost})-->
+            <!--</if>-->
+            <if test="startCost != null and endCost != null">
+                AND ( k.cost BETWEEN #{startCost} AND #{endCost} )
+            </if>
+            <if test="monday != null">
+                AND k.monday = #{monday}
+            </if>
+            <if test="tuesday != null">
+                AND k.tuesday = #{tuesday}
+            </if>
+            <if test="wednesday != null">
+                AND k.wednesday = #{wednesday}
+            </if>
+            <if test="thursday != null">
+                AND k.thursday = #{thursday}
+            </if>
+            <if test="friday != null">
+                AND k.friday = #{friday}
+            </if>
+            <if test="saturday != null">
+                AND k.saturday = #{saturday}
+            </if>
+            <if test="sunday != null">
+                AND k.sunday = #{sunday}
+            </if>
+            <if test="isExpiry == null or (isExpiry != null and isExpiry == false)">
+                AND (DATE(k.end_date) > DATE(NOW()) OR k.end_date IS NULL)
+            </if>
+        </where>
+        ORDER BY
+            a.shop_id,
+            a.id,
+            a.min_cost
+    </select>
+
+
+    <update id="updateProductStatus" parameterType="com.colourfulchina.pangu.taishang.api.entity.Product" >
+        update product set  status = #{status} where del_flag = 0 and shop_id =#{shopId} and shop_item_id =  #{shopItemId}
+        <if test="gift != null">
+            AND gift = #{gift}
+        </if>
+    </update>
+
+    <select id="queryGoodsDetail" parameterType="java.util.List" resultType="com.colourfulchina.pangu.taishang.api.vo.res.bigan.GoodsDetailVo">
+        SELECT p.id as goodsId,a.shop_item_id as shopItemId,
+        d.code as giftCode,
+        (case when d.code = '2F1' then '两人同行享五折优惠' else d.name end) as giftName,
+        a.shop_id as shopId,
+        (CASE WHEN b.city_id IS NULL THEN sci.name_ch ELSE sc.name_ch END) AS city,
+        (CASE WHEN b.city_id IS NULL THEN sci.name_py ELSE sc.name_py END) AS py,
+        h.name_ch as hotel,
+        b.name as shopName,
+        b.address,
+        b.summary,
+        p.block_rule as blockCode,
+        p.sort
+        FROM product_group_product p LEFT JOIN product a ON a.id=p.product_id
+        LEFT JOIN shop b ON a.shop_id=b.id
+        LEFT JOIN sys_gift d ON a.gift=d.code
+        LEFT JOIN sys_city sc ON sc.id=b.city_id
+        LEFT JOIN hotel h ON h.id=b.hotel_id
+        LEFT JOIN sys_city sci ON sci.id = h.city_id
+        <where>
+            p.id in
+            <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                #{item.pgpId}
+            </foreach>
+        </where>
+        order by p.recommend desc,sci.name_ch,sc.name_ch,p.sort,sc.name_ch
+    </select>
+
+    <select id="getGoodsDetail" resultType="com.colourfulchina.pangu.taishang.api.vo.res.bigan.GoodsDetailVo">
+        SELECT a.id as goodsId,a.shop_item_id as shopItemId,
+        p.gift as giftCode,
+        (case when d.code = '2F1' then '两人同行享五折优惠' else d.name end) as giftName,
+        a.shop_id as shopId,
+        sc.name_ch as city,
+        sc.name_py as py,
+        h.name_ch as hotel,
+        b.name as shopName,
+        b.address,
+        b.summary,
+        p.block_rule as blockCode,
+        p.sort
+        FROM product_group_product p LEFT JOIN product a ON a.id=p.product_id
+        LEFT JOIN shop b ON a.shop_id=b.id
+        LEFT JOIN sys_gift d ON a.gift=d.code
+        LEFT JOIN sys_city sc ON sc.id=b.city_id
+        LEFT JOIN hotel h ON h.id=b.hotel_id
+        where p.id=#{pgpId}
+    </select>
+
+    <select id="queryGiftBlockList" resultType="java.lang.String">
+        SELECT block_rule as block  FROM shop_protocol WHERE id=#{shopId}
+        UNION
+        SELECT block FROM goods WHERE id=#{projectId}
+        UNION
+        SELECT block_rule as block FROM product_group WHERE id=#{groupId}
+        UNION
+        SELECT block_rule as block FROM product_group_product WHERE id=#{goodsId}
+    </select>
+
+
+    <select id="queryShopItemBlock" resultType="com.colourfulchina.pangu.taishang.api.entity.ShopItem">
+        SELECT item.id,item.block_rule as blockRule FROM product_group_product pgp LEFT JOIN product p ON pgp.product_id=p.id
+          LEFT JOIN shop_item item ON p.shop_item_id=item.id
+          WHERE pgp.id=#{pgpId}
+    </select>
+
+    <select id="selectNewProductId" resultType="java.lang.Integer">
+        SELECT keep_product_id FROM opt_shop_item_temp
+        WHERE del_product_id=#{productId}
+    </select>
+</mapper>

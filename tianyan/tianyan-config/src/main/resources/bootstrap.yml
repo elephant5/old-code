@@ -1,0 +1,53 @@
+server:
+  port: 4001
+
+spring:
+  application:
+    name: tianyan-config
+  profiles:
+     active: native
+#    active: dev
+  rabbitmq:
+    host: clf-rabbitmq.colourfulchina.com
+    port: 5672
+    username: admin
+    password: 1qaz@WSX
+  # 配置中心
+  cloud:
+    bus:
+      refresh:
+        enabled: true
+      trace:
+        enabled: true
+    consul:
+      host: consul.colourfulchina.com
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${spring.application.instance_id:${server.port}}
+        service-name: ${spring.application.name}
+        prefer-ip-address: true
+    config:
+      server:
+        #读取本地配置
+         native:
+#           search-locations: classpath:/config/
+           search-locations: D:/project/common/colourful-config/
+        #读取远程仓库配置
+#        git:
+#         uri: http://gitlab.icolourful.net/common/colourful-config.git
+#         username:
+#         password:
+#         default-label: ${spring.profiles.active}
+
+# 暴露监控端点
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    root: info

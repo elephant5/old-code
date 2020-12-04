@@ -1,0 +1,18 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteProjectServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteShopServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteHotelServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteAreaServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteCountryServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteCityServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteGeoServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteBookChannelServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteSysServiceServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteSysGiftServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteShopSectionServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteCurrencyServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteShopAccountServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteShopItemServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteSysBlockServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteSysFileServiceFallbackImpl,\
+  com.colourfulchina.bigan.api.feign.fallback.RemoteSysOptionServiceFallbackImpl\

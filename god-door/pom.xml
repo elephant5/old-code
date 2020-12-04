@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>god-door-biz</module>
+        <module>god-door-api</module>
+    </modules>
+
+    <parent>
+        <groupId>com.colourfulchina</groupId>
+        <artifactId>inf-root</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>god-door</artifactId>
+    <version>1.0.0</version>
+    <name>god-door</name>
+    <packaging>pom</packaging>
+    <description>客乐芙上帝之门系统</description>
+
+    <properties>
+        <tianyan.version>1.0.0</tianyan.version>
+        <inf.version>1.0.0</inf.version>
+        <swagger.version>2.9.2</swagger.version>
+        <freemarker.version>2.3.28</freemarker.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.colourfulchina</groupId>
+                <artifactId>tianyan-common-security</artifactId>
+                <version>${tianyan.version}</version>
+            </dependency>
+            <!--日志处理-->
+            <dependency>
+                <groupId>com.colourfulchina</groupId>
+                <artifactId>tianyan-common-log</artifactId>
+                <version>${tianyan.version}</version>
+            </dependency>
+            <!--监控客户端-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${monitor.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.colourfulchina</groupId>
+                <artifactId>inf-base</artifactId>
+                <version>${inf.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+</project>

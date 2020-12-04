@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.bigan.mapper.ProjectChannelMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.ProjectChannel">
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+  </sql>
+
+    <select id="selectByProjectId" resultType="com.colourfulchina.bigan.api.entity.ProjectChannel">
+        select
+            a.project_id as projectId,
+            a.old_id as oldId,
+            a.new_id as newId,
+            a.note
+        from
+            project_channel a
+        where
+            a.project_id = #{projectId}
+    </select>
+
+    <select id="selectByProjectIdChannelId" resultType="java.lang.Integer" parameterType="java.util.Map">
+        SELECT count(*) FROM gift_unit where project_id = #{projectId}  and (channel_id = #{channelId} or new_channel_id = #{channelId})
+    </select>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.ActivityCouponMapper">
+
+    <select id="getActivityCouponList" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.entity.ActivityCoupon">
+        select * from activity_coupon
+         where 1=1
+        <if test="actIdList != null and actIdList.size() != 0">
+            and act_id in
+            <foreach collection="actIdList" index="index" item="actId" open="(" separator="," close=")">
+                #{actId}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="findActivityCpnPageList" parameterType="map" resultType="com.colourfulchina.pangu.taishang.api.entity.ActivityCoupon">
+        select * from activity_coupon
+         where act_id = #{actId}
+        order by create_time desc
+    </select>
+
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.mars.mapper.GiftCodeProlongMapper">
+
+    <insert id="batchInsert">
+        INSERT INTO mars.gift_code_prolong ( gift_code_id, prolong_rule, act_expire_time, prolong_expire_time, remarks )
+        VALUES
+        <foreach collection="prolongs" separator="," item="item" index="index">
+            (#{item.giftCodeId},
+            #{item.prolongRule},
+            #{item.actExpireTime},
+            #{item.prolongExpireTime},
+            #{item.remarks})
+        </foreach>
+    </insert>
+
+</mapper>

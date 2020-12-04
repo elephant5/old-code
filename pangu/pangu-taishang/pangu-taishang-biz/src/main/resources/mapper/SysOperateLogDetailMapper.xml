@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.SysOperateLogDetailMapper">
+  <select id="selectByPage" resultType="com.colourfulchina.inf.base.entity.SysOperateLogDetail">
+    select * from sys_operate_log_detail
+    where 1=1
+    <if test="logId != null">
+      and log_id=#{logId}
+    </if>
+    <if test="logInfoId != null">
+      and log_info_id=#{logInfoId}
+    </if>
+    <if test="type != null">
+      and type=#{type}
+    </if>
+    <if test="tableName != null">
+      and table_name=#{tableName}
+    </if>
+    <if test="rowKey != null">
+      and row_key=#{rowKey}
+    </if>
+    <if test="fieldName != null">
+      and field_name=#{fieldName}
+    </if>
+    <if test="beforeValue != null">
+      and before_value=#{beforeValue}
+    </if>
+    <if test="afterValue != null">
+      and after_value=#{afterValue}
+    </if>
+    <if test="createUser != null">
+      and create_user=#{createUser}
+    </if>
+    order by 1 desc
+  </select>
+
+  <!-- 酒店操作日志 -->
+  <select id="selectHotelByPage" resultType="com.colourfulchina.pangu.taishang.api.vo.res.HotelLogRes">
+    select
+      id,
+      (
+        case when field_name = 'name_ch' then '酒店中文名称修改' when field_name = 'name_en' then '酒店英文名称修改' end
+      ) as "optName",
+      before_value as "beforeValue",
+      after_value as "afterValue",
+      create_user as "createUser",
+      create_time as "createTime"
+    from sys_operate_log_detail
+    <where>
+        and (field_name=#{hotelNameCh}
+        or field_name=#{hotelNameEn})
+      <if test="type != null">
+        and type=#{type}
+      </if>
+      <if test="tableName != null">
+        and table_name=#{tableName}
+      </if>
+      <if test="rowKey != null">
+        and row_key=#{rowKey}
+      </if>
+    </where>
+    order by create_time desc
+  </select>
+  <!-- 商户操作日志 -->
+  <select id="selectShopLogByPage" resultType="com.colourfulchina.pangu.taishang.api.vo.res.ShopLogPageListRes">
+    select
+      id,
+      '商户' as "optRange",
+      '修改商户中文名' as "optName",
+      before_value as "beforeValue",
+      after_value as "afterValue",
+      create_user as "createUser",
+      create_time as "createTime"
+    from sys_operate_log_detail
+    where field_name = 'name' and type = 'UPDATE' and table_name = 'shop' and row_key = #{shopId}
+
+    union
+
+    select
+      id,
+      '商户' as "optRange",
+      '修改合同有效期' as "optName",
+      before_value as "beforeValue",
+      after_value as "afterValue",
+      create_user as "createUser",
+      create_time as "createTime"
+    from sys_operate_log_detail
+    where field_name = 'contract_effective' and type = 'UPDATE' and table_name = 'shop_protocol' and row_key = #{shopId}
+
+    union
+
+    select
+      id,
+      '商户' as "optRange",
+      '修改商户Block' as "optName",
+      before_value as "beforeValue",
+      after_value as "afterValue",
+      create_user as "createUser",
+      create_time as "createTime"
+    from sys_operate_log_detail
+    where field_name = 'block_rule' and type = 'UPDATE' and table_name = 'shop_protocol' and row_key = #{shopId}
+
+    union
+
+    select
+      a.id,
+      b.name as "optRange",
+      '修改资源Block' as "optName",
+      a.before_value as "beforeValue",
+      a.after_value as "afterValue",
+      a.create_user as "createUser",
+      a.create_time as "createTime"
+    from sys_operate_log_detail a left join shop_item b on a.row_key = b.id
+    where field_name = 'block_rule' and type = 'UPDATE' and table_name = 'shop_item' and row_key in (select t.id from shop_item t where t.shop_id = #{shopId})
+  </select>
+</mapper>

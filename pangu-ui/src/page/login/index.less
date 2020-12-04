@@ -1,0 +1,104 @@
+@import "~antd/dist/antd.less";
+
+
+.login-form {
+  max-width: 300px;
+}
+.login-form-forgot {
+  float: right;
+}
+.login-form-button {
+  width: 100%;
+}
+.center-in-center{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.loginbody{
+width: 100%; height: 100%;
+background-image: url("http://pangu.icolourful.com/coupon-manage/resources/images/tx-bj.png");
+background-size:100% 100%; position: absolute; left: 0%; top: 0;
+}
+.main {
+  width: 860px;
+  height: 500px;
+  margin: 0px auto 30px;
+  // padding: 30px;
+  // background: #fff;
+  box-shadow: 0 8px 22px 0 rgba(0,97,188,0.56);
+  -webkit-box-shadow: 0 8px 22px 0 rgba(0,97,188,0.56);
+  -moz-box-shadow: 0 8px 22px 0 rgba(0,97,188,0.56);
+  // overflow: hidden;
+  position: fixed; left: 50%; top:40%; margin-left: -430px; transform: translateY(-50%);
+  .left{
+    position: relative;
+    float: left;
+  }
+  .right{
+    float:right;
+    width: 430px;
+    height: 100%;
+    padding: 40px 55px 0 55px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    h2{
+      font-size: 26px;
+      color: #34373E;
+      text-align: center;
+      font-weight: normal;
+    }
+  }
+  h1 {
+    text-align: center;
+    font-size: 36px;
+  }
+  .icon {
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.2);
+    margin-left: 16px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: color .3s;
+
+    &:hover {
+      color: @primary-color;
+    }
+  }
+
+  .other {
+    text-align: left;
+    margin-top: 24px;
+    line-height: 22px;
+
+    .register {
+      float: right;
+    }
+  }
+}
+.footer-center{clear: both; float: left; width: 100%; padding-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: rgba(0,0,0,.3);
+  letter-spacing: 0.42px;
+  p{
+    margin-bottom:0;
+    line-height:24px;
+  }
+}
+.right .ant-form-item-with-help{
+  // margin-bottom:15px;
+}
+.right .has-error .ant-form-explain, .has-error .ant-form-split {
+  color: #f5222d;
+  font-size: 13px;
+  // margin-top: 5px;
+}

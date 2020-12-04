@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.colourfulchina</groupId>
+	<artifactId>tianyan</artifactId>
+	<version>1.0.0</version>
+	<name>tianyan</name>
+	<packaging>pom</packaging>
+	<url>https://www.colourfulchina.com</url>
+
+	<parent>
+		<groupId>com.colourfulchina</groupId>
+		<artifactId>inf-root</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<properties>
+		<tianyan.version>1.0.0</tianyan.version>
+	</properties>
+
+
+	<modules>
+		<module>tianyan-config</module>
+		<module>tianyan-gateway</module>
+		<module>tianyan-auth</module>
+		<module>tianyan-upms</module>
+		<module>tianyan-common</module>
+		<module>tianyan-monitor</module>
+		<module>tianyan-hystrixdashboard</module>
+		<module>tianyan-zipkin</module>
+	</modules>
+
+</project>

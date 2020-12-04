@@ -1,0 +1,19 @@
+# 数据源
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 1qaz@WSX
+    url: jdbc:mysql://clf-mysql.colourfulchina.com:3306/tianyan?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+  rabbitmq:
+    host: clf-rabbitmq.colourfulchina.com
+    port: 5672
+    username: admin
+    password: 1qaz@WSX
+  cloud:
+    bus:
+      refresh:
+        enabled: true
+      trace:
+        enabled: true

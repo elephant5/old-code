@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.ProductGroupMapper">
+
+    <!-- 产品组分页查询接口 -->
+    <select id="selectPageList" parameterType="map" resultType="com.colourfulchina.pangu.taishang.api.vo.res.GroupPageRes">
+        SELECT
+        *
+        FROM
+        (
+        SELECT
+        a.id,
+        a.`name`,
+        a.short_name AS "shortName",
+        b.channel_id as "channelId",
+        c.bank_id AS "bankId",
+        c.sales_channel_id AS "salesChannelId",
+        c.sales_way_id AS "salesWayId",
+        d.id AS "goodsId",
+        d.short_name AS "goodsShortName",
+        (
+        SELECT
+        GROUP_CONCAT( DISTINCT ( t2.`name` ) SEPARATOR ' ' ) service
+        FROM
+        product_group_resource t1
+        LEFT JOIN sys_service t2 ON t1.service = t2.`code`
+        WHERE
+        t1.del_flag = 0
+        AND a.id = t1.product_group_id
+        ) AS "service",
+        (
+        SELECT
+        GROUP_CONCAT( DISTINCT ( t2.short_name ) SEPARATOR ' ' ) gift
+        FROM
+        product_group_gift t1
+        LEFT JOIN sys_gift t2 ON t1.gift = t2.`code`
+        WHERE
+        t1.del_flag = 0
+        AND a.id = t1.product_group_id
+        ) AS "gift",
+        (
+        SELECT
+        MIN( t1.min_cost ) minCost
+        FROM
+        product_group_product t1
+        WHERE
+        t1.del_flag = 0
+        AND a.id = t1.product_group_id
+        ) AS "minCost",
+        (
+        SELECT
+        MAX( t1.max_cost ) maxCost
+        FROM
+        product_group_product t1
+        WHERE
+        t1.del_flag = 0
+        AND a.id = t1.product_group_id
+        ) AS "maxCost"
+        FROM
+        product_group a
+        LEFT JOIN goods_channels b ON a.goods_id = b.goods_id AND b.del_flag = 0
+        LEFT JOIN sales_channel c ON b.channel_id = c.id
+        LEFT JOIN goods d ON a.goods_id = d.id
+        WHERE
+        a.del_flag = 0
+        ) tab
+        <where>
+            <if test="idOrName != null and idOrName != ''">
+                AND ( tab.id LIKE CONCAT('%',#{idOrName},'%') OR tab.name LIKE CONCAT('%',#{idOrName},'%') OR tab.shortName LIKE CONCAT('%',#{idOrName},'%'))
+            </if>
+            <if test="salesChannel != null and salesChannel != ''">
+                AND tab .channelId = #{salesChannel}
+            </if>
+            <if test="service != null and service != ''">
+                AND tab.service LIKE CONCAT('%',#{service},'%')
+            </if>
+            <if test="gift != null and gift != ''">
+                AND tab.gift LIKE CONCAT('%',#{gift},'%')
+            </if>
+        </where>
+    </select>
+
+    <!-- 产品组详情查询 -->
+    <select id="queryGroupDetail" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.vo.res.GroupDetailRes">
+        SELECT
+        a.id,
+        a.short_name AS "shortName",
+        a.use_limit_id AS "useLimitId",
+        a.use_num AS "useNum",
+        a.discount_rate AS "discountRate",
+        a.block_rule AS "blockRule",
+        a.use_rate as "useRate",
+        (
+        SELECT
+        MIN( t1.min_cost ) minCost
+        FROM
+        product_group_product t1
+        WHERE
+        t1.del_flag = 0
+        AND a.id = t1.product_group_id
+        ) AS "minCost",
+        (
+        SELECT
+        MAX( t1.max_cost ) maxCost
+        FROM
+        product_group_product t1
+        WHERE
+        t1.del_flag = 0
+        AND a.id = t1.product_group_id
+        ) AS "maxCost",
+        (
+        SELECT
+        GROUP_CONCAT( DISTINCT ( t2.short_name ) SEPARATOR ' ' ) gift
+        FROM
+        product_group_gift t1
+        LEFT JOIN sys_gift t2 ON t1.gift = t2.`code`
+        WHERE
+        t1.del_flag = 0
+        AND a.id = t1.product_group_id
+        ) AS "gift",
+        (
+        SELECT
+        GROUP_CONCAT( DISTINCT ( t2.`name` ) SEPARATOR ' ' ) service
+        FROM
+        product_group_resource t1
+        LEFT JOIN sys_service t2 ON t1.service = t2.`code`
+        WHERE
+        t1.del_flag = 0
+        AND a.id = t1.product_group_id
+        ) AS "service"
+        FROM
+        product_group a
+        WHERE
+        a.id = #{id}
+    </select>
+
+    <!-- 查询商品下面的产品组信息 -->
+    <select id="selectGoodsGroup" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.vo.res.GoodsGroupListRes">
+        SELECT
+            a.id,
+            a.`name`,
+            a.short_name AS "shortName",
+            a.use_limit_id AS "useLimitId",
+            a.use_num AS "useNum",
+            a.discount_rate AS "discountRate",
+            a.block_rule AS "blockRule",
+            a.min_book_days as "minBookDays",
+            a.max_book_days as "maxBookDays",
+            a.old_id as oldId,
+            a.use_rate as "useRate",
+            a.shop_type as "shopType",
+            a.cycle_time as "cycleTime",
+            a.cycle_type as "cycleType",
+            a.cycle_num as "cycleNum",
+            a.use_type as "useType",
+            a.free_count as "freeCount",
+            (
+            SELECT
+                GROUP_CONCAT( DISTINCT ( t2.`name` ) SEPARATOR ' ' )
+            FROM
+                product_group_resource t1
+                LEFT JOIN sys_service t2 ON t1.service = t2.`code`
+            WHERE
+                t1.del_flag = 0
+                AND t1.product_group_id = a.id
+            ) AS "service",
+            (
+            SELECT
+                GROUP_CONCAT( DISTINCT ( t2.short_name ) SEPARATOR ' ' )
+            FROM
+                product_group_gift t1
+                LEFT JOIN sys_gift t2 ON t1.gift = t2.`code`
+            WHERE
+                t1.del_flag = 0
+                AND t1.product_group_id = a.id
+            ) AS "gift"
+        FROM
+        product_group a
+        WHERE
+        a.del_flag = 0
+        AND a.goods_id = #{goodsId}
+    </select>
+
+    <!-- 根据产品组ids查询产品组信息 -->
+    <select id="selectGoodsGroupByIds" parameterType="java.util.List" resultType="com.colourfulchina.pangu.taishang.api.vo.res.GoodsGroupListRes">
+        SELECT
+        a.id,
+        a.`name`,
+        a.short_name AS "shortName",
+        a.use_limit_id AS "useLimitId",
+        a.use_num AS "useNum",
+        a.discount_rate AS "discountRate",
+        a.block_rule AS "blockRule",
+        a.min_book_days as "minBookDays",
+        a.max_book_days as "maxBookDays",
+        a.old_id as oldId,
+        a.use_rate as "useRate",
+        a.goods_id as "goodsId",
+        (
+        SELECT
+        GROUP_CONCAT( DISTINCT ( t2.`name` ) SEPARATOR ' ' )
+        FROM
+        product_group_resource t1
+        LEFT JOIN sys_service t2 ON t1.service = t2.`code`
+        WHERE
+        t1.del_flag = 0
+        AND t1.product_group_id = a.id
+        ) AS "service",
+        (
+        SELECT
+        GROUP_CONCAT( DISTINCT ( t2.short_name ) SEPARATOR ' ' )
+        FROM
+        product_group_gift t1
+        LEFT JOIN sys_gift t2 ON t1.gift = t2.`code`
+        WHERE
+        t1.del_flag = 0
+        AND t1.product_group_id = a.id
+        ) AS "gift"
+        FROM
+        product_group a
+        <where>
+            <if test="list.size() != 0">
+                AND a.id IN
+                <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+    <!-- 查询商品下面的产品组信息 -->
+    <select id="selectGoodsGroupById" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.vo.res.GoodsGroupListRes">
+        SELECT
+            a.id,
+            a.`name`,
+            a.short_name AS "shortName",
+            a.use_limit_id AS "useLimitId",
+            a.use_num AS "useNum",
+            a.discount_rate AS "discountRate",
+            a.block_rule AS "blockRule",
+
+            (
+            SELECT
+                GROUP_CONCAT( DISTINCT ( t2.`name` ) SEPARATOR ' ' )
+            FROM
+                product_group_resource t1
+                LEFT JOIN sys_service t2 ON t1.service = t2.`code`
+            WHERE
+                t1.del_flag = 0
+                AND t1.product_group_id = a.id
+            ) AS "service",
+            (
+            SELECT
+                GROUP_CONCAT( DISTINCT ( t2.short_name ) SEPARATOR ' ' )
+            FROM
+                product_group_gift t1
+                LEFT JOIN sys_gift t2 ON t1.gift = t2.`code`
+            WHERE
+                t1.del_flag = 0
+                AND t1.product_group_id = a.id
+            ) AS "gift"
+        FROM
+            product_group a
+        WHERE
+            a.id = #{goodsId}
+
+    </select>
+    <!-- 根据产品组id查询产品组下面产品的资源类型 -->
+    <select id="selectGroupService" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.entity.SysService">
+        SELECT
+            b.*
+        FROM
+            (
+            SELECT DISTINCT
+                ( b.service_type )
+            FROM
+                product_group_product a
+                LEFT JOIN ( SELECT t1.id, t2.service_type FROM product t1 LEFT JOIN shop_item t2 ON t1.shop_item_id = t2.id ) b ON a.product_id = b.id
+            WHERE
+                a.del_flag = 0
+                AND
+                a.product_group_id = #{productGroupId}
+            ) a
+            LEFT JOIN sys_service b ON a.service_type = b.`code`
+    </select>
+
+    <!-- 根据产品组和资源类型id查询商户列表 -->
+    <select id="selectShopByGroupService" resultType="com.colourfulchina.pangu.taishang.api.entity.Shop">
+        SELECT
+            b.*
+        FROM
+            (
+            SELECT DISTINCT
+                ( b.shop_id )
+            FROM
+                product_group_product a
+                LEFT JOIN ( SELECT t1.id, t1.shop_id, t2.service_type FROM product t1 LEFT JOIN shop_item t2 ON t1.shop_item_id = t2.id ) b ON a.product_id = b.id
+            WHERE
+                a.product_group_id = #{productGroupId}
+                AND b.service_type = #{service}
+            ) a
+            LEFT JOIN shop b ON a.shop_id = b.id
+    </select>
+
+    <!-- 根据产品组合资源类型id查询产品组产品列表信息 -->
+    <select id="selectProductByGroupService" resultType="com.colourfulchina.pangu.taishang.api.vo.res.SelectProductByGroupServiceRes">
+        SELECT
+            a.id AS "productGroupProductId",
+            b.id AS "productGroupId",
+            c.id AS "productId",
+            d.id AS "shopItemId",
+            e.id AS "shopId",
+            f.id AS "hotelId",
+            CASE WHEN e.shop_nature = 0 THEN f.city_id ELSE e.city_id END AS "cityId",
+            CASE WHEN e.shop_nature = 0 THEN h.name_ch ELSE g.name_ch END AS "cityName",
+            CASE WHEN e.shop_nature = 0 THEN h.country_id ELSE g.country_id END AS "countryId",
+            CASE WHEN e.shop_nature = 0 THEN h.countryName ELSE g.countryName END AS "countryName",
+            d.service_type AS "service",
+            f.name_ch AS "hotelName",
+            e.`name` AS "shopName",
+            f.address_ch AS "hotelAddress",
+            e.address AS "shopAddress",
+            d.`name` AS "shopItemName",
+            d.addon,
+            d.needs,
+            a.gift AS "gift",
+            a.block_rule AS "productBlock",
+            b.block_rule AS "groupBlock",
+            d.block_rule AS "shopItemBlock",
+            i.block AS "goodsBlock",
+            j.block_rule AS "shopBlock"
+        FROM
+            product_group_product a
+            LEFT JOIN product_group b ON a.product_group_id = b.id
+            LEFT JOIN product c ON a.product_id = c.id
+            LEFT JOIN shop_item d ON c.shop_item_id = d.id
+            LEFT JOIN shop e ON c.shop_id = e.id
+            LEFT JOIN hotel f ON f.id = e.hotel_id
+            LEFT JOIN (SELECT t1.*,t2.name_ch AS "countryName" FROM sys_city t1 LEFT JOIN sys_country t2 ON t1.country_id = t2.id) g ON e.city_id = g.id
+            LEFT JOIN (SELECT t1.*,t2.name_ch AS "countryName" FROM sys_city t1 LEFT JOIN sys_country t2 ON t1.country_id = t2.id) h ON f.city_id = h.id
+            LEFT JOIN goods i ON b.goods_id = i.id
+            LEFT JOIN shop_protocol j ON j.id = e.id
+        <where>
+            AND a.del_flag = 0
+            <if test="productGroupId != null and productGroupId != ''">
+                AND b.id = #{productGroupId}
+            </if>
+            <if test="service != null and service != ''">
+                AND d.service_type = #{service}
+            </if>
+            order by e.id
+        </where>
+    </select>
+
+    <!-- 根据产品组和资源类型id商户id查询规格列表 -->
+    <select id="selectShopItemByGroupServiceShop" resultType="com.colourfulchina.pangu.taishang.api.vo.res.SelectBookShopItemRes">
+        SELECT
+            a.*,
+            b.shop_id as "shopId",
+            b.shop_item_id as "shopItemId",
+            b.service_type as "serviceType",
+            b.gift as "gift",
+            b.apply_time as "applyTime",
+            b.`name` as "name",
+            b.needs as "needs",
+            b.addon as "addon",
+            b.open_time as "openTime",
+            b.close_time as "closeTime"
+        FROM
+            product_group_product a
+            LEFT JOIN (
+            SELECT
+                t1.id,
+                t1.shop_id,
+                t1.shop_item_id,
+                t2.service_type,
+                t1.gift,
+                t1.apply_time,
+                t2.`name`,
+                t2.needs,
+                t2.addon,
+                t2.open_time,
+                t2.close_time
+            FROM
+                product t1
+                LEFT JOIN shop_item t2 ON t1.shop_item_id = t2.id
+            ) b ON a.product_id = b.id
+        <where>
+            AND a.del_flag = 0
+            and a.status = 0
+            <if test="productGroupId != null and productGroupId != ''">
+                AND a.product_group_id = #{productGroupId}
+            </if>
+            <if test="service != null and service != ''">
+                AND b.service_type = #{service}
+            </if>
+            <if test="shopId != null and shopId != ''">
+                AND b.shop_id = #{shopId}
+            </if>
+        </where>
+    </select>
+
+    <!-- 根据产品组和资源类型id商户id查询规格列表 -->
+    <select id="selectShopItemByGroupServiceShopPaging" resultType="com.colourfulchina.pangu.taishang.api.vo.res.SelectBookShopItemRes">
+        SELECT
+        a.*,
+        b.shop_id as "shopId",
+        b.shop_item_id as "shopItemId",
+        b.service_type as "serviceType",
+        b.gift as "gift",
+        b.apply_time as "applyTime",
+        b.`name` as "name",
+        b.needs as "needs",
+        b.addon as "addon",
+        b.open_time as "openTime",
+        b.close_time as "closeTime"
+        FROM
+        product_group_product a
+        LEFT JOIN (
+        SELECT
+        t1.id,
+        t1.shop_id,
+        t1.shop_item_id,
+        t2.service_type,
+        t1.gift,
+        t1.apply_time,
+        t2.`name`,
+        t2.needs,
+        t2.addon,
+        t2.open_time,
+        t2.close_time
+        FROM
+        product t1
+        LEFT JOIN shop_item t2 ON t1.shop_item_id = t2.id
+        ) b ON a.product_id = b.id
+        left join shop c on b.shop_id=c.id
+        left join hotel d on c.hotel_id=d.id
+        <where>
+            AND a.del_flag = 0
+            <if test="productGroupId != null and productGroupId != ''">
+                AND a.product_group_id = #{productGroupId}
+            </if>
+            <if test="service != null and service != ''">
+                AND b.service_type = #{service}
+            </if>
+            <if test="shopId != null and shopId != ''">
+                AND b.shop_id = #{shopId}
+            </if>
+            <if test="hotelName != null and hotelName != ''">
+                AND d.name_ch like CONCAT('%',#{hotelName},'%')
+            </if>
+            <if test="hotelAddress != null and hotelAddress != ''">
+                AND  d.address_ch like CONCAT('%',#{hotelAddress},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="selectGoodsGroupByGoodsId" resultType="com.colourfulchina.pangu.taishang.api.vo.res.GoodsGroupListRes">
+        SELECT
+            pg.*
+        FROM
+            product_group pg
+        WHERE
+            pg.goods_id = #{goodsId}
+            and del_flag = 0
+        ORDER BY pg.sort,pg.id
+    </select>
+
+    <!--根据产品组id查询产品组下商户和规格-->
+    <select id="queryProductGroupById" parameterType="com.colourfulchina.pangu.taishang.api.vo.req.QueryProductGroupInfoReqVo" resultType="com.colourfulchina.pangu.taishang.api.vo.res.ProductGroupResVO">
+        SELECT
+            a.id AS "productGroupProductId",
+            b.id AS "productGroupId",
+            c.id AS "productId",
+            d.id AS "shopItemId",
+            e.id AS "shopId",
+		    sp.channel_id as "shopChannelId",
+		    e.py as source,
+		    d.third_cpn_num as thirdCpnNo
+        FROM
+            product_group_product a
+            LEFT JOIN product_group b ON a.product_group_id = b.id
+            LEFT JOIN product c ON a.product_id = c.id
+            LEFT JOIN shop_item d ON c.shop_item_id = d.id
+            LEFT JOIN shop e ON c.shop_id = e.id
+            LEFT JOIN shop_protocol sp on e.id = sp.id
+        <where>
+            AND a.del_flag = 0
+            AND b.id = #{productGroupId}
+            <if test="productId != null">
+              AND c.id = #{productId}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectPrjGroupList" resultType="com.colourfulchina.pangu.taishang.api.vo.res.bigan.PrjGroupVo">
+        SELECT
+        a.id,
+        a.goods_id as projectId,
+        a.use_limit_id as limitType,
+        a.name as title,
+        a.use_num as times,
+        short_name as notes
+        FROM product_group a
+        <where>
+            a.goods_id = #{projectId}
+            and a.del_flag = 0
+        </where>
+    </select>
+
+    <select id="findListByProjectIdAndGroupId" resultType="com.colourfulchina.pangu.taishang.api.vo.res.bigan.PrjGroupGoods">
+        SELECT g.id as groupId,p.product_id as goodsId, g.goods_id as projectId, p.sort,p.id as pgpId
+       FROM product_group g JOIN product_group_product p ON g.id=p.product_group_id
+       WHERE g.id=#{groupId}
+         and g.goods_Id=#{projectId}
+         and p.status != 1
+         and g.del_flag = 0
+    </select>
+
+    <select id="selectDiscountByIds" parameterType="java.util.List" resultType="com.colourfulchina.pangu.taishang.api.entity.ProductGroup">
+        select
+          a.id,
+          a.discount_rate as "discountRate"
+        from
+          product_group a
+        where
+          a.id IN
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

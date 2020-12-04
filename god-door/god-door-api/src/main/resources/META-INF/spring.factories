@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.colourfulchina.god.door.api.GodDoorLogAutoConfiguration,\
+  com.colourfulchina.god.door.api.util.SecurityUtils,\
+  com.colourfulchina.god.door.api.interceptor.LoginInterceptor,\
+  com.colourfulchina.god.door.api.feign.fallback.RemoteLoginServiceFallbackImpl\

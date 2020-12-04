@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.SalesChannelMapper">
+    <select id="findPageList" resultType="com.colourfulchina.pangu.taishang.api.entity.SalesChannel"
+            parameterType="com.colourfulchina.pangu.taishang.api.entity.SalesChannel">
+        select * from sales_channel
+        <where>
+            del_flag=0
+            <if test="bankIds!=null and bankIds.size()>0">
+                and bank_id in
+                <foreach item="item" collection="bankIds" separator="," open="(" close=")" index="">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="bankId!=null and bankId!=''">
+                and bank_id=#{bankId}
+            </if>
+            <if test="salesChannelId!=null and salesChannelId!=''">
+                and sales_channel_id=#{salesChannelId}
+            </if>
+            <if test="salesWayId!=null and salesWayId!=''">
+                and sales_way_id=#{salesWayId}
+            </if>
+            <if test="settleMethodId!=null and settleMethodId!=''">
+                and settle_method_id=#{settleMethodId}
+            </if>
+            <if test="invoiceNodeId!=null and invoiceNodeId!=''">
+                and invoice_node_id=#{invoiceNodeId}
+            </if>
+            <if test="invoiceObjId!=null and invoiceObjId!=''">
+                and invoice_obj_id=#{invoiceObjId}
+            </if>
+            <if test="commision!=null and commision!=''">
+                and commision=#{commision}
+            </if>
+            <if test="status!=null and status!=''">
+                and status=#{status}
+            </if>
+        </where>
+        order by orders,id desc
+    </select>
+
+    <select id="selectSalesChannelCount" resultType="integer"
+            parameterType="com.colourfulchina.pangu.taishang.api.entity.SalesChannel">
+        select count(*) from sales_channel
+        <where>
+            and bank_id=#{bankId}
+            <choose>
+                <when test="salesChannelId !=null">
+                    and sales_channel_id=#{salesChannelId}
+                </when>
+                <otherwise>
+                    and sales_channel_id is null
+                </otherwise>
+            </choose>
+            and sales_way_id=#{salesWayId}
+            <if test="id !=null and id !=''">
+                and id !=#{id}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectSalesChannel" resultType="java.lang.Integer"
+            parameterType="java.lang.String">
+        select * from goods_channels where channel_id in (SELECT id FROM `sales_channel` where bank_id = #{bankId})
+
+    </select>
+    
+    <select id="selectSalesChannelOne" resultType="com.colourfulchina.pangu.taishang.api.entity.SalesChannel" parameterType="com.colourfulchina.pangu.taishang.api.entity.SalesChannel">
+        select * FROM sales_channel
+        <where>
+            and bank_id=#{bankId}
+            <choose>
+                <when test="salesChannelId !=null">
+                    and sales_channel_id=#{salesChannelId}
+                </when>
+                <otherwise>
+                    and sales_channel_id is null
+                </otherwise>
+            </choose>
+            and sales_way_id=#{salesWayId}
+        </where>
+    </select>
+
+</mapper>

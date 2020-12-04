@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.SkuGoodsRelMapper">
+    <select id="selectGoodsInfoBySku" parameterType="com.colourfulchina.pangu.taishang.api.vo.req.SkuGoodsReqVo" resultType="com.colourfulchina.pangu.taishang.api.entity.SkuGoodsRel">
+        select id,channel,sku,goods_id,goods_name from sku_goods_rel
+        where channel = #{channel} and sku = #{sku}
+    </select>
+
+</mapper>

@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.colourfulchina.tianyan.common.core.config.RedisConfig,\
+  com.colourfulchina.tianyan.common.core.util.SpringContextHolder

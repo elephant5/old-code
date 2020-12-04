@@ -1,0 +1,105 @@
+@import "~antd/dist/antd.less";
+
+.shop-item-wrapper {
+  background: #FFF;
+  width: calc(~"100% - 48px");
+  // height: 120px;
+  margin: 24px;
+  padding: 0;
+  border: 0;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .shop-basic-wrapper {
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .shop-img {
+      // width: 184px;
+      // height: 120px;
+      padding: 0;
+      // margin: 0 24px 0 0;
+    }
+
+    .shop-title {
+      font-size: 20px;
+      line-height: 28px;
+      color: #000;
+      opacity: .85;
+      font-weight: 600;
+      margin-left: 20px;
+    }
+    .shop-addon {
+      font-size: 14px;
+      line-height: 22px;
+      color: #000;
+      opacity: .65;
+      font-weight: 500;
+      margin-left: 20px;
+    }
+  }
+  .shop-status {
+    font-size: 14px;
+    color: rgba(0,0,0,0.65);
+    font-weight: 600;
+  }
+  .shop-ops {
+    margin-right: 24px;
+
+    .shop-op {
+      color: @primary-color;
+      margin-right: 24px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+}
+
+.shop-add-content {
+  padding: 24px 0px;
+}
+
+.resource-flex-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.ant-badge-status-text{
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+:global{
+  .events{
+    .ant-badge{  //给该select框加的className
+      .ant-badge-status-text{
+        color: rgba(0, 0, 0, 0.65);
+        font-size: 12px;
+        margin-left: 8px;
+      }
+    }
+  }
+  
+}
+
+:global{
+  .BraftEditorCss{
+    .bf-container{  //给该select框加的className
+      .bf-content{
+        padding-bottom: 10px;
+        overflow: auto;
+        font-size: 16px;
+        height:200px;
+      }
+    }
+  }
+  
+}

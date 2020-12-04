@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="375" height="133" viewBox="0 0 375 133">
+  <defs>
+    <linearGradient id="矩形-a" x1="52.914%" x2="52.914%" y1="0%" y2="124.641%">
+      <stop offset="0%" stop-color="#245696"/>
+      <stop offset="100%" stop-color="#396CE0"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#矩形-a)" d="M0,88 L375,88 L375,191.792686 C313.901042,211.594465 250.401042,221.327436 184.5,220.991599 C118.598958,220.655761 57.0989583,210.92279 0,191.792686 L0,88 Z" transform="translate(0 -88)"/>
+</svg>

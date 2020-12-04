@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colourfulchina.bigan.mapper.ClfSingleTeaMapper">
+
+    <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.ClfSingleTea">
+
+    </resultMap>
+    <select id="selectClfSingleTeaPage" resultType="com.colourfulchina.bigan.api.entity.ClfSingleTea">
+
+        select * from Clf_Single_Tea as s
+        where 1=1 and del_flag=0
+        <if test="city != null and city != ''">
+            and s.city = #{city}
+        </if>
+        <if test="hotelCh != null  and hotelCh != ''">
+            and s.hotel_ch = #{hotelCh}
+        </if>
+        <if test="hotelEn != null  and hotelEn != ''">
+            and s.hotel_en = #{hotelEn}
+        </if>
+    </select>
+
+    <update id="logicDelById">
+        update Clf_Single_Tea set del_flag=1,update_time=GETDATE() where id=#{id}
+    </update>
+</mapper>

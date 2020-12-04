@@ -1,0 +1,92 @@
+## 支付宝公私钥
+alipay:
+  serverUrl: https://openapi.alipay.com/gateway.do
+  format: json
+  charset: UTF-8
+  signType: RSA2
+  productCode: QUICK_MSECURITY_PAY
+  timeoutExpress: 15m
+  appId: 2018080560962174
+  sellerId: 2088211035480813
+  sellerEmail: jingyuanpay@126.com
+  salesOrderNotifyUrl: https://781f0278.ngrok.io/ziya/alipay/salesOrder/asynNotify
+  bookOrderNotifyUrl: https://781f0278.ngrok.io/ziya/alipay/bookOrder/asynNotify
+  alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtBKLteEsBKXeIKGmAMi1oTM38tiH0FvWsC0nJJPYCeNt7B+W9vby5R3usV8RWOxV0j7VMotaM3Zst/A7n7Ky9JSfmvT9R90qHmZBswmJ2IhLrl/+CShEYxysfiDu3jjeCJhodxoFU0iWXwPNYlR5Qoov5/ZwUtlEq1UUbDsLKTnNOJdnt1uod6mOI5sg+cmiTasuDHdaXkPu6IDtDlTpktt4z6ufWZFaPiXLa5epxKAOO88QlImnjzJn8kA+NJ/M/cg61FjGcPTyEoi81B0r8KhluXoXRc/hudYvePUB2otgTe0QX2Ui2XunZ8pK0wQZMpN/0M1h9cFOqQdyaiQ92QIDAQAB
+  privateKey: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCJZR6aFlcJGRINa2PAeBfKyQ9uxvhLAI+nrRnYaToLONXWvoPXbqEq4WjQYAS0NdQJjx+LMYABF+VUPNjmZPKLUiVrGQHUlTWpFzcvYHLAXaL2Fxjbh9FNGVmD8ZLHNfE08/Ha0IG4FQzIXYoWNGvy4e34mG4T2ZTRkrFJeDD6irylW7DA0VUQOZCdUc3rHBhlkpoEtC2Ebtq2l7abkoAuU/D20ltaez9X2lnjQw3gXf3tF2wnGP6/vJI9AG/TG3iqBNkNd9EFZq2tnasiO9/37MKM+q6CepQdrtsR7vjUOCaYScmBnF3aRcgH+MA0SKXU2fiX3Z9qZnSniQXbkG6rAgMBAAECggEABcvzX5LjtymMnm5SdhNbBZ43/Xd9kESEyxE9jujZnxGVzAqbq2IqgJGkB26VpDjFKmYUcZ30BZfJgCVVDVti9EfR9lPGxP5Klki5dlE+ZilNL87HqLNxPCx+n1d41tjKxW4pXQ8A+hBBSs7PfaJWj5fCn4Nm2YWLhtAGlM/yWQ+jQVdr7pmULHspYva59wpbdrazTauuqXfPrmtxEzAX+NDx2ohktH+iPb50E5AhIhvn6u3ubovTg8GXXEaGf+AXfrnXYnVURaQBQmplsWxkdRRvCheSmS2t0RGfbiX9+rAsYQHiSWB5UYZgwt0D7OYOCE9RWK+0PsYIA3vyaGpIWQKBgQDln1QeRJHOrGjn3QLUWxZPf7WWNv0nJPDtTSb+7OGO5VrVRzeRnJBgMl/etKg6aIFbqi9v67S5xxvqfMmSABTFhHaZk1D18o8VpfBPbz+ZbH9nVsLnXvkBr/i4e15MJudl5fg3Yex7sTyZdai5eWR+TkmQlQFMVa7EgkuVuwEd7wKBgQCZLZf7GvxUHDcSSZpYq32jBhFquYhUr9AJiV784NtstdyfTIPOAsUe5zJH41A63VUV6pfdcwMMcJvsLySOKdEmnkGrT93UmGr/9wsjPQXqYMFSFvWzQXpxfcfdik4AOBZq2kqZgapDj456p6DH30eBZI15sdfjAf1VFfeLryu3BQKBgQCG91yhIdq2KP7MckqseRGnDsC0F4Q7EuqOANBP/PojXMpEHEUcUHNIJ7PUGknbcvu93k1dsqSaod7VuB1etK+A3Xg8kqt+tODHb67Nce1nB6/nFMcg6eDgzgcaoGDvz9opOb/pBaTTm3ysEs1mn2SjHO7+jaaisKY2GQPGcZGZfwKBgGscQbEaHqWmETBdfWtRh4nunVE2qUkmo193yo8joOv0g3B07ZmpwDMq0bMJFboDuRKZN1ZnrRMOz0kpcfNi9Fh/w0XKlECrz+5qzkP20OMigywm1+pf+AHSRWb55i8rCSnwuMd8rxWNFcFY5Am/bN3i9TbKkD6xznan5LCtbfENAoGAO+OtYDkKJ9TX2YEwLxuNUVC1u0IFU203yaoDPOg3hQOp3gy/LPo1g2CznO+NHMNttBPvZ1Z+iPUtKelrNCvzH/qUK0vsQGYD+nLI457eLgktUQKKq3hRHKO6GZnSpsErGz11ZOQ33OXKOxTJUIcpgpNd9K9MSHUsYzIuxpmPnlE=
+
+## 销售单相关设置
+sales:
+  order:
+    ## 激活码标签 test VIP 或者支付宝？
+    activateCodeTag: test
+    ORDER_DELAY_QUEUE: alipay.order.delay.queue
+    ORDER_DELAY_EXCHANGE: alipay.order.delay.exchange
+    ORDER_DELAY_ROUTING_KEY: alipay.order_delay
+    ORDER_QUEUE_NAME: alipay.order.queue
+    ORDER_EXCHANGE_NAME: alipay.order.exchange
+    ORDER_ROUTING_KEY: alipay.order
+    time: 30
+
+## 预约单相关设置
+book:
+  order:
+
+
+## 项目相关设置
+project:
+  ids:
+  - 414
+  - 413
+  - 415
+
+## spring security 配置
+security:
+  oauth2:
+    client:
+      client-id: ziya
+      client-secret: ziya
+      scope: server
+    resource:
+      token-info-uri: http://localhost:9999/auth/oauth/check_token
+
+# 数据源
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 1qaz@WSX
+    url: jdbc:mysql://clf-mysql.colourfulchina.com:3306/ziya?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+  rabbitmq:
+    host: clf-rabbitmq.colourfulchina.com
+    port: 5672
+    username: admin
+    password: 1qaz@WSX
+  cloud:
+    bus:
+      refresh:
+        enabled: true
+      trace:
+        enabled: true
+
+#mybaits-plus配置，修改主键类型，mapper.xml、type 别名等
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: com.colourfulchina.ziya.api.entity
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 0
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 1
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    # 逻辑删除字段
+    logic-delete-value: 1
+    logic-not-delete-value: 0
+    #自定义SQL注入器
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true

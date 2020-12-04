@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.mars.mapper.GiftCodeMapper">
+
+    <!-- 激活码分页查询 -->
+    <select id="selectPageList" parameterType="map" resultType="com.colourfulchina.mars.api.vo.res.GiftCodePageRes">
+        select
+        *
+        from
+        gift_code a
+        <where>
+            AND del_flag = 0
+            <if test="codeBatchNo != null and codeBatchNo != ''">
+                AND a.code_batch_no like CONCAT('%',#{codeBatchNo},'%')
+            </if>
+            <if test="salesChannelId != null and salesChannelId != ''">
+                AND a.sales_channel_id = #{salesChannelId}
+            </if>
+            <if test="giftCodeArr != null and giftCodeArr.length != 0">
+                AND a.act_code IN
+                <foreach collection="giftCodeArr" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="goodsIds != null and goodsIds.size() != 0">
+                AND a.goods_id IN
+                <foreach collection="goodsIds" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="codeStatus != null and codeStatus.size() != 0">
+                AND a.act_code_status IN
+                <foreach collection="codeStatus" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="expireTimes != null and expireTimes.size() != 0">
+                AND a.act_expire_time
+                <foreach collection="expireTimes" item="item" open="BETWEEN" close="" separator="AND">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="memberIds != null and memberIds.size() != 0">
+                AND a.member_id IN
+                <foreach collection="memberIds" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        order by a.id desc
+    </select>
+
+    <!-- 激活码出库，根据激活码列表 -->
+    <update id="outActCodeByCodes">
+        update
+          gift_code
+        set
+          act_code_status = #{actCodeStatus},
+          act_out_date = #{actOutDate},
+          act_expire_time = #{actExpireTime},
+          act_end_time = #{actEndTime},
+          sales_channel_id = #{salesChannelId},
+          tags = #{tags},
+          out_remarks = #{outRemarks}
+        WHERE
+          act_code_status = 0
+          AND act_code IN
+          <foreach collection="codes" item="item" open="(" separator="," close=")">
+              #{item}
+          </foreach>
+    </update>
+
+    <!-- 激活码出库，根据批次号 -->
+    <update id="outActCodeByBatch">
+        update
+          gift_code
+        set
+            act_code_status = #{actCodeStatus},
+            act_out_date = #{actOutDate},
+            act_expire_time = #{actExpireTime},
+            act_end_time = #{actEndTime},
+            sales_channel_id = #{salesChannelId},
+            tags = #{tags},
+            out_remarks = #{outRemarks}
+        WHERE
+          act_code_status = 0
+          AND code_batch_no = #{codeBatchNo}
+    </update>
+
+    <!-- 激活码退货 -->
+    <update id="returnActCodeByCodes">
+        update
+          gift_code
+        set
+          act_code_status = #{actCodeStatus},
+          return_remarks = #{returnRemarks},
+          act_return_date = #{actReturnDate}
+        where
+          act_code_status not in (5,6)
+          AND act_code IN
+          <foreach collection="codes" item="item" open="(" close=")" separator=",">
+              #{item}
+          </foreach>
+    </update>
+
+    <!-- 激活码作废 -->
+    <update id="obsoleteActCodeByCodes">
+        update
+          gift_code
+        set
+          act_code_status = #{actCodeStatus},
+          obsolete_remarks = #{obsoleteRemarks},
+          act_obsolete_date = #{actObsoleteDate}
+        where
+          act_code_status not in (5,6)
+          AND act_code IN
+          <foreach collection="codes" item="item" open="(" close=")" separator=",">
+              #{item}
+          </foreach>
+    </update>
+
+    <!-- 上海银行批量冻结激活码 -->
+    <update id="frozenBoscActCodes">
+        UPDATE
+          gift_code
+        SET
+          tags = CASE WHEN tags IS NOT NULL AND tags != '' THEN CONCAT( tags, ',冻结' ) ELSE '冻结' END,
+          act_code_status = #{actCodeStatus},
+          obsolete_remarks = #{obsoleteRemarks},
+          act_obsolete_date = #{actObsoleteDate}
+        where
+            act_code_status not in (5,6)
+            AND act_code IN
+            <foreach collection="codes" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+    </update>
+
+    <!-- 上海银行批量解冻激活码 -->
+    <update id="thawBoscActCodes">
+        UPDATE
+          gift_code
+        SET
+          tags = CASE WHEN tags LIKE '%,冻结%' THEN REPLACE(tags,',冻结','') ELSE REPLACE(tags,'冻结','') END,
+          act_code_status = #{actCodeStatus},
+          obsolete_remarks = #{obsoleteRemarks},
+          act_obsolete_date = null
+        WHERE
+          act_code_status = 6
+        and tags like '%冻结%'
+        AND act_code IN
+        <foreach collection="codes" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </update>
+
+    <!-- 替换上海银行激活码 -->
+    <update id="replaceBoscCodes">
+        update
+          gift_code
+        set
+          active_remarks = #{1}
+        where
+          active_remarks = #{0}
+    </update>
+
+    <select id="getActCodeList" parameterType="java.util.Map" resultType="java.util.Map">
+    	select member_id as memberId, active_remarks as remarks
+    	  from gift_code 
+    	 where act_code_status = 2 
+    	   and goods_id = #{goodsId} and
+        <foreach collection="sonlist" open="(" separator="or" close=")" item="item" index="index" >
+    		member_id = #{item.memberId} and active_remarks = #{item.remarks}
+    	</foreach>
+    </select>
+
+    <update id="updateGiftCode" parameterType="com.colourfulchina.mars.api.entity.GiftCode">
+        update gift_code set id = #{unitId} where id = #{id}
+</update>
+    <update id="updateIdByUnitId" parameterType="com.colourfulchina.mars.api.entity.GiftCode">
+      update gift_code set id=#{unitId} where unit_id=#{unitId}
+    </update>
+
+    <update id="batchUpdateById" >
+        <foreach collection="giftCodes"  separator=";" item="item" index="index" >
+            update gift_code set act_expire_time=#{item.actExpireTime},act_end_time=#{item.actEndTime}, tags=#{item.tags},act_code_status=#{item.actCodeStatus} where id=#{item.id}
+        </foreach>
+    </update>
+
+    <!-- 激活码过期操作 -->
+    <update id="optExpireGiftCode">
+        update gift_code set act_code_status = 4 WHERE act_code_status IN (0,1,2) AND DATE(act_expire_time) &lt;= STR_TO_DATE(#{yesterdayStr},'%Y-%m-%d')
+    </update>
+
+    <!--根据act_code获取激活码信息-->
+    <select id="selectGiftCodeByActCode" parameterType="java.lang.String" resultType="com.colourfulchina.mars.api.entity.GiftCode">
+      SELECT * from gift_code WHERE act_code = #{actCode}
+    </select>
+    <!-- 激活码列表导出 -->
+    <select id="selectExportList" parameterType="map" resultType="com.colourfulchina.mars.api.vo.res.GiftCodePageRes">
+        select
+        *
+        from
+        gift_code a
+        <where>
+            AND del_flag = 0
+            <if test="codeBatchNo != null and codeBatchNo != ''">
+                AND a.code_batch_no like CONCAT('%',#{codeBatchNo},'%')
+            </if>
+            <if test="salesChannelId != null and salesChannelId != ''">
+                AND a.sales_channel_id = #{salesChannelId}
+            </if>
+            <if test="giftCodeArr != null and giftCodeArr.length != 0">
+                AND a.act_code IN
+                <foreach collection="giftCodeArr" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="goodsIds != null and goodsIds.size() != 0">
+                AND a.goods_id IN
+                <foreach collection="goodsIds" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="codeStatus != null and codeStatus.size() != 0">
+                AND a.act_code_status IN
+                <foreach collection="codeStatus" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="expireTimes != null and expireTimes.size() != 0">
+                AND a.act_expire_time
+                <foreach collection="expireTimes" item="item" open="BETWEEN" close="" separator="AND">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="memberIds != null and memberIds.size() != 0">
+                AND a.member_id IN
+                <foreach collection="memberIds" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        order by a.id desc
+    </select>
+
+
+    <select id="selectGiftByAcIdAndGoodsId" parameterType="com.colourfulchina.mars.api.vo.req.QueryGiftReqVO" resultType="com.colourfulchina.mars.api.entity.GiftCode">
+        SELECT  * from gift_code WHERE member_id = #{acId} and goods_id = #{goodsId}
+        order by create_time desc
+    </select>
+
+    <!-- 查询支付宝渠道延期的激活码 -->
+    <select id="selectAlipayProLong" parameterType="map" resultType="com.colourfulchina.mars.api.entity.GiftCode">
+        SELECT
+            b.*
+        FROM
+            gift_code_prolong a
+            LEFT JOIN gift_code b ON a.gift_code_id = b.id
+        <where>
+            AND b.sales_channel_id = 185
+            <if test="createTimeStart != null and createTimeStart != ''">
+                AND DATE( a.create_time ) >= STR_TO_DATE( #{createTimeStart}, '%Y-%m-%d' )
+            </if>
+        </where>
+    </select>
+
+    <!--查询上海银行项目里所有已激活的激活码-->
+    <select id="selectBoscCodes" resultType="java.lang.String">
+        SELECT act_code from gift_code
+        where act_code_status = 2
+        and active_remarks in
+        <foreach collection="activeRemarks" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

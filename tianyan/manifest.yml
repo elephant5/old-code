@@ -1,0 +1,26 @@
+---
+applications:
+- name: tianyan-config
+  random-route: true
+  memory: 256m
+  path: tianyan-config/target/tianyan-config-1.0.0.jar
+
+- name: tianyan-auth
+  random-route: true
+  memory: 256m
+  path: tianyan-auth/target/tianyan-auth-1.0.0.jar
+
+- name: tianyan-gateway
+  random-route: true
+  memory: 256m
+  path: tianyan-gateway/target/tianyan-gateway-1.0.0.jar
+
+- name: tianyan-upms
+  random-route: true
+  memory: 256m
+  path: tianyan-upms/tianyan-upms-biz/target/tianyan-upms-biz-1.0.0.jar
+
+- name: tianyan-monitor
+  random-route: true
+  memory: 256m
+  path: tianyan-monitor/target/tianyan-monitor-1.0.0.jar

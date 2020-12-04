@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.mars.mapper.ReservOrderDetailMapper">
+    <sql id="baseSql">
+        <if test="id!=null and id !=''">order_id =#{id},</if>
+        <if test="serviceType!=null and serviceType !=''">product_type =#{serviceType},</if>
+        <if test="goodsId!=null and goodsId !=''">goods_id =#{goodsId},</if>
+        <if test="checkDate!=null and checkDate !=''">check_date =#{checkDate},</if>
+        <if test="deparDate!=null and deparDate !=''">depar_date =#{deparDate},</if>
+        <if test="checkNight!=null and checkNight !=''">check_night =#{checkNight},</if>
+        <if test="accoAddon!=null and accoAddon !=''">acco_addon =#{accoAddon},</if>
+        <if test="accoNedds!=null and accoNedds !=''">acco_nedds =#{accoNedds},</if>
+    </sql>
+    <insert id="batchInsertDetail" parameterType="com.colourfulchina.mars.api.vo.req.ReservOrderPlaceReq">
+        insert into reserv_order_detail
+        <set>
+            <include refid="baseSql"/>
+            <if test="bookName!=null and bookName !=''">book_name =#{bookName},</if>
+            <if test="bookNameEn!=null and bookNameEn !=''">book_name_en =#{bookNameEn},</if>
+            <if test="bookPhone!=null and bookPhone !=''">book_phone =#{bookPhone},</if>
+            <if test="bookIdType!=null and bookIdType !=''">book_id_type =#{bookIdType},</if>
+            <if test="bookIdNum!=null and bookIdNum !=''">book_id_num =#{bookIdNum},</if>
+            <if test="nightNumbers!=null and nightNumbers !=''">night_numbers =#{nightNumbers},</if>
+            <if test="payAmoney!=null and payAmoney !=''">pay_amoney =#{payAmoney},</if>
+        </set>
+        ;
+        <if test="books !=null ">
+            <foreach collection="books" item="item" separator=";">
+                insert into reserv_order_detail
+                <set>
+                    <include refid="baseSql"/>
+                    <if test="item.bookName!=null and item.bookName !=''">book_name =#{item.bookName},</if>
+                    <if test="item.bookNameEn!=null and item.bookNameEn !=''">book_name_en =#{item.bookNameEn},</if>
+                    <if test="payAmoney!=null and payAmoney !=''">pay_amoney =#{payAmoney},</if>
+                </set>
+            </foreach>
+        </if>
+    </insert>
+
+</mapper>

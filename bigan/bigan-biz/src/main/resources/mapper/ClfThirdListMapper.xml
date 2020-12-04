@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colourfulchina.bigan.mapper.ClfThirdListMapper">
+    <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.ClfThirdList">
+
+    </resultMap>
+
+    <!-- 第三方列表分页查询 -->
+    <select id="selectListPage" parameterType="map" resultType="com.colourfulchina.bigan.api.entity.ClfThirdList">
+        select * from Clf_Third_List a
+        <where>
+            and del_flag=0
+            <if test="thirdListName != null and thirdListName != ''">
+               and a.third_list_name like '%'+#{thirdListName}+'%'
+            </if>
+            <if test="companyName != null and companyName != ''">
+               and a.company_name like '%'+#{companyName}+'%'
+            </if>
+            <if test="phone != null and phone != ''">
+               and a.phone like '%'+#{phone}+'%'
+            </if>
+            <if test="fax != null and fax != ''">
+               and a.fax like '%'+#{fax}+'%'
+            </if>
+            <if test="address != null and address != ''">
+               and a.address like '%'+#{address}+'%'
+            </if>
+            <if test="thirdOpenUser != null and thirdOpenUser != ''">
+               and a.third_open_user like '%'+#{thirdOpenUser}+'%'
+            </if>
+            <if test="contractCompany != null and contractCompany != ''">
+               and a.contract_company like '%'+#{contractCompany}+'%'
+            </if>
+            <if test="confirmType != null and confirmType != ''">
+               and a.confirm_type like '%'+#{confirmType}+'%'
+            </if>
+            <if test="comfairmWeb != null and comfairmWeb != ''">
+               and a.comfairm_web like '%'+#{comfairmWeb}+'%'
+            </if>
+            <if test="signContractDate != null and signContractDate != ''">
+               and a.sign_contract_date like '%'+#{signContractDate}+'%'
+            </if>
+            <if test="contractEnd != null and contractEnd != ''">
+               and a.contract_end like '%'+#{contractEnd}+'%'
+            </if>
+            <if test="prepMethod != null and prepMethod != ''">
+               and a.prep_method like '%'+#{prepMethod}+'%'
+            </if>
+            <if test="guazhang != null and guazhang != ''">
+               and a.guazhang like '%'+#{guazhang}+'%'
+            </if>
+            <if test="cash != null and cash != ''">
+               and a.cash like '%'+#{cash}+'%'
+            </if>
+            <if test="payMethod != null and payMethod != ''">
+               and a.pay_method like '%'+#{payMethod}+'%'
+            </if>
+            <if test="payTime != null and payTime != ''">
+               and a.pay_time like '%'+#{payTime}+'%'
+            </if>
+        </where>
+    </select>
+
+    <update id="logicDelById">
+        update Clf_Third_List set del_flag=1,update_time=GETDATE() where id=#{id}
+    </update>
+
+</mapper>

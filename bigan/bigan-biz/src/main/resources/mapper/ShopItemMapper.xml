@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.bigan.mapper.ShopItemMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.ShopItem">
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, shop_id, name, needs, addon, opentime, block, price
+  </sql>
+
+
+  <select id="checkShopItemIsExist"  parameterType="com.colourfulchina.bigan.api.entity.ShopItem" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from shop_item
+    <where>
+      <if test="shopId!=null">
+        and shop_id=#{shopId}
+      </if>
+      <if test="name != null">
+        and name=#{name}
+      </if>
+      <if test="needs != null">
+        and needs=#{needs}
+      </if>
+      <if test="addon != null">
+        and addon=#{addon}
+      </if>
+      <if test="type != null">
+        and type=#{type}
+      </if>
+    </where>
+  </select>
+
+
+
+  <select id="selectShopItemSeqNextValue" resultType="java.lang.Long"  >
+      SELECT NEXT VALUE FOR seq_shop_item;
+  </select>
+
+  <select id="selectByItemIdList" parameterType="java.util.List" resultType="com.colourfulchina.bigan.api.entity.ShopItem">
+    SELECT
+        a.id,
+        a.type,
+        a.shop_id,
+        a.name,
+        a.needs,
+        a.addon,
+        a.opentime,
+        a.block,
+        a.price
+    FROM
+        shop_item a
+    <where>
+      <if test="list.size() != 0">
+        AND a.id IN
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+    </where>
+  </select>
+</mapper>

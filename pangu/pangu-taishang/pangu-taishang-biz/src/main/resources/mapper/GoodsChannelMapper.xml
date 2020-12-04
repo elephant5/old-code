@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.GoodsChannelsMapper">
+
+    <select id="selectGoodsChannel" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.vo.res.GoodsChannelRes">
+        SELECT
+            b.*
+        FROM
+            goods_channels a
+            LEFT JOIN sales_channel b ON a.channel_id = b.id
+        WHERE
+            a.goods_id = #{goodsId}
+    </select>
+
+
+    <select id="selectGoodsChannelByChannelId" parameterType="java.lang.String" resultType="com.colourfulchina.pangu.taishang.api.vo.res.SalesChannelRes">
+        SELECT
+          b.*
+        FROM
+          goods_channels a
+        LEFT JOIN sales_channel b ON a.channel_id = b.id
+        WHERE
+        a.goods_id = #{goodsId}
+    </select>
+
+    <select id="selectGoodsChannelByGoodsId" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.vo.res.bigan.ProjectChannel">
+          SELECT goods_id as projectId, channel_id as oldId,channel_id as newId FROM goods_channels
+          where goods_id=#{goodsId}
+    </select>
+
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.bigan.mapper.PrjGroupMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.PrjGroup">
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+  </sql>
+  <select id="selectPrjGroupList" resultType="com.colourfulchina.bigan.api.vo.PrjGroupVo">
+      SELECT
+            a.id,
+            a.project_id projectId,
+            a.dynamic,
+            a.filter,
+            a.limit_type limitType,
+            a.title,
+            a.times,
+            json_value ( a.define, '$.notes' ) AS notes,
+            a.define,
+            a.more
+        FROM
+            prj_group a
+      <where>
+          <if test="projectId != null and projectId != ''">
+              a.project_id = #{projectId}
+          </if>
+      </where>
+  </select>
+  
+  <select id="getGroupList" resultType="com.colourfulchina.bigan.api.vo.ProjectGroupResVo" 
+  		parameterType="com.colourfulchina.bigan.api.vo.ProjectReqVo">
+	  	SELECT id,
+	  		   project_id as projectId,
+	  		   json_value(define,'$.title') as title,
+	  		   json_value(define,'$.times') as times
+		 FROM prj_group
+		WHERE project_id = #{projectId}
+		 AND id IN (
+			SELECT group_id
+			  FROM prj_package_groups
+			 WHERE package_id = #{packageId}
+		   )
+      <if test="prjGroupId != null">
+  		 AND id = #{prjGroupId}
+      </if>
+  </select>
+</mapper>

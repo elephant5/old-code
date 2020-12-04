@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colourfulchina.bigan.mapper.ClfBreakfastMapper">
+    <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.ClfBreakfast">
+
+    </resultMap>
+
+    <!-- 客乐芙酒店早餐分页查询 -->
+    <select id="selectListPage" parameterType="map" resultType="com.colourfulchina.bigan.api.entity.ClfBreakfast">
+        select * from Clf_Breakfast a
+        <where>
+            and del_flag=0
+            <if test="city != null and city != ''">
+               and a.city like '%'+#{city}+'%'
+            </if>
+            <if test="hotelCh != null and hotelCh != ''">
+               and a.hotel_ch like '%'+#{hotelCh}+'%'
+            </if>
+            <if test="hotelEn != null and hotelEn != ''">
+               and a.hotel_en like '%'+#{hotelEn}+'%'
+            </if>
+            <if test="restaurantName != null and restaurantName != ''">
+               and a.restaurant_name like '%'+#{restaurantName}+'%'
+            </if>
+            <if test="serviceType != null and serviceType != ''">
+               and a.service_type like '%'+#{serviceType}+'%'
+            </if>
+            <if test="discount != null and discount != ''">
+               and a.discount like '%'+#{discount}+'%'
+            </if>
+            <if test="signContractUser != null and signContractUser != ''">
+               and a.sign_contract_user like '%'+#{signContractUser}+'%'
+            </if>
+            <if test="weihu != null and weihu != ''">
+               and a.weihu like '%'+#{weihu}+'%'
+            </if>
+            <if test="breakfastType != null and breakfastType != ''">
+               and a.breakfast_type like '%'+#{breakfastType}+'%'
+            </if>
+            <if test="unit != null and unit != ''">
+               and a.unit = #{unit}
+            </if>
+            <if test="cost != null and cost != ''">
+               and a.cost like '%'+#{cost}+'%'
+            </if>
+            <if test="costRmb != null and costRmb != ''">
+               and a.cost_rmb like '%'+#{costRmb}+'%'
+            </if>
+            <if test="contractDate != null and contractDate != ''">
+               and a.contract_date = #{contractDate}
+            </if>
+            <if test="contractEnd != null and contractEnd != ''">
+               and a.contract_end like '%'+#{contractEnd}+'%'
+            </if>
+            <if test="openTime != null and openTime != ''">
+               and a.open_time like '%'+#{openTime}+'%'
+            </if>
+            <if test="address != null and address != ''">
+               and a.address like '%'+#{address}+'%'
+            </if>
+            <if test="parking != null and parking != ''">
+               and a.parking like '%'+#{parking}+'%'
+            </if>
+            <if test="kids != null and kids != ''">
+               and a.kids like '%'+#{kids}+'%'
+            </if>
+        </where>
+    </select>
+
+    <update id="logicDelById">
+        update Clf_Breakfast set del_flag=1,update_time=GETDATE() where id=#{id}
+    </update>
+
+</mapper>

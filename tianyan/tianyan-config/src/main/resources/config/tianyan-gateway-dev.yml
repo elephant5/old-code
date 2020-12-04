@@ -1,0 +1,168 @@
+spring:
+  rabbitmq:
+    host: clf-rabbitmq.colourfulchina.com
+    port: 5672
+    username: admin
+    password: 1qaz@WSX
+  cloud:
+    bus:
+      refresh:
+        enabled: true
+      trace:
+        enabled: true
+    gateway:
+      locator:
+        enabled: true
+      routes:
+      - id: tianyan-auth
+        uri: lb://tianyan-auth
+        predicates:
+        - Path=/auth/**
+        filters:
+          # 验证码处理
+        - ImageCodeGatewayFilter
+          # 前端密码解密
+        - PasswordDecoderFilter
+        - StripPrefix=1
+      - id: tianyan-upms
+        uri: lb://tianyan-upms
+        predicates:
+        - Path=/admin/**
+        filters:
+          # 限流配置
+        - name: RequestRateLimiter
+          args:
+            key-resolver: '#{@remoteAddrKeyResolver}'
+            redis-rate-limiter.replenishRate: 10
+            redis-rate-limiter.burstCapacity: 20
+        - StripPrefix=1
+          # 降级配置
+        - name: Hystrix
+          args:
+            name: default
+            fallbackUri: 'forward:/fallback'
+      #盘古系统之太上老君系统
+      - id: pangu-taishang
+        uri: lb://pangu-taishang
+        predicates:
+        - Path=/ts/**
+        filters:
+        - StripPrefix=1
+        - name: Hystrix
+          args:
+            name: default
+            fallbackUri: 'forward:/fallback'
+      #佛祖系统之观音大士系统
+      - id: fozu-guanyin
+        uri: lb://fozu-guanyin
+        predicates:
+        - Path=/gy/**
+        filters:
+        - StripPrefix=1
+        - name: Hystrix
+          args:
+            name: default
+            fallbackUri: 'forward:/fallback'
+      #佛祖系统之观音大士系统
+      - id: bigan
+        uri: lb://bigan
+        predicates:
+        - Path=/bigan/**
+        filters:
+        - StripPrefix=1
+        - name: Hystrix
+          args:
+            name: default
+            fallbackUri: 'forward:/fallback'
+      #杨戬系统批发退发货功能
+      - id: yangjian
+        uri: lb://yangjian
+        predicates:
+        - Path=/yangjian/**
+        filters:
+        - StripPrefix=1
+        - name: Hystrix
+          args:
+            name: default
+            fallbackUri: 'forward:/fallback'
+      #女娲系统 基础服务
+      - id: nuwa
+        uri: lb://nuwa
+        predicates:
+        - Path=/nuwa/**
+        filters:
+        - StripPrefix=1
+        - name: Hystrix
+          args:
+            name: default
+            fallbackUri: 'forward:/fallback'
+      #子牙系统 行权服务
+      - id: ziya
+        uri: lb://ziya
+        predicates:
+        - Path=/ziya/**
+        filters:
+        - StripPrefix=1
+        - name: Hystrix
+          args:
+            name: default
+            fallbackUri: 'forward:/fallback'
+      #水星系统 基础服务
+      - id: mercury
+        uri: lb://mercury
+        predicates:
+        - Path=/mercury/**
+        filters:
+        - StripPrefix=1
+        - name: Hystrix
+          args:
+            name: default
+            fallbackUri: 'forward:/fallback'
+    #炎帝系统 调度服务
+      - id: yandi
+        uri: lb://yandi
+        predicates:
+        - Path=/yandi/**
+        filters:
+        - StripPrefix=1
+        - name: Hystrix
+          args:
+            name: default
+            fallbackUri: 'forward:/fallback'
+    #蚩尤系统 调度服务
+      - id: chiyou
+        uri: lb://chiyou
+        predicates:
+        - Path=/chiyou/**
+        filters:
+        - StripPrefix=1
+        - name: Hystrix
+          args:
+            name: default
+            fallbackUri: 'forward:/fallback'
+      - id: xingtian
+        uri: lb://xingtian
+        predicates:
+        - Path=/xingtian/**
+        filters:
+        - StripPrefix=1
+        - name: Hystrix
+          args:
+            name: default
+            fallbackUri: 'forward:/fallback'
+      #会员系统
+      - id: member
+        uri: lb://member
+        predicates:
+        - Path=/member/**
+        filters:
+        - StripPrefix=1
+        - name: Hystrix
+          args:
+            name: default
+            fallbackUri: 'forward:/fallback'
+
+security:
+  encode:
+    # 前端密码密钥，必须16位
+    key: 'colourfultianyan'

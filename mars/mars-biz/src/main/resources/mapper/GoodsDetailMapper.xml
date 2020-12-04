@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.mars.mapper.GoodsDetailMapper">
+
+    <select id="checkGiftByid" parameterType="com.colourfulchina.mars.api.entity.GiftCode"
+            resultType="com.colourfulchina.mars.api.entity.GiftCode">
+        SELECT * from  gift_code where id = #{id}
+    </select>
+    <select id="selectGiftCodeList" parameterType="com.colourfulchina.mars.api.entity.GiftCode"
+            resultType="com.colourfulchina.mars.api.entity.GiftCode">
+        SELECT * from  gift_code where member_id = #{memberId}
+        and act_code_status in (2,3)
+        <if test="goodsId!=null">and goods_id = #{goodsId} </if>
+    </select>
+    <select id="getGoodsDetail" resultType="com.colourfulchina.mars.api.entity.GiftCode" parameterType="java.lang.String">
+    	select * from gift_code where act_code = #{actCode}
+    </select>
+
+    <select id="getGoodsTimes" parameterType="com.colourfulchina.mars.api.entity.EquityCodeDetail" resultType="com.colourfulchina.mars.api.entity.EquityCodeDetail">
+        SELECT *
+        FROM equity_code_detail
+        WHERE gift_code_id = #{giftCodeId}
+        AND product_group_id = #{productGroupId}
+    </select>
+
+    <select id="getNewUseCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+       SELECT IFNULL(SUM(use_count),0) as useCount FROM equity_code_detail WHERE gift_code_id=#{id} AND product_group_id = #{productGroupId}
+    </select>
+
+    <select id="getGiftCode" parameterType="java.lang.String" resultType="com.colourfulchina.mars.api.entity.GiftCode">
+        select id,goods_id
+        from gift_code  where act_code = #{actCode}
+    </select>
+</mapper>

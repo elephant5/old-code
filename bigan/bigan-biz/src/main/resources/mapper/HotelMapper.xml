@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.bigan.mapper.HotelMapper">
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.Hotel">
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		a.id,
+		a.name,
+		a.name_en as "nameEn",
+		a.py,
+		a.city_id as "cityId",
+		a.city,
+		a.oversea,
+		a.address,
+		a.address_en as "addressEn",
+		a.phone,
+		a.fax,
+		a.notes,
+		a.protocol,
+		a.consignee,
+		a.currency,
+		a.settle_method as "settleMethod",
+		a.book_before_days as "bookBeforeDays",
+		a.cancel_before_days as "cancelBeforeDays",
+		a.price_rule as "priceRule",
+		a.summary,
+		a.qunar_sn as "qunarSn",
+		a.wifi,
+		a.geo_id as "geoId",
+		a.portal,
+		a.create_time as "createTime",
+		a.creator_id as "creatorId"
+	</sql>
+
+	<select id="checkHotelByNameAndCity" resultType="com.colourfulchina.bigan.api.entity.Hotel">
+		select
+		<include refid="Base_Column_List"/>
+		from hotel a
+		<where>
+			<if test="name != null and name != ''">
+				and a.name = #{name}
+			</if>
+
+			<if test="city != null and city != ''">
+				and a.city = #{city}
+			</if>
+		</where>
+	</select>
+
+	<!-- 酒店更新 -->
+	<update id="updHotel">
+		update hotel
+		set name = #{name},
+		name_en = #{nameEn},
+		city_id = #{cityId},
+		city = #{city},
+		address = #{address},
+		address_en = #{addressEn},
+		geo_id = #{geoId},
+		portal = #{portal}
+		where id = #{id}
+	</update>
+
+	<!-- 插入文件记录 -->
+	<select id="sysFileAdd" statementType="CALLABLE" parameterType="java.util.Map" resultType="java.util.Map">
+        <![CDATA[
+            {CALL dbo.sp_sys_File_Add (
+            #{name,mode=IN,jdbcType=VARCHAR},
+            #{size,mode=IN,jdbcType=BIGINT},
+            #{usr,mode=IN,jdbcType=VARCHAR},
+            #{id,mode=OUT,jdbcType=BIGINT},
+            #{full_path,mode=OUT,jdbcType=VARCHAR}
+            )}
+        ]]>
+    </select>
+
+	<!-- 更新酒店信息 -->
+	<select id="hotelUpdate" statementType="CALLABLE" parameterType="java.util.Map" resultType="java.util.Map">
+		<![CDATA[
+			{CALL dbo.sp_source_Hotel_Update (
+			#{id,mode=IN,jdbcType=BIGINT},
+			#{name,mode=IN,jdbcType=VARCHAR},
+			#{name_en,mode=IN,jdbcType=VARCHAR},
+			#{city,mode=IN,jdbcType=VARCHAR},
+			#{address,mode=IN,jdbcType=VARCHAR},
+			#{address_en,mode=IN,jdbcType=VARCHAR},
+			#{lat,mode=IN,jdbcType=VARCHAR},
+			#{lng,mode=IN,jdbcType=VARCHAR},
+			#{zoom,mode=IN,jdbcType=BIGINT},
+			#{portal,mode=IN,jdbcType=VARCHAR},
+			#{uid,mode=IN,jdbcType=BIGINT},
+			#{error,mode=OUT,jdbcType=VARCHAR}
+			)}
+		]]>
+	</select>
+
+</mapper>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colourfulchina.bigan.mapper.ClfRoomUpMapper">
+    <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.ClfRoomUp">
+
+    </resultMap>
+
+    <!-- 客乐芙酒店客房升等分页查询 -->
+    <select id="selectListPage" parameterType="map" resultType="com.colourfulchina.bigan.api.entity.ClfRoomUp">
+        select * from Clf_Room_Up a
+        <where>
+            and del_flag=0
+            <if test="country != null and country != ''">
+                and a.country like '%'+#{country}+'%'
+            </if>
+            <if test="city != null and city != ''">
+                and a.city like '%'+#{city}+'%'
+            </if>
+            <if test="hotelCh != null and hotelCh != ''">
+                and a.hotel_ch like '%'+#{hotelCh}+'%'
+            </if>
+            <if test="hotelEn != null and hotelEn != ''">
+                and a.hotel_en like '%'+#{hotelEn}+'%'
+            </if>
+            <if test="signContractUser != null and signContractUser != ''">
+                and a.sign_contract_user like '%'+#{signContractUser}+'%'
+            </if>
+            <if test="shopUser != null and shopUser != ''">
+                and a.shop_user like '%'+#{shopUser}+'%'
+            </if>
+            <if test="upRoomBefore != null and upRoomBefore != ''">
+                and a.up_room_before like '%'+#{upRoomBefore}+'%'
+            </if>
+            <if test="upRoomDown != null and upRoomDown != ''">
+                and a.up_room_down like '%'+#{upRoomDown}+'%'
+            </if>
+            <if test="unit != null and unit != ''">
+                and a.unit like '%'+#{unit}+'%'
+            </if>
+            <if test="cost != null and cost != ''">
+                and a.cost like '%'+#{cost}+'%'
+            </if>
+            <if test="costRmb != null and costRmb != ''">
+                and a.cost_rmb like '%'+#{costRmb}+'%'
+            </if>
+            <if test="contractDate != null and contractDate != ''">
+                and a.contract_date like '%'+#{contractDate}+'%'
+            </if>
+            <if test="contractEnd != null and contractEnd != ''">
+                and a.contract_end like '%'+#{contractEnd}+'%'
+            </if>
+            <if test="hotelAddress != null and hotelAddress != ''">
+                and a.hotel_address like '%'+#{hotelAddress}+'%'
+            </if>
+            <if test="payMethod != null and payMethod != ''">
+                and a.pay_method like '%'+#{payMethod}+'%'
+            </if>
+            <if test="payCycle != null and payCycle != ''">
+                and a.pay_cycle like '%'+#{payCycle}+'%'
+            </if>
+            <if test="linkMan != null and linkMan != ''">
+                and a.link_man like '%'+#{linkMan}+'%'
+            </if>
+            <if test="salesUser != null and salesUser != ''">
+                and a.sales_user like '%'+#{salesUser}+'%'
+            </if>
+        </where>
+    </select>
+
+    <update id="logicDelById">
+        update Clf_Room_Up set del_flag=1,update_time=GETDATE() where id=#{id}
+    </update>
+
+</mapper>

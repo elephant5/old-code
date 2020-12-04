@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.mars.mapper.SysOperateLogDetailMapper">
+  <select id="selectByPage" resultType="com.colourfulchina.inf.base.entity.SysOperateLogDetail">
+    select * from sys_operate_log_detail
+    where 1=1
+    <if test="logId != null">
+      and log_id=#{logId}
+    </if>
+    <if test="logInfoId != null">
+      and log_info_id=#{logInfoId}
+    </if>
+    <if test="type != null">
+      and type=#{type}
+    </if>
+    <if test="tableName != null">
+      and table_name=#{tableName}
+    </if>
+    <if test="rowKey != null">
+      and row_key=#{rowKey}
+    </if>
+    <if test="fieldName != null">
+      and field_name=#{fieldName}
+    </if>
+    <if test="beforeValue != null">
+      and before_value=#{beforeValue}
+    </if>
+    <if test="afterValue != null">
+      and after_value=#{afterValue}
+    </if>
+    <if test="createUser != null">
+      and create_user=#{createUser}
+    </if>
+    order by 1 desc
+  </select>
+
+</mapper>

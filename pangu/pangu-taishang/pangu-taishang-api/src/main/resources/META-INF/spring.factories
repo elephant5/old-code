@@ -1,0 +1,12 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.colourfulchina.pangu.taishang.api.feign.fallback.RemoteHotelServiceFallbackImpl,\
+  com.colourfulchina.pangu.taishang.api.feign.fallback.RemoteGoodsServiceFallbackImpl,\
+  com.colourfulchina.pangu.taishang.api.feign.fallback.RemoteProductGroupServiceFallbackImpl,\
+  com.colourfulchina.pangu.taishang.api.feign.fallback.RemoteProductGroupProductServiceFallbackImpl,\
+  com.colourfulchina.pangu.taishang.api.feign.fallback.RemoteShopServiceFallbackImpl,\
+  com.colourfulchina.pangu.taishang.api.feign.fallback.RemoteBlockRuleServiceFallbackImpl,\
+  com.colourfulchina.pangu.taishang.api.feign.fallback.RemoteSysFileServiceFallbackImpl,\
+  com.colourfulchina.pangu.taishang.api.feign.fallback.RemoteGoodsPortalSettingServiceFallbackImpl,\
+  com.colourfulchina.pangu.taishang.api.feign.fallback.RemoteSysCityServiceFallbackImpl,\
+  com.colourfulchina.pangu.taishang.api.feign.fallback.RemoteActivityServiceFallbackImpl,\
+  com.colourfulchina.pangu.taishang.api.feign.fallback.RemoteShopItemNetPriceServiceFallbackImpl

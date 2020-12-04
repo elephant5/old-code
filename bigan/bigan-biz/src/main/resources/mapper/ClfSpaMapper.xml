@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colourfulchina.bigan.mapper.ClfSpaMapper">
+    <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.ClfSpa">
+
+    </resultMap>
+
+    <!-- 客乐芙spa分页查询 -->
+    <select id="selectListPage" parameterType="map" resultType="com.colourfulchina.bigan.api.entity.ClfSpa">
+        select * from Clf_Spa a
+        <where>
+            and del_flag=0
+            <if test="city != null and city != ''">
+               and a.city like '%'+#{city}+'%'
+            </if>
+            <if test="hotelCh != null and hotelCh != ''">
+               and a.hotel_ch like '%'+#{hotelCh}+'%'
+            </if>
+            <if test="hotelEn != null and hotelEn != ''">
+               and a.hotel_en like '%'+#{hotelEn}+'%'
+            </if>
+            <if test="productCh != null and productCh != ''">
+               and a.product_ch like '%'+#{productCh}+'%'
+            </if>
+            <if test="productEn != null and productEn != ''">
+               and a.product_en like '%'+#{productEn}+'%'
+            </if>
+            <if test="serviceType != null and serviceType != ''">
+               and a.service_type = #{serviceType}
+            </if>
+            <if test="cardsCount != null and cardsCount != ''">
+               and a.cards_count = #{cardsCount}
+            </if>
+            <if test="discount != null and discount != ''">
+               and a.discount = #{discount}
+            </if>
+            <if test="projectName != null and projectName != ''">
+               and a.project_name like '%'+#{projectName}+'%'
+            </if>
+            <if test="projectTime != null and projectTime != ''">
+               and a.project_time like '%'+#{projectTime}+'%'
+            </if>
+            <if test="spaOpenTime != null and spaOpenTime != ''">
+               and a.spa_open_time like '%'+#{spaOpenTime}+'%'
+            </if>
+            <if test="signContractUser != null and signContractUser != ''">
+               and a.sign_contract_user like '%'+#{signContractUser}+'%'
+            </if>
+            <if test="weihu != null and weihu != ''">
+               and a.weihu like '%'+#{weihu}+'%'
+            </if>
+            <if test="oldPrice != null and oldPrice != ''">
+               and a.old_price like '%'+#{oldPrice}+'%'
+            </if>
+            <if test="endPrice != null and endPrice != ''">
+               and a.end_price like '%'+#{endPrice}+'%'
+            </if>
+            <if test="contractPrice != null and contractPrice != ''">
+               and a.contract_price like '%'+#{contractPrice}+'%'
+            </if>
+            <if test="contractDate != null and contractDate != ''">
+               and a.contract_date = #{contractDate}
+            </if>
+            <if test="contractEnd != null and contractEnd != ''">
+               and a.contract_end = #{contractEnd}
+            </if>
+            <if test="address != null and address != ''">
+               and a.address like '%'+#{address}+'%'
+            </if>
+            <if test="parking != null and parking != ''">
+               and a.parking like '%'+#{parking}+'%'
+            </if>
+        </where>
+    </select>
+
+    <update id="logicDelById">
+        update Clf_Spa set del_flag=1,update_time=GETDATE() where id=#{id}
+    </update>
+
+</mapper>

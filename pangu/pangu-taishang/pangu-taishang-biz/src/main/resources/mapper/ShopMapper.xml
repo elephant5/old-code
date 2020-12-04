@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.ShopMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.pangu.taishang.api.entity.Shop">
+  </resultMap>
+
+    <!-- 查询所有商户列表，开联通需要 -->
+    <select id="selectShopList" resultType="com.colourfulchina.pangu.taishang.api.vo.res.ShopListRes">
+        select
+        a.id,
+        a.shop_type AS "shopType",
+        b.name_ch AS "hotelName",
+        a.name AS "shopName"
+        from shop a
+        left join  hotel b on a.hotel_id = b.id
+--         case when a.city_id IS NOT null then a.cityName else b.cityName end as cityName,
+--         d.serviceName,
+--         c.internal as "shopChannelCode"
+
+--         LEFT JOIN ( SELECT c1.id, c1.channel_id, c2.NAME, c2.internal FROM shop_protocol c1 LEFT JOIN shop_channel c2 ON c1.channel_id = c2.id ) c ON a.id = c.id
+--         left join
+--         (
+--         SELECT
+--         si.shop_id,GROUP_CONCAT( DISTINCT(ss.NAME) SEPARATOR ' ' ) as "serviceName"
+--         FROM
+--         shop_item si LEFT JOIN sys_service ss ON si.service_type = ss.`code` WHERE si.del_flag = 0 group by si.shop_id
+--         ) d on a.id = d.shop_id
+        WHERE a.del_flag = 0
+        ORDER BY a.id ASC
+    </select>
+
+    <!-- 查询所有商户列表 -->
+    <select id="selectShopListByName"  resultType="com.colourfulchina.pangu.taishang.api.vo.res.ShopListRes" parameterType="com.colourfulchina.pangu.taishang.api.vo.res.ShopListRes">
+       SELECT DISTINCT
+            a.id,
+            b.name_ch AS "hotelName",
+            a.NAME AS "shopName",
+            p.gift
+        FROM
+            product p
+            LEFT JOIN shop a ON p.shop_id = a.id
+            LEFT JOIN shop_item i ON p.shop_item_id = i.id
+            LEFT JOIN hotel b ON a.hotel_id = b.id
+        WHERE
+            a.del_flag = 0
+         AND (a.name LIKE CONCAT('%',#{shopName},'%')
+          OR b.name_ch LIKE CONCAT('%',#{shopName},'%'))
+        <if test="shopType != null and shopType !=''">
+            and  i.service_type =#{shopType}
+        </if>
+
+
+        <if test="gift != null and gift !='' and shopType != 'accom'">
+             and p.gift = #{gift}
+        </if>
+        ORDER BY a.id ASC
+    </select>
+
+    <!-- 查询所有商户列表 -->
+    <select id="seachShopListByName"  resultType="com.colourfulchina.pangu.taishang.api.vo.res.ShopListRes" parameterType="com.colourfulchina.pangu.taishang.api.vo.res.ShopListRes">
+       SELECT
+            a.id,
+            b.name_ch AS "hotelName",
+            a.NAME AS "shopName"
+        FROM
+            shop a
+            LEFT JOIN hotel b ON a.hotel_id = b.id
+        WHERE
+            a.del_flag = 0
+        AND (
+         b.name_ch LIKE CONCAT('%',#{shopName},'%') or a.id =#{shopName} )
+        ORDER BY a.id ASC
+        limit 10
+    </select>
+  <!-- 模糊分页查询商户列表 -->
+  <select id="findPageList" parameterType="map" resultType="com.colourfulchina.pangu.taishang.api.vo.res.ShopPageListRes">
+    select
+      a.id,
+      a.shop_type AS "shopType",
+      b.name_ch AS "hotelName",
+      a.name AS "shopName",
+      case when a.city_id IS NOT null then a.cityName else b.cityName end as cityName,
+      d.serviceName,
+      <!-- 商户上下架状态待定 -->
+      <!-- 下架时间待定 -->
+      c.internal as "shopChannelCode",
+      c.`NAME`  as "channelName" ,
+      CASE WHEN e.file_id IS NULL THEN 1 ELSE 0 END AS "shopTagId"
+    from (select t1.*,t2.name_ch as cityName from shop t1 left join sys_city t2 on t1.city_id = t2.id) a
+    left join (select t1.*,t2.name_ch as cityName from hotel t1 left join sys_city t2 on t1.city_id = t2.id) b on a.hotel_id = b.id
+    LEFT JOIN ( SELECT c1.id, c1.channel_id, c2.NAME, c2.internal FROM shop_protocol c1 LEFT JOIN shop_channel c2 ON c1.channel_id = c2.id ) c ON a.id = c.id
+    left join
+      (
+        SELECT
+        si.shop_id,GROUP_CONCAT( DISTINCT(ss.NAME) SEPARATOR ' ' ) as "serviceName"
+        FROM
+        shop_item si LEFT JOIN sys_service ss ON si.service_type = ss.`code` WHERE si.del_flag = 0 group by si.shop_id
+      ) d on a.id = d.shop_id
+      LEFT JOIN (SELECT * FROM sys_file_quote t1 WHERE NOT EXISTS(SELECT 1 FROM sys_file_quote t2 WHERE t2.id>t1.id AND t2.type=t1.type AND t2.del_flag = t1.del_flag AND t2.obj_id = t1.obj_id)) e
+      ON a.id = e.obj_id AND e.del_flag = 0 AND e.type = 'shop.pic'
+    <where>
+      AND a.del_flag = 0
+      <if test="shopNameOrHotelName != null and shopNameOrHotelName != ''">
+        AND (a.name LIKE CONCAT('%',#{shopNameOrHotelName},'%')
+        OR b.name_ch LIKE CONCAT('%',#{shopNameOrHotelName},'%'))
+      </if>
+      <if test="serviceName != null and serviceName != ''">
+        AND d.serviceName LIKE CONCAT('%',#{serviceName},'%')
+      </if>
+      <if test="shopTagId != null and shopTagId==0">
+          AND e.file_id IS NOT NULL
+      </if>
+      <if test="shopTagId != null and shopTagId==1">
+          AND e.file_id IS NULL
+      </if>
+      <if test="shopChannelId != null and shopChannelId != ''">
+        AND c.internal = #{shopChannelId}
+      </if>
+      <if test="shopStatusId != null and shopStatusId != ''">
+
+      </if>
+      <!--<if test="cityName != null and cityName != ''">-->
+        <!--AND (a.cityName = #{cityName}-->
+        <!--OR b.cityName = #{cityName})-->
+      <!--</if>-->
+        <if test="cityName != null and cityName.size() != 0">
+            AND (a.cityName in
+            <foreach collection="cityName" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            OR b.cityName  in
+            <foreach collection="cityName" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            )
+        </if>
+    </where>
+    ORDER BY a.id desc
+  </select>
+
+  <!-- 酒店关联商户查询 -->
+  <select id="hotelsShop" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.vo.res.HotelShopListRes">
+    SELECT
+        a.id,
+        a.NAME AS "shopNameCh",
+        (
+        SELECT
+            GROUP_CONCAT( DISTINCT(t.NAME) SEPARATOR ' ' )
+        FROM
+            ( SELECT si.shop_id, ss.`name` FROM shop_item si LEFT JOIN sys_service ss ON si.service_type = ss.`code` WHERE si.del_flag = 0 ) t
+        WHERE
+            t.shop_id = a.id
+        ) AS "serviceName",
+        a.del_flag AS "delFlag",
+        b.NAME AS "shopChannelName",
+        b.internal AS "shopChannelTypeCode"
+    FROM
+        shop a
+        LEFT JOIN ( SELECT b1.id, b2.NAME, b2.internal FROM shop_protocol b1 LEFT JOIN shop_channel b2 ON b1.channel_id = b2.id ) b ON a.id = b.id
+    WHERE
+      a.hotel_id = #{hotelId}
+      AND a.del_flag = 0
+  </select>
+
+    <select id="checkShopByHotelAndName" parameterType="map" resultType="com.colourfulchina.pangu.taishang.api.entity.Shop">
+        select
+          *
+        from shop a
+        <where>
+            <if test="shopName != null and shopName != ''">
+                AND a.name = #{shopName}
+            </if>
+            <if test="hotelId != null and hotelId != ''">
+                AND a.hotel_id = #{hotelId}
+            </if>
+            <if test="hotelId == null or hotelId == ''">
+                AND a.hotel_id is NULL
+            </if>
+        </where>
+    </select>
+
+    <!-- 查询商户基本信息 -->
+    <select id="selectShopBaseMsg" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.vo.ShopBaseMsgVo">
+        select
+          a.id as "id",
+          a.shop_type as "shopType",
+          a.shop_nature as shopNature,
+          b.name_ch as "hotelName",
+          b.id as "hotelId",
+          a.name as "name",
+          a.name_en as "nameEn",
+          a.level as "level",
+          a.phone as "phone",
+          a.detail as detail,
+          case when a.city_id IS NOT null then a.countryId else b.countryId end as countryId,
+          case when a.city_id IS NOT null then a.city_id else b.city_id end as cityId,
+          b.nameCh as city,
+          a.address as "address",
+          a.address_en as "addressEn",
+          a.open_time as "openTime",
+          a.close_time as "closeTime",
+          a.check_in_time as "checkInTime",
+          a.check_out_time as "checkOutTime",
+          a.summary as "summary",
+          a.tips as "tips",
+          a.notes as "notes",
+          a.min_book_days as "minBookDays",
+          a.max_book_days as "maxBookDays"
+        from (select t1.*,t2.country_id as countryId from shop t1 left join sys_city t2 on t1.city_id = t2.id) a
+        left join (select t1.*,t2.country_id as countryId , t2.name_ch as nameCh from hotel t1 left join sys_city t2 on t1.city_id = t2.id) b on a.hotel_id = b.id
+        where a.id = #{shopId}
+    </select>
+
+    <!--预约详情页获取商户详情-->
+    <select id="selectShopOrderDetail" parameterType="com.colourfulchina.pangu.taishang.api.vo.req.ShopOrderDetailReq" resultType="com.colourfulchina.pangu.taishang.api.vo.res.ShopOrderDetailRes">
+        SELECT distinct h.id as hotelId,sp.id as shopId,h.name_ch as hotelName,
+        sp.summary as content,h.address_ch as address ,CONCAT(sp.open_time,"-",sp.close_time) AS opentime,
+        sp.name as shopName,sp.phone as shopPhone,si.id AS shopItemId,sp.check_in_time AS checkInTime,
+        sp.check_out_time AS checkOutTime,si.service_type AS type,pgp.gift,pgp.id AS productGroupProductId,
+        sg.point,sg.lat,sg.lng,si.name as goodsTitle,si.service_type,si.needs,si.addon
+        FROM goods pp
+        LEFT JOIN product_group pg ON pp.id = pg.goods_id
+        LEFT JOIN product_group_product pgp ON pgp.product_group_id = pg.id
+        LEFT JOIN product p ON p.id = pgp.product_id
+        LEFT JOIN shop sp ON sp.id= p.shop_id
+        LEFT JOIN shop_item si ON p.shop_item_id= si.id
+        LEFT JOIN hotel h ON sp.hotel_id = h.id
+        LEFT JOIN sys_geo sg on sg.id = sp.geo_id
+        where  pp.id = #{projectId} and pgp.id = #{goodsId}
+    </select>
+
+    <!--根据goodsId查询shop信息-->
+    <select id="getShopInfoByGoodsId" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.entity.Shop">
+        SELECT
+          s.*
+        FROM
+          shop s
+        LEFT JOIN product pp on s.id = pp.shop_id
+        LEFT JOIN product_group_product pgp on pp.id = pgp.product_id
+        LEFT JOIN product_group pg on pp.id = pgp.product_group_id
+        WHERE
+          pg.goods_id #{goodsId,jdbcType=INTEGER}
+    </select>
+
+    <!-- 根据商户id查询商户vo -->
+    <select id="selectShopVoById" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.vo.ShopVo">
+        SELECT
+            a.id,
+            a.old_shop_id oldShopId,
+            a.shop_type shopType,
+            a.hotel_id hotelId,
+            a.name,
+            a.name_en nameEn,
+            a.py,
+            a.address,
+            a.address_en addressEn,
+            a.phone,
+            a.open_time openTime,
+            a.close_time closeTime,
+            a.check_in_time checkInTime,
+            a.check_out_time checkOutTime,
+            a.level,
+            a.tips,
+            a.notes,
+            a.geo_id geoId,
+            a.shop_nature shopNature,
+            a.summary,
+            a.shop_status shopStatus,
+            a.status_time statusTime,
+            a.del_flag delFlag,
+            a.create_time createTime,
+            a.create_user createUser,
+            a.update_time updateTime,
+            a.update_user updateUser,
+            a.max_book_days maxBookDays,
+            a.min_book_days minBookDays,
+            a.detail,
+            CASE WHEN a.city_id IS NOT NULL THEN a.city_id ELSE b.city_id END AS "cityId",
+            CASE WHEN a.city_id IS NOT NULL THEN a.countryId ELSE b.countryId END AS "countryId",
+            CASE WHEN a.city_id IS NOT NULL THEN a.cityName ELSE b.cityName END AS "cityName",
+            CASE WHEN a.city_id IS NOT NULL THEN a.countryName ELSE b.countryName END AS "countryName"
+        FROM
+            ( SELECT t1.*, t2.country_id AS 'countryId',t2.name_ch AS 'cityName',t2.countryName FROM shop t1 LEFT JOIN (SELECT a1.*,a2.name_ch AS 'countryName' FROM sys_city a1 LEFT JOIN sys_country a2 ON a1.country_id = a2.id) t2 ON t1.city_id = t2.id ) a
+            LEFT JOIN ( SELECT t1.*, t2.country_id AS 'countryId',t2.name_ch AS 'cityName',t2.countryName FROM hotel t1 LEFT JOIN (SELECT a1.*,a2.name_ch AS 'countryName' FROM sys_city a1 LEFT JOIN sys_country a2 ON a1.country_id = a2.id) t2 ON t1.city_id = t2.id ) b ON a.hotel_id = b.id
+        WHERE
+            a.id = #{shopId}
+    </select>
+
+    <select id="getRepeatInfoVo" resultType="com.colourfulchina.pangu.taishang.api.vo.RepeatInfoVo">
+        select
+        id as id,
+        del_shop_item_id as delShopItemId ,
+        del_product_id as delProductId ,
+        keep_shop_item_id as keepShopItemId ,
+        keep_product_id as  keepProductId
+        from opt_shop_item_temp
+    </select>
+
+    <select id="selectCnList" resultType="com.colourfulchina.pangu.taishang.api.entity.Shop">
+        SELECT
+            a.*
+        FROM
+            shop a
+            LEFT JOIN hotel b ON a.hotel_id = b.id
+            LEFT JOIN sys_city c ON a.city_id = c.id
+            LEFT JOIN sys_city d ON b.city_id = d.id
+        WHERE
+            a.del_flag = 0
+            AND ( c.country_id = 'CN' OR d.country_id = 'CN' )
+    </select>
+
+    <select id="selectShopById" parameterType="java.lang.Long" resultType="com.colourfulchina.pangu.taishang.api.vo.res.bigan.Shop">
+        SELECT s.id,s.shop_type tye,s.hotel_id as hotelId,s.name as title,s.name_en as nameEn,s.py,s.city_id as cityId,
+               s.address,s.address_en as addressEn,s.phone,s.notes,s.LEVEL,s.summary,s.create_time as createTime,
+               h.name_ch hotel,h.oversea as oversea,h.notes
+          FROM shop s LEFT JOIN hotel h on s.hotel_id=h.id
+          WHERE s.id=#{shopId}
+    </select>
+</mapper>

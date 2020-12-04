@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.colourfulchina.bigan.mapper.ClfGymMapper">
+    <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.ClfGym">
+
+    </resultMap>
+
+    <!-- 客乐芙_健身分页查询 -->
+    <select id="selectListPage" parameterType="map" resultType="com.colourfulchina.bigan.api.entity.ClfGym">
+        select * from Clf_Gym a
+        <where>
+            and del_flag=0
+            <if test="city != null and city != ''">
+               and a.city like '%'+#{city}+'%'
+            </if>
+            <if test="hotelCh != null and hotelCh != ''">
+               and a.hotel_ch like '%'+#{hotelCh}+'%'
+            </if>
+            <if test="hotelEn != null and hotelEn != ''">
+               and a.hotel_en like '%'+#{hotelEn}+'%'
+            </if>
+            <if test="gymChName != null and gymChName != ''">
+               and a.gym_ch_name like '%'+#{gymChName}+'%'
+            </if>
+            <if test="gymEnName != null and gymEnName != ''">
+               and a.gym_en_name like '%'+#{gymEnName}+'%'
+            </if>
+            <if test="serviceType != null and serviceType != ''">
+               and a.service_type like '%'+#{serviceType}+'%'
+            </if>
+            <if test="dianziAndzhizhi != null and dianziAndzhizhi != ''">
+               and a.dianzi_and_zhizhi like '%'+#{dianziAndzhizhi}+'%'
+            </if>
+            <if test="dianzi != null and dianzi != ''">
+               and a.dianzi like '%'+#{dianzi}+'%'
+            </if>
+            <if test="zhizhi != null and zhizhi != ''">
+               and a.zhizhi like '%'+#{zhizhi}+'%'
+            </if>
+            <if test="other != null and other != ''">
+               and a.other like '%'+#{other}+'%'
+            </if>
+            <if test="contractNum != null and contractNum != ''">
+               and a.contract_num = #{contractNum}
+            </if>
+            <if test="signContractUser != null and signContractUser != ''">
+               and a.sign_contract_user like '%'+#{signContractUser}+'%'
+            </if>
+            <if test="weihu != null and weihu != ''">
+               and a.weihu like '%'+#{weihu}+'%'
+            </if>
+            <if test="price != null and price != ''">
+               and a.price like '%'+#{price}+'%'
+            </if>
+            <if test="netPrice != null and netPrice != ''">
+               and a.net_price like '%'+#{netPrice}+'%'
+            </if>
+            <if test="allPrice != null and allPrice != ''">
+               and a.all_price like '%'+#{allPrice}+'%'
+            </if>
+            <if test="cost != null and cost != ''">
+               and a.cost like '%'+#{cost}+'%'
+            </if>
+            <if test="endPrice != null and endPrice != ''">
+               and a.end_price like '%'+#{endPrice}+'%'
+            </if>
+            <if test="contractPrice != null and contractPrice != ''">
+               and a.contract_price like '%'+#{contractPrice}+'%'
+            </if>
+            <if test="cash != null and cash != ''">
+               and a.cash like '%'+#{cash}+'%'
+            </if>
+            <if test="contractDate != null and contractDate != ''">
+               and a.contract_date = #{contractDate}
+            </if>
+            <if test="contractEnd != null and contractEnd != ''">
+               and a.contract_end = #{contractEnd}
+            </if>
+            <if test="openTime != null and openTime != ''">
+               and a.open_time like '%'+#{openTime}+'%'
+            </if>
+            <if test="address != null and address != ''">
+               and a.address like '%'+#{address}+'%'
+            </if>
+            <if test="swimmingPool != null and swimmingPool != ''">
+               and a.swimming_pool = #{swimmingPool}
+            </if>
+            <if test="parking != null and parking != ''">
+               and a.parking like '%'+#{parking}+'%'
+            </if>
+            <if test="kids != null and kids != ''">
+               and a.kids like '%'+#{kids}+'%'
+            </if>
+        </where>
+    </select>
+
+    <update id="logicDelById">
+        update Clf_Gym set del_flag=1,update_time=GETDATE() where id=#{id}
+    </update>
+
+</mapper>

@@ -1,0 +1,51 @@
+server:
+  port: 5001
+
+spring:
+  application:
+    name: god-door
+  # dev环境
+  profiles:
+    active: dev
+  # 配置中心
+  cloud:
+    consul:
+      host: consul.colourfulchina.com
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${spring.application.instance_id:${server.port}}
+        service-name: ${spring.application.name}
+#        prefer-ip-address: true
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      label: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: tianyan-config
+#    bus:
+#      refresh:
+#        enabled: true
+#      trace:
+#        enabled: true
+#  thymeleaf:
+#    #classpath://template
+#    #http://xxx
+#    prefix: http://127.0.0.1:9000
+#    suffix: .html
+#    mode: LEGACYHTML5
+#    encoding: UTF-8
+#    servlet:
+#      content-type: text/html
+#    cache: false
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: bus-refresh
+
+logging:
+  level:
+    root: info

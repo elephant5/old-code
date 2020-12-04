@@ -1,0 +1,83 @@
+#test 测试动态配置
+test: test3
+
+## spring security 配置
+security:
+  oauth2:
+    client:
+      client-id: yangjian
+      client-secret: yangjian
+      scope: server
+    resource:
+      token-info-uri: http://bigan.colourfulchina.com/auth/oauth/check_token
+
+# 数据源
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: colorful
+    password: WhatTheFuckR2
+    url: jdbc:sqlserver://clf-mssql.colourfulchina.com;database=Ares
+  rabbitmq:
+    host: clf-rabbitmq.colourfulchina.com
+    port: 5672
+    username: admin
+    password: 1qaz@WSX
+  cloud:
+    bus:
+      refresh:
+        enabled: true
+      trace:
+        enabled: true
+    #邮件配置
+  mail:
+       host: smtphm.qiye.163.com
+       username: 'it_support@colourfulchina.com'
+       password: 'Colourful1901'
+       properties:
+         mail:
+           smtp:
+             auth: true
+             starttls:
+               enable: true
+               required: true
+             socketFactory:
+               port: 465
+               class: javax.net.ssl.SSLSocketFactory
+               fallback: false
+
+#mybaits-plus配置，修改主键类型，mapper.xml、type 别名等
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: com.colourfulchina.yangjian.api.entity
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 0
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 1
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    # 逻辑删除字段
+    logic-delete-value: 1
+    logic-not-delete-value: 0
+    #自定义SQL注入器
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+
+#工行项目配置字段
+icbc:
+  priKey: s2fud0QpubeUvtmbFrzygA==
+  baseUrl: https://cdn.colourfulchina.com/icbc/static/
+  sendEmailAddress: it_support@colourfulchina.com
+  receiveEmailAddress:  1181416053@qq.com
+  cardCron: 0 0 3 * * ?
+  packCron: 0 0 3 * * ?
+  projectId: 383
+  packageId: 1099
+  channelId: 180
+  bacthId: 48740

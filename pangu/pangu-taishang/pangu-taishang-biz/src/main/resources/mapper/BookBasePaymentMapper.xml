@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.BookBasePaymentMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.pangu.taishang.api.entity.BookBasePayment">
+
+  </resultMap>
+
+
+  <select id="selectBookPayList" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.entity.BookBasePayment">
+    SELECT
+      *
+    FROM
+      book_base_payment
+    WHERE
+      del_flag = 0
+    AND
+      product_group_product_id IN
+      <foreach collection="productGroupProductIdList" index="index" item="productGroupProductId" open="(" separator="," close=")" >
+          #{productGroupProductId}
+      </foreach>
+  </select>
+</mapper>

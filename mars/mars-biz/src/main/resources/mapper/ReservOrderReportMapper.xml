@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.mars.mapper.ReservOrderReportMapper">
+
+    <select id="selectOrderReport" parameterType="map" resultType="com.colourfulchina.mars.api.vo.res.reservOrder.ReservOrderReportRes">
+        select
+            @rownum := @rownum + 1 AS "rank",
+            o.goods_id AS "goodsId",
+            o.sales_channle_id AS "salesChannelId",
+            o.id AS "reservOrderId",
+            o.create_time AS "createTime",
+            o.gift_date AS "giftDate",
+            o.gift_name AS "giftName",
+            o.gift_phone AS "giftPhone",
+            g.act_code AS "actCode",
+            c.var_status AS "varStatus",
+            rod.pay_amoney AS "payAmoney",
+            rod.payment_amount as "paymentAmount",
+            po.pay_time as "paySuccessTime",
+            po.refund_time as "backAmountDate",
+            o.pay_status as "payStatus",
+            po.id AS "thirdPayId"
+        from
+          ( SELECT @rownum := 0 ) r,reserv_order o
+          left join reserv_code c on o.reserv_code_id = c.id
+          left join gift_code g on o.gift_code_id =g.id
+          LEFT JOIN reserv_order_detail rod ON o.id = rod.order_id
+          LEFT JOIN pay_order po ON po.order_id = o.id
+--           where 1=1 and o.del_flag = 0 and o.pay_status != 1 AND o.goods_id IN (10101,10103,10104,10105,10106,10107) AND c.var_status = 2
+          <where>
+              and o.del_flag = 0
+              <if test="payStatus != null and payStatus.size() != 0">
+                  AND o.pay_status IN
+                  <foreach collection="payStatus" item="item" open="(" close=")" separator=",">
+                      #{item}
+                  </foreach>
+              </if>
+              <if test="goodsIds != null and goodsIds.size() != 0">
+                  AND o.goods_id IN
+                  <foreach collection="goodsIds" item="item" open="(" close=")" separator=",">
+                      #{item}
+                  </foreach>
+              </if>
+              <!--<if test="varStatus != null and varStatus != ''">-->
+                  <!--AND c.var_status = #{varStatus}-->
+              <!--</if>-->
+              <!--<if test="createTime != null and createTime != ''">-->
+                  <!--AND DATE(o.create_time) = STR_TO_DATE(#{createTime},'%Y-%m-%d')-->
+              <!--</if>-->
+              <if test="proseStatus != null and proseStatus.size() != 0">
+                  AND o.prose_status IN
+                  <foreach collection="proseStatus" item="item" open="(" close=")" separator=",">
+                      #{item}
+                  </foreach>
+              </if>
+              <if test="giftDate != null and giftDate != ''">
+                  AND STR_TO_DATE(o.gift_date,'%Y-%m-%d') = DATE(#{giftDate})
+              </if>
+              <if test="tags != null and tags != ''">
+                  AND o.tags LIKE CONCAT('%',#{tags},'%')
+              </if>
+              <if test="createTimeStart != null and createTimeStart != '' and createTimeEnd != null and createTimeEnd != ''">
+                  AND DATE(o.create_time) BETWEEN STR_TO_DATE(#{createTimeStart},'%Y-%m-%d') AND STR_TO_DATE(#{createTimeEnd},'%Y-%m-%d')
+              </if>
+              <if test="expiryTimeStart != null and expiryTimeStart != '' and expiryTimeEnd != null and expiryTimeEnd != ''">
+                  AND DATE(po.refund_time) BETWEEN STR_TO_DATE(#{expiryTimeStart},'%Y-%m-%d') AND STR_TO_DATE(#{expiryTimeEnd},'%Y-%m-%d')
+              </if>
+          </where>
+          ORDER BY o.create_time DESC
+    </select>
+    <select id="selectZWReport" parameterType="map" resultType="com.colourfulchina.mars.api.vo.ZwSalesOrder">
+        SELECT
+        goc.pay_number as bankRecordid,
+        "众网小贷" as channel,
+        goc.create_time as createOrderDate,
+        goid.gift_code as code,
+        goc.buyer_mobile as mobile,
+        goc.create_time as receiveOrderDate,
+        goc.capital_order_id as salesOrderId,
+        goc.`status` as salesOrderStatus,
+        gc.goods_id as projectId,
+        gc.sales_channel_id as projectChannelId
+        FROM
+        gift_order_capital  goc
+        LEFT JOIN gift_order_item goi on goc.capital_order_id=goi.capital_order_id
+        LEFT JOIN gift_order_item_detail goid on goi.item_order_id = goid.item_order_id
+        LEFT JOIN gift_code gc on goid.gift_id=gc.id
+        where goc.ac_channel = 'IMASSBANK'
+        <if test="createTimeStart != null and createTimeStart != '' and createTimeEnd != null and createTimeEnd != ''">
+            AND DATE(goc.create_time) BETWEEN STR_TO_DATE(#{createTimeStart},'%Y-%m-%d %H:%i:%s') AND STR_TO_DATE(#{createTimeEnd},'%Y-%m-%d %H:%i:%s')
+        </if>
+    </select>
+    <select id="selectZWBackReport" parameterType="map" resultType="com.colourfulchina.mars.api.vo.ZwSalesOrderBack">
+        SELECT
+        goc.pay_number as bankRecordid,
+        "众网小贷" as channel,
+        goc.create_time as createOrderDate,
+        goid.gift_code as code,
+        goc.buyer_mobile as mobile,
+        goc.create_time as receiveOrderDate,
+        goc.capital_order_id as salesOrderId,
+        goc.`status` as salesOrderStatus,
+        gc.goods_id as projectId,
+        gc.sales_channel_id as projectChannelId
+        FROM
+        gift_order_capital  goc
+        LEFT JOIN gift_order_item goi on goc.capital_order_id=goi.capital_order_id
+        LEFT JOIN gift_order_item_detail goid on goi.item_order_id = goid.item_order_id
+        LEFT JOIN gift_code gc on goid.gift_id=gc.id
+        where goc.ac_channel = 'IMASSBANK' AND goc.status = '3'
+        <if test="createTimeStart != null and createTimeStart != '' and createTimeEnd != null and createTimeEnd != ''">
+            AND DATE(goc.create_time) BETWEEN STR_TO_DATE(#{createTimeStart},'%Y-%m-%d %H:%i:%s') AND STR_TO_DATE(#{createTimeEnd},'%Y-%m-%d %H:%i:%s')
+        </if>
+    </select>
+
+    <select id="selectZWOrderList" parameterType="map" resultType="com.colourfulchina.mars.api.vo.ZwBookOrder">
+        SELECT
+        '193' as projectChannelId,
+        '众网小贷' as channel,
+        ro.goods_id as projectId,
+        ro.id as salesOrderId,
+        ro.create_time as createOrderDate,
+        ro.gift_date as useDate,
+        ro.prose_status as useStatus,
+        ro.gift_name as customerName,
+        ro.gift_phone as mobile,
+        gc.act_code as code,
+        ro.cpn_id as cpnId,
+        ro.third_cpn_no as thirdCpnNo,
+        ro.total_amount as originalPrice,
+        ro.discount_amount as subsidyMoney,
+        ro.pay_amount as realPrice,
+        po.pay_method as payType,
+        ro.pay_amount / ro.total_amount as discountRatio,
+        po.order_id as payRecordid
+        FROM
+        reserv_order ro
+        LEFT JOIN gift_code gc on ro.gift_code_id = gc.id
+        LEFT JOIN pay_order po on po.order_id = ro.id
+        where ro.sales_channle_id= '193'
+        <if test="createTimeStart != null and createTimeStart != '' and createTimeEnd != null and createTimeEnd != ''">
+            AND DATE(ro.create_time) BETWEEN STR_TO_DATE(#{createTimeStart},'%Y-%m-%d %H:%i:%s') AND STR_TO_DATE(#{createTimeEnd},'%Y-%m-%d %H:%i:%s')
+        </if>
+    </select>
+</mapper>

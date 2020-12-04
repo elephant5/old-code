@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.ShopItemMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.pangu.taishang.api.entity.ShopItem">
+
+  </resultMap>
+    <update id="updateShopItemStatus">
+        update shop_item
+        set enable = 1
+        where id = #{shopItemId}
+    </update>
+    <update id="updateProductStatus">
+        update product
+        set status = 1
+        where shop_item_id = #{shopItemId}
+    </update>
+    <update id="updateGroupProductStatus">
+        update product_group_product
+        set status = 1
+        where product_id = #{productId}
+    </update>
+
+    <!-- 获取shopItem信息 -->
+  <select id="getShopItemInfo" parameterType="java.util.List" resultType="com.colourfulchina.pangu.taishang.api.vo.res.ShopItemRes">
+    SELECT
+       *
+    from
+      shop_item
+    where
+      id in
+      <foreach collection="shopItemIdList" index="index" item="shopItemId" separator="," open="(" close=")">
+        #{shopItemId,jdbcType=INTEGER}
+      </foreach>
+  </select>
+
+
+  <!-- 获取shopItem信息 -->
+  <select id="selectShopItemPrice" parameterType="java.util.List" resultType="com.colourfulchina.pangu.taishang.api.vo.res.shopItem.ShopItemInfoRes">
+    SELECT
+      snp.*,si.name,si.needs,si.addon
+    FROM
+      shop_item_net_price_rule snp
+    LEFT JOIN
+      shop_item si
+    ON
+      snp.shop_item_id = si.id
+    WHERE
+      snp.del_flag = 0
+    AND
+      snp.shop_item_id in
+    <foreach collection="itemsIdList" index="index" item="shopItemId" separator="," open="(" close=")">
+      #{shopItemId,jdbcType=INTEGER}
+    </foreach>
+    AND
+      <![CDATA[ snp.start_date <= #{date} ]]>
+    AND
+      <![CDATA[ snp.end_date >= #{date} ]]>
+  </select>
+
+
+  <!-- 获取shopItem信息 -->
+  <select id="getShopItemSetmenuInfo" parameterType="java.util.List" resultType="com.colourfulchina.pangu.taishang.api.vo.res.shopItem.ShopItemSetmenuInfo">
+    SELECT
+      id,name,CONCAT(open_time,"-",close_time) AS openTime,menu_text AS menuText
+    from
+      shop_item
+    where
+      del_flag = 0
+    AND
+      id = #{shopItemId}
+  </select>
+
+  <!-- shopitem ids查询 -->
+  <select id="selectByItems" parameterType="java.util.List" resultType="com.colourfulchina.pangu.taishang.api.vo.res.shopItem.ShopItemConciseRes">
+    SELECT
+        a.id,
+        a.`name` AS "shopItemName",
+        b.`name` AS "shopName",
+        c.name_ch AS "hotelName",
+        CASE WHEN b.city_id IS NULL THEN e.name_ch ELSE d.name_ch END AS "cityName",
+        a.needs,
+        a.addon
+    FROM
+        shop_item a
+        LEFT JOIN shop b ON a.shop_id = b.id
+        LEFT JOIN hotel c ON b.hotel_id = c.id
+        LEFT JOIN sys_city d ON b.city_id = d.id
+        LEFT JOIN sys_city e ON c.city_id = e.id
+    <where>
+      <if test="list != null and list.size() != 0">
+        AND a.id IN
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+    </where>
+  </select>
+
+    <select id="export" resultType="com.colourfulchina.pangu.taishang.api.vo.res.shopItem.ShopItemExportVo">
+        SELECT
+        a.id as "productId",
+        CASE WHEN c.city_id IS NOT NULL THEN g.name_ch ELSE h.name_ch END AS "cityName",
+            d.name_ch AS "hotelName",
+            c.`name` AS "shopName",
+            b.`name` AS "shopItemName",
+            b.needs,
+            b.addon,
+            e.short_name AS "giftName",
+            f.`name` AS "serviceName",
+            c.address,
+            c.phone,
+            b.block_rule AS "shopItemBlock",
+            i.block_rule AS "shopBlock",
+            (SELECT GROUP_CONCAT(CONCAT(t.apply_time,':',t.cost) SEPARATOR ';  ') FROM product_item t WHERE t.product_id = a.id AND t.del_flag = 0) AS "price"
+        FROM
+            product a
+            LEFT JOIN shop_item b ON a.shop_item_id = b.id
+            LEFT JOIN shop c ON a.shop_id = c.id
+            LEFT JOIN hotel d ON c.hotel_id = d.id
+            LEFT JOIN sys_gift e ON a.gift = e.`code`
+            LEFT JOIN sys_service f ON b.service_type = f.`code`
+            LEFT JOIN sys_city g ON c.city_id = g.id
+            LEFT JOIN sys_city h ON d.city_id = h.id
+            LEFT JOIN shop_protocol i ON a.shop_id = i.id
+            WHERE a.del_flag = 0 AND a.`status` = 0
+            ORDER BY g.name_ch,h.name_ch
+      /*SELECT
+        a.id AS "shopItemId",
+        a.shop_id AS "shopId",
+        d.name_ch AS "hotelName",
+        c.`name` AS "shopName",
+        a.`name` AS "shopItemName",
+        a.needs,
+        a.addon,
+        a.block_rule AS "shopItemBlock",
+        b.block_rule AS "shopBlock"
+    FROM
+        shop_item a
+        LEFT JOIN shop_protocol b ON a.shop_id = b.id
+        LEFT JOIN shop c ON a.shop_id = c.id
+        LEFT JOIN hotel d ON c.hotel_id = d.id
+    WHERE
+        a.del_flag = 0
+    ORDER BY a.shop_id*/
+    </select>
+
+    <select id="offShopItem" resultType="com.colourfulchina.pangu.taishang.api.entity.ShopItem">
+        SELECT a.* FROM shop_item a LEFT JOIN shop b ON a.shop_id = b.id LEFT JOIN hotel c ON b.hotel_id = c.id WHERE b.shop_type != 'accom' AND c.name_ch IN ('北京富力万丽酒店',
+        '北京康莱德酒店',
+        '北京泛太平洋酒店',
+        '北京海航大厦万豪酒店',
+        '成都天府丽都喜来登饭店',
+        '东莞万达文华酒店',
+        '佛山顺德喜来登酒店',
+        '福州香格里拉大酒店',
+        '广州万富希尔顿酒店',
+        '广州香格里拉大酒店',
+        '广州南丰朗豪酒店',
+        '广州圣丰索菲特大酒店',
+        '广州天河希尔顿酒店',
+        '广州增城保利皇冠假日酒店',
+        '广州康莱德酒店',
+        '广州广交会威斯汀酒店',
+        '海口万豪酒店',
+        '海口鲁能希尔顿酒店',
+        '杭州君悦酒店',
+        '杭州索菲特西湖大酒店',
+        '杭州滨江银泰喜来登大酒店',
+        '杭州钱江新城万怡酒店',
+        '浙江三立开元名都大酒店',
+        '杭州西溪喜来登度假大酒店',
+        '合肥新站利港喜来登酒店',
+        '惠州凯宾斯基酒店',
+        '南京金丝利喜来登酒店',
+        '南京金鹰皇冠假日酒店',
+        '南京朗昇希尔顿酒店',
+        '青岛海尔洲际酒店',
+        '三亚山海天JW万豪酒店',
+        '三亚华宇亚龙湾迎宾馆',
+        '三亚福朋喜来登酒店',
+        '三亚海棠湾君悦酒店',
+        '三亚亚龙湾华宇度假酒店',
+        '厦门喜来登酒店',
+        '上海凯宾斯基大酒店',
+        '上海浦东绿地假日酒店',
+        '上海浦东嘉里大酒店',
+        '上海大宁福朋喜来登酒店',
+        '上海浦东香格里拉大酒店',
+        '上海东锦江希尔顿逸林酒店',
+        '上海闵行宝龙艾美酒店',
+        '上海绿地万豪酒店',
+        '上海虹桥锦江大酒店',
+        '上海天禧嘉福璞缇客酒店',
+        '上海小南国花园酒店',
+        '上海新发展亚太JW万豪酒店',
+        '上海虹桥元一希尔顿酒店',
+        '上海虹桥雅高美爵酒店',
+        '上海世茂皇家艾美酒店',
+        '上海柏悦酒店',
+        '上海锦江汤臣洲际大酒店',
+        '上海王宝和大酒店',
+        '上海宝华万豪酒店',
+        '上海豫园万丽酒店',
+        '上海五角场凯悦酒店',
+        '上海外滩茂悦大酒店',
+        '上海静安昆仑大酒店',
+        '上海苏宁环球万怡酒店',
+        '上海浦东喜来登由由大酒店',
+        '上海浦西万怡酒店',
+        '上海环球港凯悦酒店',
+        '上海扬子江万丽大酒店',
+        '上海扬子精品酒店',
+        '金茂深圳JW万豪酒店',
+        '深圳温德姆至尊酒店',
+        '深圳福田香格里拉大酒店',
+        '深圳皇庭V酒店',
+        '深圳前海华侨城JW万豪酒店',
+        '深圳回酒店',
+        '深圳蛇口希尔顿南海酒店',
+        '深圳大中华希尔顿酒店',
+        '深圳香格里拉大酒店',
+        '深圳威尼斯酒店',
+        '深圳四季酒店',
+        '沈阳丽都索菲特酒店',
+        '苏州吴宫泛太平洋酒店',
+        '天津瑞吉金融街酒店',
+        '天津丽思卡尔顿酒店',
+        '万丽天津宾馆',
+        '无锡城中皇冠假日酒店',
+        '武汉万达嘉华酒店',
+        '武汉光谷凯悦酒店',
+        '西安富力希尔顿酒店',
+        '西安威斯汀大酒店',
+        '重庆富力艾美酒店',
+        '重庆JW万豪酒店',
+        '重庆喜来登大酒店')
+        UNION ALL
+        SELECT aa.* FROM shop_item aa LEFT JOIN shop bb ON aa.shop_id = bb.id LEFT JOIN hotel cc ON bb.hotel_id = cc.id WHERE bb.shop_type = 'accom' AND cc.name_ch IN ('上海国际旅游度假区万怡酒店',
+        '上海浦东喜来登由由大酒店',
+        '上海万达瑞华酒店',
+        '上海虹桥商务区凯悦嘉轩酒店',
+        '上海虹桥商务区凯悦嘉寓酒店',
+        '周庄花间堂·季香',
+        '千岛湖绿城喜来登度假酒店',
+        '千岛湖滨江希尔顿度假酒店',
+        '舟山希尔顿酒店',
+        '阿丽拉·安吉',
+        '阿丽拉乌镇',
+        '浙江安吉JW万豪酒店',
+        '南浔花间堂·求恕里',
+        '宁波柏悦酒店',
+        '宁波九龙湖开元度假村',
+        '宁波十七房开元观堂',
+        '宁波花间堂·韩岭',
+        '苏州同里花间堂·丽则女学',
+        '苏州文旅花间堂·山塘人家',
+        '苏州文旅花间堂·探花府',
+        '扬州绿地福朋喜来登酒店',
+        '溧阳WEI天目湖酒店',
+        '合肥万达文华酒店',
+        '合肥万达嘉华酒店',
+        '黄山悦榕庄',
+        '新加坡樟宜机场皇冠假日',
+        '济州神话世界度假酒店-蓝鼎',
+        '济州神话世界度假酒店-万豪',
+        '捷丝旅（台北林森馆）',
+        '捷丝旅（高雄中正馆）',
+        '捷丝旅（花莲中正馆）',
+        '广州东圃合景福朋喜来登酒店',
+        '广州粤海喜来登酒店',
+        '广州圣丰索菲特大酒店',
+        '深圳大中华希尔顿酒店',
+        '深圳大中华喜来登酒店',
+        '深圳福田香格里拉大酒店',
+        '深圳香格里拉大酒店',
+        '深圳马哥孛罗好日子酒店',
+        '珠海华发喜来登酒店',
+        '中山利和希尔顿花园酒店',
+        '三亚亚龙湾美高梅度假酒店',
+        '金茂三亚亚龙湾希尔顿大酒店',
+        '武汉香格里拉大酒店',
+        '重庆大足石刻开元观堂酒店',
+        '曼谷阿基拉通洛公寓式酒店',
+        '清迈阿基拉马诺尔酒店',
+        '普吉岛攀牙湾艾琳塔温泉度假酒店',
+        '北京西单美爵酒店',
+        '北京金融街丽思卡尔顿酒店',
+        '北京泛太平洋酒店',
+        '金茂北京威斯汀大饭店',
+        '北京华尔道夫酒店',
+        '北京海湾半山温泉酒店',
+        '北京东直门智选假日酒店',
+        '天津丽思卡尔顿酒店',
+        '天津瑞吉金融街酒店',
+        '张家口容辰华邑酒店',
+        '青岛黄岛泰成喜来登酒店',
+        '青岛香格里拉大酒店',
+        '青岛富力艾美酒店',
+        '丽江花间堂唯美人文客栈',
+        '丽江花间堂·问云山庄',
+        '丽江束河花间堂唯美人文客栈墨香院',
+        '西双版纳悦景莊花间堂',
+        '西双版纳安纳塔拉度假酒店',
+        '西双版纳云投喜来登大酒店',
+        '抚仙湖悦椿度假酒店',
+        '香格里拉圣地花间堂',
+        '呼和浩特万达文华酒店',
+        '福州西湖大酒店',
+        '澳门JW万豪酒店')
+    </select>
+    <!-- 检查规格是否被包进商品售卖 -->
+    <select id="checkItemIsSale" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.entity.ProductGroupProduct">
+        SELECT
+            a.*
+        FROM
+            product_group_product a
+        WHERE
+            a.del_flag = 0
+            AND a.product_id IN ( SELECT t.id FROM product t WHERE t.del_flag = 0 AND t.shop_item_id = #{id} );
+    </select>
+
+    <!-- 获取商品信息，适配比干系统 -->
+    <select id="selectShopItems" parameterType="java.util.List" resultType="com.colourfulchina.pangu.taishang.api.vo.res.bigan.ShopItem">
+        SELECT id,shop_id as shopId,name,needs,addon,
+        CASE WHEN open_time IS NOT NULL and close_time is NOT NULL THEN CONCAT(open_time,'~',close_time) ELSE null END AS opentime,
+        service_type as serviceType,service_name as serviceName FROM shop_item
+        where del_flag=0
+        and shop_id in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="selectShopItemByIds" parameterType="java.util.List" resultType="com.colourfulchina.pangu.taishang.api.vo.res.bigan.ShopItem">
+        SELECT id,shop_id as shopId,name,needs,addon,
+        CASE WHEN open_time IS NOT NULL and close_time is NOT NULL THEN CONCAT(open_time,'~',close_time) ELSE null END AS opentime,
+        service_type as serviceType,service_name as serviceName FROM shop_item
+        where del_flag=0
+        and id in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.pangu.taishang.api.entity.Goods">
+
+  </resultMap>
+
+  <select id="findPageList" parameterType="map" resultType="com.colourfulchina.pangu.taishang.api.vo.req.GoodsBaseVo">
+        select
+            g.id as id,
+            g.short_name as shortName,
+            g.auth_type as authType ,
+            g.sales_price as salesPrice ,
+            g.status ,
+      g.up_Type as upType ,
+      g.up_start_time as upstartTime ,
+      g.down_end_time  as downEndTime,
+           s.bank_id as bankId,
+            s.sales_channel_id as salesChannelId,
+            s.sales_way_id as salesWayId
+        FROM goods g
+        INNER JOIN goods_channels c on c.goods_id = g.id
+        INNER JOIN sales_channel s on c.channel_id = s.id
+            where  g.del_flag = 0
+            <if test="shortName != null and shortName != ''">
+              AND (g.name LIKE CONCAT('%',#{shortName},'%')  OR g.short_name LIKE CONCAT('%',#{shortName},'%') OR g.id = #{shortName})
+            </if>
+            <if test="authType != null and authType !=''">
+              AND g.auth_type = #{authType}
+            </if>
+      <!--<if test="status != null and status !=''">-->
+      <!--AND g.status = #{status}-->
+      <!--</if>-->
+          <if test="status != null  and status.size() != 0">
+              AND g.status  IN
+              <foreach collection="status" index="index" item="item" open="(" separator="," close=")">
+                  #{item}
+              </foreach>
+          </if>
+            <if test="bankId != null and bankId !=''">
+              AND s.bank_id = #{bankId}
+            </if>
+            <if test="salesChannelId != null and salesChannelId !=''">
+              AND s.sales_channel_id = #{salesChannelId}
+            </if>
+            <if test="salesWayId != null and salesWayId !=''">
+              AND s.sales_way_id = #{salesWayId}
+            </if>
+      <if test="field != null and field !='' and order != null and order !='' ">
+          order by #{field} #{order}
+      </if>
+      <if test="field == null  and order == null  ">
+          order by g.id desc
+      </if>
+  </select>
+
+    <!-- 根据商品id列表查询商品名称 -->
+    <select id="selectNameByIds" parameterType="java.util.List" resultType="com.colourfulchina.pangu.taishang.api.entity.Goods">
+        select
+          a.id,
+          a.name,
+          a.short_name
+        from
+          goods a
+        <where>
+            <if test="list != null and list.size() != 0">
+                AND a.id IN
+                <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <update id="updateIdByGoodsId" parameterType="com.colourfulchina.pangu.taishang.api.vo.req.GoodsBaseVo">
+      update goods set id=#{goodsId} where id=#{id}
+    </update>
+
+    <insert id="insertSyncGoodsCode" parameterType="java.util.Map">
+        INSERT INTO sync_goods_code (goods_id, sales_channel_id, chali_project_id, chali_sales_channel_id, package_id)
+        VALUES (#{targetGoodsId},#{salesChannelId},#{projectId},#{charlieChannel},#{id})
+    </insert>
+    <!-- 查询项目列表信息 -->
+    <select id="selectProjectBriefList" resultType="com.colourfulchina.pangu.taishang.api.vo.res.bigan.ProjectCdnVo">
+        SELECT id,name,short_name as shortName, auth_type as authType, remark as notes,
+        expiry_date as expiryDate,create_time as create_time,update_time as updateTime,
+        expiry_value as unitExpiry FROM goods
+        <where>
+            del_flag=0
+            and id in
+            <foreach collection="array" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+
+
+    <select id="selectProjectById" resultType="com.colourfulchina.pangu.taishang.api.vo.res.bigan.Project">
+        SELECT id,name,short_name as shortName, auth_type as authType, remark as notes,
+        expiry_date as expiryDate,create_time as create_time,update_time as updateTime,
+        expiry_value as unitExpiry FROM goods
+        <where>
+            del_flag=0 and id=#{id}
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.ShopItemSettlePriceMapper">
+  <select id="his" parameterType="com.colourfulchina.pangu.taishang.api.vo.req.ShopItemSettlePriceHisReq" resultType="com.colourfulchina.pangu.taishang.api.vo.res.ShopItemSettlePriceHisRes">
+    SELECT
+      shop_id shopId,shop_item_id shopItemId,min(book_date) minPirce,max(book_date) maxPirce,avg(book_date) avgPirce
+    FROM shop_item_settle_price
+    WHERE 1=1
+    <if test="shopId != null">
+      shop_id = #{shopId}
+    </if>
+    <if test="shopItemId != null">
+      shop_item_id = #{shopItemId}
+    </if>
+    <if test="bookDate != null">
+      <![CDATA[ book_date = #{bookDate} ]]>
+    </if>
+    <if test="startDate != null">
+      <![CDATA[ book_date >= #{startDate} ]]>
+    </if>
+    <if test="endDate != null">
+      <![CDATA[ book_date < #{endDate} ]]>
+    </if>
+    GROUP BY shop_id,shop_item_id,book_date
+    ORDER BY book_date
+  </select>
+</mapper>

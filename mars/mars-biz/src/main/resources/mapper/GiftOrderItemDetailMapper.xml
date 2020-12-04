@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.mars.mapper.GiftOrderItemDetailMapper">
+
+    <select id="getCountByChannel" parameterType="java.lang.String" resultType="java.lang.Integer">
+    	SELECT count(1) AS cnt
+		  FROM gift_order_item_detail d
+         WHERE d.item_order_id IN (
+		       SELECT i.item_order_id
+		         FROM gift_order_item i
+		        WHERE i.capital_order_id IN (
+				      SELECT c.capital_order_id
+				        FROM gift_order_capital c
+				       WHERE c.ac_channel = #{acChannel}
+			          )
+	           )
+    </select>
+
+    <select id="getCountByGoodsId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+	    SELECT count(1) AS cnt
+		  FROM gift_order_item_detail d
+         WHERE d.goods_id = #{goodsId}
+    </select>
+
+    <select id="getNoticeOrder" parameterType="java.lang.String" resultType="com.colourfulchina.mars.api.entity.GiftOrderCapital">
+      SELECT *
+		FROM gift_order_capital
+		WHERE capital_order_id = #{capitalOrderId}
+	</select>
+
+
+    <select id="getOrderDetail" parameterType="com.colourfulchina.mars.api.vo.req.GiftOrderQueryReqVo" resultType="com.colourfulchina.mars.api.vo.res.GiftOrderDetailVo">
+		SELECT goc.*,
+		       goi.goods_id,
+		       goi.item_order_id
+		  FROM gift_order_capital goc
+     LEFT JOIN gift_order_item goi ON goi.capital_order_id = goc.capital_order_id
+         WHERE goc.ac_channel = #{acChannel}
+		 <if test="capitalOrderId != null and capitalOrderId != ''">
+			 AND goc.capital_order_id = #{capitalOrderId}
+		 </if>
+		 <if test="buyerMobile != null and buyerMobile != ''">
+			 AND goc.buyer_mobile = #{buyerMobile}
+		 </if>
+		   AND goi.goods_id = #{goodsId}
+	  ORDER BY goc.create_time desc LIMIT 1
+	</select>
+
+</mapper>

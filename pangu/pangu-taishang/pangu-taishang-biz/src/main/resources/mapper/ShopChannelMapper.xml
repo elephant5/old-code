@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.ShopChannelMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.pangu.taishang.api.entity.ShopChannel">
+  </resultMap>
+
+  <!-- 商戶渠道資源列表 -->
+  <select id="selectShopChannelPageList" parameterType="map" resultType="com.colourfulchina.pangu.taishang.api.entity.ShopChannel">
+    select
+      *
+    from shop_channel a
+    <where>
+      <if test="channelName != null and channelName != ''">
+        AND a.name LIKE CONCAT('%',#{channelName},'%')
+      </if>
+      <if test="channelInternal != null">
+        AND a.internal = #{channelInternal}
+      </if>
+      <if test="channelDelFlag != null">
+        AND a.del_flag = #{channelDelFlag}
+      </if>
+    </where>
+    ORDER BY a.create_time DESC
+  </select>
+
+  <!-- 檢查商戶資源渠道是否已經存在（根據渠道名稱） -->
+  <select id="checkChannelIsExist" resultType="com.colourfulchina.pangu.taishang.api.entity.ShopChannel">
+    select
+      *
+    from shop_channel a
+    where a.name = #{name}
+  </select>
+</mapper>

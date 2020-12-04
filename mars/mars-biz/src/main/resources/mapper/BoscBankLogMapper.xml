@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.mars.mapper.BoscBankLogMapper">
+    <insert id="batchInsert" parameterType="com.colourfulchina.mars.api.entity.BoscBankLog">
+        <foreach collection="logs" item="log" index="index" separator=";">
+            INSERT INTO bosc_bank_log
+            <set>
+                <if test="log.boscBankId!=null and log.boscBankId!=''">
+                    bosc_bank_id = #{log.boscBankId},
+                </if>
+                <if test="log.basicUpdateBefore!=null and log.basicUpdateBefore!=''">
+                    basic_update_before = #{log.basicUpdateBefore},
+                </if>
+                <if test="log.basicUpdateAfter!=null and log.basicUpdateAfter!=''">
+                    basic_update_after = #{log.basicUpdateAfter},
+                </if>
+                <if test="log.operation!=null and log.operation!=''">
+                    operation = #{log.operation},
+                </if>
+                <if test="log.handleResult!=null and log.handleResult!=''">
+                    handle_result = #{log.handleResult},
+                </if>
+                <if test="log.remark!=null and log.remark!=''">
+                    remark = #{log.remark},
+                </if>
+                <if test="log.createUser!=null and log.createUser!=''">
+                    create_user = #{log.createUser},
+                </if>
+            </set>
+        </foreach>
+    </insert>
+</mapper>

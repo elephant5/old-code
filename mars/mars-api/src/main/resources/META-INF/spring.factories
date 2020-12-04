@@ -1,0 +1,14 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.colourfulchina.mars.api.feign.fallback.RemoteGiftTableServiceImpl,\
+  com.colourfulchina.mars.api.feign.fallback.RemoteReservOrderServiceImpl,\
+  com.colourfulchina.mars.api.feign.fallback.RemoteBoscBankServiceImpl,\
+  com.colourfulchina.mars.api.feign.fallback.RemoteEquityCodeDetailServiceImpl,\
+  com.colourfulchina.mars.api.feign.fallback.RemoteWeekendAccomCCBServiceImpl,\
+  com.colourfulchina.mars.api.feign.fallback.RemoteSendGiftCodeServiceImpl,\
+  com.colourfulchina.mars.api.feign.fallback.RemotePayServiceImpl,\
+  com.colourfulchina.mars.api.feign.fallback.RemoteSyncPushOrderServiceImpl,\
+  com.colourfulchina.mars.api.feign.fallback.RemoteReservOrderAttachServiceImpl,\
+  com.colourfulchina.mars.api.feign.fallback.RemoteBrokerServiceImpl,\
+  com.colourfulchina.mars.api.feign.fallback.RemoteReservCodeServiceImpl,\
+  com.colourfulchina.mars.api.feign.fallback.RemoteProductServiceImpl,\
+  com.colourfulchina.mars.api.feign.fallback.RemoteBoscBankLogServiceImpl

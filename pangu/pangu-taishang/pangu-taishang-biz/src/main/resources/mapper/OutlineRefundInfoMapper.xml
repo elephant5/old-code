@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.OutlineRefundInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.colourfulchina.pangu.taishang.api.entity.OutlineRefundInfo">
+        <id column="order_no" property="orderNo" />
+        <result column="goods_name" property="goodsName" />
+        <result column="product_name" property="productName" />
+        <result column="goods_id" property="goodsId" />
+        <result column="product_group_id" property="productGroupId" />
+        <result column="merchant_name" property="merchantName" />
+        <result column="hotel_name" property="hotelName" />
+        <result column="phone_reciever" property="phoneReciever" />
+        <result column="refund_reciever" property="refundReciever" />
+        <result column="act_code" property="actCode" />
+        <result column="order_time" property="orderTime" />
+        <result column="order_source" property="orderSource" />
+        <result column="refund_price" property="refundPrice" />
+        <result column="refund_status" property="refundStatus" />
+        <result column="refund_time" property="refundTime" />
+        <result column="refund_channel" property="refundChannel" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        order_no, goods_name, product_name,goods_id,product_group_id, merchant_name,hotel_name,phone_reciever, refund_reciever, act_code, order_time, order_source, refund_price,
+        refund_status, refund_time, refund_channel
+    </sql>
+
+</mapper>

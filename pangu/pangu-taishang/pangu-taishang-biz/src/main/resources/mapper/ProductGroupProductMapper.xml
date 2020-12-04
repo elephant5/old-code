@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.ProductGroupProductMapper">
+    <!-- 产品组的所属产品条件查询 -->
+    <select id="queryGroupProduct" resultType="com.colourfulchina.pangu.taishang.api.vo.GroupProductVo">
+        SELECT
+        t1.id,
+        t1.product_id AS "productId",
+        t2.cityName,
+        t2.hotelName,
+        t2.shopName,
+        t2.service,
+        t2.productName,
+        t2.needs,
+        t2.addon,
+        t2.shopId AS shopId,
+        t2.shop_item_id AS shopItemId,
+        t1.block_rule AS "blockRule",
+        t1.min_cost AS "minCost",
+        t1.max_cost AS "maxCost",
+        t1.point AS "pointOrTimes",
+        t1.`status`,
+        t1.recommend AS recommend,
+        t1.sort,
+        t3.short_name AS "gift"
+        FROM
+        product_group_product t1
+        LEFT JOIN (
+        SELECT
+        b.id,
+        b.shop_item_id,
+        ( CASE WHEN c.city_id != NULL THEN c.shopCityName ELSE c.hotelCityName END ) AS "cityName",
+        c.name_ch AS "hotelName",
+        c.`name` AS "shopName",
+        c.id AS shopId,
+        e.service,
+        e.`name` AS "productName",
+        e.`needs` AS "needs",
+        e.`addon` AS "addon",
+        b.cost
+        FROM
+        product b
+        LEFT JOIN (
+        SELECT
+        t1.*,
+        t2.name_ch shopCityName,
+        t5.hotelCityName,
+        t5.name_ch
+        FROM
+        shop t1
+        LEFT JOIN sys_city t2 ON t1.city_id = t2.id
+        LEFT JOIN (
+        SELECT
+        t3.id,
+        t3.name_ch,
+        t4.name_ch hotelCityName
+        FROM
+        hotel t3
+        LEFT JOIN sys_city t4 ON t3.city_id = t4.id
+        ) t5 ON t1.hotel_id = t5.id
+        ) c ON b.shop_id = c.id
+        LEFT JOIN ( SELECT t1.*, t2.`name` service FROM shop_item t1 LEFT JOIN sys_service t2 ON t1.service_type = t2.`code` ) e ON b.shop_item_id = e.id
+        ) t2 ON t1.product_id = t2.id
+        LEFT JOIN sys_gift t3 ON t1.gift = t3.`code`
+        <where>
+            AND t1.del_flag = 0
+            AND t1.product_group_id = #{groupId}
+            <if test="shopIdOrShopName != null and shopIdOrShopName != ''">
+                AND ( t2.shopId = #{shopIdOrShopName} OR t2.shopName LIKE CONCAT('%',#{shopIdOrShopName},'%') or t2.hotelName  LIKE CONCAT('%',#{shopIdOrShopName},'%') or t1.product_id = #{shopIdOrShopName}   )
+            </if>
+            <if test="city != null and city != ''">
+                AND t2.cityName = #{city}
+            </if>
+            <if test="status != null">
+                AND t1.status = #{status}
+            </if>
+            ORDER BY
+            t1.recommend,
+            t1.sort
+        </where>
+    </select>
+
+    <!-- 查询product_group_product最大sort -->
+    <select id="queryMaxSort" resultType="java.lang.Integer">
+        SELECT
+            MAX( a.sort )
+        FROM
+            product_group_product a
+    </select>
+
+    <!-- 查询产品组下面的产品信息（商区） -->
+    <select id="selectGoodsListByGroupId" parameterType="map" resultType="com.colourfulchina.pangu.taishang.api.vo.res.ShopListQueryRes">
+        SELECT
+            a.id AS "productGroupProductId",
+            b.shop_id AS "shopId",
+            b.shop_item_id AS "shopItemId",
+            d.name_ch AS "hotelName",
+            c.`name` AS "shopName",
+            e.`name` AS "productName",
+            e.service_type AS "service" ,
+            CASE WHEN c.city_id IS NULL THEN g.name_ch ELSE f.name_ch END AS "cityName",
+            c.address,
+            a.gift,
+            i.short_name AS "giftName",
+            (SELECT CONCAT(tt2.guid,'.',tt2.ext) FROM sys_file_quote tt1 LEFT JOIN sys_file tt2 ON tt1.file_id = tt2.id WHERE tt1.del_flag = 0 AND tt1.type = 'shop.pic' AND tt1.obj_id = c.id ORDER BY tt1.sort LIMIT 1) AS "url"
+        FROM
+            product_group_product a
+            LEFT JOIN product b ON a.product_id = b.id
+            LEFT JOIN shop c ON b.shop_id = c.id
+            LEFT JOIN hotel d ON c.hotel_id = d.id
+            LEFT JOIN shop_item e ON b.shop_item_id = e.id
+            LEFT JOIN sys_city f ON c.city_id = f.id
+            LEFT JOIN sys_city g ON d.city_id = g.id
+            LEFT JOIN sys_service h ON e.service_type = h.`code`
+            LEFT JOIN sys_gift i ON a.gift = i.`code`
+        <where>
+            AND a.`status` != 1
+            AND a.del_flag = 0
+            <if test="productGroupId != null and productGroupId != ''">
+                AND a.product_group_id = #{productGroupId}
+            </if>
+            <if test="city != null and city != ''">
+                AND (f.name_ch = #{city} OR g.name_ch = #{city})
+            </if>
+        </where>
+        ORDER BY a.recommend desc,a.sort,a.id
+    </select>
+
+    <!-- 产品组产品导出 -->
+    <select id="groupProductExport" resultType="com.colourfulchina.pangu.taishang.api.vo.res.GroupProductExportVo">
+        SELECT
+            CASE WHEN d.city_id IS NULL THEN h.name_ch ELSE g.name_ch END AS "cityName",
+            CASE WHEN d.city_id IS NULL THEN h.countryName ELSE g.countryName END AS "countryName",
+            f.name_ch AS "hotelChName",
+            f.name_en AS "hotelEnName",
+            d.`name` AS "shopChName",
+            d.name_en AS "shopEnName",
+            i.`name` AS "serviceName",
+            i.`code` AS "serviceCode",
+            a.gift AS "giftCode",
+            j.short_name AS "giftShortName",
+            j.`name` AS "giftName",
+            c.id AS "shopItemId",
+            c.`name` AS "shopItemName",
+            c.open_time AS "openTime",
+            c.close_time AS "closeTime",
+             c.addon,
+            c.needs,
+            a.block_rule AS "groupProductBlock",
+            k.block_rule AS "productGroupBlock",
+            l.block AS "goodsBlock",
+            c.block_rule AS "shopItemBlock",
+            e.block_rule AS "shopBlock",
+            d.address,
+            d.phone,
+            e.parking,
+            e.children,
+            d.notes AS "remark",
+            a.product_id as "productId"
+        FROM
+            product_group_product a
+            LEFT JOIN product b ON a.product_id = b.id
+            LEFT JOIN shop_item c ON b.shop_item_id = c.id
+            LEFT JOIN shop d ON b.shop_id = d.id
+            LEFT JOIN shop_protocol e ON b.shop_id = e.id
+            LEFT JOIN hotel f ON f.id = d.hotel_id
+            LEFT JOIN (SELECT t1.*,t2.name_ch AS "countryName" FROM sys_city t1 LEFT JOIN sys_country t2 ON t1.country_id = t2.id) g ON g.id = d.city_id
+            LEFT JOIN (SELECT t1.*,t2.name_ch AS "countryName" FROM sys_city t1 LEFT JOIN sys_country t2 ON t1.country_id = t2.id) h ON f.city_id = h.id
+            LEFT JOIN sys_service i ON i.`code` = c.service_type
+            LEFT JOIN sys_gift j ON j.`code` = a.gift
+            LEFT JOIN product_group k ON k.id = a.product_group_id
+            LEFT JOIN goods l ON k.goods_id = l.id
+        <where>
+            AND a.del_flag = 0
+            AND a.product_group_id = #{groupId}
+            <if test="shopIdOrShopName != null and shopIdOrShopName != ''">
+                AND ( d.id = #{shopIdOrShopName} OR d.name_ch LIKE CONCAT('%',#{shopIdOrShopName},'%') or f.name_ch  LIKE CONCAT('%',#{shopIdOrShopName},'%') or a.product_id = #{shopIdOrShopName}   )
+            </if>
+            <if test="city != null and city != ''">
+                AND (g.name_ch = #{city} or h.name_ch = #{city})
+            </if>
+            <if test="status != null">
+                AND a.status = #{status}
+            </if>
+            ORDER BY
+            a.recommend,
+            a.sort
+        </where>
+    </select>
+
+    <select id="selectBookProduct" resultType="com.colourfulchina.pangu.taishang.api.vo.BookProductVo">
+        SELECT
+             c.`name` AS "shopItemName",
+             c.needs,
+             c.addon,
+             c.id AS shopItemId,
+             c.shop_id AS "shopId",
+             (SELECT CONCAT(t2.guid,'.',t2.ext) FROM sys_file_quote t1 LEFT JOIN sys_file t2 ON t1.file_id = t2.id WHERE t1.obj_id = b.shop_id and t1.type = 'shop.pic' ORDER BY t1.sort DESC LIMIT 1) AS 'shopPic',
+             a.gift,
+             a.id AS "productGroupProductId",
+             d.`name` AS "shopName",
+             e.name_ch AS "hotelName",
+             f.goods_id AS "goodsId",
+             f.id AS "productGroupId",
+             d.address,
+             c.service_type as "serviceType",
+             c.service_name as "serviceName",
+             CASE WHEN d.city_id IS NULL THEN h.name_ch ELSE g.name_ch END AS "cityName"
+        FROM
+            product_group_product a
+            LEFT JOIN product b ON a.product_id = b.id
+            LEFT JOIN shop_item c ON b.shop_item_id = c.id
+            LEFT JOIN shop d ON b.shop_id = d.id
+            LEFT JOIN hotel e ON d.hotel_id = e.id
+            LEFT JOIN product_group f ON a.product_group_id = f.id
+            LEFT JOIN sys_city g ON d.city_id = g.id
+            LEFT JOIN sys_city h ON e.city_id = h.id
+        <where>
+            AND a.del_flag = 0
+            and a.status = 0
+            <if test="productGroupId != null and productGroupId != ''">
+                AND a.product_group_id = #{productGroupId}
+            </if>
+            <if test="service != null and service != ''">
+                AND c.service_type = #{service}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryBookDays" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.vo.BlockBookDaysVo">
+        SELECT
+            c.service_type AS "serviceType",
+            d.min_book_days AS "shopMinBookDays",
+            d.max_book_days AS "shopMaxBookDays",
+            f.min_book_days AS "goodsMinBookDays",
+            f.max_book_days AS "goodsMaxBookDays",
+            e.min_book_days AS "groupMinBookDays",
+            e.max_book_days AS "groupMaxBookDays",
+            CASE WHEN d.city_id IS NULL THEN i.country_id ELSE g.country_id END AS "countryId"
+        FROM
+            product_group_product a
+            LEFT JOIN product b ON a.product_id = b.id
+            LEFT JOIN shop_item c ON b.shop_item_id = c.id
+            LEFT JOIN shop d ON b.shop_id = d.id
+            LEFT JOIN product_group e ON a.product_group_id = e.id
+            LEFT JOIN goods f ON e.goods_id = f.id
+            LEFT JOIN sys_city g ON d.city_id = g.id
+            LEFT JOIN hotel h ON h.id = d.hotel_id
+            LEFT JOIN sys_city i ON h.city_id = i.id
+        WHERE
+            a.id = #{productGroupProductId}
+    </select>
+
+    <select id="selectShopByGroup" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT DISTINCT
+            ( c.id )
+        FROM
+            product_group_product a
+            LEFT JOIN product b ON a.product_id = b.id
+            LEFT JOIN shop c ON b.shop_id = c.id
+        WHERE
+            a.product_group_id = #{productGroupId}
+            AND a.del_flag = 0
+            AND a.`status` = 0
+        ORDER BY
+            c.id
+    </select>
+
+    <update id="updateByProductIds" parameterType="java.util.Map">
+        update  product_group_product set status=#{status}
+        where  del_flag = 0
+        <if test="productIds != null and productIds.size() != 0">
+            AND product_id IN
+            <foreach collection="productIds" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </update>
+</mapper>

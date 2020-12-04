@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.colourfulchina</groupId>
+		<artifactId>tianyan-common</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>tianyan-common-security</artifactId>
+	<version>${tianyan.version}</version>
+	<packaging>jar</packaging>
+	<name>tianyan-common-security</name>
+	<description>tianyan 安全工具类</description>
+
+
+	<dependencies>
+		<!--工具类核心包-->
+		<dependency>
+			<groupId>com.colourfulchina</groupId>
+			<artifactId>tianyan-common-core</artifactId>
+			<version>${tianyan.version}</version>
+		</dependency>
+		<!--安全模块-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-security</artifactId>
+		</dependency>
+		<!--feign 依赖-->
+		<dependency>
+			<groupId>io.github.openfeign</groupId>
+			<artifactId>feign-okhttp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+	</dependencies>
+</project>

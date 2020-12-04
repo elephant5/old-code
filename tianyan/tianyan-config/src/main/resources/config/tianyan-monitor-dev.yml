@@ -1,0 +1,26 @@
+spring:
+  mail:
+    protocol:
+    host: 123.58.177.49
+    port: 465
+    username: hyper.huang@colourfulchina.com
+    password: ah52311314HP
+    test-connection: false
+  rabbitmq:
+    host: clf-rabbitmq.colourfulchina.com
+    port: 5672
+    username: admin
+    password: 1qaz@WSX
+  cloud:
+    bus:
+      refresh:
+        enabled: true
+      trace:
+        enabled: true
+boot:
+ admin:
+  notify:
+  mail:
+   to: hyper.huang@colourfulchina.com
+   from: hyper.huang@colourfulchina.com
+   enabled: true

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.pangu.taishang.mapper.SysFileMapper">
+<select id="listSysFileDto" parameterType="com.colourfulchina.pangu.taishang.api.vo.req.ListSysFileReq" resultType="com.colourfulchina.pangu.taishang.api.dto.SysFileDto">
+  select sfq.obj_id objId, sf.id,sf.guid,sf.path,sf.code,sf.ext,sf.name,sf.size,sf.tag,sf.del_flag delFlag,sfq.type,sfq.sort,sf.create_time createTime,sf.create_user createUser,sf.update_time updateTime,sf.update_user updateUser
+  from sys_file sf
+  inner join sys_file_quote sfq
+  on sf.id=sfq.file_id
+  where sfq.del_flag=0 and  sfq.type=#{type} and sfq.obj_id=#{objId}
+  order by sfq.sort
+</select>
+  <select id="getSysFileDtoById" parameterType="com.colourfulchina.pangu.taishang.api.vo.req.ListSysFileReq" resultType="com.colourfulchina.pangu.taishang.api.dto.SysFileDto">
+  select sf.id,sf.guid,sf.path,sf.code,sf.ext,sf.name,sf.size,sf.tag,sf.del_flag delFlag,sfq.type,sfq.sort,sf.create_time createTime,sf.create_user createUser,sf.update_time updateTime,sf.update_user updateUser
+  from sys_file sf
+  inner join sys_file_quote sfq
+  on sf.id=sfq.file_id
+  where sfq.del_flag=0 and  sf.id = #{id}
+  order by sfq.sort
+</select>
+  <update id="updateDelFlagById" parameterType="com.colourfulchina.pangu.taishang.api.entity.SysFile">
+    update sys_file set del_flag=#{delFlag},update_user=#{updateUser},update_time=#{updateTime}
+    where id=#{id}
+  </update>
+  <select id="listSysFileDtoByGuid" parameterType="com.colourfulchina.pangu.taishang.api.vo.req.ListSysFileReq" resultType="com.colourfulchina.pangu.taishang.api.dto.SysFileDto">
+  select sf.id,sfq.obj_id,sf.guid,sf.path,sf.code,sf.ext,sf.name,sf.size,sf.tag,sf.del_flag delFlag,sfq.type,sfq.sort,sf.create_time createTime,sf.create_user createUser,sf.update_time updateTime,sf.update_user updateUser
+  from sys_file sf
+  inner join sys_file_quote sfq
+  on sf.id=sfq.file_id
+  where sfq.del_flag=0 and  sfq.type=#{type} and sf.guid=#{guid}
+  order by sfq.sort
+</select>
+
+  <select id="selectShopPic" parameterType="java.lang.Integer" resultType="com.colourfulchina.pangu.taishang.api.entity.SysFile">
+    SELECT
+    a.id,
+    a.guid,
+    a.path,
+    a.code,
+    a.ext,
+    a.name,
+    a.size
+    FROM
+    sys_file a
+    LEFT JOIN sys_file_quote b ON a.id = b.file_id
+    <where>
+      b.type = 'shop.pic'
+      AND b.obj_id = #{shopId}
+    </where>
+  </select>
+</mapper>

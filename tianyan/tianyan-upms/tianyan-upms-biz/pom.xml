@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.colourfulchina</groupId>
+		<artifactId>tianyan-upms</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>tianyan-upms-biz</artifactId>
+	<version>${tianyan.version}</version>
+	<packaging>jar</packaging>
+
+	<name>tianyan-upms-biz</name>
+	<description>tianyan 通用用户权限管理系统业务处理模块</description>
+
+	<dependencies>
+		<!--upms api、model 模块-->
+		<dependency>
+			<groupId>com.colourfulchina</groupId>
+			<artifactId>tianyan-upms-api</artifactId>
+			<version>${tianyan.version}</version>
+		</dependency>
+		<!--日志处理-->
+		<dependency>
+			<groupId>com.colourfulchina</groupId>
+			<artifactId>tianyan-common-log</artifactId>
+			<version>${tianyan.version}</version>
+		</dependency>
+		<!--配置中心客户端-->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.cloud</groupId>-->
+			<!--<artifactId>spring-cloud-starter-config</artifactId>-->
+		<!--</dependency>-->
+		<dependency>
+			<groupId>com.ctrip.framework.apollo</groupId>
+			<artifactId>apollo-client</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+
+		<!--spring security 、oauth、jwt依赖-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-security</artifactId>
+		</dependency>
+		<!--监控客户端-->
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+			<version>${monitor.version}</version>
+		</dependency>
+		<!--数据库-->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!--web 模块-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<!--排除tomcat依赖-->
+				<exclusion>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+					<groupId>org.springframework.boot</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!--undertow容器-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-undertow</artifactId>
+		</dependency>
+		<!-- swagger-ui -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<finalName>${project.name}</finalName>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

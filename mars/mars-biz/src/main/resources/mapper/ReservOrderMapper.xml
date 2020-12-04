@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.mars.mapper.ReservOrderMapper">
+
+    <!-- 列表页 分页查询 -->
+    <select id="selectReservOrderPageList" parameterType="map" resultType="com.colourfulchina.mars.api.vo.ReservOrderVo">
+        select
+          o.*,
+        CONCAT(ifnull (o.tags,'') , ifnull (g.tags,'') ) as varTags
+        from
+            reserv_order o
+            left join reserv_code c on o.reserv_code_id = c.id
+            left join gift_code g on o.gift_code_id =g.id
+            left join logistics_info l on l.reserv_order_id=o.id
+        where 1=1 and o.del_flag = 0 and o.pay_status != 1 and o.move_type != 1
+        <if test="params != null and params != ''">
+            AND (o.gift_name LIKE CONCAT('%',#{params},'%') OR o.gift_phone LIKE CONCAT('%',#{params},'%')  )
+        </if>
+        <if test="varCode != null and varCode != ''">
+            AND  c.var_code = #{varCode}
+        </if>
+        <if test="actCode != null and actCode != ''">
+            AND  g.act_code = #{actCode}
+        </if>
+        <if test="reservNumber != null and reservNumber != ''">
+            AND  o.reserv_number = #{reservNumber}
+        </if>
+        <if test="reservOrderId != null and reservOrderId != ''">
+            AND o.id = #{reservOrderId}
+        </if>
+        <if test="useStatus != null and useStatus.size() != 0">
+            AND c.var_status IN
+            <foreach collection="useStatus" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+        </if>
+        <if test="salesChannelIds != null and salesChannelIds.size() != 0">
+            AND (o.shop_channel_id IN
+            <foreach collection="salesChannelIds" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+
+            or o.sales_channle_id in
+            <foreach collection="salesChannelIds" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach> )
+        </if>
+        <if test="tagsList != null and tagsList.size() != 0">
+            <if test="tagType != null and tagType != '' and tagType == 'and'">
+                AND (
+                <foreach collection="tagsList" item="item" open="" close="" separator="or">
+                    CONCAT(ifnull (o.tags,''),ifnull (g.tags,'')) LIKE CONCAT('%',#{item},'%')
+                </foreach>
+                )
+            </if>
+            <if test="tagType != null and tagType != '' and tagType == 'or'">
+                AND (
+                <foreach collection="tagsList" item="item" open="" close="" separator="or">
+                    CONCAT(ifnull (o.tags,''),ifnull (g.tags,'')) LIKE CONCAT('%',#{item},'%')
+                </foreach>
+                )
+            </if>
+        </if>
+        <if test="reservChannel != null  and reservChannel.size() != 0">
+            AND o.shop_channel_id in
+            <foreach collection="reservChannel" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="goods != null  and goods.size() != 0">
+            AND o.goods_id in
+            <foreach collection="goods" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="shopIds != null">
+            AND o.shop_id = #{shopIds}
+        </if>
+        <if test="reservStatus != null  and reservStatus.size() != 0">
+            AND o.prose_status in
+            <foreach collection="reservStatus" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="serviceTypes != null  and serviceTypes.size() != 0">
+            AND o.service_type in
+            <foreach collection="serviceTypes" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="resourceTypes != null  and resourceTypes.size() != 0">
+            AND o.gift_type in
+            <foreach collection="resourceTypes" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="orderDate != null  and orderDate.size() != 0">
+            AND DATE(o.create_time)
+            <foreach collection="orderDate" index="index" item="item" open="between" separator="and" close="">
+                STR_TO_DATE(#{item},'%Y-%m-%d')
+            </foreach>
+        </if>
+        <if test="reservDates != null  and reservDates.size() != 0">
+            AND STR_TO_DATE(o.gift_date,'%Y-%m-%d')
+            <foreach collection="reservDates" index="index" item="item" open="between" separator="and" close="">
+                STR_TO_DATE(#{item},'%Y-%m-%d')
+            </foreach>
+        </if>
+        <if test="successDates != null  and successDates.size() != 0">
+            AND (DATE(o.success_date)
+            <foreach collection="successDates" index="index" item="item" open="between" separator="and" close="">
+                STR_TO_DATE(#{item},'%Y-%m-%d')
+            </foreach>
+            and o.prose_status = '1')
+        </if>
+        <if test="cancelDates != null and cancelDates.size() != 0">
+            AND (DATE(o.cancel_date)
+            <foreach collection="cancelDates" index="index" item="item" open="between" separator="and" close="">
+                STR_TO_DATE(#{item},'%Y-%m-%d')
+            </foreach>
+            and o.prose_status = '2')
+        </if>
+        <if test="expressNameIds != null  and expressNameIds.size() != 0">
+            AND l.express_name_id in
+            <foreach collection="expressNameIds" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="expressNumbers != null  and expressNumbers.size() != 0">
+            AND l.express_number in
+            <foreach collection="expressNumbers" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="expressStatus != null and expressStatus != ''">
+            AND l.status = #{expressStatus}
+        </if>
+        <if test="expressDates != null  and expressDates.size() != 0">
+            AND DATE(l.express_date)
+            <foreach collection="expressDates" index="index" item="item" open="between" separator="and" close="">
+                STR_TO_DATE(#{item},'%Y-%m-%d')
+            </foreach>
+        </if>
+        <if test="expressDates != null  and expressDates.size() != 0">
+            AND DATE(l.express_date)
+            <foreach collection="expressDates" index="index" item="item" open="between" separator="and" close="">
+                STR_TO_DATE(#{item},'%Y-%m-%d')
+            </foreach>
+        </if>
+        order by FIELD(o.prose_status,0,4,1,3,2),o.shop_id,o.id desc
+    </select>
+
+    <!-- 列表页 导出sql -->
+    <select id="exportReservOrderPageList" parameterType="map" resultType="com.colourfulchina.mars.api.vo.ReservOrderVo">
+        select
+            @rownum := @rownum + 1 AS rank,
+            o.shop_item_id AS "shopItemId",
+            o.goods_id AS "goodsId",
+            o.sales_channle_id AS "salesChannleId",
+            o.shop_channel_id AS "shopChannelId",
+            o.id AS "id",
+            o.create_time AS "createTime",
+            o.gift_type AS "giftType",
+            o.service_type AS "serviceType",
+            o.order_creator AS "orderCreator",
+            o.operator AS "operator",
+            o.prose_status AS "proseStatus",
+            o.success_date AS "successDate",
+            o.cancel_date AS "cancelDate",
+            o.cancel_reason AS "cancelReason",
+            o.fail_date AS "failDate",
+            o.fail_reason AS "failReason",
+            o.reserv_date AS "reservDate",
+            o.gift_date AS "giftDate",
+            o.gift_people_num AS "giftPeopleNum",
+            o.gift_name,
+            o.shop_amount,
+            o.dispensing,
+            o.channel_number,
+            o.reserv_number,
+            o.reserv_remark,
+            o.order_settle_amount,
+            o.third_cpn_num,
+            o.third_cpn_name,
+            g.act_out_date AS "actOutDate",
+            g.act_code AS "actCode",
+            g.act_expire_time AS "actExpireTime",
+            g.member_id AS "memberId",
+            c.var_code AS "varCode",
+            c.var_status AS "varStatus",
+            p.protocol_price AS "protocolPrice",
+            p.net_price AS "netPrice",
+            p.service_rate AS "serviceRate",
+            p.tax_rate AS "taxRate",
+            p.settle_rule AS "settleRule",
+            p.settle_method AS "settleMethod",
+            ed.use_count AS "useCount",
+            ed.total_count AS "totalCount",
+            gcp.act_expire_time AS "oldExpireTime",
+            gcp.prolong_expire_time AS "newExpireTime",
+            gcp.id AS "proLongId",
+            rod.check_date AS "checkDate",
+            rod.depar_date AS "deparDate",
+            rod.check_night AS "checkNight",
+            rod.night_numbers AS "nightNumbers",
+            rod.payment_amount AS "paymentAmount"
+        from
+        ( SELECT @rownum := 0 ) r,reserv_order o
+        left join reserv_code c on o.reserv_code_id = c.id
+        left join gift_code g on o.gift_code_id =g.id
+        LEFT JOIN (SELECT t1.* FROM gift_code_prolong t1 where t1.id in (SELECT max(id) FROM gift_code_prolong t GROUP BY t.gift_code_id)) gcp ON gcp.gift_code_id = g.id
+        LEFT JOIN reserv_order_price p ON o.id = p.reserv_order_id AND STR_TO_DATE( o.gift_date, '%Y-%m-%d' ) = STR_TO_DATE( p.order_date, '%Y-%m-%d' )
+        LEFT JOIN equity_code_detail ed ON o.gift_code_id = ed.gift_code_id AND o.product_group_id = ed.product_group_id
+        LEFT JOIN reserv_order_detail rod ON o.id = rod.order_id
+        where 1=1 and o.del_flag = 0 and o.pay_status != 1 and o.move_type != 1
+        <if test="params != null and params != ''">
+            AND (o.gift_name LIKE CONCAT('%',#{params},'%')
+            OR o.gift_phone LIKE CONCAT('%',#{params},'%'))
+        </if>
+        <if test="varCode != null and varCode != ''">
+            AND  c.var_code = #{varCode}
+        </if>
+        <if test="actCode != null and actCode != ''">
+            AND  g.act_code = #{actCode}
+        </if>
+        <if test="reservNumber != null and reservNumber != ''">
+            AND  o.reserv_number = #{reservNumber}
+        </if>
+        <if test="salesChannelIds != null and salesChannelIds.size() != 0">
+            AND o.shop_channel_id IN
+            <foreach collection="salesChannelIds" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+
+            or o.sales_channle_id in
+            <foreach collection="salesChannelIds" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach> )
+        </if>
+        <if test="reservOrderId != null and reservOrderId != null">
+            AND o.id = #{reservOrderId}
+        </if>
+        <if test="useStatus != null and useStatus.size() != 0">
+            AND c.var_status IN
+            <foreach collection="useStatus" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+        </if>
+        <if test="tagsList != null and tagsList.size() != 0">
+            <if test="tagType != null and tagType != '' and tagType == 'and'">
+                AND (
+                <foreach collection="tagsList" item="item" open="" close="" separator="and">
+                    CONCAT(ifnull (o.tags,''),ifnull (g.tags,'')) LIKE CONCAT('%',#{item},'%')
+                </foreach>
+                )
+            </if>
+            <if test="tagType != null and tagType != '' and tagType == 'or'">
+                AND (
+                <foreach collection="tagsList" item="item" open="" close="" separator="or">
+                    CONCAT(ifnull (o.tags,''),ifnull (g.tags,'')) LIKE CONCAT('%',#{item},'%')
+                </foreach>
+                )
+            </if>
+        </if>
+        <if test="reservChannel != null  and reservChannel.size() != 0">
+            AND o.shop_channel_id in
+            <foreach collection="reservChannel" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="goods != null  and goods.size() != 0">
+            AND o.goods_id in
+            <foreach collection="goods" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="shopIds != null">
+            AND o.shop_id = #{shopIds}
+        </if>
+        <if test="reservStatus != null  and reservStatus.size() != 0">
+            AND o.prose_status in
+            <foreach collection="reservStatus" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="serviceTypes != null  and serviceTypes.size() != 0">
+            AND o.service_type in
+            <foreach collection="serviceTypes" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="resourceTypes != null  and resourceTypes.size() != 0">
+            AND o.gift_type in
+            <foreach collection="resourceTypes" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="orderDate != null  and orderDate.size() != 0">
+            AND DATE(o.create_time)
+            <foreach collection="orderDate" index="index" item="item" open="between" separator="and" close="">
+                STR_TO_DATE(#{item},'%Y-%m-%d')
+            </foreach>
+        </if>
+        <if test="reservDates != null  and reservDates.size() != 0">
+            AND STR_TO_DATE(o.gift_date,'%Y-%m-%d')
+            <foreach collection="reservDates" index="index" item="item" open="between" separator="and" close="">
+                STR_TO_DATE(#{item},'%Y-%m-%d')
+            </foreach>
+        </if>
+        <if test="successDates != null  and successDates.size() != 0">
+            AND (DATE(o.success_date)
+            <foreach collection="successDates" index="index" item="item" open="between" separator="and" close="">
+                STR_TO_DATE(#{item},'%Y-%m-%d')
+            </foreach>
+            and o.prose_status = '1')
+        </if>
+        <if test="cancelDates != null and cancelDates.size() != 0">
+            AND (DATE(o.cancel_date)
+            <foreach collection="cancelDates" index="index" item="item" open="between" separator="and" close="">
+                STR_TO_DATE(#{item},'%Y-%m-%d')
+            </foreach>
+            and o.prose_status = '2')
+        </if>
+        order by o.id desc
+    </select>
+
+    <select id="selectEquityList" resultType="com.colourfulchina.mars.api.vo.EquityListVo"
+            parameterType="java.util.List">
+
+        SELECT
+        c.id as giftCodeId ,
+        c.act_out_date as actOutDate,
+        c.act_expire_time as expiryDate ,
+        c.goods_id as goodsId,
+        c.member_id as memberId,
+        c.act_code as code,
+        c.tags as tags,
+        c.act_rule as actRule,
+        c.act_code_status as codeStatus,
+        c.act_code_time as actCodeTime,
+        c.buy_member_id as buyMemberId
+        FROM gift_code c
+        where c.del_flag = 0
+        <if test="list != null and list.size() != 0">
+            and c.act_code IN
+            <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+
+
+    </select>
+    <select id="selectEquityListByMembers" resultType="com.colourfulchina.mars.api.vo.EquityListVo"
+            parameterType="java.util.List">
+
+        SELECT
+        c.id as giftCodeId ,
+        c.act_out_date as actOutDate,
+        c.act_expire_time as expiryDate ,
+        c.goods_id as goodsId,
+        c.member_id as memberId,
+        c.act_code as code,
+        c.tags as tags,
+        c.act_rule as actRule,
+        c.act_code_status as codeStatus,
+        c.act_code_time as actCodeTime,
+        c.buy_member_id as buyMemberId
+        FROM gift_code c
+        where c.del_flag = 0
+        <if test="list != null and list.size() != 0">
+            and (c.member_id IN
+            <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            or c.buy_member_id IN
+            <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            )
+        </if>
+
+
+    </select>
+    <select id="selectReservOrderById" parameterType="Integer"
+            resultType="com.colourfulchina.mars.api.vo.ReservOrderVo">
+        select  o.*,
+        g.id as giftCodeId ,
+        g.act_out_date as actOutDate,
+        g.act_expire_time as expiryDate ,
+        g.goods_id as goodsId,
+        g.member_id as memberId,
+        g.act_code as code,
+        g.act_code_status as codeStatus,
+        g.act_code_time as actCodeTime,
+        g.buy_member_id as buyMemberId,
+        g.tags as varTags,
+
+        c.id reservCodeId,
+        c.var_code as varCode,
+        c.var_status as varStatus,
+        c.var_use_time as varCodeTime,
+        d.pay_amoney as realMoney,
+        o.tags as payTags,
+        l.express_name_id as  expressNameId,
+        l.express_number as expressNumber,
+        l.express_date as expressDate,
+        l.status as expressStatus,
+        l.shipper_address as shipperAddress
+        from  reserv_order o
+        left join reserv_code c on o.reserv_code_id = c.id
+        left join  gift_code g on o.gift_code_id = g.id
+        left join reserv_order_detail d on d.order_id = o.id
+        left join logistics_info l on l.reserv_order_id=o.id
+       where o.del_flag = 0 and o.id =#{id}
+
+    </select>
+
+    <select id="getReservOrder" parameterType="integer"
+            resultType="com.colourfulchina.mars.api.vo.ReservOrderProductVo">
+        select
+            o.*,
+            c.var_code as varCode,
+            if(o.service_type in ('accom'),if(o.prose_status=1 and date_format(now(), '%Y-%m-%d')>=o.gift_date,3,1),c.var_status) as useStatus
+        from reserv_order o left join reserv_code c on c.order_id = o.id and c.del_flag = 0
+        where o.id =#{id}
+    </select>
+
+    <select id="countSameTimeOrderNum" parameterType="com.colourfulchina.mars.api.vo.req.ReservOrderPlaceReq" resultType="integer">
+        select count(*) from reserv_order o
+        left join reserv_order_detail d on o.id = d.order_id
+        where
+        service_type = #{serviceType}
+        <if test="memberId != null">
+            and member_id=#{memberId}
+        </if>
+
+        <choose>
+            <when test="serviceType=='accom'">
+                and ((#{checkDate} BETWEEN d.check_date and d.depar_date)  or (#{deparDate} BETWEEN d.check_date and d.depar_date))
+            </when>
+            <otherwise>
+                and o.gift_date=#{giftDate}
+            </otherwise>
+        </choose>
+        and o.prose_status in(0,1,4)
+        <if test="giftCodeId!=null and giftCodeId!=''">
+            and o.gift_code_id =#{giftCodeId}
+        </if>
+    </select>
+
+    <select id="selectReservOrderListPage" resultType="com.colourfulchina.mars.api.vo.ReservOrderProductVo">
+        SELECT
+            o.*,
+            CASE WHEN o.service_type IN ( 'accom' ) THEN IF( o.prose_status = 1 AND date_format( now( ), '%Y-%m-%d' ) >= o.gift_date, 3, 1 )
+            WHEN o.service_type IN ( 'tea', 'buffet', 'gym', 'spa', 'drink', 'setmenu' ) THEN c.var_status END AS useStatus,
+            d.pay_amoney payAmoney
+        FROM
+            reserv_order o
+            LEFT JOIN reserv_code c ON c.order_id = o.id
+            LEFT JOIN reserv_order_detail d ON o.id = d.order_id
+        <where>
+            AND o.del_flag = 0
+            <if test="proseStatus !=null and proseStatus != -1">
+                AND (
+                    (
+                    o.service_type in( 'accom')
+                    <choose>
+                        <when test="proseStatus==7">
+                            and o.prose_status = '1' and date_format(now(), '%Y-%m-%d')>=o.gift_date
+                        </when>
+                        <when test="proseStatus==1">
+                            and o.prose_status = '1' and date_format(now(), '%Y-%m-%d')&lt; o.gift_date
+                        </when>
+                        <when test="proseStatus==''">
+                            and o.prose_status = '0'
+                        </when>
+                        <otherwise>
+                            and o.prose_status = #{proseStatus}
+                        </otherwise>
+                    </choose>
+                    )
+                  OR
+                  (
+                    service_type in ( 'tea','buffet','gym','spa','drink','setmenu')
+                    <choose>
+                        <when test="proseStatus==7">
+                            and o.prose_status = '1' and c.var_status in ('2','3','4')
+                        </when>
+                        <when test="proseStatus==1">
+                            and o.prose_status = '1' and c.var_status in ('1','0')
+                        </when>
+                        <when test="proseStatus==''">
+                            and o.prose_status = '0'
+                        </when>
+                        <otherwise>
+                            and o.prose_status = #{proseStatus}
+                        </otherwise>
+                    </choose>
+                  )
+                )
+            </if>
+            <if test="memberId !=null and memberId != ''">
+                and o.member_id = #{memberId}
+            </if>
+            <if test="payStatus != null and payStatus != ''">
+                and o.pay_status = #{payStatus}
+            </if>
+        </where>
+        order by o.create_time desc
+    </select>
+
+    <select id="countFinishNum" parameterType="com.colourfulchina.mars.api.vo.req.ReservOrderPlaceReq" resultType="integer">
+        select
+            count(*)
+        from
+            reserv_order o
+            left join reserv_order_detail d on o.id = d.order_id
+        where service_type = #{serviceType}
+            and member_id=#{memberId}
+            <choose>
+                <when test="serviceType=='accom'">
+                    and   d.depar_date >= DATE_FORMAT(NOW(),'%Y-%m-%d')
+                </when>
+                <otherwise>
+                    and   o.gift_date >= DATE_FORMAT(NOW(),'%Y-%m-%d')
+                </otherwise>
+            </choose>
+            and o.prose_status in(0,1,4)
+            <if test="giftCodeId!=null and giftCodeId!=''">
+                and o.gift_code_id =#{giftCodeId}
+            </if>
+    </select>
+    <update id="updateIdByOldOrderId" parameterType="com.colourfulchina.mars.api.entity.ReservOrder">
+        update reserv_order set id = #{oldOrderId} where old_order_id=#{oldOrderId}
+    </update>
+
+    <select id="selectReserveOrderSucessDate"
+            parameterType="com.colourfulchina.mars.api.vo.req.QueryReserveOrderDateReqVO"
+            resultType="com.colourfulchina.mars.api.entity.ReservOrder">
+        select
+        id,service_type,gift_date as giftDate
+        from
+        reserv_order
+        where gift_code_id = #{giftCodeId}
+        and prose_status =1 and service_type != 'drink'
+        and DATE_FORMAT(gift_date, '%Y-%m-%d') between #{startDate} and #{endDate}
+        UNION
+        select
+        id,service_type,DATE_ADD(gift_date,INTERVAL 3 day) as giftDate
+        from
+        reserv_order
+        where gift_code_id = #{giftCodeId}
+        and prose_status =1 and service_type = 'drink'
+        and DATE_FORMAT(DATE_ADD(gift_date,INTERVAL 3 day), '%Y-%m-%d') between #{startDate} and #{endDate}
+        order by giftDate
+    </select>
+
+    <select id="getBookOrderDetail" parameterType="com.colourfulchina.mars.api.vo.BookOrderReq" resultType="com.colourfulchina.mars.api.entity.BookOrderDetail">
+        select ro.id as orderId ,ro.goods_id as goodsId ,goods  FROM reserv_order ro
+    </select>
+
+    <select id="getgiftCount" parameterType="java.util.Map" resultType="java.util.Map">
+        select * FROM gift_code where act_code = #{giftCode} AND goods_id = #{goodsId}
+    </select>
+
+    <select id="getequityCodeDetail" parameterType="Integer" resultType="com.colourfulchina.mars.api.entity.EquityCodeDetail">
+        select * FROM equity_code_detail where gift_code_id = #{giftCodeId}
+    </select>
+
+    <select id="selectReserveOrdersByIds" parameterType="java.util.List" resultType="com.colourfulchina.mars.api.entity.ReservOrder">
+        SELECT * FROM reserv_order c where
+        <if test="list != null and list.size() != 0">
+            c.id IN
+            <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="getReservOrderBySalesOrderId" parameterType="java.lang.String" resultType="com.colourfulchina.mars.api.entity.ReservOrder">
+        SELECT * FROM reserv_order c where sales_order_id = #{saleOrderId}
+    </select>
+
+</mapper>

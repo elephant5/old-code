@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourfulchina.bigan.mapper.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.colourfulchina.bigan.api.entity.Goods">
+
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, type, gift, shop_id, unique_data, alias, title, clause, days, tag, create_time, 
+    creator_id, block_code, channel_id, price, more
+  </sql>
+
+
+
+
+  <select id="selectGoodsSeqNextValue" resultType="java.lang.Long"  >
+      SELECT NEXT VALUE FOR seq_goods;
+  </select>
+
+  <select id="saveGoodsInfo" statementType="CALLABLE" parameterType="java.util.Map" resultType="java.util.Map">
+        <![CDATA[
+            {CALL dbo.sp_source_Goods_Save (
+            #{id,mode=IN,jdbcType=BIGINT},
+            #{type,mode=IN,jdbcType=VARCHAR},
+            #{gift,mode=IN,jdbcType=VARCHAR},
+            #{shop_id,mode=IN,jdbcType=BIGINT},
+            #{items,mode=IN,jdbcType=VARCHAR},
+            #{title,mode=IN,jdbcType=VARCHAR},
+            #{channel_id,mode=IN,jdbcType=BIGINT},
+            #{price,mode=IN,jdbcType=NUMERIC},
+            #{block,mode=IN,jdbcType=VARCHAR},
+            #{clause,mode=IN,jdbcType=VARCHAR},
+            #{tag,mode=IN,jdbcType=VARCHAR},
+            #{alias,mode=IN,jdbcType=VARCHAR},
+            #{projects,mode=IN,jdbcType=VARCHAR},
+            #{more,mode=IN,jdbcType=VARCHAR},
+            #{uid,mode=IN,jdbcType=BIGINT},
+            #{goods_id,mode=OUT,jdbcType=BIGINT},
+            #{warning,mode=OUT,jdbcType=VARCHAR},
+            #{error,mode=OUT,jdbcType=VARCHAR},
+            #{result,mode=OUT,jdbcType=VARCHAR}
+            )}
+        ]]>
+  </select>
+  <!-- 查询goods与其所属商户信息 -->
+  <select id="queryGoodsDetail" parameterType="java.util.List" resultType="com.colourfulchina.bigan.api.vo.GoodsDetailVo">
+    SELECT
+        a.id AS "goodsId",
+        c.name AS "type",
+        c.code AS "typeCode",
+        d.short AS "gift",
+	  	d.code AS "giftCode",
+	  	(case when d.code = '2F1' then '两人同行享五折优惠' else d.name end) as "giftName",
+        a.shop_id AS "shopId",
+        a.title,
+        a.clause,
+        b.city,
+	  	sc.py,
+	  	sc.oversea,
+        b.hotel,
+        b.name AS "shopName",
+	  	b.title AS "shopTitle",
+        b.address,
+        b.summary,
+        a.items,
+	  	a.block_code AS blockCode
+    FROM
+        goods a
+    LEFT JOIN shop b ON a.shop_id = b.id
+    LEFT JOIN sys_service c ON a.type = c.code
+    LEFT JOIN sys_gift d ON a.gift = d.code
+	LEFT JOIN sys_city sc on sc.id = b.city_id
+    <where>
+      <if test="list.size() != 0">
+        AND a.id IN
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+          #{item.goodsId}
+        </foreach>
+      </if>
+		order by b.city
+    </where>
+  </select>
+
+  <!-- 根据goodsID查询goods与其所属商户信息 -->
+  <select id="getGoodsDetail" parameterType="string" resultType="com.colourfulchina.bigan.api.vo.GoodsDetailVo">
+    SELECT
+	  a.id AS "goodsId",
+	  c.name AS "type",
+	  c.code AS "typeCode",
+	  d.short AS "gift",
+	  d.code AS "giftCode",
+	  d.name AS "giftName",
+	  a.shop_id AS "shopId",
+	  a.title,
+	  a.clause,
+	  b.city,
+	  b.hotel,
+	  b.name AS "shopName",
+	  b.title AS "shopTitle",
+	  b.address,
+	  b.summary,
+	  a.items,
+	  b.oversea
+    FROM
+        goods a
+    LEFT JOIN shop b ON a.shop_id = b.id
+    LEFT JOIN sys_service c ON a.type = c.code
+    LEFT JOIN sys_gift d ON a.gift = d.code
+    <where>
+      AND a.id = #{0}
+    </where>
+  </select>
+
+  <select id="getGoodsList" resultType="com.colourfulchina.bigan.api.vo.ProjectGoodsResVo" parameterType="com.colourfulchina.bigan.api.vo.ProjectGroupResVo">
+	 SELECT a.id AS "goodsId",
+			c.name AS "type",
+			d.short AS "gift",
+			a.shop_id AS "shopId",
+			a.title,
+			a.clause,
+			b.city,
+			b.hotel,
+			b.name AS "shopName",
+			b.address,
+			b.phone,
+			b.summary,
+			(f.guid + '.' + f.ext) AS imgList,
+			sh.marketPrice,
+			sh.opentime,
+			ss.childPolicy,
+			ss.parkingInfo,
+			json_value (b.more, '$.checkin_time') AS checkinTime,
+			json_value (b.more, '$.checkout_time') AS checkoutTime
+		FROM goods a
+		LEFT JOIN shop b ON a.shop_id = b.id
+		LEFT JOIN sys_service c ON a.type = c.code
+		LEFT JOIN sys_gift d ON a.gift = d.code
+		LEFT JOIN (
+			SELECT *
+			  FROM sys_file_quote
+			 WHERE type = 'shop.pic'
+		) q ON q.obj_id = b.id
+		LEFT JOIN sys_file f ON f.id = q.file_id
+		LEFT JOIN (
+			SELECT
+				shop_id,
+				MAX (
+					CASE name
+					WHEN '午餐' THEN
+						name + REPLACE(
+							json_value (price, '$.net'),
+							'W',
+							'周'
+						) + '元'
+					END
+				) + ',' + MAX (
+					CASE name
+					WHEN '晚餐' THEN
+						name + REPLACE(
+							json_value (price, '$.net'),
+							'W',
+							'周'
+						) + '元'
+					END
+				) AS marketPrice,
+				MAX (
+					CASE name
+					WHEN '午餐' THEN
+						name + '' + opentime
+					END
+				) + ',' + MAX (
+					CASE name
+					WHEN '晚餐' THEN
+						name + opentime
+					END
+				) AS opentime
+			FROM
+				shop_item
+			GROUP BY
+				shop_id
+		) sh ON a.shop_id = sh.shop_id
+		LEFT JOIN (
+			SELECT
+				shop_id,
+				MAX (
+					CASE title
+					WHEN '儿童政策' THEN
+						content
+					END
+				) AS childPolicy,
+				MAX (
+					CASE title
+					WHEN '泊车信息' THEN
+						content
+					END
+				) AS parkingInfo
+			FROM
+				shop_section
+			GROUP BY
+				shop_id
+		) ss ON a.shop_id = ss.shop_id
+		WHERE
+			a.id IN (
+				SELECT
+					GOODS_ID
+				FROM
+					PRJ_GROUP_GOODS
+				WHERE
+					GROUP_ID = #{id}
+			);
+  </select>
+</mapper>

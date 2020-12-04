@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.colourfulchina</groupId>
+		<artifactId>pangu</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+
+	<artifactId>pangu-taishang</artifactId>
+	<version>1.0.0</version>
+	<name>pangu-taishang</name>
+	<packaging>pom</packaging>
+	<description>客乐芙盘古系统之太上老君系统</description>
+
+
+	<properties>
+		<pangu.taishang.version>1.0.0</pangu.taishang.version>
+		<tianyan.version>1.0.0</tianyan.version>
+		<bigan.version>1.0.0</bigan.version>
+		<pangu.version>1.0.0</pangu.version>
+		<mars.version>1.0.0</mars.version>
+		<alipay.version>1.0.0</alipay.version>
+		<god-door.version>1.0.0</god-door.version>
+		<sqlserver.version>6.4.0.jre8</sqlserver.version>
+		<swagger.version>2.9.2</swagger.version>
+		<pinyin.version>2.5.0</pinyin.version>
+		<easyexcel.version>1.1.2-beta5</easyexcel.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.colourfulchina</groupId>
+				<artifactId>tianyan-common-security</artifactId>
+				<version>${tianyan.version}</version>
+			</dependency>
+			<!--日志处理-->
+			<dependency>
+				<groupId>com.colourfulchina</groupId>
+				<artifactId>tianyan-common-log</artifactId>
+				<version>${tianyan.version}</version>
+			</dependency>
+			<!--监控客户端-->
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-starter-client</artifactId>
+				<version>${monitor.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.colourfulchina</groupId>
+				<artifactId>tianyan-common-security</artifactId>
+				<version>${tianyan.version}</version>
+			</dependency>
+			<!--日志处理-->
+			<dependency>
+				<groupId>com.colourfulchina</groupId>
+				<artifactId>tianyan-common-log</artifactId>
+				<version>${tianyan.version}</version>
+			</dependency>
+			<!--系统配置-->
+			<dependency>
+				<groupId>com.colourfulchina</groupId>
+				<artifactId>tianyan-upms-api</artifactId>
+				<version>${tianyan.version}</version>
+			</dependency>
+			<!--登录-->
+			<dependency>
+				<groupId>com.colourfulchina</groupId>
+				<artifactId>god-door-api</artifactId>
+				<version>${god-door.version}</version>
+			</dependency>
+			<!--监控客户端-->
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-starter-client</artifactId>
+				<version>${monitor.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.microsoft.sqlserver</groupId>
+				<artifactId>mssql-jdbc</artifactId>
+				<version>${sqlserver.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/com.belerweb/pinyin4j -->
+			<dependency>
+				<groupId>com.belerweb</groupId>
+				<artifactId>pinyin4j</artifactId>
+				<version>${pinyin.version}</version>
+			</dependency>
+			<!--alibaba easyexcel-->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>easyexcel</artifactId>
+				<version>${easyexcel.version}</version>
+			</dependency>
+
+		</dependencies>
+
+	</dependencyManagement>
+
+	<modules>
+		<module>pangu-taishang-api</module>
+		<module>pangu-taishang-biz</module>
+	</modules>
+</project>
